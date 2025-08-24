@@ -122,20 +122,38 @@
     </Compile>
     <Compile Include="Controls\BusyIndicatorControl.cs" />
     <Compile Include="Controls\CampaignCanvas.cs" />
-    <Compile Include="Controls\CampaignFoeFace.cs" />
-    <Compile Include="Controls\CardsBook.cs" />
-    <Compile Include="Controls\CreatureControl.cs" />
-    <Compile Include="Controls\DeckFieldBorder.cs" />
+    <Compile Include="Controls\CampaignFoeFace.xaml.cs">
+      <DependentUpon>CampaignFoeFace.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CardsBook.xaml.cs">
+      <DependentUpon>CardsBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CreatureControl.xaml.cs">
+      <DependentUpon>CreatureControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DeckFieldBorder.xaml.cs">
+      <DependentUpon>DeckFieldBorder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DeckFieldControl.cs" />
-    <Compile Include="Controls\ElementInfo.cs" />
+    <Compile Include="Controls\ElementInfo.xaml.cs">
+      <DependentUpon>ElementInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FlickableListBox.cs" />
     <Compile Include="Controls\LogListbox.cs" />
     <Compile Include="Controls\MouseDragElementBehaviorEx.cs" />
     <Compile Include="Controls\MyMouseDragElementBehavior.cs" />
-    <Compile Include="Controls\OpponentSummoningNotification.cs" />
-    <Compile Include="Controls\PlayerFaceControl.cs" />
-    <Compile Include="Controls\PlayersTurnNotification.cs" />
-    <Compile Include="Controls\SmallCardsBook.cs" />
+    <Compile Include="Controls\OpponentSummoningNotification.xaml.cs">
+      <DependentUpon>OpponentSummoningNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PlayerFaceControl.xaml.cs">
+      <DependentUpon>PlayerFaceControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PlayersTurnNotification.xaml.cs">
+      <DependentUpon>PlayersTurnNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SmallCardsBook.xaml.cs">
+      <DependentUpon>SmallCardsBook.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\BindToElementConverter.cs" />
     <Compile Include="Converters\BoolToZindexConverter.cs" />
     <Compile Include="Converters\CardImageConverter.cs" />
@@ -231,17 +249,9 @@
     <Compile Include="Helpers\ColorFromString.cs" />
     <Compile Include="Helpers\ImageUtils.cs" />
     <Compile Include="Localizations\CommonResources.cs" />
-    <Compile Include="Localizations\CommonResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CommonResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Localizations\Cyclops\MainApplication\Localization\ResourceWrapper.cs" />
     <Compile Include="Localizations\Language.cs" />
     <Compile Include="Localizations\LocalizationManager.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Model\DeckElement.cs" />
     <Compile Include="Model\DeckField.cs" />
     <Compile Include="Options\OptionsManager.cs" />
@@ -282,24 +292,56 @@
     <Compile Include="ViewModels\TwoPlayersOptionsViewModel.cs" />
     <Compile Include="ViewModels\ViaNetworkGameModesViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBaseEx.cs" />
-    <Compile Include="Views\Battlefield.cs" />
-    <Compile Include="Views\CampaignMap.cs" />
+    <Compile Include="Views\Battlefield.xaml.cs">
+      <DependentUpon>Battlefield.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CampaignMap.xaml.cs">
+      <DependentUpon>CampaignMap.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CampaignOptions.cs" />
-    <Compile Include="Views\CampaignOptionsView.cs" />
-    <Compile Include="Views\CardsConfiguration.cs" />
-    <Compile Include="Views\Congratulations.cs" />
-    <Compile Include="Views\CreatePlayerView.cs" />
-    <Compile Include="Views\DeckConfigurator.cs" />
-    <Compile Include="Views\FaceSelectionView.cs" />
-    <Compile Include="Views\HostingServer.cs" />
-    <Compile Include="Views\InfoView.cs" />
-    <Compile Include="Views\MainPage.cs" />
-    <Compile Include="Views\NetworkView.cs" />
+    <Compile Include="Views\CampaignOptionsView.xaml.cs">
+      <DependentUpon>CampaignOptionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CardsConfiguration.xaml.cs">
+      <DependentUpon>CardsConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Congratulations.xaml.cs">
+      <DependentUpon>Congratulations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreatePlayerView.xaml.cs">
+      <DependentUpon>CreatePlayerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeckConfigurator.xaml.cs">
+      <DependentUpon>DeckConfigurator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FaceSelectionView.xaml.cs">
+      <DependentUpon>FaceSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HostingServer.xaml.cs">
+      <DependentUpon>HostingServer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InfoView.xaml.cs">
+      <DependentUpon>InfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NetworkView.xaml.cs">
+      <DependentUpon>NetworkView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PageNavigationService.cs" />
-    <Compile Include="Views\TournamentTable.cs" />
-    <Compile Include="Views\TwoPlayersModes.cs" />
-    <Compile Include="Views\TwoPlayersOptions.cs" />
-    <Compile Include="Views\ViaNetworkGameModes.cs" />
+    <Compile Include="Views\TournamentTable.xaml.cs">
+      <DependentUpon>TournamentTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TwoPlayersModes.xaml.cs">
+      <DependentUpon>TwoPlayersModes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TwoPlayersOptions.xaml.cs">
+      <DependentUpon>TwoPlayersOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViaNetworkGameModes.xaml.cs">
+      <DependentUpon>ViaNetworkGameModes.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -686,47 +728,43 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Controls\campaignfoeface.xaml">
+    <Page Include="Controls\CampaignFoeFace.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\cardsbook.xaml">
+    <Page Include="Controls\CardsBook.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\creaturecontrol.xaml">
+    <Page Include="Controls\CreatureControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\deckfield.xaml">
+    <Page Include="Controls\DeckField.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\deckfieldborder.xaml">
+    <Page Include="Controls\DeckFieldBorder.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\elementinfo.xaml">
+    <Page Include="Controls\ElementInfo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\opponentsummoningnotification.xaml">
+    <Page Include="Controls\OpponentSummoningNotification.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\playerfacecontrol.xaml">
+    <Page Include="Controls\PlayerFaceControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\playersturnnotification.xaml">
+    <Page Include="Controls\PlayersTurnNotification.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\smallcardsbook.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="Controls\SmallCardsBook.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -734,71 +772,71 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\battlefield.xaml">
+    <Page Include="Views\Battlefield.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\campaignmap.xaml">
+    <Page Include="Views\CampaignMap.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\campaignoptionsview.xaml">
+    <Page Include="Views\CampaignOptionsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\cardsconfiguration.xaml">
+    <Page Include="Views\CardsConfiguration.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\congratulations.xaml">
+    <Page Include="Views\Congratulations.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\createplayerview.xaml">
+    <Page Include="Views\CreatePlayerView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\deckconfigurator.xaml">
+    <Page Include="Views\DeckConfigurator.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\faceselectionview.xaml">
+    <Page Include="Views\FaceSelectionView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\hostingserver.xaml">
+    <Page Include="Views\HostingServer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\infoview.xaml">
+    <Page Include="Views\InfoView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\mainpage.xaml">
+    <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\networkview.xaml">
+    <Page Include="Views\NetworkView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\tournamentoptions.xaml">
+    <Page Include="Views\TournamentOptions.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\tournamenttable.xaml">
+    <Page Include="Views\TournamentTable.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\twoplayersmodes.xaml">
+    <Page Include="Views\TwoPlayersModes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\twoplayersoptions.xaml">
+    <Page Include="Views\TwoPlayersOptions.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\vianetworkgamemodes.xaml">
+    <Page Include="Views\ViaNetworkGameModes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -809,6 +847,9 @@
     </PackageReference>
     <PackageReference Include="MonoGame.Framework.WindowsUniversal">
       <Version>3.8.0.1641</Version>
+    </PackageReference>
+    <PackageReference Include="MvvmLightLibs">
+      <Version>4.1.27.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
@@ -822,13 +863,6 @@
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.1</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localizations\CommonResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>CommonResources.Designer.cs</LastGenOutput>
-      <DependentUpon>CommonResources.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Resources\Videos\tutorial.mp4" />

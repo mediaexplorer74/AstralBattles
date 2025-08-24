@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Resources;
 using System.Runtime.CompilerServices;
+using System.Reflection;
 
 #nullable disable
 namespace AstralBattles.Localizations
@@ -32,7 +33,7 @@ namespace AstralBattles.Localizations
       get
       {
         if (object.ReferenceEquals((object) CommonResources.resourceMan, (object) null))
-          CommonResources.resourceMan = new ResourceManager("AstralBattles.Localizations.CommonResources", typeof (CommonResources).Assembly);
+          CommonResources.resourceMan = new ResourceManager("AstralBattles.Localizations.CommonResources", /*typeof(CommonResources).Assembly*/default);
         return CommonResources.resourceMan;
       }
     }

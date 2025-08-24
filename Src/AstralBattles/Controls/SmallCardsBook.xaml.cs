@@ -8,8 +8,8 @@ using AstralBattles.Core.Model;
 using AstralBattles.ViewModels;
 using System;
 using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 #nullable disable
 namespace AstralBattles.Controls
@@ -18,9 +18,7 @@ public partial class SmallCardsBook : UserControl
   {
     public static readonly DependencyProperty PlayerProperty = DependencyProperty.Register(nameof (Player), typeof (Player), typeof (SmallCardsBook), new PropertyMetadata((object) null, new PropertyChangedCallback(SmallCardsBook.PlayerChangedStatic)));
     public static readonly DependencyProperty BattlefieldViewModelProperty = DependencyProperty.Register(nameof (BattlefieldViewModel), typeof (BattlefieldViewModel), typeof (SmallCardsBook), new PropertyMetadata((object) null, new PropertyChangedCallback(SmallCardsBook.BattlefieldViewModelChangedStatic)));
-    internal UserControl thisControl;
-    internal Grid LayoutRoot;
-    private bool _contentLoaded;
+   
 
     public SmallCardsBook() => this.InitializeComponent();
 
@@ -62,16 +60,7 @@ public partial class SmallCardsBook : UserControl
     {
     }
 
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Controls/SmallCardsBook.xaml", UriKind.Relative));
-      this.thisControl = (UserControl) this.FindName("thisControl");
-      this.LayoutRoot = (Grid) this.FindName("LayoutRoot");
-    }
+   
   }
 }
 

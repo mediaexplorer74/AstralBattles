@@ -9,49 +9,23 @@ using AstralBattles.ViewModels;
 using GalaSoft.MvvmLight;
 using System;
 using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media.Animation;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media.Animation;
 
 #nullable disable
 namespace AstralBattles.Controls
 {
 public partial class OpponentSummoningNotification : UserControl
   {
-    internal UserControl thisControl;
-    internal Grid LayoutRoot;
-    internal VisualStateGroup VisualStateGroup;
-    internal Storyboard risingAnimation;
-    internal Storyboard hidingAnimation;
-    internal VisualState Default;
-    internal VisualState Rising;
-    internal VisualState Hiding;
-    internal Border border;
-    private bool _contentLoaded;
+    
     public static readonly DependencyProperty CardDescriptionProperty = DependencyProperty.Register("CardDescription", typeof (string), typeof (OpponentSummoningNotification), new PropertyMetadata((PropertyChangedCallback) null));
     public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(nameof (Title), typeof (string), typeof (OpponentSummoningNotification), new PropertyMetadata((PropertyChangedCallback) null));
     public static readonly DependencyProperty CardProperty = DependencyProperty.Register(nameof (Card), typeof (Card), typeof (OpponentSummoningNotification), new PropertyMetadata((object) null, new PropertyChangedCallback(OpponentSummoningNotification.CardPropertyChangedStatic)));
     private bool isHiding;
 
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Controls/OpponentSummoningNotification.xaml", UriKind.Relative));
-      this.thisControl = (UserControl) this.FindName("thisControl");
-      this.LayoutRoot = (Grid) this.FindName("LayoutRoot");
-      this.VisualStateGroup = (VisualStateGroup) this.FindName("VisualStateGroup");
-      this.risingAnimation = (Storyboard) this.FindName("risingAnimation");
-      this.hidingAnimation = (Storyboard) this.FindName("hidingAnimation");
-      this.Default = (VisualState) this.FindName("Default");
-      this.Rising = (VisualState) this.FindName("Rising");
-      this.Hiding = (VisualState) this.FindName("Hiding");
-      this.border = (Border) this.FindName("border");
-    }
-
+    
     public OpponentSummoningNotification()
     {
       this.InitializeComponent();

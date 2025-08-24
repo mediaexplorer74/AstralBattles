@@ -9,26 +9,17 @@ using System;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using Windows.UI.Xaml.Controls;
 
 #nullable disable
 namespace AstralBattles.Views
 {
-public partial class InfoView : PhoneApplicationPage
+public partial class InfoView : Page
   {
-    internal Grid LayoutRoot;
-    private bool _contentLoaded;
-
+  
     public InfoView() => this.InitializeComponent();
 
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Views/InfoView.xaml", UriKind.Relative));
-      this.LayoutRoot = (Grid) ((FrameworkElement) this).FindName("LayoutRoot");
-    }
+   
   }
 }
 

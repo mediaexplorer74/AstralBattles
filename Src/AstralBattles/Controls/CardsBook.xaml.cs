@@ -6,41 +6,22 @@
 
 using AstralBattles.Core.Model;
 using AstralBattles.ViewModels;
-using Microsoft.Phone.Controls;
 using System;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 #nullable disable
 namespace AstralBattles.Controls
 {
 public partial class CardsBook : UserControl
   {
-    internal UserControl thisControl;
-    internal Grid LayoutRoot;
-    internal Grid CardsPanelLayoutRoot;
-    internal ListBox listBox;
-    internal ListBox rootCardList;
-    private bool _contentLoaded;
     public static readonly DependencyProperty PlayerProperty = DependencyProperty.Register(nameof (Player), typeof (Player), typeof (CardsBook), new PropertyMetadata((object) null, new PropertyChangedCallback(CardsBook.PlayerChangedStatic)));
     public static readonly DependencyProperty SixCardsModeProperty = DependencyProperty.Register(nameof (SixCardsMode), typeof (bool), typeof (CardsBook), new PropertyMetadata((object) false, new PropertyChangedCallback(CardsBook.SixCardsModeStaticChange)));
     public static readonly DependencyProperty BattlefieldViewModelProperty = DependencyProperty.Register(nameof (BattlefieldViewModel), typeof (BattlefieldViewModel), typeof (CardsBook), new PropertyMetadata((object) null, new PropertyChangedCallback(CardsBook.BattlefieldViewModelChangedStatic)));
 
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Controls/CardsBook.xaml", UriKind.Relative));
-      this.thisControl = (UserControl) this.FindName("thisControl");
-      this.LayoutRoot = (Grid) this.FindName("LayoutRoot");
-      this.CardsPanelLayoutRoot = (Grid) this.FindName("CardsPanelLayoutRoot");
-      this.listBox = (ListBox) this.FindName("listBox");
-      this.rootCardList = (ListBox) this.FindName("rootCardList");
-    }
-
+   
     public CardsBook() => this.InitializeComponent();
 
     public BattlefieldViewModel BattlefieldViewModel

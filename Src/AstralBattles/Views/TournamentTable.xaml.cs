@@ -18,10 +18,7 @@ namespace AstralBattles.Views
 {
 public partial class TournamentTable : Page
   {
-    internal Grid LayoutRoot;
-    internal ApplicationBarIconButton appbarNext;
-    private bool _contentLoaded;
-
+   
     public TournamentTable() => this.InitializeComponent();
 
     private void AppbarNextClick(object sender, EventArgs e)
@@ -40,16 +37,7 @@ public partial class TournamentTable : Page
       ((Page) this).OnNavigatedTo(e);
     }
 
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Views/TournamentTable.xaml", UriKind.Relative));
-      this.LayoutRoot = (Grid) ((FrameworkElement) this).FindName("LayoutRoot");
-      this.appbarNext = (ApplicationBarIconButton) ((FrameworkElement) this).FindName("appbarNext");
-    }
+    
   }
 }
 

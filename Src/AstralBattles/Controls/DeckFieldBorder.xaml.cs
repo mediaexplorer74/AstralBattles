@@ -21,11 +21,7 @@ namespace AstralBattles.Controls
 public partial class DeckFieldBorder : UserControl
   {
     public static readonly DependencyProperty DeckCardProperty = DependencyProperty.Register(nameof (DeckCard), typeof (DeckField), typeof (DeckFieldBorder), new PropertyMetadata(new PropertyChangedCallback(DeckFieldBorder.DeckCardChangedStatic)));
-    internal UserControl thisControl;
-    internal Grid LayoutRoot;
-    internal Rectangle rootRectangle;
-    internal Rectangle waitSelectRectangle;
-    private bool _contentLoaded;
+   
 
     public DeckFieldBorder() => this.InitializeComponent();
 
@@ -63,18 +59,7 @@ public partial class DeckFieldBorder : UserControl
     {
     }
 
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Controls/DeckFieldBorder.xaml", UriKind.Relative));
-      this.thisControl = (UserControl) this.FindName("thisControl");
-      this.LayoutRoot = (Grid) this.FindName("LayoutRoot");
-      this.rootRectangle = (Rectangle) this.FindName("rootRectangle");
-      this.waitSelectRectangle = (Rectangle) this.FindName("waitSelectRectangle");
-    }
+   
   }
 }
 

@@ -16,11 +16,9 @@ using System.Windows.Controls;
 #nullable disable
 namespace AstralBattles.Views
 {
-public partial class CampaignMap : PhoneApplicationPage
+public partial class CampaignMap : Page
   {
-    internal Grid LayoutRoot;
-    internal CampaignCanvas canvas;
-    private bool _contentLoaded;
+    
 
     public CampaignMap() => this.InitializeComponent();
 
@@ -30,16 +28,7 @@ public partial class CampaignMap : PhoneApplicationPage
       base.OnBackKeyPress(e);
     }
 
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Views/CampaignMap.xaml", UriKind.Relative));
-      this.LayoutRoot = (Grid) ((FrameworkElement) this).FindName("LayoutRoot");
-      this.canvas = (CampaignCanvas) ((FrameworkElement) this).FindName("canvas");
-    }
+    
   }
 }
 

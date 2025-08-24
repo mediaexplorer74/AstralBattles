@@ -13,19 +13,14 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using Windows.UI.Xaml.Controls;
 
 #nullable disable
 namespace AstralBattles.Views
 {
-public partial class FaceSelectionView : PhoneApplicationPage
+public partial class FaceSelectionView : Page
   {
-    internal Grid LayoutRoot;
-    internal StackPanel TitlePanel;
-    internal TextBlock ApplicationTitle;
-    internal Grid ContentPanel;
-    internal WrapPanel panel;
-    private bool _contentLoaded;
-
+    
     public FaceSelectionView()
     {
       this.InitializeComponent();
@@ -70,19 +65,7 @@ public partial class FaceSelectionView : PhoneApplicationPage
       ((Page) this).NavigationService.GoBack();
     }
 
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Views/FaceSelectionView.xaml", UriKind.Relative));
-      this.LayoutRoot = (Grid) ((FrameworkElement) this).FindName("LayoutRoot");
-      this.TitlePanel = (StackPanel) ((FrameworkElement) this).FindName("TitlePanel");
-      this.ApplicationTitle = (TextBlock) ((FrameworkElement) this).FindName("ApplicationTitle");
-      this.ContentPanel = (Grid) ((FrameworkElement) this).FindName("ContentPanel");
-      this.panel = (WrapPanel) ((FrameworkElement) this).FindName("panel");
-    }
+   
   }
 }
 

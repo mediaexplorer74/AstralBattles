@@ -8,35 +8,22 @@ using AstralBattles.Core.Model;
 using GalaSoft.MvvmLight;
 using System;
 using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
+using Windows.Devices.Input;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
 
 #nullable disable
 namespace AstralBattles.Controls
 {
 public partial class DeckFieldControl : UserControl
   {
-    internal UserControl control;
-    internal Grid LayoutRoot;
-    internal Border cardInBookBorder;
-    private bool _contentLoaded;
+    
     private bool isDragging;
     public static readonly DependencyProperty CardProperty = DependencyProperty.Register(nameof (Card), typeof (Card), typeof (DeckFieldControl), new PropertyMetadata((PropertyChangedCallback) null));
 
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Controls/DeckField.xaml", UriKind.Relative));
-      this.control = (UserControl) this.FindName("control");
-      this.LayoutRoot = (Grid) this.FindName("LayoutRoot");
-      this.cardInBookBorder = (Border) this.FindName("cardInBookBorder");
-    }
-
+  
     public DeckFieldControl()
     {
       this.InitializeComponent();

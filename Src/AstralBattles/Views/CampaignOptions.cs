@@ -12,25 +12,14 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Windows.UI.Xaml.Controls;
 
 #nullable disable
 namespace AstralBattles.Views
 {
-public partial class CampaignOptions : PhoneApplicationPage
+  public partial class CampaignOptions : Page
   {
-    internal Grid LayoutRoot;
-    private bool _contentLoaded;
-
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Views/TournamentOptions.xaml", UriKind.Relative));
-      this.LayoutRoot = (Grid) ((FrameworkElement) this).FindName("LayoutRoot");
-    }
-
+  
     public CampaignOptions() => this.InitializeComponent();
 
     protected virtual void OnNavigatedTo(NavigationEventArgs e)

@@ -9,62 +9,24 @@ using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 
 #nullable disable
 namespace AstralBattles.Controls
 {
 public partial class ElementInfo : UserControl
   {
-    internal UserControl control;
-    internal Grid LayoutRoot;
-    internal VisualStateGroup VisualStateGroup;
-    internal Storyboard manaDecreasedStoryboard;
-    internal Storyboard manaIncreasedStoryboard;
-    internal VisualState Default;
-    internal VisualState ManaDecreased;
-    internal VisualState ManaIncreased;
-    internal VisualState Selected;
-    internal StackPanel stackPanel;
-    internal TextBlock textBlock;
-    internal Border border;
-    internal Border border1;
-    internal TextBlock overflowTextBox;
-    private bool _contentLoaded;
     private readonly Queue<string> overflowTextChangesStack = new Queue<string>();
     private bool isAnimated;
     public static readonly DependencyProperty OverflowTextProperty = DependencyProperty.Register(nameof (OverflowText), typeof (string), typeof (ElementInfo), new PropertyMetadata((object) ""));
     public static readonly DependencyProperty HideNameProperty = DependencyProperty.Register(nameof (HideName), typeof (bool), typeof (ElementInfo), new PropertyMetadata((object) false));
     public static readonly DependencyProperty ElementProperty = DependencyProperty.Register(nameof (Element), typeof (Element), typeof (ElementInfo), new PropertyMetadata((object) null, new PropertyChangedCallback(ElementInfo.ElementPropertyChangedStatic)));
 
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Controls/ElementInfo.xaml", UriKind.Relative));
-      this.control = (UserControl) this.FindName("control");
-      this.LayoutRoot = (Grid) this.FindName("LayoutRoot");
-      this.VisualStateGroup = (VisualStateGroup) this.FindName("VisualStateGroup");
-      this.manaDecreasedStoryboard = (Storyboard) this.FindName("manaDecreasedStoryboard");
-      this.manaIncreasedStoryboard = (Storyboard) this.FindName("manaIncreasedStoryboard");
-      this.Default = (VisualState) this.FindName("Default");
-      this.ManaDecreased = (VisualState) this.FindName("ManaDecreased");
-      this.ManaIncreased = (VisualState) this.FindName("ManaIncreased");
-      this.Selected = (VisualState) this.FindName("Selected");
-      this.stackPanel = (StackPanel) this.FindName("stackPanel");
-      this.textBlock = (TextBlock) this.FindName("textBlock");
-      this.border = (Border) this.FindName("border");
-      this.border1 = (Border) this.FindName("border1");
-      this.overflowTextBox = (TextBlock) this.FindName("overflowTextBox");
-    }
-
-    public ElementInfo()
+       public ElementInfo()
     {
       this.InitializeComponent();
       if (ViewModelBase.IsInDesignModeStatic)

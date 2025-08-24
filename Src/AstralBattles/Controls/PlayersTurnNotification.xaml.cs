@@ -8,9 +8,10 @@ using AstralBattles.Localizations;
 using GalaSoft.MvvmLight;
 using System;
 using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+
 
 #nullable disable
 namespace AstralBattles.Controls
@@ -22,10 +23,7 @@ public partial class PlayersTurnNotification : UserControl
     public static readonly DependencyProperty PhotoProperty = DependencyProperty.Register(nameof (Photo), typeof (string), typeof (PlayersTurnNotification), new PropertyMetadata((object) string.Empty));
     public static readonly DependencyProperty MessageBodyProperty = DependencyProperty.Register(nameof (MessageBody), typeof (string), typeof (PlayersTurnNotification), new PropertyMetadata((object) string.Empty));
     private bool isHiding;
-    internal UserControl thisControl;
-    internal Grid LayoutRoot;
-    internal Border border;
-    private bool _contentLoaded;
+    
 
     public PlayersTurnNotification()
     {
@@ -109,18 +107,7 @@ public partial class PlayersTurnNotification : UserControl
     private void BorderTap(object sender, GestureEventArgs e)
     {
     }
-
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Controls/PlayersTurnNotification.xaml", UriKind.Relative));
-      this.thisControl = (UserControl) this.FindName("thisControl");
-      this.LayoutRoot = (Grid) this.FindName("LayoutRoot");
-      this.border = (Border) this.FindName("border");
-    }
+   
   }
 }
 

@@ -12,29 +12,14 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Windows.UI.Xaml.Controls;
 
 #nullable disable
 namespace AstralBattles.Views
 {
-public partial class CreatePlayerView : PhoneApplicationPage
+public partial class CreatePlayerView : Page
   {
-    internal Grid LayoutRoot;
-    internal Grid ContentPanel;
-    internal Button editDeckControl;
-    private bool _contentLoaded;
-
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Views/CreatePlayerView.xaml", UriKind.Relative));
-      this.LayoutRoot = (Grid) ((FrameworkElement) this).FindName("LayoutRoot");
-      this.ContentPanel = (Grid) ((FrameworkElement) this).FindName("ContentPanel");
-      this.editDeckControl = (Button) ((FrameworkElement) this).FindName("editDeckControl");
-    }
-
+    
     public CreatePlayerView() => this.InitializeComponent();
 
     protected virtual void OnNavigatedTo(NavigationEventArgs e)

@@ -5,7 +5,7 @@
 // Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
 
 using System.Collections.Specialized;
-using System.Windows.Controls;
+using Windows.UI.Xaml.Controls;
 
 #nullable disable
 namespace AstralBattles.Controls

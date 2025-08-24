@@ -1,0 +1,112 @@
+About	about	
+AboutBody	This game is a mobile version of the famous desktop game Spectromancer. All cards' texts are copyright (c) Three Donkeys LLC. You may also contact me via jabber at main@conference.jabber.uruchie.org	
+Air	Air	
+Beast	Beasts	
+Campaign	Campaign	
+CampaignTip	Campaign mode	
+Casting	{0} is casting {1}	
+Chaos	Chaos	
+Close	Close	
+ConfigureDeck	Configure deck	
+Confirmation	Confirmation	
+Congratulations	Congratulations, you have finished the Tournament on the {0} place. Thanks for playing and wait for Astral Battles 2 with campaign and online multiplayer!	
+Continue	Continue	
+ContinueCampaignTip	Continue started campaign	
+ContinueTip	Continue the current game	
+ContinueTournamentTip	Continue last played tournament game	
+Control	Control	
+Copyrights	Copyright (c) 2011 Egor Bogatov	
+CreatureShortDesc	{0} creature, attack: {1}, Health: {2}, cost: {3}.	
+CreatureShortDesc2	Attack: {0}, Health: {1}, Cost: {2}.	
+CurrentTournamentWillBeOverwritten	Current tournament will be overwritten.	
+Death	Death	
+Demonic	Demonics	
+Difficulty	Tournament difficulty	
+Earth	Earth	
+Easy	Easy	
+FaceSelection	Face selection	
+Feedback	Send feedback	
+FifthElement	5th element:	
+Fire	Fire	
+Game	Game	
+GameWillBeOverwritten	Last played game will be overwritten.	
+Goblins	Goblins	
+Hard	Hard	
+HasCasted	{0} has casted a {1} spell	
+HasSkipped	{0} has skipped his turn	
+HasSummoned	{0} has summoned a {1}	
+HasWon	{0} has won!	
+HelpImproveLanguages	* German and French are coming soon	
+Holy	Holy	
+HostAServer	Host a server	
+HostAServerTip	Host a server for playing duel	
+Illusion	Illusion	
+IsComputer	Is computer (A.I.)	
+JoinToServer	Join to server	
+JoinToServerTip	Join to server by IP	
+LoadGame	Load the last hosted game	
+LoadGameTip	Load the last hosted game as a server	
+Loading	Loading...	
+MainMenu	game	
+Mechanical	Mechanics	
+Name	Name:	
+NamesShouldBeNotEmptyMessage	Names shouldn't be empty	
+NamesShouldBeNotEqualMessage	Names should be unique	
+NewCampaign	New campaign	
+NewCampaignTip	Start new campaign	
+NewGame	New game	
+NewGameTip	Start new game for 2 players	
+NewTournament	New tournament	
+NewTournamentTip	Start the new tournament	
+Next	Next	
+NextGame	Next game	
+NextTurn	Next turn	
+NextTurnMessage	{0}, it's your turn!	
+Normal	Normal	
+Ok	Ok	
+OnOneDevice	Hot seat mode	
+OnOneDeviceTip	Play a duel on the single device	
+Options	options	
+Player1NameLabel	Player 1 name:	
+Player2NameLabel	Player 2 name:	
+PlayersName	Player's name:	
+Resort	Resort	
+ReviewGame	Review game	
+RoundStarted	Round {0} has been started	
+Slot	Slot	
+Sorcery	Sorcery	
+Sounds	Sounds	
+Specialization	Specialization:	
+Spec_Druid	Druid	
+Spec_DruidTip	Player recieves +2 bonus to his earth element power and gains +1 health each round. Additional cards: Master healer, Stone rain	
+Spec_Elementalist	Elementalist	
+Spec_ElementalistTip	Player recieves +1 bonus to Fire, Water, Air, Earth and Death	
+Spec_IceLord	Ice lord	
+Spec_IceLordTip	Player recieves +2 bonus to his water element power and deals 1 damage to random opponent's creature every turn. Additional cards: Astral guard, Merfolk overloard	
+Spec_Necromancer	Necromancer	
+Spec_NecromancerTip	Player gains +4 health points when creatures die. Additional cards: Vampire, Drain souls	
+Spec_Pyromancer	Pyromancer	
+Spec_PyromancerTip	Player recieves +2 bonus to his fire element power and all opponent's creatures gain 2 damage when summoning. Additional cards: Armageddon, Dragon	
+Spec_Stormbringer	Stormbringer	
+Spec_StormbringerTip	Player recieves +2 bonus to his air element power and starts with Griffin creature. Additional cards: Titan, Phoenix	
+SpellShortDesc	{0} spell, cost: {1}.	
+SpellShortDesc2	Spell. Cost: {0}	
+Summoning	{0} is summoning {1}	
+Tap	Tap	
+TapToChange	Tap to change	
+Title	TOURNAMENT STATISTICS	
+ToContinue	 to continue...	
+Total	Total	
+Tournament	Tournament	
+TournamentDescription	In tournament you should defeat 8 opponents in series to take the first place	
+TournamentTip	Tournament mode	
+Tutorial	Tutorial	
+TutorialTip	View a short tutorial	
+TwoPlayers	Two players	
+TwoPlayersTip	Two players mode	
+ViaSockets	Network mode	
+ViaSocketsTip	Play a duel through the network (p2p)	
+Vibration	Vibration	
+Water	Water	
+You	you	
+YourDeck	Your deck:	

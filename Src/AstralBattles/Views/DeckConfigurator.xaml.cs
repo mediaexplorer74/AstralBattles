@@ -14,31 +14,18 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Navigation;
+using Windows.UI.Xaml.Controls;
 
 #nullable disable
 namespace AstralBattles.Views
 {
-public partial class DeckConfigurator : PhoneApplicationPage
+public partial class DeckConfigurator : Page
   {
-    internal Grid LayoutRoot;
-    internal WrapPanel playerPanel;
-    internal WrapPanel libraryPanel;
-    private bool _contentLoaded;
+    
     private readonly List<DeckFieldBorder> playersBorders = new List<DeckFieldBorder>();
     private readonly List<DeckFieldBorder> librariesBorders = new List<DeckFieldBorder>();
 
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Views/DeckConfigurator.xaml", UriKind.Relative));
-      this.LayoutRoot = (Grid) ((FrameworkElement) this).FindName("LayoutRoot");
-      this.playerPanel = (WrapPanel) ((FrameworkElement) this).FindName("playerPanel");
-      this.libraryPanel = (WrapPanel) ((FrameworkElement) this).FindName("libraryPanel");
-    }
-
+    
     public DeckConfigurator()
     {
       this.InitializeComponent();

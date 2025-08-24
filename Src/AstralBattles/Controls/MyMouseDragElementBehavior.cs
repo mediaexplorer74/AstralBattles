@@ -6,9 +6,11 @@
 
 using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Interactivity;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Microsoft.Xaml.Interactivity;
+
 
 #nullable disable
 namespace AstralBattles.Controls

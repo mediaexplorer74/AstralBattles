@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.xaml.Navigation;
+using Windows.UI.Xaml.Navigation;
 
 #nullable disable
 
@@ -18,9 +18,7 @@ namespace AstralBattles.Views
 {
 public partial class CampaignOptionsView : Page
   {
-    internal Grid LayoutRoot;
-    private bool _contentLoaded;
-
+    
     public CampaignOptionsView() => this.InitializeComponent();
 
     protected virtual void OnNavigatedTo(NavigationEventArgs e)
@@ -37,16 +35,7 @@ public partial class CampaignOptionsView : Page
       ((CampaignOptionsViewModel) ((FrameworkElement) this).DataContext).OnNavigatedFrom();
       ((Page) this).OnNavigatedFrom(e);
     }
-
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Views/CampaignOptionsView.xaml", UriKind.Relative));
-      this.LayoutRoot = (Grid) ((FrameworkElement) this).FindName("LayoutRoot");
-    }
+   
   }
 }
 

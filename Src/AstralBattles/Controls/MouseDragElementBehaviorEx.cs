@@ -9,9 +9,10 @@ using System;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
-using System.Windows.Input;
-using System.Windows.Interactivity;
-using System.Windows.Media;
+using Windows.UI.Xaml;
+using Microsoft.Xaml.Interactivity;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Input;
 
 #nullable disable
 namespace AstralBattles.Controls

@@ -13,23 +13,16 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using Windows.UI.Xaml.Controls;
 
 #nullable disable
 namespace AstralBattles.Views
 {
-public partial class MainPage : PhoneApplicationPage
+public partial class MainPage : Page
   {
     private bool _contentLoaded;
 
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Views/MainPage.xaml", UriKind.Relative));
-    }
-
+   
     public MainPage()
     {
       Utils.CurrentDispatcher = ((DependencyObject) this).Dispatcher;

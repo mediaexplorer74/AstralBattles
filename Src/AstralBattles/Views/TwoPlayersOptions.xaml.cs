@@ -21,16 +21,7 @@ public partial class TwoPlayersOptions : Page
     internal Grid LayoutRoot;
     private bool _contentLoaded;
 
-    [DebuggerNonUserCode]
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Views/TwoPlayersOptions.xaml", UriKind.Relative));
-      this.LayoutRoot = (Grid) ((FrameworkElement) this).FindName("LayoutRoot");
-    }
-
+    
     public TwoPlayersOptions() => this.InitializeComponent();
 
     protected virtual void OnNavigatedTo(NavigationEventArgs e)
