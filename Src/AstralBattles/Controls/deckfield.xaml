@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="AstralBattles.Controls.DeckFieldControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Converters="clr-namespace:AstralBattles.Converters"
+             xmlns:ViewModels="clr-namespace:AstralBattles.ViewModels"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:Controls="clr-namespace:AstralBattles.Controls" mc:Ignorable="d" d:DesignHeight="150" d:DesignWidth="150"
+    x:Name="control">
+    <UserControl.Resources>
+
+        <Converters:CardImageConverter x:Key="cardImageConverter"/>
+        <Converters:IsActiveToOpacityConverter x:Key="isActiveToOpacityConverter" />
+        <Converters:NullToHiddenConverter x:Key="nullToHiddenConverter" />
+        <Converters:TrueToVisibleConverter x:Key="trueToVisibleConverter" />
+        <Converters:IsCreatureToVisible x:Key="isCreatureToVisible" />
+        <Converters:FalseToVisibleConverter x:Key="falseToVisibleConverter" />
+        
+    </UserControl.Resources>
+    
+    <Grid x:Name="LayoutRoot" DataContext="{Binding ElementName=control, Path=Card}" 
+          d:DataContext="{Binding Card, Source={d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}}">
+        <Image Source="{Binding ., Converter={StaticResource cardImageConverter}}" />
+
+        <Border VerticalAlignment="Top" HorizontalAlignment="Left" Background="#97494949" 
+                Margin="0" Height="30" Width="30" CornerRadius="0,0,5,0">
+            <TextBlock Text="{Binding Cost}" Margin="2,0,2,0" 
+								   VerticalAlignment="Center" HorizontalAlignment="Center" 
+								   FontSize="22" Foreground="White"></TextBlock>
+        </Border>
+
+        <!--<Border VerticalAlignment="Bottom" HorizontalAlignment="Left" 
+                            Background="#97494949" Margin="0" Height="30"
+                            Width="30" CornerRadius="0,5,0,0"
+                            Visibility="{Binding ., Converter={StaticResource isCreatureToVisible}}">
+            <TextBlock Text="{Binding DamageString}" Margin="2,0,2,0" 
+								   VerticalAlignment="Center" HorizontalAlignment="Center" 
+								   FontSize="22" Foreground="#FFFFF9CF"></TextBlock>
+        </Border>
+
+        <Border VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#97494949" 
+                            Margin="0" Height="30" Width="30" CornerRadius="5,0,0,0"
+                            Visibility="{Binding ., Converter={StaticResource isCreatureToVisible}}">
+            <TextBlock Text="{Binding Health}" Margin="2,0,2,0" 
+								   VerticalAlignment="Center" HorizontalAlignment="Center" 
+								   FontSize="22" Foreground="#FF9DFF71"></TextBlock>
+        </Border>-->
+
+
+        <Border x:Name="cardInBookBorder" Margin="0" 
+                Visibility="{Binding IsActive, Converter={StaticResource falseToVisibleConverter}}" 
+                Background="#4A5E5E5E"/>
+
+
+    </Grid>
+    <!--<i:Interaction.Behaviors>
+        <Controls:MouseDragElementBehaviorEx
+            ConstrainToParentBounds="False"
+            DragBegun="MouseDragElementBehaviorDragBegun" 
+            DragFinished="MouseDragElementBehaviorDragFinished"
+            Dragging="MouseDragElementBehaviorDragging"
+            />
+    </i:Interaction.Behaviors>-->
+</UserControl>

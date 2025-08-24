@@ -1,0 +1,118 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="AstralBattles.Views.CampaignOptionsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModels="clr-namespace:AstralBattles.ViewModels" xmlns:Converters="clr-namespace:AstralBattles.Converters"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:Controls="clr-namespace:AstralBattles.Controls" FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="False">
+
+    <phone:PhoneApplicationPage.DataContext>
+        <ViewModels:CampaignOptionsViewModel/>
+    </phone:PhoneApplicationPage.DataContext>
+
+
+    <phone:PhoneApplicationPage.Resources>
+        <Converters:SpecializationConverter x:Key="specializationConverter"/>
+        <Converters:SpecializationTipConverter x:Key="specializationTipConverter"/>
+        <Converters:FaceImageConverter x:Key="faceImageConverter"/>
+        <Converters:DifficultyConverter x:Key="difficultyConverter" />
+        <Converters:SpecialElementConverter x:Key="specialElementConverter" />
+        <Converters:ElementsImageConverter x:Key="elementsImageConverter" />
+    </phone:PhoneApplicationPage.Resources>
+
+
+    <Controls:BusyIndicatorControl 
+        IsBusy="{Binding IsBusy}" 
+        Foreground="White"
+        BusyText="{Binding CommonResources.Loading, Source={StaticResource ResourceWrapper}}"
+        Style="{StaticResource BusyIndicatorStyle}"
+        HideApplicationBar="True">
+        <!--LayoutRoot is the root grid where all page content is placed-->
+        <Grid x:Name="LayoutRoot" Background="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="{Binding CommonResources.Campaign, Source={StaticResource ResourceWrapper}}" FontSize="80" Margin="0,-10,0,20"/>
+
+            <StackPanel Grid.Row="1"  Margin="0,0,0,0" d:LayoutOverrides="Width" VerticalAlignment="Center">
+
+                <HyperlinkButton Command="{Binding Continue}" 
+                             Opacity="{Binding CanContinue, Converter={StaticResource trueToOpacityConverter}}" 
+                             Content="{Binding Resources.CommonResources.Continue}" 
+                             Style="{StaticResource HyperlinkButtonStyle}"/>
+                <TextBlock Foreground="Gray" 
+                       Margin="15,-5,0,0" 
+                       Opacity="{Binding CanContinue, Converter={StaticResource trueToOpacityConverter}}" 
+                       Text="{Binding Resources.CommonResources.ContinueCampaignTip}"/>
+
+                <HyperlinkButton Command="{Binding NewCampaign}" 
+                             Content="{Binding Resources.CommonResources.NewCampaign}" 
+                             Margin="0,3,0,0" 
+                             Style="{StaticResource HyperlinkButtonStyle}"/>
+                <TextBlock Foreground="Gray" 
+                       Margin="15,-5,0,20" 
+                       Text="{Binding Resources.CommonResources.NewCampaignTip}"/>
+            </StackPanel>
+
+
+            <StackPanel toolkit:TiltEffect.IsTiltEnabled="True" Grid.Row="2" Margin="20,30,0,0" Orientation="Horizontal" Background="Black">
+                <Image Source="{Binding PlayerPhoto, Converter={StaticResource faceImageConverter}}" 
+                       Width="110" Height="110">
+                </Image>
+                <StackPanel>
+                    <TextBlock Margin="10,-15,0,0" FontSize="44" Text="{Binding Player}">
+                    </TextBlock>
+                    <TextBlock Margin="10,-6,0,0" Foreground="Gray" FontSize="20" 
+                               Text="{Binding CommonResources.TapToChange, Source={StaticResource ResourceWrapper}}"/>
+
+
+                    <Image Margin="12,10,0,0" Width="35" Height="35" 
+                           HorizontalAlignment="Left"
+                           Source="{Binding PlayerSpecialElement, Converter={StaticResource elementsImageConverter}}" />
+
+                </StackPanel>
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="Tapped">
+                        <core:InvokeCommandAction Command="{Binding ChangePlayer}" />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </StackPanel>
+
+
+            <!--<toolkit:ListPicker 
+                Grid.Row="3" 
+                Header="{Binding Resources.CommonResources.Difficulty}" 
+                Width="Auto" HorizontalAlignment="Left"
+                ItemsSource="{Binding DifficultyLevels}"
+                SelectedItem="{Binding GameDifficulty, Mode=TwoWay}"
+                Margin="17,12,0,12" >
+                <toolkit:ListPicker.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Foreground="Black" VerticalAlignment="Center" 
+                                   Text="{Binding ., Converter={StaticResource difficultyConverter}}" />
+                    </DataTemplate>
+                </toolkit:ListPicker.ItemTemplate>
+            </toolkit:ListPicker>-->
+            <!--<TextBlock FontSize="24" TextWrapping="Wrap" Grid.Row="4" Margin="17" 
+                       Text="{Binding Resources.CommonResources.TournamentDescription}"/>-->
+
+        </Grid>
+    </Controls:BusyIndicatorControl>
+
+</phone:PhoneApplicationPage>

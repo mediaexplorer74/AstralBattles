@@ -1,0 +1,16 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="base" maxBufferSize="2147483647" maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://localhost/AstralBattles.Server2/GamingService.svc"
+                binding="basicHttpBinding" bindingConfiguration="base" contract="ServiceReference.IGameService"
+                name="base" />
+        </client>
+    </system.serviceModel>
+</configuration>

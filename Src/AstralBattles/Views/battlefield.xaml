@@ -1,0 +1,239 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="AstralBattles.Views.Battlefield"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="clr-namespace:AstralBattles.Controls" 
+    xmlns:ViewModels="clr-namespace:AstralBattles.ViewModels" 
+    xmlns:Converters="clr-namespace:AstralBattles.Converters"
+    xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+    Loaded="PhoneApplicationPageLoaded"
+    SupportedOrientations="Landscape" Orientation="Landscape"
+    mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="800"
+    x:Name="battlefieldView" Foreground="White" Background="Black"
+    shell:SystemTray.IsVisible="False">
+
+    <phone:PhoneApplicationPage.Resources>
+        <Converters:ElementsImageConverter x:Key="elementImageConverter"/>
+        <Converters:CardImageConverter x:Key="cardImageConverter"/>
+        <Converters:BindToElementConverter x:Key="bindToElementConverter" />
+        <Converters:IsActiveToOpacityConverter x:Key="isActiveToOpacityConverter" />
+        <Converters:NullToHiddenConverter x:Key="nullToHiddenConverter" />
+        <Converters:TrueToVisibleConverter x:Key="trueToVisibleConverter" />
+        <Converters:IsCreatureToVisible x:Key="isCreatureToVisible" />
+        <Converters:FalseToVisibleConverter x:Key="falseToVisibleConverter" />
+        <Converters:BoolToZindexConverter x:Key="boolToZindexConverter" />
+        <Converters:TrueToOpacityConverter x:Key="trueToOpacityConverter"/>
+    </phone:PhoneApplicationPage.Resources>
+
+    <phone:PhoneApplicationPage.FontFamily>
+        <StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+    </phone:PhoneApplicationPage.FontFamily>
+    <phone:PhoneApplicationPage.FontSize>
+        <StaticResource ResourceKey="PhoneFontSizeNormal"/>
+    </phone:PhoneApplicationPage.FontSize>
+
+    <Grid>
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Black"
+          IsHitTestVisible="{Binding IsWaitingForUserInput}"
+          d:DataContext="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}">
+        
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Default">
+                    <Storyboard x:Name="fakeStoryboard" Duration="0:0:2">
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+		
+        <Rectangle  VerticalAlignment="Top" Height="150" Fill="#FF212121"/>
+        <Rectangle Fill="#3A3A3A" VerticalAlignment="Bottom" Height="170"/>
+
+        <TextBlock VerticalAlignment="Top" 
+                   Text="{Binding LastLogItem}" 
+                   Foreground="#FF898989" 
+                   Margin="251,280,8,0"/>
+
+        <StackPanel Margin="10,-2,0,0" Orientation="Horizontal" 
+                    VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Controls:ElementInfo Element="{Binding SecondPlayer.Elements[0]}" HideName="True" />
+            <Controls:ElementInfo Margin="2,0,0,0" Element="{Binding SecondPlayer.Elements[1]}" HideName="True" />
+            <Controls:ElementInfo Margin="2,0,0,0" Element="{Binding SecondPlayer.Elements[2]}" HideName="True" />
+            <Controls:ElementInfo Margin="2,0,0,0" Element="{Binding SecondPlayer.Elements[3]}" HideName="True" />
+            <Controls:ElementInfo Margin="2,0,0,0" Element="{Binding SecondPlayer.Elements[4]}" HideName="True" />
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="0" 
+              HorizontalAlignment="Right" Margin="12,35,5,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="110"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="110"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="110"/>
+            </Grid.RowDefinitions>
+
+                <Controls:CreatureControl x:Name="spField1" Field="{Binding SecondPlayer.Fields[0]}" Selecting="SecondPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 1}" Margin="3" Grid.Column="0" Grid.Row="0" />
+                <Controls:CreatureControl x:Name="spField2" Field="{Binding SecondPlayer.Fields[1]}" Selecting="SecondPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 2}" Margin="3" Grid.Column="1" Grid.Row="0" />
+                <Controls:CreatureControl x:Name="spField3" Field="{Binding SecondPlayer.Fields[2]}" Selecting="SecondPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 3}" Margin="3" Grid.Column="2" Grid.Row="0" />
+                <Controls:CreatureControl x:Name="spField4" Field="{Binding SecondPlayer.Fields[3]}" Selecting="SecondPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 4}" Margin="3" Grid.Column="3" Grid.Row="0" />
+                <Controls:CreatureControl x:Name="spField5" Field="{Binding SecondPlayer.Fields[4]}" Selecting="SecondPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 5}" Margin="3" Grid.Column="4" Grid.Row="0" />
+
+                <Controls:CreatureControl x:Name="fpField1" Field="{Binding FirstPlayer.Fields[0]}" Selecting="FirstPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 1}" Margin="3" Grid.Column="0" Grid.Row="2" />
+                <Controls:CreatureControl x:Name="fpField2" Field="{Binding FirstPlayer.Fields[1]}" Selecting="FirstPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 2}" Margin="3" Grid.Column="1" Grid.Row="2" />
+                <Controls:CreatureControl x:Name="fpField3" Field="{Binding FirstPlayer.Fields[2]}" Selecting="FirstPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 3}" Margin="3" Grid.Column="2" Grid.Row="2" />
+                <Controls:CreatureControl x:Name="fpField4" Field="{Binding FirstPlayer.Fields[3]}" Selecting="FirstPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 4}" Margin="3" Grid.Column="3" Grid.Row="2" />
+                <Controls:CreatureControl x:Name="fpField5" Field="{Binding FirstPlayer.Fields[4]}" Selecting="FirstPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 5}" Margin="3" Grid.Column="4" Grid.Row="2" />
+        </Grid>
+
+        <Controls:PlayerFaceControl x:Name="secondPlayerFace" Width="130" 
+                                    Height="130" 
+                                    Player="{Binding SecondPlayer}"
+                                    HorizontalAlignment="Left" 
+                                    VerticalAlignment="Top"
+                                    Margin="10,10,0,0"/>
+        <Controls:PlayerFaceControl x:Name="firstPlayerFace" Width="130" 
+                                    Height="130" 
+                                    Player="{Binding FirstPlayer}"
+                                    HorizontalAlignment="Left" 
+                                    VerticalAlignment="Top"
+                                    Margin="10,160,0,0"/>
+
+        <Button Margin="144,166,0,0"
+                VerticalAlignment="Top"
+                Width="100" Height="75"
+                BorderBrush="#FF5A5A5A"
+                Command="{Binding SkipTurn}"
+                HorizontalAlignment="Left" 
+                BorderThickness="0" 
+                Background="#FF2B2B2B">
+            <Image Height="60" Margin="0,-6,0,0" 
+                   Source="/AstralBattles;component/Resources/Common/appbar.timer.png"/>
+        </Button>
+
+        <Button Margin="144,219,0,0"
+                VerticalAlignment="Top"
+                Width="100" Height="75"
+                BorderBrush="#FF5A5A5A"
+                Command="{Binding ShowLog}"
+                HorizontalAlignment="Left" 
+                BorderThickness="0" 
+                Background="#FF2B2B2B">
+            <Image Height="60" Margin="0,-6,0,0" 
+                   Source="/AstralBattles;component/Resources/Common/appbar.align.left.png"/>
+        </Button>
+        
+        <Grid x:Name="CardsPanelLayoutRoot" d:DataContext="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}"
+              Height="Auto" 
+              VerticalAlignment="Bottom" 
+              HorizontalAlignment="Left" 
+              Width="Auto" 
+              Margin="0,0,0,0" >
+
+
+
+                <Controls:CardsBook x:Name="firstBook" BattlefieldViewModel="{Binding }" SixCardsMode="True"
+                                    Opacity="{Binding IsFirstPlayerInitialTurn, ConverterParameter=0, Converter={StaticResource trueToOpacityConverter}}"
+                                    IsHitTestVisible="{Binding IsFirstPlayerInitialTurn}"
+                                    Player="{Binding FirstPlayerInitial}"/>
+
+                <Controls:CardsBook x:Name="secondBook" BattlefieldViewModel="{Binding }"  SixCardsMode="True"
+                                    Opacity="{Binding IsSecondPlayerInitialTurn, ConverterParameter=0, Converter={StaticResource trueToOpacityConverter}}"
+                                    IsHitTestVisible="{Binding IsSecondPlayerInitialTurn}"
+                                    Player="{Binding SecondPlayerInitial}"/>
+
+            </Grid>
+        <Grid 
+            Margin="0,0,0,0"
+            VerticalAlignment="Bottom" 
+            HorizontalAlignment="Right" 
+            Height="170" Width="390"
+              >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="95" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="95"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Image Margin="9,5,0,0" Height="90" Width="90" 
+                   HorizontalAlignment="Left"
+                   Source="{Binding SelectedCardOrCardType, Converter={StaticResource cardImageConverter}}"
+                   VerticalAlignment="Top"/>
+                <StackPanel Margin="7,0,7,9" Grid.Column="1" 
+                       Grid.RowSpan="2" >
+
+                    <TextBlock 
+                       FontSize="18" 
+                       TextTrimming="WordEllipsis" 
+                       Foreground="Gold"
+                       Text="{Binding SelectedCardOrCardTypeShortDesc}"/>
+                    
+                    <TextBlock Margin="0,5,0,0"
+                       LineStackingStrategy="BlockLineHeight"  
+                       LineHeight="20" FontSize="18" 
+                       TextTrimming="WordEllipsis" 
+                       TextWrapping="Wrap"
+                       Text="{Binding SelectedCardOrCardType.Localization.DefaultLanguage.Description}"/>
+                </StackPanel>
+            
+            <TextBlock Margin="0,6,0,5" 
+                       LineStackingStrategy="BlockLineHeight"  
+                       LineHeight="20" FontSize="16"
+                       Foreground="Gold"
+                       Grid.Row="1" 
+                       TextTrimming="WordEllipsis" 
+                       TextWrapping="Wrap" 
+                       TextAlignment="Center"
+                       Text="{Binding SelectedCardOrCardType.Localization.DefaultLanguage.DisplayName}"></TextBlock>
+            <!--<ListBox Grid.ColumnSpan="2" Grid.Row="1" ItemsSource="{Binding Logs}" />-->
+        </Grid>
+
+
+        <Border Visibility="{Binding ShowLogMode, Converter={StaticResource trueToVisibleConverter}}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Height="350" Width="572"
+                Background="#DC000000"
+                CornerRadius="15">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="80"/>
+                </Grid.RowDefinitions>
+
+                <Controls:LogListbox FontSize="21.333" Margin="10" 
+                         ItemsSource="{Binding GameLog}" 
+                         SelectedItem="{Binding LastLogItem, Mode=TwoWay}" Foreground="White" />
+                    <Button Grid.Row="1" Width="140" Command="{Binding CloseLog}" Content="{Binding CommonResources.Close, Source={StaticResource ResourceWrapper}}" Height="71" BorderThickness="0" Background="#93A99D50"/>
+            </Grid>
+        </Border>
+
+    </Grid>
+    
+    <Controls:OpponentSummoningNotification PanelHiding="SummoningDialogPanelHiding" x:Name="summoningDialog" Card="{Binding OpponentIsSummoningCard}" Title="{Binding OpponentIsSummoningCardTitle}"/>
+    <Controls:PlayersTurnNotification PanelHiding="NextTurnDialogPanelHiding"  x:Name="nextTurnDialog" WaitingNextPlayersTurn="{Binding WaitingNextPlayersTurn}" Photo="{Binding ActivePlayer.Photo}" PlayersName="{Binding ActivePlayer.DisplayName}" />
+    
+    </Grid>
+
+</phone:PhoneApplicationPage>

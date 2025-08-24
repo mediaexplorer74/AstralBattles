@@ -1,0 +1,3865 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!-- !!!!!!!!!!!!  FIRE   !!!!!!!!!!!!-->
+  <Card xsi:type="SpellCard">
+    <Name>Armageddon</Name>
+    <ElementType>Fire</ElementType>
+    <Cost>11</Cost>
+    <Target>Indeterminate</Target>
+    <Level>6</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Armageddon</DisplayName>
+        <Description>Deals (8 + caster's Fire Power) damage to each creature and to opponent</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Армагеддон</DisplayName>
+        <Description>Наносит (8 + сила огня игрока) урона противнику и всем существам в игре</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Armageddon</DisplayName>
+        <Description>Inflige (8 + Feu du lanceur) dommages à chaque créatures et à l'adversaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Armageddon</DisplayName>
+        <Description>Verursacht (8 + Zauberer´s Feuer-Energie) Schaden an jeder Kreatur und am Gegner</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>FlameWave</Name>
+    <ElementType>Fire</ElementType>
+    <Cost>6</Cost>
+    <Target>Indeterminate</Target>
+    <Level>3</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Flame wave</DisplayName>
+        <Description>Deals 9 damage to opponent's creatures</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Волна огня</DisplayName>
+        <Description>Наносит 9 урона существам противника</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Vague de flammes</DisplayName>
+        <Description>Inflige 9 dommages aux créatures de l'adversaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Flammenwelle</DisplayName>
+        <Description>Verursacht 9 Schaden an gegnerischen Kreaturen</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>Inferno</Name>
+    <ElementType>Fire</ElementType>
+    <Cost>9</Cost>
+    <Target>OpponentsCard</Target>
+    <Level>4</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Inferno</DisplayName>
+        <Description>Deals 18 damage to target creature and 10 damage to all other opponent's creatures</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Инферно</DisplayName>
+        <Description>Наносит 18 урона выбранному существу противника и 10 остальным его существам на поле</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Inferno</DisplayName>
+        <Description>Inflige 18 dommages à la créature ciblée et 10 dommages à toutes les autres créatures de l'adversaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Inferno</DisplayName>
+        <Description>Verursacht 18 Schaden an gewählter Kreatur und 10 Schaden an allen anderen gegnerischen Kreaturen</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>FireDrake</Name>
+    <ElementType>Fire</ElementType>
+    <Cost>4</Cost>
+    <Damage>4</Damage>
+    <Level>1</Level>
+    <Health>18</Health>
+    <Skills>AttackIn1stRound;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Fire drake</DisplayName>
+        <Description>Fire Drake attacks the same turn as summoned</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Огненный дракончик</DisplayName>
+        <Description>Огенный дракончик атакует в том же ходу, в котором призван</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Drake de feu</DisplayName>
+        <Description>Le Drake de feu attaque le tour où il est invoqué</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Feuerdrache</DisplayName>
+        <Description>Feuerdrache greift im selben Zug an wie er gerufen wurde</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>GoblinBerserker</Name>
+    <ElementType>Fire</ElementType>
+    <Cost>1</Cost>
+    <Damage>4</Damage>
+    <Level>1</Level>
+    <Health>16</Health>
+    <Skills>DealDamageToNeigboringSlots_2;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Goblin Berserker</DisplayName>
+        <Description>Goblin Berserker deals 2 damage to neighboring creaures each turn</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Гоблин берсеркер</DisplayName>
+        <Description>Гоблин берсеркер каждый ход наносит 2 урона соседним существам хозяина</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Berserker gobelin</DisplayName>
+        <Description>Le Berserker gobelin inflige 2 dommages aux créatures adjacentes à chaque tour</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Goblin Berserker</DisplayName>
+        <Description>Goblin Berserker verursacht jede Runde 2 Schaden an benachbarten Kreaturen</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>PriestOfFire</Name>
+    <ElementType>Fire</ElementType>
+    <Cost>3</Cost>
+    <Damage>3</Damage>
+    <Level>1</Level>
+    <Health>13</Health>
+    <Skills>IncreaseElementPowerBy1EachTurn_Fire;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Priest of fire</DisplayName>
+        <Description>Priest of Fire increases by 1 the growth of owner's Fire power</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Жрец огня</DisplayName>
+        <Description>Жрец огня увеличивает на 1 прирост Силы Огня хозяина</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Prêtre de feu</DisplayName>
+        <Description>Le Prêtre de feu augmente de 1 la croissance du Feu de son propriétaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Priester des Feuers</DisplayName>
+        <Description>Priester des Feuers gibt jede Runde +1 Feuer-Energie zuwachs</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Bargul</Name>
+    <ElementType>Fire</ElementType>
+    <Cost>8</Cost>
+    <Damage>8</Damage>
+    <Level>3</Level>
+    <Health>24</Health>
+    <Skills>DoDamageAtSummoningToAll_4;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Bargul</DisplayName>
+        <Description>When Bargul is summoned it deals 4 damage to each other creature</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Баргул</DisplayName>
+        <Description>При входе в игру, Баргул наносит всем существам на поле 4 едениц урона</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Bargul</DisplayName>
+        <Description>Quand Bargul est invoqué il inflige 4 dommages à chaque autre créature</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Bargul</DisplayName>
+        <Description>Wenn Bargul gerufen wird verursacht er 4 Schaden an jeder anderen Kreatur</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Dragon</Name>
+    <ElementType>Fire</ElementType>
+    <Cost>12</Cost>
+    <Damage>9</Damage>
+    <Level>6</Level>
+    <Health>41</Health>
+    <Skills>SpellsDamageIncreaseBy50Percentage;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Dragon</DisplayName>
+        <Description>Dragon increases by 50% all damage from spells owner cast</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Дракон</DisplayName>
+        <Description>Дракон увеличивает на 50% весь урон, нанесенный заклинаниями хозяина</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Dragon</DisplayName>
+        <Description>Le Dragon augmente de 50% les dommages des sorts de son propriétaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Drache</DisplayName>
+        <Description>Drache erhöht Schaden von allen Zaubern des Besitzers um 50%</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>WallofFire</Name>
+    <ElementType>Fire</ElementType>
+    <Cost>2</Cost>
+    <Damage>0</Damage>
+    <Level>1</Level>
+    <Health>5</Health>
+    <IsNotAttackable>true</IsNotAttackable>
+    <Skills>DoDamageAtSummoningToOpponentsCards_5;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Wall of fire</DisplayName>
+        <Description>When Fire Wall is summoned it deals 5 damage to opponent's creatures</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Стена огня</DisplayName>
+        <Description>Когда стена огня призвана, она наносит 5 урона всем существам противника</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Mur de feu</DisplayName>
+        <Description>Quand le Mur de feu est invoqué il inflige 5 dommages aux créatures de l'adversaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Feuerwand</DisplayName>
+        <Description>Wenn Feuerwand gerufen wird verursacht sie 5 Schaden an jeder gegnerischen Kreatur</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>OrcChieftain</Name>
+    <ElementType>Fire</ElementType>
+    <Cost>5</Cost>
+    <Damage>3</Damage>
+    <Level>2</Level>
+    <Health>16</Health>
+    <Skills>IncreaseNeighborAttackBy_2;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Orc chieftain</DisplayName>
+        <Description>Orc chieftain increases the attack of neighboring creatures by 2</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Орк предводитель</DisplayName>
+        <Description>Орк предводитель увеличивает атаку соседних существ хозяина на 2</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Chef de clan orc</DisplayName>
+        <Description>Le Chef de clan orc augmente l'attaque des créatures adjacentes de 2</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Orc Häuptling</DisplayName>
+        <Description>Orc Häuptling erhöht den Angriff benachbarter Kreaturen um 2</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>FireElemental</Name>
+    <ElementType>Fire</ElementType>
+    <Cost>10</Cost>
+    <Damage>0</Damage>
+    <Level>5</Level>
+    <IsDamageIndeterminated>true</IsDamageIndeterminated>
+    <Health>35</Health>
+    <Skills>DoDamageAtSummoningToOpponentAndHisCards_3;Elemental;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Fire Elemental</DisplayName>
+        <Description>When Fire Elemental is summoned it deals 3 damage to opponent and his creatures. Increases by 1 the growth of owner's Fire power. Damage equals to Fire power.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Огненный элементаль</DisplayName>
+        <Description>Когда огненный элементаль призван, он наносит 3 урона противнику и его существам. Увеличивает на 1 прирост Силы Огня хозяина. Урон равен силе огня.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Élémentaire de feu</DisplayName>
+        <Description>Quand l'Élémentaire de feu est invoqué il inflige 3 dommages à l'adversaire et à ses créatures. Augmente de 1 la croissance du Feu. Son attaque est égale au Feu de son propriétaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Feuer-Element</DisplayName>
+        <Description>Wenn Feuer-Element gerufen wird verursacht es 3 Schaden ein eigenen und gegnerischen Kreaturen. Gibt jede Runde +1 Feuer-Energie Zuwachs. Schaden ist gleich Feuer Energie</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>MinotaurCommander</Name>
+    <ElementType>Fire</ElementType>
+    <Cost>7</Cost>
+    <Damage>6</Damage>
+    <Level>3</Level>
+    <Health>20</Health>
+    <Skills>IncreaseOwnersCreaturesAttack_1;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Minotaur commander</DisplayName>
+        <Description>Minotaur commander increases by 1 the attack of all owner's creatures (except walls)</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Командир минотавров</DisplayName>
+        <Description>Командир минотавров увеличивает на 1 атаку всех остальных существ хозяина (кроме стен)</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Commandant Minotaure</DisplayName>
+        <Description>Le Commandant Minotaure augmente de 1 l'attaque de toutes les créatures du propriétaire (sauf les murs)</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Minotaur Kommandant</DisplayName>
+        <Description>Minotaur Kommandant erhöht den Angriff jeder eigenen Kreatur um 1 (Wände ausgenommen)</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <!-- !!!!!!!!!!!!  WATER  !!!!!!!!!!!!-->
+  <Card xsi:type="SpellCard">
+    <Name>AcidicRain</Name>
+    <DisplayName></DisplayName>
+    <ElementType>Water</ElementType>
+    <Cost>8</Cost>
+    <Target>Indeterminate</Target>
+    <Level>4</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Acidic rain</DisplayName>
+        <Description>Deals 15 damage to each creature. Reducesby 1 all opponent's powers</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Килсотный дождь</DisplayName>
+        <Description>Наносит 15 урона по всем существам. Уменьшает на 1 все Силы соперника</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Pluie Acide</DisplayName>
+        <Description>Inflige 15 dommages à chaque créatures. Réduit de 1 les éléments de l'adversaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Saurer Regen</DisplayName>
+        <Description>Verursacht an jeder Kreatur 15 Schaden. Reduziert alle Energien des Gegners um 1</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>Meditation</Name>
+    <ElementType>Water</ElementType>
+    <Cost>1</Cost>
+    <Target>IndeterminateOwner</Target>
+    <Level>1</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Meditation</DisplayName>
+        <Description>Increases owner's Earth, Air and Fire elements' powers by 1</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Медитация</DisplayName>
+        <Description>Увеличивает магу силы огня, воздуха и земли на 1</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Méditation</DisplayName>
+        <Description>Augmente les éléments du propriétaire de 1</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Meditation</DisplayName>
+        <Description>Erhöht alle Energien des Besitzers um 1</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>seasprite</Name>
+    <ElementType>Water</ElementType>
+    <Cost>2</Cost>
+    <Damage>5</Damage>
+    <Level>1</Level>
+    <Health>22</Health>
+    <Skills>DealDamageToOwnerEveryRound_2</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Sea spirit</DisplayName>
+        <Description>Sea spirit deals 2 damage to owner each turn</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Водный дух</DisplayName>
+        <Description>Водный дух наносит 2 урона хозяину каждый ход</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Esprit de la mer</DisplayName>
+        <Description>L'Esprit de la mer inflige 2 dommages à son propriétaire à chaque tour</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Meeresgeist</DisplayName>
+        <Description>Meeresgeist verursacht jede Runde 2 Schaden an Besitzer</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>IceGolem</Name>
+    <ElementType>Water</ElementType>
+    <Cost>4</Cost>
+    <Damage>4</Damage>
+    <Level>3</Level>
+    <Health>12</Health>
+    <Skills>MagicImmune;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Ice golem</DisplayName>
+        <Description>Ice golem recieves no damage from spells</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Ледяной голем</DisplayName>
+        <Description>Ледяной голем не получает урона от заклинаний</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Golem de glace</DisplayName>
+        <Description>Le Golem de glace ne reçoit aucun dommage des sorts</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Eisgolem</DisplayName>
+        <Description>Eisgolem erhält keinen Schaden von Zaubern</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>MindMaster</Name>
+    <ElementType>Water</ElementType>
+    <Cost>11</Cost>
+    <Damage>6</Damage>
+    <Level>5</Level>
+    <Health>22</Health>
+    <Skills>IncreaseOwnersPowers_1;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Mind master</DisplayName>
+        <Description>Mind master increases by 1 the growth of all owner's powers</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Властелин магии</DisplayName>
+        <Description>Властелин магии увеличивает на 1 прирост всех Сил хозяина</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Maître de l'esprit</DisplayName>
+        <Description>Le Maître de l'esprit augmente de 1 la croissance de tous les éléments de son propriétaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Meister des Verstands</DisplayName>
+        <Description>Meister des Verstands erhöht den Zuwachs aller Energien des Besitzers um 1</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>AstralGuard</Name>
+    <ElementType>Water</ElementType>
+    <Cost>12</Cost>
+    <Damage>1</Damage>
+    <Level>6</Level>
+    <Health>16</Health>
+    <Skills>DecreaseOpponentPowersEachTurn_1;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Astral guard</DisplayName>
+        <Description>Astral guard decreases by 1 the growth of all opponent's powers</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Астральный страж</DisplayName>
+        <Description>Астральный страж уменьшает на 1 прирост всех Сил противника</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Gardien astral</DisplayName>
+        <Description>Le Gardien astral diminue de 1 la croissance de tous les éléments de l'adversaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Astral Wächter</DisplayName>
+        <Description>Astral Wächter verringert den Zuwachs aller Energien des Gegners um 1</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>WaterElemental</Name>
+    <ElementType>Water</ElementType>
+    <Cost>10</Cost>
+    <Damage>0</Damage>
+    <Level>5</Level>
+    <Health>38</Health>
+    <IsDamageIndeterminated>true</IsDamageIndeterminated>
+    <Skills>HealPlayerAtSummoning_10;Elemental;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Water elemental</DisplayName>
+        <Description>When water elemental is summoned it heals 10 life to owner. Increases by 1 the growth of owner's Water power. Damage equals to water power.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Водный элементаль</DisplayName>
+        <Description>Когда Водный элементаль элементаль призван,он лечит хозяину 10 жизни. Увеличивает на 1 прирост Силы Воды хозяина. Урон равен силе воды.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Élémentaire d'eau</DisplayName>
+        <Description>Quand l'Élémentaire d'eau est invoqué il soigne son propriétaire de 10 points. Augmente de 1 la croissance de l'Eau. Son attaque est égale à l'Eau de son propriétaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Wasser-Element</DisplayName>
+        <Description>Wenn das Wasser-Element gerufen wird heilt es 10 Lebenspunkte des Besitzers. Gibt jede Runde +1 Wasser-Energie Zuwachs. Schaden ist gleich Wasser-Energie</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>GiantTurtle</Name>
+    <ElementType>Water</ElementType>
+    <Cost>7</Cost>
+    <Damage>5</Damage>
+    <Level>4</Level>
+    <Health>17</Health>
+    <Skills>IgnoredDamageLessThan_5;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Giant turtle</DisplayName>
+        <Description>Each damage done to Giant turtle it reduced by 5</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Огромная черепаха</DisplayName>
+        <Description>Весь урон, нанесенный по огромной черепахе, уменьшается на 5</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Tortue géante</DisplayName>
+        <Description>Chaque dommage infligé à la Tortue géante est réduit de 5</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Gigantische Schildkröte</DisplayName>
+        <Description>Jeglicher Schaden den die Gigantische Schildkröte erhält wird um 5 verringert</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>IceGuard</Name>
+    <ElementType>Water</ElementType>
+    <Cost>6</Cost>
+    <Damage>3</Damage>
+    <Level>3</Level>
+    <Health>20</Health>
+    <Skills>ReduceDamageToOwnerByHalf;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Ice guard</DisplayName>
+        <Description>Ice guard reduces by 50% all damage does to owner</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Ледяной страж</DisplayName>
+        <Description>Ледяной страж уменьшает на 50% весь урон, нанесенный хозяину</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Gardien de glace</DisplayName>
+        <Description>Le gardien de glace réduit de 50% tous les dommages infligés à son propriétaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Eis Wächter</DisplayName>
+        <Description>Eis Wächter reduziert jeglichen Schaden den der Besitzer erleidet um 50%</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>MerfolkApostate</Name>
+    <ElementType>Water</ElementType>
+    <Cost>3</Cost>
+    <Damage>3</Damage>
+    <Level>1</Level>
+    <Health>10</Health>
+    <Skills>IncreasePowerOnSummoningBy2_Fire;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Merfolk apostate</DisplayName>
+        <Description>When Merfolk apostate is summoned it increases owner's Fire power by 2</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Мерфолк отступник</DisplayName>
+        <Description>Когда мерфолк отступник призван, он увеличивает Силу Огня хозяина на 2</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Apostat Ondin</DisplayName>
+        <Description>Quand l'Apostat Ondin est invoqué il augmente le Feu de son propriétaire de 2</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Merfolk abtrünniger</DisplayName>
+        <Description>Wenn Melfolk abtrünniger gerufen wird gibt er einmalig 2 Feuer-Energie</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>MerfolkElder</Name>
+    <ElementType>Water</ElementType>
+    <Cost>5</Cost>
+    <Damage>3</Damage>
+    <Level>2</Level>
+    <Health>16</Health>
+    <Skills>IncreaseElementPowerBy1EachTurn_Air</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Merfolk elder</DisplayName>
+        <Description>Merfolk elder increases the growth of owner's Air power by 1</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Мерфолк мудрец</DisplayName>
+        <Description>Мерфолк мудрец увеличивает прирост Силы Воздуха хозяина на 1</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Ancien Ondin</DisplayName>
+        <Description>L'Ancien Ondin augmente la croissance de l'Air de son propriétaire de 1</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Merfolk ätester</DisplayName>
+        <Description>Der Merfolk älteste gibt jede Runde +1 Luft-Energie Zuwachs </Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>MerfolkOverlord</Name>
+    <ElementType>Water</ElementType>
+    <Cost>9</Cost>
+    <Damage>7</Damage>
+    <Level>6</Level>
+    <Health>34</Health>
+    <Skills>NeighborsAttacksOnSummoning;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Merfolk overlord</DisplayName>
+        <Description>Merfolk overlord allows creatures summoned into neighboring slots to attack the same turn they come into play</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Мерфолк предводитель</DisplayName>
+        <Description>Мерфолк предводитель позволяет существам хозяина, призванным в соседние слоты, атаковать в том же ходу, в котором они призваны</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Suzerain Ondin</DisplayName>
+        <Description>Le Suzerain Ondin permet aux créatures invoquées à ses côtés d'attaquer le tour où elles viennent en jeu</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Merfolk Overlord</DisplayName>
+        <Description>Der Merfolk Overlord erlaubt es den Kreaturen die in benachbarten Slots gerufen werden noch im selben Zug anzugreifen</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <!-- !!!!!!!!!!!!  AIR    !!!!!!!!!!!!-->
+  <Card xsi:type="SpellCard">
+    <Name>ChainLightning</Name>
+    <ElementType>Air</ElementType>
+    <Cost>8</Cost>
+    <Target>Indeterminate</Target>
+    <Level>4</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Chain lightning</DisplayName>
+        <Description>Deals 9 damage to opponent and each of opponent's creatures</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Цепная молния</DisplayName>
+        <Description>Цепная молния наносит 9 урона всем существам противника и ему самому</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Chaîne d'éclair</DisplayName>
+        <Description>Inflige 9 dommages à l'adversaire et à ses créatures</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Kettenblitz</DisplayName>
+        <Description>Verursacht 9 Schaden am Gegner und an jeder gegnerischen Kreatur</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>LightningBolt</Name>
+    <ElementType>Air</ElementType>
+    <Cost>6</Cost>
+    <Target>Indeterminate</Target>
+    <Level>3</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Lightning bolt</DisplayName>
+        <Description>Deals (5+caster's Air power) damage to opponent</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Молния</DisplayName>
+        <Description>Наносит (5+Сила Воздуха мага) урона противнику.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Éclair</DisplayName>
+        <Description>inflige (5 + Air du lanceur) dommages à l'adversaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Blitzschlag</DisplayName>
+        <Description>Verursacht (5+Zauberer´s Luft-Energie) Schaden am Gegner</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>CalltoThunder</Name>
+    <ElementType>Air</ElementType>
+    <Cost>3</Cost>
+    <Target>OpponentsCard</Target>
+    <Level>2</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Call to Thunder</DisplayName>
+        <Description>Deals 6 damage to target creature. Deals 6 damage to opponent.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Призыв грома</DisplayName>
+        <Description>Наносит 6 урона выбранному существу противника и самому противнику</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Ruf nach Donner</DisplayName>
+        <Description>Verursacht 6 Schaden an gewählter gegnerischer Kreatur. Verursacht 6 Schaden am Gegner</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Appel de la Foudre</DisplayName>
+        <Description>Inflige 6 dommages à une créature. Inflige 6 dommages à l'adversaire</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>Tornado</Name>
+    <ElementType>Air</ElementType>
+    <Target>OpponentsCard</Target>
+    <Cost>10</Cost>
+    <Level>5</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Tornado</DisplayName>
+        <Description>Destroys target opponent's creature</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Торнадо</DisplayName>
+        <Description>Уничтожает выбранное существо противника</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Tornade</DisplayName>
+        <Description>Détruit la créature adverse ciblée</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Tornado</DisplayName>
+        <Description>Vernichtet gewählte gegnerische Kreatur</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>AirElemental</Name>
+    <ElementType>Air</ElementType>
+    <Cost>11</Cost>
+    <Damage>1</Damage>
+    <IsDamageIndeterminated>true</IsDamageIndeterminated>
+    <Level>5</Level>
+    <Health>44</Health>
+    <Skills>DoDamageAtSummoningToOpponent_8;Elemental;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Air elemental</DisplayName>
+        <Description>Wher Air elemental is summoned it deals 8 damage to opponent. Increases the growth of owner's Air power. Damage equals to Air Power</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Воздушный элементаль</DisplayName>
+        <Description>Когда воздушный элементаль призван, он наносит 8 урона противнику. Увеличивает прирост Силы Воздуха хозяина на 1</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Élémentaire de vent</DisplayName>
+        <Description>Quand Élémentaire de vent est invoqué il inflige 8 dommages à l'adversaire. Augmente la croissance de l'Air. Son attaque est égale à l'Air de son propriétaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Luft-Element</DisplayName>
+        <Description>Wenn das Luft-Element gerufen wird Verursacht es 8 Schaden am Gegner. Gibt jede Runde +1 Luft-Energie Zuwachs. Schaden ist gleich Luft-Energie</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Titan</Name>
+    <ElementType>Air</ElementType>
+    <Cost>12</Cost>
+    <Damage>9</Damage>
+    <Level>6</Level>
+    <Health>40</Health>
+    <Skills>DealDamageToOpposingSlot_15;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Titan</DisplayName>
+        <Description>When Titan is summoned. It deals 15 damage to the creature in the opposing slot</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Титан</DisplayName>
+        <Description>Когда титан призван, он наносит 15 урона существу противника в слоте напротив</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Titan</DisplayName>
+        <Description>Quand le Titan est invoqué il inflige 15 dommages à la créature en face de lui</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Titan</DisplayName>
+        <Description>Wenn der Titan gerufen wird verursacht er 15 Schaden an der Kreatur die ihm gegenübersteht</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Phoenix</Name>
+    <ElementType>Air</ElementType>
+    <Cost>7</Cost>
+    <Damage>6</Damage>
+    <Level>6</Level>
+    <Health>18</Health>
+    <Skills>Phoenix</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Phoenix</DisplayName>
+        <Description>Each time Phoenix dies if its owner's Fire power is 10 or greater Phoenix rebirth</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Феникс</DisplayName>
+        <Description>Каждый раз, когда феникс умирает, если Сила Огня хозяина 10 либо выше, то феникс возрождается</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Phœnix</DisplayName>
+        <Description>Chaque fois que le Phoenix meurt, il revient à la vie si le Feu de son propriétaire est supérieur ou égal à 10</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Phoenix</DisplayName>
+        <Description>Wenn der Phoenix stirbt wird er immer dann wiederbelebt wenn die Feuer-Energie des Besitzers 10 oder höher ist</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>FaerieApprentice</Name>
+    <ElementType>Air</ElementType>
+    <Cost>1</Cost>
+    <Damage>4</Damage>
+    <Level>1</Level>
+    <Health>11</Health>
+    <Skills>IncreaseSpellsDamage_1;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Faerie apprentice</DisplayName>
+        <Description>Faerie apprentice increases by 1 the damage owner's spells deal</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Фея ученик</DisplayName>
+        <Description>Фея ученик увеличивает на 1 урон всех заклинаний хозяина</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Fée apprentie</DisplayName>
+        <Description>La Fée apprentie augmente de 1 les dégâts des sorts de son propriétaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Feen Lehrling</DisplayName>
+        <Description>Feen Lehrling erhöht den Schaden den eigene Zauber verursachen um 1</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>FaerieSage</Name>
+    <ElementType>Air</ElementType>
+    <Cost>4</Cost>
+    <Damage>4</Damage>
+    <Level>2</Level>
+    <Health>19</Health>
+    <Skills>HealPlayerAtSummoning_4;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Faerie sage</DisplayName>
+        <Description>When Faerie sage is summoned it heals owner by 4 heals</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Фей старец</DisplayName>
+        <Description>Когда фей стапрей призван, он лечит хозяину 4 здоровья</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Fée sage</DisplayName>
+        <Description>Quand la Fée Sage est invoquée elle soigne son propriétaire de 4</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Feen Weise</DisplayName>
+        <Description>Wenn Feen Weise gerufen wird heilt sie den Besitzer um 4 Lebenspunkte</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>LightningCloud</Name>
+    <ElementType>Air</ElementType>
+    <Cost>9</Cost>
+    <Damage>4</Damage>
+    <Level>4</Level>
+    <Health>20</Health>
+    <Skills>AttackAllEnimies;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Lightning cloud</DisplayName>
+        <Description>Lightning cloud's attack damages opponent and each of opponent's creatures</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Грозовая туча</DisplayName>
+        <Description>При атаке Грозовая туча наносит урон сразу всем существам противника и самому противнику</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Nuage de foudre</DisplayName>
+        <Description>L'attaque du Nuage de foudre touche chaque créature adverse</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Blitzwolke</DisplayName>
+        <Description>Blitzwolke greift jede Runde jede gegnerische Kreatur und den Gegner an</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>WallOfLightnings</Name>
+    <ElementType>Air</ElementType>
+    <Cost>5</Cost>
+    <Damage>0</Damage>
+    <Level>3</Level>
+    <Health>28  </Health>
+    <Skills>DealDamageToOpponentEveryRound_4;</Skills>
+    <IsNotAttackable>true</IsNotAttackable>
+    <Localization>
+      <en-US>
+        <DisplayName>Wall Of lightnings</DisplayName>
+        <Description>Wall Of lightnings deal 4 damage to opponent each turn</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Стена молний</DisplayName>
+        <Description>Стена молний наносит 4 урона противнику каждый ход</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Mur de foudre</DisplayName>
+        <Description>Le Mur de foudre inflige 4 dommages à l'adversaire à chaque tour</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Blitzwand</DisplayName>
+        <Description>Blitzwand verursacht jede Runde 4 Schaden am Gegner</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Griffin</Name>
+    <ElementType>Air</ElementType>
+    <Cost>2</Cost>
+    <Damage>3</Damage>
+    <Level>2</Level>
+    <Health>15</Health>
+    <Skills>GriffinSkill;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Griffin</DisplayName>
+        <Description>When Griffin is summoned if owner's Air power is 5 or more it deals 5 damage to opponent</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Грифин</DisplayName>
+        <Description>Наносит 6 урона выбранному существу противника и самому противнику</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Griffon</DisplayName>
+        <Description>Quand le Griffon est invoqué il inflige 5 dommages à l'adversaire si l'Air de son propriétaire est supérieur ou égal à 5</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Greif</DisplayName>
+        <Description>Wenn der Greif gerufen wird und die Luft-Energie des Besitzers 5 oder mehr ist, verursacht er 5 Schaden am Gegner</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <!-- !!!!!!!!!!!!  EARTH  !!!!!!!!!!!!-->
+  <Card xsi:type="SpellCard">
+    <Name>NaturalFury</Name>
+    <ElementType>Earth</ElementType>
+    <Cost>6</Cost>
+    <Target>Indeterminate</Target>
+    <Level>3</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Natural fury</DisplayName>
+        <Description>Deals to opponent damage equal to the total attack of caster's two biggest creatures</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Природная ярость</DisplayName>
+        <Description>Наносит противнику урон, равный суммарной атаке двух сильнейших существ игрока, сыгравшего это заклинание</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Fureur de la nature</DisplayName>
+        <Description>Inflige à l'adversaire autant de dommage que la somme de l'attaque de ses deux plus fortes créatures</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Natürliche Wut</DisplayName>
+        <Description>Verursacht am Gegner soviel Schaden wie die 2 stäksten Kreaturen des Zauberers zusammen</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>NatureRitual</Name>
+    <ElementType>Earth</ElementType>
+    <Target>OwnersCard</Target>
+    <Cost>2</Cost>
+    <Level>1</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Nature ritual</DisplayName>
+        <Description>Nature ritual heals 8 life to target caster's creature. Caster receives 8 life</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Природный ритуал</DisplayName>
+        <Description>Природный ритуал лечит 8 жизни выбранному существу и магу, сыгравшему это заклинание</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Rituel de la nature</DisplayName>
+        <Description>Le Rituel de la nature soigne une créature de 8. Le lanceur est soigné de 8 points de vie</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Natur Ritual</DisplayName>
+        <Description>Natur Ritual heilt die ausgewählte Kreatur und den Zauberer selbst mit jeweils 8 Lebenspunkten</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>Rejuvenation</Name>
+    <ElementType>Earth</ElementType>
+    <Cost>4</Cost>
+    <Target>IndeterminateOwner</Target>
+    <Level>2</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Rejuvenation</DisplayName>
+        <Description>Caster gains an amount of life equal to twice caster's Earth power</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Возрождение</DisplayName>
+        <Description>Маг исцеляется на количество здоровья, равное его удвоенной Силе Земли</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Rajeunissement</DisplayName>
+        <Description>Le lanceur gagne autant de vie que deux fois sa Terre</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Verjüngung</DisplayName>
+        <Description>Zauberer erhält zweimal soviel leben wie seine Erd-Energie groß ist</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>StoneRain</Name>
+    <ElementType>Earth</ElementType>
+    <Cost>9</Cost>
+    <Target>Indeterminate</Target>
+    <Level>6</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Stone rain</DisplayName>
+        <Description>Deals 25 damage to each creature</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Каменный дождь</DisplayName>
+        <Description>Наносит 25 урона каждому существу</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Pluie de rochers</DisplayName>
+        <Description>Inflige 25 dommages à chaque créatures</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Steinhagel</DisplayName>
+        <Description>Verursacht an jeder Kreatur 25 Schaden</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>EarthElemental</Name>
+    <ElementType>Earth</ElementType>
+    <Cost>10</Cost>
+    <Damage>0</Damage>
+    <IsDamageIndeterminated>true</IsDamageIndeterminated>
+    <Level>5</Level>
+    <Health>48</Health>
+    <Skills>Elemental;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Earth elemental</DisplayName>
+        <Description>Earth elemental increases by 1 the growth of owner's Earth power. Damage equals to Earth power</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Земляной элементаль</DisplayName>
+        <Description>Земляной элементаль увеличивает прирост Силы Земли хозяина на 1. Урон равен силе земли</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Élémentaire de terre</DisplayName>
+        <Description>Élémentaire de terre augmente la croissance de la Terre de 1. Son attaque est égale à la Terre de son propriétaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Erd-Element</DisplayName>
+        <Description>Das Erd-Element gibt jede Runde +1 Erd-Energie. Schaden ist gleich Erd-Energie</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>MasterHealer</Name>
+    <ElementType>Earth</ElementType>
+    <Cost>11</Cost>
+    <Damage>3</Damage>
+    <Level>6</Level>
+    <Health>36</Health>
+    <Skills>HealEveryone_3;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Master Healer</DisplayName>
+        <Description>Each turn Master Healer heals 3 life to owner and each of owner's creatures</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Верховный целитель</DisplayName>
+        <Description>Каждый ход Верховный целитель лечит 3 жизни хозяину и всем его существам.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Maître guérisseur</DisplayName>
+        <Description>Le Maître guérisseur soigne 3 points de vie à son propriétaire et à chacune de ses créatures à chaque tour</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Meister Heiler</DisplayName>
+        <Description>Der Meister Heiler heilt jede Runde jede eigene Kreatur und den Besitzer um 3 Lebenspunkte</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>ForestSprite</Name>
+    <ElementType>Earth</ElementType>
+    <Cost>3</Cost>
+    <Damage>1</Damage>
+    <Level>2</Level>
+    <Health>22</Health>
+    <Skills>AttackAllEnimies;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Forest sprite</DisplayName>
+        <Description>Forest sprite's attack damagee opponent and each of opponent's creatures</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Лесной дух</DisplayName>
+        <Description>При атаке лесной дух наносит урон сразу всем существам противника и самому противнику</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Lutin des forêts</DisplayName>
+        <Description>L'attaque du Lutin des forêts touche l'adversaire et toutes ses créatures</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Waldelf</DisplayName>
+        <Description>Der Waldelf greift jede gegnerische Kreatur und den Gegner an</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>elfHermit</Name>
+    <ElementType>Earth</ElementType>
+    <Cost>5</Cost>
+    <Damage>1</Damage>
+    <Level>2</Level>
+    <Health>13</Health>
+    <Skills>IncreaseElementPowerBy2EachTurn_Earth;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Elf Hermit</DisplayName>
+        <Description>Elf herimit increases the growth of owner's Earth power by 2</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Эльф отшельник</DisplayName>
+        <Description>Эльф отшельник увеличивает прирост Силы Земли хозяина на 2</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Ermite elfe</DisplayName>
+        <Description>L'Ermite Elfe augmente la croissance de la Terre de 2</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Elf Eremit</DisplayName>
+        <Description>Der Elf Eremit gibt jeden Runde +2 Erd-Energie</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>ElvenHealer</Name>
+    <ElementType>Earth</ElementType>
+    <Cost>1</Cost>
+    <Damage>2</Damage>
+    <Level>1</Level>
+    <Health>12</Health>
+    <Skills>HealOwnerEachTurn_3;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Elven healer</DisplayName>
+        <Description>Elven healer heals owner 2 life each turn</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Эльф целитель</DisplayName>
+        <Description>Эльф целитель лечит 3 жизни хозяину каждый ход</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Guérisseur elfe</DisplayName>
+        <Description>Le Guérisseur elfe soigne son propriétaire de 2 à chaque tour</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Elf Heiler</DisplayName>
+        <Description>Der Elf Heiler heilt den Besitzer jede Runde um 2 Lebenspunkte</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>GiantSpider</Name>
+    <ElementType>Earth</ElementType>
+    <Cost>7</Cost>
+    <Damage>4</Damage>
+    <Level>4</Level>
+    <Health>21</Health>
+    <Skills>GiantSpiderSkill;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Giant spider</DisplayName>
+        <Description>When Giant spider is summoned it summons 2/11 Forest spiders into its neighbroing slots</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Огромный паук</DisplayName>
+        <Description>Когда Огромный паук призван, он размещает в соседние слоты лесных пауков (2/11)</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Araignée géante</DisplayName>
+        <Description>Quand l'Araignée géante est invoquée, elle invoque des Araignées des forêts 2/11 à ses côtés</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Gigantische Spinne</DisplayName>
+        <Description>Wenn die Gigantische Spinne gerufen wird erscheinen 2/11 Waldspinnen in den benachbarten Slots</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>ForestSpider</Name>
+    <ElementType>Earth</ElementType>
+    <Cost>2</Cost>
+    <Damage>2</Damage>
+    <IsHidden>true</IsHidden>
+    <Level>1</Level>
+    <Health>11</Health>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Forest spider</DisplayName>
+        <Description>A small forest spider</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Лесной паук</DisplayName>
+        <Description>Простой лесной паучок</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Araignée des forêts</DisplayName>
+        <Description>Une petite araignée des forêts</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Waldspinne</DisplayName>
+        <Description>Eine kleine Waldspinne</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Hydra</Name>
+    <ElementType>Earth</ElementType>
+    <Cost>12</Cost>
+    <Damage>3</Damage>
+    <Level>5</Level>
+    <Health>40</Health>
+    <Skills>Regeneration_4;AttackAllEnimies;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Hydra</DisplayName>
+        <Description>Hydra's attack damages opponent and each of opponent's creatures. Regenerates 4 life to itself each turn</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Гидра</DisplayName>
+        <Description>При атаке гидра наносит урон сразу всем существам противника и самому противнику. Восполняет себе 4 единицы здоровья каждый ход</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Hydre</DisplayName>
+        <Description>L'attaque de l'Hydre touche l'adversaire et toutes ses créatures. Régénère 4 points de vie par tour</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Hydra</DisplayName>
+        <Description>Die Hydra greift jede gegnerische Kreatur und den Gegner an. Sie Heilt sich jede Runde um 4 Lebenspunkte</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Troll</Name>
+    <ElementType>Earth</ElementType>
+    <Cost>8</Cost>
+    <Damage>6</Damage>
+    <Level>4</Level>
+    <Health>25</Health>
+    <Skills>Regeneration_4;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Troll</DisplayName>
+        <Description>Troll regenerates 4 life to itself each turn</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Тролль</DisplayName>
+        <Description>Тролль восполняет себе 4 здоровья каждый ход</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Troll</DisplayName>
+        <Description>Le Troll régénère 4 points de vie par tour</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Troll</DisplayName>
+        <Description>Der Troll heilt sich jede Runde um 4 Lebenspunkte</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <!-- !!!!!!!!!!!!  DEATH  !!!!!!!!!!!!-->
+  <Card xsi:type="SpellCard">
+    <Name>DarkRitual</Name>
+    <ElementType>Death</ElementType>
+    <Cost>1</Cost>
+    <Target>Indeterminate</Target>
+    <Level>2</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Dark ritual</DisplayName>
+        <Description>Deals 3 damage to opponent's creatures. Heals 3 life to caster's creatures.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Темный ритуал</DisplayName>
+        <Description>Наносит 3 урона всем существам противника. Лечит 3 жизни существам мага, сыгравшего это заклинание.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Dunkles Ritual</DisplayName>
+        <Description>Verursacht 3 Schaden an gegnerischen Kreaturen. Heil 3 Lebenspunkte an den Kreaturen des Zauberers</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Sombre Rituel</DisplayName>
+        <Description>Inflige 3 dommages aux créatures de l'adversaire. Soigne 3 points de vie à vos créatures</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>BloodRitual</Name>
+    <ElementType>Death</ElementType>
+    <Cost>5</Cost>
+    <Target>OwnersCard</Target>
+    <Level>4</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Blood Ritual</DisplayName>
+        <Description>Destroy target caster's creature. Deals X damage to opponent's creatures, where X is equal to the life of the destroyed creature.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Кровавый ритуал</DisplayName>
+        <Description>Уничтожает выбранное существо хозяина. Наносит существам противника урон, равный количеству жизни уничтоженного существа.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Blut Ritual</DisplayName>
+        <Description>Zerstört eigene gewählte Kreatur. Verursacht X Schaden an gegnerischen Kreaturen wobei X genau so groß ist wie die Zerstörte Kreatur Leben hatte</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Rituel du Sang</DisplayName>
+        <Description>Détruis une de vos créatures. Inflige X dommages aux créatures de l'adversaire où X est égal à la vie de la créature détruite</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>CursedFog</Name>
+    <ElementType>Death</ElementType>
+    <Cost>2</Cost>
+    <Target>Indeterminate</Target>
+    <Level>2</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Cursed fog</DisplayName>
+        <Description>Deals 12 damage to each creature and 3 damage to opponent</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Проклятый туман</DisplayName>
+        <Description>Наносит 12 урона всем существам и 3 урона противнику</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Brouillard maudit</DisplayName>
+        <Description>inflige 12 dommages à chaque créatures</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Verfluchter Nebel</DisplayName>
+        <Description>Verursacht an jeder Kreatur 12 Schaden</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>DrainSouls</Name>
+    <ElementType>Death</ElementType>
+    <Cost>9</Cost>
+    <Target>Indeterminate</Target>
+    <Level>6</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Drain souls</DisplayName>
+        <Description>Destroys all creatures. Caster receives an amount of life equal to twice the number of destroyed creatures</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Извлечение душ</DisplayName>
+        <Description>Уничтожает все существа и лечит хозяину кол-во жизней, равное удвоенному количеству извлеченных душ</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Drain d'âmes</DisplayName>
+        <Description>Détruit toutes les créatures. Le lanceur reçoit autant de points de vie que le double du nombre de créatures détruites</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Verlassene Seelen</DisplayName>
+        <Description>Zerstört alle Kreaturen. Gibt dem Zauberer doppelt soviele Lebenspunkte wie Kreaturen zerstört wurden</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Banshee</Name>
+    <ElementType>Death</ElementType>
+    <Cost>3</Cost>
+    <Damage>4</Damage>
+    <Level>3</Level>
+    <Health>20</Health>
+    <Skills>DealsDamageToOppositeSlotHalflife;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Banshee</DisplayName>
+        <Description>When Banshee is summoned it deals damage to the creature in the opposing slot equal to half of that creature's life</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Баньши</DisplayName>
+        <Description>При входе в игру наносит урон существу в слоте напротив, равный половине жизни этого существа</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Banshee</DisplayName>
+        <Description>Quand la Banshee est invoquée, elle inflige à la créature adverse en face d'elle autant de dommage que la moitié de sa vie</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Todesfee</DisplayName>
+        <Description>Wenn die Todesfee gerufen wird verursacht sie an der Kreatur gegenüber halb soviel Schaden wie die Kreatur Lebenspunkte hat</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>EmissaryofDorlakSpell</Name>
+    <ElementType>Death</ElementType>
+    <Target>OwnersCard</Target>
+    <Cost>4</Cost>
+    <Level>4</Level>
+    <Skills></Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Emissary of Dorlak</DisplayName>
+        <Description>Emissary of Dorlak must be summoned onto another of owner's creatures. That creature is sacrificed.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Эмиссар Дорлака</DisplayName>
+        <Description>Эмиссар Дорлака может быть призван только поверх другого существа, которое приносится в жертву.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Gesandter der Dorlak</DisplayName>
+        <Description>Der Gesandte der Dorlak muss auf einer eigenen Kreatur erschaffen werden. Diese Kreatur wird dafür geopfert.</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Émissaire de Dorlak</DisplayName>
+        <Description>Émissaire de Dorlak doit être invoqué sur une de vos créatures. Cette créature est sacrifiée</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>EmissaryofDorlak</Name>
+    <ElementType>Death</ElementType>
+    <Cost>4</Cost>
+    <Damage>7</Damage>
+    <IsHidden>true</IsHidden>
+    <Level>4</Level>
+    <Health>45</Health>
+    <Skills>MustBeSummonedIntoBusySlot;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Emissary of Dorlak</DisplayName>
+        <Description>Emissary of Dorlak must be summoned onto another of owner's creatures. That creature is sacrificed.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Эмиссар Дорлака</DisplayName>
+        <Description>Эмиссар Дорлака может быть призван только поверх другого существа, которое приносится в жертву.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Gesandter der Dorlak</DisplayName>
+        <Description>Der Gesandte der Dorlak muss auf einer eigenen Kreatur erschaffen werden. Diese Kreatur wird dafür geopfert.</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Émissaire de Dorlak</DisplayName>
+        <Description>Émissaire de Dorlak doit être invoqué sur une de vos créatures. Cette créature est sacrifiée</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>KeeperofDeath</Name>
+    <ElementType>Death</ElementType>
+    <Cost>6</Cost>
+    <Damage>7</Damage>
+    <Level>5</Level>
+    <Health>35</Health>
+    <Skills>EarnDeathPowerOnOpponentsCreatureDeath;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Keeper of Death</DisplayName>
+        <Description>Each time an opponent's creature dies Keeper of Death increases owner's Death power by 1.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Хранитель смерти</DisplayName>
+        <Description>Каждый раз, когда существо противника умирает, хранитель смерти повышает Силу Смерти хозяина на 1.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Hüter des Todes</DisplayName>
+        <Description>Immer wenn eine gegnerische Kreatur stirbt erhöht der Hüter des Todes die Todes-Energie des Besitzers um 1</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Gardien de la Mort</DisplayName>
+        <Description>Chaque fois qu'une créature adverse meurt, le Gardien de la Mort augmente l'élément Mort de son propriétaire de 1.</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>MasterLich</Name>
+    <ElementType>Death</ElementType>
+    <Cost>8</Cost>
+    <Damage>7</Damage>
+    <Level>5</Level>
+    <Health>40</Health>
+    <Skills>IncreaseOpponentsCardsCostPermanently_1;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Master Lich</DisplayName>
+        <Description>When Master Lich is summoned it permanently increases cost of all opponent's cards by 1.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Верховный лич</DisplayName>
+        <Description>При входе в игру навсегда повышает на 1 стоимость всех карт противника.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Meister Lich</DisplayName>
+        <Description>Wenn die Meister Lich gerufen wird erhöht sie permanent die Kosten aller gegnerischen Karten um 1</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Seigneur Liche</DisplayName>
+        <Description>Lorsque le Seigneur Liche est invoqué, il augmente de façon permanente le coût des cartes de l'adversaire de 1</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Vampire</Name>
+    <ElementType>Death</ElementType>
+    <Cost>10</Cost>
+    <Damage>8</Damage>
+    <Level>6</Level>
+    <Health>50</Health>
+    <Skills>Vampire;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Vampire</DisplayName>
+        <Description>When vampire is attacked he gains half of his damage life points</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Вампир</DisplayName>
+        <Description>Этот упырь при атаке получает равное половине урона количество жизней</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Vampire</DisplayName>
+        <Description>Quand le Vampire est attaqué il draine la moitié des dommages qu'il inflige</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Vampir</DisplayName>
+        <Description>Wenn der Vampir angreift heilt er sich um die hälfte des Schadens</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <!-- !!!!!!!!!!!!  SORCERY   !!!!!!!!!!!!-->
+  <Card xsi:type="SpellCard">
+    <Name>HealingSpray</Name>
+    <ElementType>Sorcery</ElementType>
+    <Cost>1</Cost>
+    <Target>OwnersCard</Target>
+    <Level>1</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Healing Spray</DisplayName>
+        <Description>Heals 8 life to target creature and 6 life to its neighbors.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Исцеляющий свет</DisplayName>
+        <Description>Лечит 8 жизни выбранному существу и 6 жизни существам в соседних слотах.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Heilender Seegen</DisplayName>
+        <Description>Heilt 8 Lebenspunkte an gewählter Kreatur und 6 Lebenspunkte an dessen Nachbarn</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Spray guérisseur</DisplayName>
+        <Description>Soigne 8 points de vie à une créature et 6 points de vie à celles voisines</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>StealEssence</Name>
+    <ElementType>Sorcery</ElementType>
+    <Cost>3</Cost>
+    <Target>OpponentsCard</Target>
+    <Level>2</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Steal Essence</DisplayName>
+        <Description>Deals 5 damage to target creature. If the creature is destroyed by this spell, caster gains 4 Sorcery power.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Похищение сути</DisplayName>
+        <Description>Наносит 5 урона выбранному существу. Если оно погибает от этого урона,то сила чар сыгравшего это заклинание магa повышается на 4.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Stehlende Essence</DisplayName>
+        <Description>Verursacht 5 Schaden an gewählter Kreatur. Wenn die Kreatur durch den Zauber zerstört wird erhält der Zauberer 4 Magie-Energie</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Voler l'essence</DisplayName>
+        <Description>Inflige 5 dommages à une créature. Si cette créature est détruite par ce sort, le lanceur gagne 4 en élément Sorcellerie</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>RitualofGlory</Name>
+    <ElementType>Sorcery</ElementType>
+    <Cost>5</Cost>
+    <Target>IndeterminateOwner</Target>
+    <Level>4</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Ritual of Glory</DisplayName>
+        <Description>Completely heals all caster's creatures and increases their attack by 3 until end of turn.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Ритуал славы</DisplayName>
+        <Description>Полностью исцеляет всех существ хозяина, и повышает их атаку на 3 до конца хода.
+        </Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Ritual des Ruhmes</DisplayName>
+        <Description>Heilt alle Kreaturen des Zauberers komplett und erhöht bis zum Ende des Zuges deren Angriff um 3</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Rituel Glorieux</DisplayName>
+        <Description>Soigne complètement toutes les créatures du lanceur et augmente leur attaque de 3 jusqu'à la fin de tour.</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>SonicBoom</Name>
+    <ElementType>Sorcery</ElementType>
+    <Cost>7</Cost>
+    <Target>Indeterminate</Target>
+    <Level>6</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Sonic Boom</DisplayName>
+        <Description>Deals 11 damage to opponent and to each of opponent's creatures and stuns opponent's creatures preventing them from attacking next turn.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Звуковой удар</DisplayName>
+        <Description>Наносит 11 урона противнику и всем его существам. Оглушает существ противника, вынуждая их пропустить атаку на следующем ходу.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Überschallknall</DisplayName>
+        <Description>Verursacht 11 Schaden Schaden an jeder gegnerischen Kreatur und betäubt sie, damit sie nächte Runde nicht angreifen können</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Bang supersonique</DisplayName>
+        <Description>Inflige 11 dommages à l'adversaire et à chacune de ses créatures. Elles seront également étourdie et ne pourront attaquer au prochain tour</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>Fireball</Name>
+    <ElementType>Sorcery</ElementType>
+    <Cost>2</Cost>
+    <Target>OpponentsCard</Target>
+    <Level>1</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Fireball</DisplayName>
+        <Description>Deals 8 damage to target creature and 6 damage to its neighbors.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Огненный шар</DisplayName>
+        <Description>Наносит 8 урона выбранному существу и 6 урона существам в соседних слотах.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Feuerball</DisplayName>
+        <Description>Verursacht 8 Schaden an gewählter gegnerischer Kreatur und 6 Schaden an dessen Nachbarn</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Boule de Feu</DisplayName>
+        <Description>Inflige 8 dommages à une créature et 6 dommages à celles voisines</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>Sacrifice</Name>
+    <ElementType>Sorcery</ElementType>
+    <Cost>3</Cost>
+    <Target>OwnersCard</Target>
+    <Level>3</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Sacrifice</DisplayName>
+        <Description>Destroy target caster's creature. Caster gains 3 Fire, Water, Air and Earth power.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Жертвенный обряд</DisplayName>
+        <Description>Уничтожает выбранное существо хозяина. Повышает на 3 его Силы Огня, Воды, Воздуха и Земли.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Sacrifice</DisplayName>
+        <Description>Détruit la créature alliée ciblée. Le lanceur gagne 2 points de chaque élément</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Opfergabe</DisplayName>
+        <Description>Zerstört ausgewählte eigene Kreatur. Zauberer erhält 2 Punkte auf alle Energien</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>ManaBurn</Name>
+    <ElementType>Sorcery</ElementType>
+    <Cost>6</Cost>
+    <Target>Indeterminate</Target>
+    <Level>5</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Mana Burn</DisplayName>
+        <Description>Deals damage to opponent and to each of opponent's creatures equal to the amount of opponent's highest power type. That power is reduced by 2.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Сжигание маны</DisplayName>
+        <Description>Наносит противнику и его существам урон, равный его самой высокой силе. Эта сила понижается на 2.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Manabrand</DisplayName>
+        <Description>Verursacht Schaden in Höhe von des Gegners größter Energie an allen gegnerischen Kreaturen und am Gegner. Diese Energie wird um 2 Reduziert</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Brûlure de Mana</DisplayName>
+        <Description>Inflige à l'adversaire et à ses créatures autant de dommages que son élément le plus élevé. Diminue cet élément de 2.</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>Disintegrate</Name>
+    <ElementType>Sorcery</ElementType>
+    <Cost>8</Cost>
+    <Target>OpponentsCard</Target>
+    <Level>6</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Disintegrate</DisplayName>
+        <Description>Destroys target creature and deals 11 damage to each of opponent's other creatures.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Дезинтеграция</DisplayName>
+        <Description>Уничтожает выбранное существо и наносит 11 урона всем остальным существам противника.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Zerfall</DisplayName>
+        <Description>Zerstört gewählte Kreatur und verursacht 11 Schaden an jeder gegnerischen Kreatur.</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Désintégrer</DisplayName>
+        <Description>Détruit une créature et inflige 11 dommages à chaque autre créature adverse</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <!-- !!!!!!!!!!!!  MECHANICAL   !!!!!!!!!!!!-->
+  <Card xsi:type="SpellCard">
+    <Name>Overtime</Name>
+    <ElementType>Mechanical</ElementType>
+    <Cost>0</Cost>
+    <Target>IndeterminateOwner</Target>
+    <Level>1</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Overtime</DisplayName>
+        <Description>Increases caster's Mechanical power by 1</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Сверхурочная работа</DisplayName>
+        <Description>Повышает Силу Механики мага на 1</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Überstunden</DisplayName>
+        <Description>Gibt dem Zauberer +1 Mechanische Energie</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Heures sup' !</DisplayName>
+        <Description>Augmente l'élément Mécanique du lanceur de 1</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>Cannonade</Name>
+    <ElementType>Mechanical</ElementType>
+    <Cost>7</Cost>
+    <Target>Indeterminate</Target>
+    <Level>6</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Cannonade</DisplayName>
+        <Description>Deals 19 damage to opponent's creatures</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Канонада</DisplayName>
+        <Description>Наносит 19 урона всем существам противника</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Kanonade</DisplayName>
+        <Description>Verursacht 19 Schaden an gegnerischen Kreaturen</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Canonnade</DisplayName>
+        <Description>Inflige 19 dommages aux créatures adverses</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>DwarvenRifleman</Name>
+    <ElementType>Mechanical</ElementType>
+    <Cost>2</Cost>
+    <Damage>4</Damage>
+    <Level>1</Level>
+    <Health>17</Health>
+    <Skills>DealsDamageToNewcomers_4;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Dwarven Rifleman</DisplayName>
+        <Description>Each time opponent summons a creature Dwarven Rifleman deals 4 damage to that creature</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Гном-стрелок</DisplayName>
+        <Description>Каждый раз, когда противник призывает существо, гном-стрелок наносит 4 урона этому существу.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Zwergen-Schütze</DisplayName>
+        <Description>Jedes mal wenn der Gegner eine Kreatur ruft verursacht der Zwergen-Schütze 4 Schaden an dieser Kreatur</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Fusilier nain</DisplayName>
+        <Description>Chaque fois qu'une créature adverse est invoquée, le Fusilier nain lui inflige 4 dommages</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>DwarvenCraftsman</Name>
+    <ElementType>Mechanical</ElementType>
+    <Cost>3</Cost>
+    <Damage>2</Damage>
+    <Level>2</Level>
+    <Health>17</Health>
+    <Skills>IncreaseElementPowerBy1EachTurn_Mechanical;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Dwarven Craftsman</DisplayName>
+        <Description>Dwarven Craftsman increases the growth of owner's Mechanical power by 1</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Гном-кузнец</DisplayName>
+        <Description>Гном-кузнец повышает на 1 прирост Силы Механики хозяина. </Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Zwergen-Handwerker</DisplayName>
+        <Description>Der Zwergen-Handwerker erhöht den Zuwachs Mechanischer-Energie um 1</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Artisan nain</DisplayName>
+        <Description>L'Artisan Nain augmente la croissance de l'élément Mécanique de son propriétaire</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Ornithopter</Name>
+    <ElementType>Mechanical</ElementType>
+    <Cost>4</Cost>
+    <Damage>4</Damage>
+    <Level>3</Level>
+    <Health>23</Health>
+    <Skills>DealsDamageToAllOpponentsCreaturesEachTurn_2;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Ornithopter</DisplayName>
+        <Description>Ornithopter deals 2 damage to each of opponent's creatures each turn</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Орнитоптер</DisplayName>
+        <Description>Орнитоптер наносит 2 урона по всем существам противника каждый ход. </Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Ornithopter</DisplayName>
+        <Description>Ornithopter verursacht jede Runde 2 Schaden an jeder gegnerischen Kreatur</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Ornithoptère</DisplayName>
+        <Description>l'Ornithoptère inflige 2 dommages à chaque créature adverse à chaque tour</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>SteelGolem</Name>
+    <ElementType>Mechanical</ElementType>
+    <Cost>5</Cost>
+    <Damage>6</Damage>
+    <Level>4</Level>
+    <Health>19</Health>
+    <Skills>MagicImmune;IgnoredDamageLessThan_2;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Steel Golem</DisplayName>
+        <Description>Steel Golem receives no damage from spells. Each damage done to Steel golem is reduced by 2</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Стальной голем</DisplayName>
+        <Description>Стальной голем не получает урона от заклинаний. Всякий урон, нанесенный стальному голему, уменьшается на 2</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Steingolem</DisplayName>
+        <Description>Das Steingolem erhält keinen Schaden von Zaubern. Jeglicher Schaden den das Steingolem erhält wird um 2 veringert.</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Golem d'acier</DisplayName>
+        <Description>Le Golem d'acier ne reçoit aucun dommage des sorts. Chaque dommage infligé au Golem d'acier est réduit de 2</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Cannon</Name>
+    <ElementType>Mechanical</ElementType>
+    <Cost>6</Cost>
+    <Damage>8</Damage>
+    <Level>5</Level>
+    <Health>29</Health>
+    <Skills>DealDamageToMostHitPointedOpponentsCreature_8;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Cannon</DisplayName>
+        <Description>Cannon deal 8 damage each turn to the opponent's creature with the most hit points</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Пушка</DisplayName>
+        <Description>Каждый ход пушка наносит 8 урона существу противника с наибольшей жизнью.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Kanone</DisplayName>
+        <Description>Die Kanone verursacht jede Runde 8 Schaden an der gegnerischen Kreatur mit den meisten Lebenspunkten</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Canon</DisplayName>
+        <Description>Le Canon inflige à chaque tour 8 dommages à la créature adverse ayant le plus de vie</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>SteamTank</Name>
+    <ElementType>Mechanical</ElementType>
+    <Cost>8</Cost>
+    <Damage>8</Damage>
+    <Level>6</Level>
+    <Health>42</Health>
+    <Skills>DoDamageAtSummoningToOpponentsCards_11;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Steam Tank</DisplayName>
+        <Description>When Steam Tank is summoned it deals 11 damage to opponent's creatures.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Паровой танк</DisplayName>
+        <Description>При входе в игру наносит 11 урона всем существам противника.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Dampfpanzer</DisplayName>
+        <Description>Wenn der Dampfpanzer gerufen wird verursacht er 11 Schaden an gegnerischen Kreaturen</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Tank à vapeur</DisplayName>
+        <Description>Lorsque le Tank à vapeur est invoqué il inflige 11 dommages aux créatures adverses</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <!-- !!!!!!!!!!!!  ILLUSION   !!!!!!!!!!!!-->
+  <Card xsi:type="SpellCard">
+    <Name>Hypnosys</Name>
+    <ElementType>Illusion</ElementType>
+    <Cost>3</Cost>
+    <Target>Indeterminate</Target>
+    <Level>3</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Hypnosys</DisplayName>
+        <Description>The two biggest of the opponent's creatures attack opponent.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Гипноз</DisplayName>
+        <Description>Два сильнейших вражеских существа атакуют противника. </Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Hypnosys</DisplayName>
+        <Description>Die zwei stäksten Kreaturen des Gegners greifen den Gegner selbst an.</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Hypnose</DisplayName>
+        <Description>Les deux créatures adverses les plus fortes attaquent l'adversaire</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>Madness</Name>
+    <ElementType>Illusion</ElementType>
+    <Cost>1</Cost>
+    <Target>Indeterminate</Target>
+    <Level>1</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Madness</DisplayName>
+        <Description>Deals to each of opponent's creatures damage equal to the attack of that creature. </Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Помешательство</DisplayName>
+        <Description>Наносит каждому существу противника урон, равный атаке этого существа. </Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Tobsucht</DisplayName>
+        <Description>Verursacht an jeder gegnerischen Kreatur genau soviel Schaden wie die Kreatur Angriff hat.</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Folie</DisplayName>
+        <Description>Chaque créature adverse attaque l'adversaire</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>SpectralAssassin</Name>
+    <ElementType>Illusion</ElementType>
+    <Cost>5</Cost>
+    <Damage>6</Damage>
+    <Level>4</Level>
+    <Health>22</Health>
+    <Skills>DoDamageAtSummoningToOpponent_12;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Spectral assassin</DisplayName>
+        <Description>When Spectral assassin is summoned it deals 12 damage to opponent.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Призрачный убийца</DisplayName>
+        <Description>Когда Призрачный убийца призван, он наносит 12 урона противнику</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Assassin spectral</DisplayName>
+        <Description>Quand l'Assassin spectral est invoqué il inflige 12 dommages à l'adversaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Spektral Attentäter</DisplayName>
+        <Description>Wenn der Spektrale Attentäter gerufen wird verursacht er 10 Schaden am Gegner</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>PhantomWarrior</Name>
+    <ElementType>Illusion</ElementType>
+    <Cost>2</Cost>
+    <Damage>4</Damage>
+    <Level>2</Level>
+    <Health>4</Health>
+    <Skills>MaxRecievedDamageIs_1;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Phantom Warrior</DisplayName>
+        <Description>Each damage done to Phantom Warrior is decreased to 1. </Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Фантомный воин</DisplayName>
+        <Description>Всякий урон, наносимый фантомному воину, не превосходит 1</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Phantom Krieger</DisplayName>
+        <Description>Jeglicher Schaden den der Phantom Krieger erhält wird auf 1 reduziert</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Guerrier fantôme</DisplayName>
+        <Description>Chaque dommage infligé au Guerrier fantôme est réduit de 1</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>WallofReflection</Name>
+    <ElementType>Illusion</ElementType>
+    <Cost>4</Cost>
+    <Damage>0</Damage>
+    <Level>4</Level>
+    <Health>20</Health>
+    <IsNotAttackable>true</IsNotAttackable>
+    <Skills>ReflectsDamageToOpponent;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Wall of Reflection</DisplayName>
+        <Description>Each time Wall of Reflection receives damage it deals an equal amount of damage to opponent. </Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Стена отражений</DisplayName>
+        <Description>Каждый раз, когда стена отражений получает урон, она наносит такой же урон противнику. </Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Spiegelwand</DisplayName>
+        <Description>Immer wenn die Spiegelwand Schaden erhält verursacht sie den erhaltenen Schaden am Gegner</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Mur Réfléchissant</DisplayName>
+        <Description>Chaque dois que le Mur réfléchissant subit des dommages, il inflige la même quantité de dommages à l'adversaire</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>SpectralMage</Name>
+    <ElementType>Illusion</ElementType>
+    <Cost>6</Cost>
+    <Damage>7</Damage>
+    <Level>5</Level>
+    <Health>35</Health>
+    <Skills>DealsDamageToOpponentsCreatureByTheirsCostsAtSummoning;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Spectral Mage</DisplayName>
+        <Description>When Spectral Mage is summoned it deals damage to each of opponent's creatures equal to the cost of that creature. </Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Призрачный маг</DisplayName>
+        <Description>При входе в игру наносит урон каждому существу противника, равный стоимости этого существа. </Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Spektral Magier</DisplayName>
+        <Description>Wenn der Spektrale Magier gerufen wird verursacht er an jeder gegnerischen Kreatur Schaden in höhe der Kosten der Kreatur</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Mage spectral</DisplayName>
+        <Description>Lorsque le Mage spectral est invoqué, il inflige à chaque créature adverse autant de dommage que le coût de cette créature</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Oracle</Name>
+    <ElementType>Illusion</ElementType>
+    <Cost>7</Cost>
+    <Damage>8</Damage>
+    <Level>6</Level>
+    <Health>40</Health>
+    <Skills>DealsDamageToOpponentEqualsSpecialElementManaEachTurn;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Oracle</DisplayName>
+        <Description>Each turn Oracle deal damage to opponent equal to owner's Illusion power. </Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Оракул</DisplayName>
+        <Description>Каждый ход оракул наносит противнику урон, равный Силе Иллюзий хозяина. </Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Orakel</DisplayName>
+        <Description>Das Orakel verursacht jede Runde Schaden in Höhe des Besitzers Illusions-Energie</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Oracle</DisplayName>
+        <Description>Chaque tour, l'Oracle inflige autant de dommages à l'adversaire que l'élément Illusion de son propriétaire</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Hypnotist</Name>
+    <ElementType>Illusion</ElementType>
+    <Cost>8</Cost>
+    <Damage>5</Damage>
+    <Level>6</Level>
+    <Health>38</Health>
+    <Skills>IncreaseElementPowerBy1EachTurn_Illusion;DoDamageAtSummoningToOpponentsCards_5;DoDamageToOpponentAtSummoning_5;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Hypnotist</DisplayName>
+        <Description>When Hypnotist is summoned it deals 5 damage to opponent and to opponent's creatures. Hypnotist increases by 1 the growth of owner's Illusion power.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Мастер иллюзий</DisplayName>
+        <Description>При входе в игру наносит 5 урона противнику и всем его существам. Повышает прирост Силы Иллюзий хозяина на 1.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Hypnotiseur</DisplayName>
+        <Description>Wenn der Hypnotiseur gerufen wird verursacht er 5 Schaden an jeder gegnerischen Kreatur und am Gegner. Der Hypnotiseur gibt jede Runde +1 Illusions-Energie.</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Hypnotiseur</DisplayName>
+        <Description>Quand l'Hypnotiseur est invoqué il inflige 5 dommages à l'adversaire et aux créatures adverse. L'Hypnotiseur augmente la croissance de l'élément Illusion de 1</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <!-- !!!!!!!!!!!!  HOLY   !!!!!!!!!!!!-->
+  <Card xsi:type="SpellCard">
+    <Name>DivineJustice</Name>
+    <ElementType>Holy</ElementType>
+    <Cost>4</Cost>
+    <Target>OwnersCard</Target>
+    <Level>3</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Divine Justice</DisplayName>
+        <Description>Heals 12 life to target creature and deals 12 damage to each other creature. </Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Божественное правосудие</DisplayName>
+        <Description>Исцеляет 12 урона выбранному существу, наносит 12 урона всем остальным существам.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Gottes Gerechtigkeit</DisplayName>
+        <Description>Heilt an der gewählten Kreatur 12 Lebenspunkte und verursacht 12 Schaden an jeder anderen Kreatur.</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Justice Divine</DisplayName>
+        <Description>Soigne 12 points de vie à la créature cible et inflige 12 dommages à chaque autre créature</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>DivineIntervention</Name>
+    <ElementType>Holy</ElementType>
+    <Cost>5</Cost>
+    <Target>IndeterminateOwner</Target>
+    <Level>4</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Divine Intervention</DisplayName>
+        <Description>Increases by 2 caster's Fire, Water, Air and Earth powers. Heals 12 life to caster. </Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Божественное вмешательство</DisplayName>
+        <Description>Повышает на 2 Силы Огня, Воды, Воздуха и Земли магу, сыгравшему это заклинание. Исцеляет 12 жизни этому магу.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Gottes Eingriff</DisplayName>
+        <Description>Gibt dem Zauberer +2 Feuer-, Wasser-, Luft- und Erd-Energie. Heilt dem Zauberer 12 Lebenspunkte.</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Intervention Divine</DisplayName>
+        <Description>Augmente de 2 les élément Feu, Eau, Air et Terre. Soigne 12 points de vie au lanceur</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>WrathofGod</Name>
+    <ElementType>Holy</ElementType>
+    <Cost>6</Cost>
+    <Target>Indeterminate</Target>
+    <Level>5</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Wrath of God</DisplayName>
+        <Description>Deals 12 damage to each of opponent's creatures, and then increases caster's Holy power by 1 for each opponent's creature survived. </Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Ярость бога</DisplayName>
+        <Description>Наносит 12 урона существам противника и затем повышает силу Святости заклинателя на 1 за каждое уцелевшее существо противника.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Zorn Gottes</DisplayName>
+        <Description>Verursacht 12 Schaden an jeder gegnerischen Kreatur und gibt dann +1 Heilige-Energie für jede Kreatur die überlebt hat.</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Colère Divine</DisplayName>
+        <Description>Inflige 12 dommages à chaque créatures adverse et augmente l'élément Sacré de 1 pour chaque créature adverse survivante</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Paladin</Name>
+    <ElementType>Holy</ElementType>
+    <Cost>1</Cost>
+    <Damage>4</Damage>
+    <Level>1</Level>
+    <Health>9</Health>
+    <Skills>HealsOwnersCreaturesAtSummoning_4;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Paladin</DisplayName>
+        <Description>When Paladin is summoned it heals 4 life to each of its owner's creatures. </Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Паладин</DisplayName>
+        <Description>При входе в игру исцеляет 4 жизни каждому существу хозяина.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Paladin</DisplayName>
+        <Description>Wenn der Paladin gerufen wird heilt er 4 Lebenspunkte an jeder Kreatur des Besitzers</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Paladin</DisplayName>
+        <Description>Lorsque le Paladin est invoqué, il soigne toutes les créatures du lanceur de 4 points de vie</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Monk</Name>
+    <ElementType>Holy</ElementType>
+    <Cost>2</Cost>
+    <Damage>4</Damage>
+    <Level>2</Level>
+    <Health>14</Health>
+    <Skills>IncreasesPowerBy2WhenDying_Holy;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Monk</DisplayName>
+        <Description>When Monk dies it increases owner's Holy power by 2.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Монах</DisplayName>
+        <Description>Когда монах умирает, он повышает Силу Святости хозяина на 2.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Monk</DisplayName>
+        <Description>Wenn der monk stirbt gibt er dem Besitzer +2 Heilige-Energie</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Moine</DisplayName>
+        <Description>Lorsque le Moine meurt, il augmente l'élément Sacré de son propriétaire de 2</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>HolyGuard</Name>
+    <ElementType>Holy</ElementType>
+    <Cost>3</Cost>
+    <Damage>4</Damage>
+    <Level>3</Level>
+    <Health>24</Health>
+    <Skills>ProtectsNeighboringBy_2;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Holy Guard</DisplayName>
+        <Description>Holy Guard decreases by 2 all damage done to neighboring creatures 	</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Святой страж</DisplayName>
+        <Description>Святой страж уменьшает на 2 весь урон, нанесенный по существам в соседних слотах.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Heiliger Wächter</DisplayName>
+        <Description>Der Heilige Wächter reduziert jeden Schaden den benachbarte Kreaturen erhalten um 2</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Gardien Sacré</DisplayName>
+        <Description>Le gardien sacré diminue de 2 tous les dommages subits par ses créatures voisines</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Angel</Name>
+    <ElementType>Holy</ElementType>
+    <Cost>7</Cost>
+    <Damage>8</Damage>
+    <Level>6</Level>
+    <Health>42</Health>
+    <Skills>IncreasePowerOnSummoningBy3_Holy;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Angel</DisplayName>
+        <Description>When Angel is summoned it increases owner's Holy power by 3.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Ангел</DisplayName>
+        <Description>При входе в игру повышает Силу Святости хозяина на 3.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Engel</DisplayName>
+        <Description>Wenn der Engel gerufen wird gibt er +3 Heilige-Energie</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Ange</DisplayName>
+        <Description>Lorsque l'Ange est invoqué, l'élément Sacré du lanceur est augmenté de 3</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Archangel</Name>
+    <ElementType>Holy</ElementType>
+    <Cost>8</Cost>
+    <Damage>8</Damage>
+    <Level>6</Level>
+    <Health>48</Health>
+    <Skills>CompletlyHealsOwnersCreatures;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Archangel</DisplayName>
+        <Description>When Archangel is summoned it completely heals all owner's creatures.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Архангел</DisplayName>
+        <Description>При входе в игру полностью исцеляет всех союзных существ.</Description>
+      </ru-RU>
+      <de-DE>
+        <DisplayName>Erzengel</DisplayName>
+        <Description>Wenn der Erzengel gerufen wird heilt er alle Kreaturen des Besitzers komplett</Description>
+      </de-DE>
+      <fr-FR>
+        <DisplayName>Archange</DisplayName>
+        <Description>Lorsque l'Archange est invoqué, il soigne complètement toutes les créatures du lanceur</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <!-- !!!!!!!!!!!!  CHAOS   !!!!!!!!!!!!-->
+  <Card xsi:type="SpellCard">
+    <Name>DoomBolt</Name>
+    <ElementType>Chaos</ElementType>
+    <Cost>3</Cost>
+    <Target>Indeterminate</Target>
+    <Level>3</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Doom Bolt</DisplayName>
+        <Description>Deals 25 damage to a random creature of opponent's</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Стрела рока</DisplayName>
+        <Description>Наносит 25 урона случайному существу противника.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Trait funeste</DisplayName>
+        <Description>Inflige 25 dommages à une créature adverse au hasard</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>ChaoticWave</Name>
+    <ElementType>Chaos</ElementType>
+    <Cost>4</Cost>
+    <Target>Indeterminate</Target>
+    <Level>4</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Chaotic wave</DisplayName>
+        <Description>Deals 2-12 damage to each of opponent's creatures. Heals 2-12 life to each of caster's creatures.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Волна хаоса</DisplayName>
+        <Description>Наносит 2-12 урона существам противника. Исцеляет 2-12 урона своим существам.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Vague chaotique</DisplayName>
+        <Description>Inflige 2-12 dommages à chaque créatures adverses et soigne 2-12 chaque créature du lanceur</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>InsanianPeacekeeper</Name>
+    <ElementType>Chaos</ElementType>
+    <Cost>1</Cost>
+    <Damage>4</Damage>
+    <Level>1</Level>
+    <Health>12</Health>
+    <Skills>HealsOwnerEachTurnFrom1To6;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Insanian Peacekeeper</DisplayName>
+        <Description>Insanian Peacekeeper heals 1-6 life to owner each turn.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Безумный миротворец</DisplayName>
+        <Description>Безумный миротворец лечит хозяину 1-6 жизни каждый ход.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Garde-paix dément</DisplayName>
+        <Description>Le Garde-paix dément soigne 1-6 points de vie à son propriétaire à chaque tour</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>InsanianBerserker</Name>
+    <ElementType>Chaos</ElementType>
+    <Cost>2</Cost>
+    <Damage>4</Damage>
+    <Level>2</Level>
+    <Health>14</Health>
+    <Skills>DealsDamageToOpponentFrom1To6;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Insanian Berserker</DisplayName>
+        <Description>Insanian Berserker deals 1-6 damage to opponent each turn</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Безумный берсерк</DisplayName>
+        <Description>Безумный берсерк наносит противнику 1-6 урона каждый ход.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Berserker Dément </DisplayName>
+        <Description>Le Berserker Dément inflige 1-6 dommages à l'adversaire à chaque tour</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>InsanianShaman</Name>
+    <ElementType>Chaos</ElementType>
+    <Cost>5</Cost>
+    <Damage>3</Damage>
+    <Level>4</Level>
+    <Health>24</Health>
+    <Skills>ReducedRandomOpponentsPowerEachTurn_2;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Insanian Shaman</DisplayName>
+        <Description>Each turn Insanian Shaman reduces a random power of opponent's by 2.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Безумный шаман</DisplayName>
+        <Description>Каждый ход безумный шаман понижает случайную Силу противника на 2.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Chaman Dément</DisplayName>
+        <Description>Le Chaman Dément réduit un élément de l'adversaire au hasard de 2 à chaque tour</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>InsanianLord</Name>
+    <ElementType>Chaos</ElementType>
+    <Cost>6</Cost>
+    <Damage>6</Damage>
+    <Level>5</Level>
+    <Health>26</Health>
+    <Skills>IncreasesRandomOwnersPowerEachTurn_2;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Insanian Lord</DisplayName>
+        <Description>Each turn Insanian Lord increases a random power of owner's by 2.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Безумный лорд</DisplayName>
+        <Description>Каждый ход безумный лорд повышает случайную Силу хозяина на 2</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Seigneur Dément</DisplayName>
+        <Description>Le Seigneur Dément augmente un élément de son propriétaire au hasard de 2 à chaque tour</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>InsanianCatapult</Name>
+    <ElementType>Chaos</ElementType>
+    <Cost>7</Cost>
+    <Damage>6</Damage>
+    <Level>6</Level>
+    <Health>35</Health>
+    <Skills>DealsDamageToRandomOpponentsCreature_10;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Insanian Catapult</DisplayName>
+        <Description>Insanian Catapult deals 10 damage to random opponent's creature each turn</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Катапульта</DisplayName>
+        <Description>Каждый ход катапульта наносит 10 урона случайному существу противника.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Catapulte des Déments</DisplayName>
+        <Description>La Catapulte des Déments inflige 10 dommages à une créature adverse au hasard à chaque tour</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>InsanianKing</Name>
+    <ElementType>Chaos</ElementType>
+    <Cost>8</Cost>
+    <Damage>6</Damage>
+    <Level>6</Level>
+    <Health>45</Health>
+    <Skills>SummonedSoldierToRandomSlotEachTurn;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Insanian King</DisplayName>
+        <Description>At the end of each owner's turn Insanian King summons a 4/15 soldier to a random slot.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Безумный король</DisplayName>
+        <Description>В конце каждого хода хозяина безумный король призывает в случайный слот безумного солдата (4/15).</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Roi des Déments</DisplayName>
+        <Description>A la fin de chaque tour de son propriétaire, le roi des déments invoque un Soldat 4/15 à un emplacement au hasard</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Soldier</Name>
+    <ElementType>Chaos</ElementType>
+    <Cost>0</Cost>
+    <Damage>4</Damage>
+    <Level>1</Level>
+    <Health>15</Health>
+    <Skills></Skills>
+    <IsHidden>true</IsHidden>
+    <Localization>
+      <en-US>
+        <DisplayName>Soldier</DisplayName>
+        <Description>Soldier summoned by Insanian King</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Солдат</DisplayName>
+        <Description>Солдат, призванный безумным королём</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Soldat</DisplayName>
+        <Description>Soldat invoqué par le Roi des Déments</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <!-- !!!!!!!!!!!!  CONTROL   !!!!!!!!!!!!-->
+  <Card xsi:type="SpellCard">
+    <Name>PoisonousCloud</Name>
+    <ElementType>Control</ElementType>
+    <Cost>5</Cost>
+    <Target>Indeterminate</Target>
+    <Level>4</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Poisonous Cloud</DisplayName>
+        <Description>Reduces by 1 all opponent's powers. Deals to each of opponents's creatures damage equal to half of its life (rounded up).</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Ядовитое облако</DisplayName>
+        <Description>Понижает на 1 Силы противника. Наносит по каждому существу противника урон равный половине жизни этого существа. (урон округляется вверх)</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Nuage empoisonné</DisplayName>
+        <Description>Réduit de 1 les éléments de l'adversaire. Inflige à chaque créature adverse des dommages égaux à la moitiés (arrondi au supérieur) de leurs points de vie</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>Weakness</Name>
+    <DisplayName>Weakness</DisplayName>
+    <ElementType>Control</ElementType>
+    <Cost>2</Cost>
+    <Target>Indeterminate</Target>
+    <Level>2</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Weakness</DisplayName>
+        <Description>Reduces by 2 all opponent's powers</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Ослабление</DisplayName>
+        <Description>Уменьшает силы противника на 2</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Faiblesse</DisplayName>
+        <Description>Réduit de 2 les éléments de l'adversaire</Description>
+      </fr-FR>
+      <de-DE>
+        <DisplayName>Schwäche</DisplayName>
+        <Description>Reduziert alle Energien des Gegners um 2</Description>
+      </de-DE>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>GoblinShaman</Name>
+    <ElementType>Control</ElementType>
+    <Cost>1</Cost>
+    <Damage>4</Damage>
+    <Level>1</Level>
+    <Health>12</Health>
+    <Skills>IncreasesOpponentsSpellsCosts_1;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Goblin Shaman</DisplayName>
+        <Description>Goblin Shaman increases the cost of all opponent's spells by 1.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Гоблин шаман</DisplayName>
+        <Description>Гоблин шаман повышает стоимость всех заклинаний противника на 1.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Gobelin Chaman</DisplayName>
+        <Description>Le Gobelin Chaman augmente le coût de tous les sorts adverses de 1</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>DampingTower</Name>
+    <ElementType>Control</ElementType>
+    <Cost>3</Cost>
+    <Damage>0</Damage>
+    <Level>3</Level>
+    <Health>17</Health>
+    <IsNotAttackable>true</IsNotAttackable>
+    <Skills>IncreaseOpponentsCardsCost_1;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Damping Tower</DisplayName>
+        <Description>Damping Tower increases the cost of all opponent's cards by 1.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Сверкающая башня</DisplayName>
+        <Description>Сверкающая башня повышает стоимость всех карт противника на 1.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Tour d'Amortissement</DisplayName>
+        <Description>La tour d'Amortissement augmente le coût de toutes les cartes adverses de 1</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>AncientHorror</Name>
+    <ElementType>Control</ElementType>
+    <Cost>4</Cost>
+    <Damage>5</Damage>
+    <Level>3</Level>
+    <Health>24</Health>
+    <Skills>Horror;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Ancient Horror</DisplayName>
+        <Description>Ancient Horror forces all of opponent's creatures with cost less than owner's Control power to skip their attack.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Древний ужас</DisplayName>
+        <Description>Древний ужас принуждает существ противника со стоимостью меньшей чем Сила Ко нтроля хозяина пропускать свою атаку.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Horreur millénaire</DisplayName>
+        <Description>L'Horreur millénaire force toutes les créatures adverses ayant un coût inférieur à l'élément Contrôle de son propriétaire à passer leur phase d'attaque</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>AncientWitch</Name>
+    <ElementType>Control</ElementType>
+    <Cost>6</Cost>
+    <Damage>4</Damage>
+    <Level>5</Level>
+    <Health>18</Health>
+    <Skills>ReducedOpponentsPowers_2;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Ancient Witch</DisplayName>
+        <Description>When Ancient Witch is summoned it reduces all opponent's powers by 2.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Древняя ведьма</DisplayName>
+        <Description>При входе в игру понижает все Силы противника на 2.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Ancienne Sorcière</DisplayName>
+        <Description>Quand l'Ancienne Sorcière est invoquée, elle réduit tous les éléments de l'adversaire de 2</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Mindstealer</Name>
+    <ElementType>Control</ElementType>
+    <Cost>7</Cost>
+    <Damage>8</Damage>
+    <Level>6</Level>
+    <Health>36</Health>
+    <Skills>Mindstealer;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Mindstealer</DisplayName>
+        <Description>Whenever a creature in the opposing slot attacks, it deals damage to itself instead of Mindstealer.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Похититель разума</DisplayName>
+        <Description>Когда существо в слоте напротив атакует, оно наносит урон не похитителю разума, а себе.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Voleur d'esprit</DisplayName>
+        <Description>Lorsqu'une créature dans l'emplacement opposé attaque, elle s'inflige des dommages à elle-même plutôt qu'au Voleur d'esprit</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>AncientGiant</Name>
+    <ElementType>Control</ElementType>
+    <Cost>8</Cost>
+    <Damage>9</Damage>
+    <Level>6</Level>
+    <Health>50</Health>
+    <Skills>Stun;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Ancient Giant</DisplayName>
+        <Description>When Ancient Giant is summoned it stuns opponent preventing him from using any cards next turn.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Древний гигант</DisplayName>
+        <Description>При входе в игру оглушает противника, вынуждая того пропустить следующий ход.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Ancien géant</DisplayName>
+        <Description>Lorsque l'Ancien géant est invoqué, il étourdit l'adversaire l'empêchant de joueur des cartes au prochain tour</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <!-- !!!!!!!!!!!!  BEAST   !!!!!!!!!!!!-->
+  <Card xsi:type="CreatureCard">
+    <Name>MagicHamster</Name>
+    <ElementType>Beast</ElementType>
+    <Damage>3</Damage>
+    <Cost>1</Cost>
+    <Health>10</Health>
+    <Skills>HealsNeighboringOnSummoning_10;</Skills>
+    <Ability>NaturalHealing</Ability>
+    <Level>1</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Magic Hamster</DisplayName>
+        <Description>When Magic Hamster is summoned it heals 10 life to its neighbors. Activated ability (cost 3) Heals 18 life to all owner's creatures.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Волшебный хомяк</DisplayName>
+        <Description>Когда волшебный хомяк призван, он лечит 10 жизни существам в соседних слотах. Способность (стоимость 3) Лечит 18 жизни всем существам хозяина.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Hamster magique</DisplayName>
+        <Description>Quand le Hamster magique est invoqué il soigne 10 points de vie à ses voisins. Capacité Activée (coût 3) Soigne 18 points de vie à toutes les créatures alliées.</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>NaturalHealing</Name>
+    <ElementType>Beast</ElementType>
+    <Cost>3</Cost>
+    <AbilityOf>MagicHamster</AbilityOf>
+    <Target>IndeterminateOwner</Target>
+    <IsHidden>true</IsHidden>
+    <Level>1</Level>
+    <IsAbility>True</IsAbility>
+    <Localization>
+      <en-US>
+        <DisplayName>Natural Healing</DisplayName>
+        <Description>Magic Hamster heals 18 life to all owner's creatures.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Природное исцеление</DisplayName>
+        <Description>Волшебный хомяк лечит 18 жизни всем существам хозяина.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Soin naturel</DisplayName>
+        <Description>Le Hamster magique soigne 18 points de vie aux créatures de son propriétaire</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Scorpion</Name>
+    <ElementType>Beast</ElementType>
+    <Damage>5</Damage>
+    <Cost>2</Cost>
+    <Health>18</Health>
+    <Skills>StunsOppositSlotOnSummoning;</Skills>
+    <Ability>Poison</Ability>
+    <Level>2</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Scorpion</DisplayName>
+        <Description>When Scorpion is summoned it poisons the creature in the opposite slot preventing it from attacking next turn.'+' Activated ability (cost 2) Deals 14 damage to target creature</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Скорпион</DisplayName>
+        <Description>Когда скорпион призван, он отравляет существо в слоте напротив, вынуждая его пропустить атаку на следующем ходу.'+' Способность (стоимость 2) Наносит 14 урона выбранному существу.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Scorpion</DisplayName>
+        <Description>Quand le Scorpion est invoqué il empoisonne la créature dans l'emplacement opposé l'empêchant d'attaquer au prochain tour. '+' Capacité activée (coût 2) Inflige 14 dommage à la créature ciblée</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>Poison</Name>
+    <ElementType>Beast</ElementType>
+    <Cost>2</Cost>
+    <AbilityOf>Scorpion</AbilityOf>
+    <Target>OpponentsCard</Target>
+    <IsAbility>True</IsAbility>
+    <IsHidden>true</IsHidden>
+    <Level>2</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Poison</DisplayName>
+        <Description>Scorpion deals 14 damage to target creature.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Отравление</DisplayName>
+        <Description>Скорпион наносит 14 урона выбранному существу.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Poison</DisplayName>
+        <Description>Le Scorpion inflige 14 dommages à la créature ciblée</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Wolverine</Name>
+    <ElementType>Beast</ElementType>
+    <Damage>6</Damage>
+    <Cost>3</Cost>
+    <Health>23</Health>
+    <Skills></Skills>
+    <Ability>Enrage</Ability>
+    <Level>3</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Wolverine</DisplayName>
+        <Description>Activated ability (cost 2) Wolverine heals all damage and its attack is increased by 2 permanently.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Росомаха</DisplayName>
+        <Description>Способность (стоимость 2) Росомаха полностью исцеляется и её атака повышается на 2 навсегда.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Glouton</DisplayName>
+        <Description>Capacité Activée (coût 2) Le Glouton se soigne de tout dommage et augmente son attaque de 2 de manière permanente</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>Enrage</Name>
+    <ElementType>Beast</ElementType>
+    <Cost>2</Cost>
+    <AbilityOf>Wolverine</AbilityOf>
+    <Target>IndeterminateOwner</Target>
+    <IsAbility>True</IsAbility>
+    <IsHidden>true</IsHidden>
+    <Level>3</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Enrage</DisplayName>
+        <Description>Wolverine heals all damage and its attack is increased by 2 permanently.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Бешенство</DisplayName>
+        <Description>Росомаха полностью исцеляется и её атака повышается на 2 навсегда.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Enrager</DisplayName>
+        <Description>Le Glouton se soigne de tout dommage et augmente son attaque de 2 de manière permanente</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>EnergyBeast</Name>
+    <ElementType>Beast</ElementType>
+    <Damage>6</Damage>
+    <Cost>4</Cost>
+    <Health>33</Health>
+    <Skills></Skills>
+    <Ability>PumpEnergy</Ability>
+    <Level>4</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Energy Beast</DisplayName>
+        <Description>Activated ability (cost 1) Owner gains 1 Fire, Water, Air and Earth power.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Энергозверь</DisplayName>
+        <Description>Способность (стоимость 1) Повышает хозяину на 1 силы Огня, Воды, Воздуха и Земли.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Bête d'énergie</DisplayName>
+        <Description>Capacité Activée (coût 1) Le propriétaire gagne 1 élément Feu, Eau, Air et Terre</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>PumpEnergy</Name>
+    <ElementType>Beast</ElementType>
+    <Cost>1</Cost>
+    <AbilityOf>EnergyBeast</AbilityOf>
+    <IsHidden>true</IsHidden>
+    <Target>IndeterminateOwner</Target>
+    <IsAbility>True</IsAbility>
+    <Level>4</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Pump Energy</DisplayName>
+        <Description>Owner gains 1 Fire, Water, Air and Earth power.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Выброс энергии</DisplayName>
+        <Description>Повышает хозяину на 1 силы Огня, Воды, Воздуха и Земли.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Drain d'énergie</DisplayName>
+        <Description>Le propriétaire gagne 1 élément Feu, Eau, Air et Terre</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>DeathFalcon</Name>
+    <ElementType>Beast</ElementType>
+    <Damage>7</Damage>
+    <Cost>5</Cost>
+    <Health>43</Health>
+    <Skills></Skills>
+    <Ability>MoveFalcon</Ability>
+    <Level>5</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Death Falcon</DisplayName>
+        <Description>Activated ability (cost 1) Death Falcon moves to target empty slot and deals 4 damage to each of opponent's creatures.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Смертоносный ястреб</DisplayName>
+        <Description>Способность (стоимость 1) Смертоносный ястреб перемещается в выбранный слот и наносит 4 урона всем существам противника.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Faucon mortel</DisplayName>
+        <Description>Capacité Activée (coût 1) Le Faucon mortel se déplace à l'emplacement libre ciblé et inflige 4 dommages à chaque créature adverse</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>MoveFalcon</Name>
+    <ElementType>Beast</ElementType>
+    <Cost>1</Cost>
+    <AbilityOf>DeathFalcon</AbilityOf>
+    <IsHidden>true</IsHidden>
+    <Target>IndeterminateOwnerEmpty</Target>
+    <IsAbility>True</IsAbility>
+    <Level>5</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Move Falcon</DisplayName>
+        <Description>Death Falcon moves to target empty slot and deals 4 damage to each of opponent's creatures.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Смертоносный рывок</DisplayName>
+        <Description>Смертоносный ястреб перемещается в выбранный слот и наносит 4 урона всем существам противника.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Déplacer le Faucon</DisplayName>
+        <Description>Le Faucon mortel se déplace à l'emplacement libre ciblé et inflige 4 dommages à chaque créature adverse</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>WhiteElephant</Name>
+    <ElementType>Beast</ElementType>
+    <Damage>8</Damage>
+    <Cost>6</Cost>
+    <Health>44</Health>
+    <Skills>TakesDamageToOwnerToItselfInstead;</Skills>
+    <Ability>Trumpet</Ability>
+    <Level>5</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>White Elephant</DisplayName>
+        <Description>All damage done to owner is dealt to White Elephant instead. Activated ability (cost 0) White Elephant increases owner's beast power by 1.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Белый слон</DisplayName>
+        <Description>Весь урон, нанесённый по хозяину, перенаправляется в белого слона. Способность (стоимость 0) Белый слон повышает хозяину силу Природы на 1.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Éléphant blanc</DisplayName>
+        <Description>Tous les dommages infligés au joueur son infligés à l'Éléphant blanc à la place. Capacité Activée (coût 0) Éléphant augmente l'élément Bête du propriétaire de 1.</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>Trumpet</Name>
+    <ElementType>Beast</ElementType>
+    <IsHidden>true</IsHidden>
+    <Cost>0</Cost>
+    <AbilityOf>WhiteElephant</AbilityOf>
+    <Target>IndeterminateOwner</Target>
+    <IsAbility>True</IsAbility>
+    <Level>5</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Trumpet</DisplayName>
+        <Description>White Elephant increases owner's beast power by 1.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Рёв слона</DisplayName>
+        <Description>Белый слон повышает хозяину силу Природы на 1.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Trompète</DisplayName>
+        <Description>Éléphant Blanc augmente l'élément Bête du propriétaire de 1.</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Basilisk</Name>
+    <ElementType>Beast</ElementType>
+    <Damage>6</Damage>
+    <Cost>7</Cost>
+    <Health>50</Health>
+    <Skills>DestroysWeakOpponentsCreaturesEachTurnEnd_6;</Skills>
+    <Ability>Gaze</Ability>
+    <Level>6</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Basilisk</DisplayName>
+        <Description>At the end of each turn Basilisk destroys all of opponent's creatures with 6 life or less. Activated ability (cost 0) Deals 6 damage to target creature.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Василиск</DisplayName>
+        <Description>В конце каждого хода василиск убивает существ противника, имеющих 6 либо меньше жизни. Способность (стоимость 0) Наносит 6 урона выбранному существу.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Basilique</DisplayName>
+        <Description>A la fin de chaque tour le Basilique détruit toutes les créatures adverses avec 6 points de vie ou moins. Capacité activée (coût 0) Inflige 6 dommages à la créature ciblée</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>Gaze</Name>
+    <ElementType>Beast</ElementType>
+    <Cost>0</Cost>
+    <AbilityOf>Basilisk</AbilityOf>
+    <Target>Indeterminate</Target>
+    <IsAbility>True</IsAbility>
+    <IsHidden>true</IsHidden>
+    <Level>6</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Gaze</DisplayName>
+        <Description>Deals 6 damage to target creature.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Смертельный взгляд</DisplayName>
+        <Description>Наносит 6 урона выбранному существу.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Regard perçant</DisplayName>
+        <Description>Inflige 6 dommages à la créature ciblée</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>AncientDragon</Name>
+    <ElementType>Beast</ElementType>
+    <Damage>8</Damage>
+    <Cost>8</Cost>
+    <Health>45</Health>
+    <Skills>TakesToOwnerPowersOfAllKindAtSummoning_1;</Skills>
+    <Ability>BreatheFire</Ability>
+    <Level>6</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Ancient Dragon</DisplayName>
+        <Description>When Ancient Dragon is summoned owner gains 1 power of each type. Activated ability (cost 3) Deals 10 damage to opponent and to each of opponent's creatures.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Древний дракон</DisplayName>
+        <Description>Когда Древний дракон призван, он повышает все силы хозяина на 1. Способность (стоимость 3) Наносит 10 урона противнику и всем его существам.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Ancien Dragon</DisplayName>
+        <Description>Quand l'Ancien Dragon est invoqué, son propriétaire gagne 1 élément de chaque type. Capacité Activée (coût 3) Inflige 10 dommages à 'l'adversaire et à chacune de ses créatures</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>BreatheFire</Name>
+    <ElementType>Beast</ElementType>
+    <Cost>3</Cost>
+    <AbilityOf>AncientDragon</AbilityOf>
+    <Target>Indeterminate</Target>
+    <IsHidden>true</IsHidden>
+    <IsAbility>True</IsAbility>
+    <Level>6</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Breathe Fire</DisplayName>
+        <Description>Deals 10 damage to opponent and to each of opponent's creatures.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Огненное дыхание</DisplayName>
+        <Description>Наносит 10 урона противнику и всем его существам.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Souffle de feu</DisplayName>
+        <Description>Inflige 10 dommages à chaque créatures et à l'adversaire</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <!-- !!!!!!!!!!!!  DEMONIC   !!!!!!!!!!!!-->
+  <Card xsi:type="SpellCard">
+    <Name>Explosion</Name>
+    <ElementType>Demonic</ElementType>
+    <Cost>2</Cost>
+    <Target>OwnersCard</Target>
+    <Level>2</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Explosion</DisplayName>
+        <Description>Destroys target of caster and deals 28 damage to the creature in the opposing slot.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Взрыв</DisplayName>
+        <Description>Уничтожает выбранное существо хозяина. Наносит 28 урона существу в слоте напротив.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Explosion</DisplayName>
+        <Description>Détruit une créature alliée et inflige 28 dommages à la créature à l'emplacement opposé</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>PowerChains</Name>
+    <ElementType>Demonic</ElementType>
+    <Cost>3</Cost>
+    <Target>OpponentsCardNotSpecial</Target>
+    <Level>3</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Power Chains</DisplayName>
+        <Description>Deals 12 damage to target Fire, Water, Air or Earth creature. Opponent loses 3 power of that type.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Энергоцепи</DisplayName>
+        <Description>Наносит 12 урона по выбранному огненному, водному, воздушному или земляному существу. Противник теряет 3 маны такого типа.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Chaînes de Pouvoir</DisplayName>
+        <Description>Inflige 12 dommages à la créature de Feu, d'Eau, d'Air ou de Terre ciblée. L'adversaire perds 3 éléments de ce type</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>HellFire</Name>
+    <ElementType>Demonic</ElementType>
+    <Cost>6</Cost>
+    <Target>Indeterminate</Target>
+    <Level>5</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Hell Fire</DisplayName>
+        <Description>Deals 13 damage to each of opponent's creatures. Caster gains 1 fire power for each creature destroyed by this spell.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Адский огонь</DisplayName>
+        <Description>Наносит 13 урона всем существам противника. Маг получает одну силу огня за каждое существо, погибшее от этого заклинания.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Feu de l'Enfer</DisplayName>
+        <Description>Inflige 13 dommages à toutes les créatures adverses. Le lanceur gagne 1 élément Feu pour chaque créature détruite par ce sort</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Lemure</Name>
+    <ElementType>Demonic</ElementType>
+    <Damage>4</Damage>
+    <Cost>1</Cost>
+    <Health>9</Health>
+    <Skills></Skills>
+    <Level>1</Level>
+    <ReplacedBy>ScrambledLemure</ReplacedBy>
+    <Localization>
+      <en-US>
+        <DisplayName>Lemure</DisplayName>
+        <Description>When Lemure dies it is replaced by a 3/8 Scrambled Lemure.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Лемур</DisplayName>
+        <Description>Когда лемур погибает, он заменяется 3/8 возродившимся лемуром.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Lémure</DisplayName>
+        <Description>Quand le Lémure meurt, il est remplacé par un Lémure extirpé 3/8</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Ergodemon</Name>
+    <ElementType>Demonic</ElementType>
+    <Damage>6</Damage>
+    <Cost>4</Cost>
+    <Health>23</Health>
+    <Skills>DecreasesAllOpponentsPowersWhenKilled_1;</Skills>
+    <Ability></Ability>
+    <Level>3</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Ergodemon</DisplayName>
+        <Description>When Ergodemon dies, opponent loses 1 power of each type.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Эргодемон</DisplayName>
+        <Description>Когда эргодемон погибает, все Силы противника понижаются на 1.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Ergodémon</DisplayName>
+        <Description>Quand l'Ergodémon meurt, l'adversaire perds un élément de chaque type</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>DemonQuartermaster</Name>
+    <ElementType>Demonic</ElementType>
+    <Damage>2</Damage>
+    <Cost>4</Cost>
+    <Health>21</Health>
+    <Skills>IncreaseElementPowerBy1EachTurn_Demonic;</Skills>
+    <ReplacedBy>EnragedQuartermaster</ReplacedBy>
+    <Level>5</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Demon Quartermaster</DisplayName>
+        <Description>Demon Quartermaster increases the growth of owner's Demonic power by 1. When Demon Quartermaster dies it is replaced with a 6/20 Enraged Quartermaster.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Демон адьютант</DisplayName>
+        <Description>Повышает прирост демонической силы хозяина на 1. Когда демон адьютант погибает, он возраждается как 6/20 разъярённый адьютант.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Contremaître démoniaque</DisplayName>
+        <Description>Le Contremaître démoniaque augmente la croissance de l'élément Démoniaque de 1. Lorsqu'il est détruit, le Contremaître démoniaque est remplacé par un Contremaître enragé 6/20</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>Threeheadeddemon</Name>
+    <ElementType>Demonic</ElementType>
+    <Damage>3</Damage>
+    <Cost>7</Cost>
+    <Health>36</Health>
+    <Skills>AttackAllEnimies;</Skills>
+    <ReplacedBy>DemonApostate</ReplacedBy>
+    <Ability></Ability>
+    <Level>6</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Three-headed demon</DisplayName>
+        <Description>Each time Three-headed Demon attack it deals damage to opponent and to each of opponent's creatures. '+'When Three-headed Demon dies it is replaced with a (2/25) Demon Apostate.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Трёхголовый демон</DisplayName>
+        <Description>При атаке наносит урон сразу всем существам противника и самому противнику. '+'Когда трёхголовый демон погибает, он возрождается как (2/25) демон отступник.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Démon tricéphale</DisplayName>
+        <Description>Chaque fois que le Démon tricéphale attaque, il touche l'adversaire et toutes ses créatures. '+' Quand le Démon tricéphale meurt, il est remplacé par un Démon Apostat 2/25</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>GreaterDemon</Name>
+    <ElementType>Demonic</ElementType>
+    <Damage>8</Damage>
+    <Cost>8</Cost>
+    <Health>45</Health>
+    <Skills>DealsDamageToOpponentAndHisCreaturesEqualOwnerElementPower_Fire;</Skills>
+    <Ability></Ability>
+    <Level>6</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Greater Demon</DisplayName>
+        <Description>When Greater Demon is summoned it deals damage to opponent and each of opponent's creatures equal to owner's Fire power, but not more than 10 damage.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Верховный демон</DisplayName>
+        <Description>При входе в игру наносит урон противнику и всем его существам равный Силе Огня хозяина, но не более 10.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Démon Supérieur</DisplayName>
+        <Description>Quand le Démon Supérieur est invoqué il inflige à l'adversaire et à chacune de ses créatures autant de dommage que l'élément Feu de son propriétaire (maximum 10)</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>ScrambledLemure</Name>
+    <ElementType>Demonic</ElementType>
+    <Damage>3</Damage>
+    <Cost>1</Cost>
+    <Health>8</Health>
+    <IsHidden>true</IsHidden>
+    <Skills></Skills>
+    <Level>1</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Scrambled Lemure</DisplayName>
+        <Description>Demonic creature, cost 1 Attack 3, life 8</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Возрождённый лемур</DisplayName>
+        <Description>Демоническое существо</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Lémure extirpé</DisplayName>
+        <Description>créature démoniaque, coût 1 Attaque 3, 8 points de vie</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>EnragedQuartermaster</Name>
+    <ElementType>Demonic</ElementType>
+    <Damage>6</Damage>
+    <Cost>5</Cost>
+    <Health>20</Health>
+    <IsHidden>true</IsHidden>
+    <Skills></Skills>
+    <Level>2</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Enraged Quartermaster</DisplayName>
+        <Description>Demonic creature</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Разъярённый адьютант</DisplayName>
+        <Description>Демоническое существо</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Contremaître enragé</DisplayName>
+        <Description>créature démoniaque</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>DemonApostate</Name>
+    <ElementType>Demonic</ElementType>
+    <Damage>2</Damage>
+    <Cost>7</Cost>
+    <Health>25</Health>
+    <IsHidden>true</IsHidden>
+    <Skills>HealEveryone_2;</Skills>
+    <Level>3</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Demon Apostate</DisplayName>
+        <Description>Each turn Demon Apostate heals 2 life to owner and each of owner's creatures.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Демон отступник</DisplayName>
+        <Description>Каждый ход демон отступник лечит 2 жизни хозяину и всем его существам.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Démon Apostat</DisplayName>
+        <Description>Chaque tour, le Démon Apostat soigne 2 points de vie à son propriétaire et à chacune de ses créatures</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+
+  <!-- !!!!!!!!!!!!  GOBLINS   !!!!!!!!!!!!-->
+
+  <Card xsi:type="SpellCard">
+    <Name>RescueOperation</Name>
+    <ElementType>Goblins</ElementType>
+    <Cost>0</Cost>
+    <Target>OwnersCard</Target>
+    <Level>1</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Rescue operation</DisplayName>
+        <Description>Moves target creature to random empty slot and heals 5 life to it.</Description>
+      </en-US>
+    </Localization>
+  </Card>
+  <Card xsi:type="SpellCard">
+    <Name>ArmyofRats</Name>
+    <ElementType>Goblins</ElementType>
+    <Cost>3</Cost>
+    <Target>Indeterminate</Target>
+    <Level>4</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Army of Rats</DisplayName>
+        <Description>Deals 12 damage to each of opponent's creatures. Then deals 12 damage to a random caster's creature.</Description>
+      </en-US>
+    </Localization>
+  </Card>
+
+
+  <Card xsi:type="CreatureCard">
+    <Name>GoblinHero</Name>
+    <ElementType>Goblins</ElementType>
+    <Damage>3</Damage>
+    <Cost>1</Cost>
+    <Health>17</Health>
+    <Skills>GotDamageBonusByNeighboring_2;MovesToEmptySlotIfOppositingSlotIsNotEmpty;</Skills>
+    <Level>2</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Goblin Hero</DisplayName>
+        <Description>Goblin Hero receives +2 attack for each neighboring creature. Each time opponent summons a creature in the opposite slot, Goblin Hero retreats to random empty slot.</Description>
+      </en-US>
+    </Localization>
+  </Card>
+
+  <Card xsi:type="CreatureCard">
+    <Name>GoblinSaboteur</Name>
+    <ElementType>Goblins</ElementType>
+    <Damage>5</Damage>
+    <Cost>2</Cost>
+    <Health>20</Health>
+    <Skills>KillsCheapestOpponentsCardTypeWhenAttacksEmptySlot;</Skills>
+    <Level>3</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Goblin Saboteur</DisplayName>
+        <Description>Each time Goblin Saboteur deals damage to opponent, opponent loses cheapest card of random power type.</Description>
+      </en-US>
+    </Localization>
+  </Card>
+
+  <Card xsi:type="CreatureCard">
+    <Name>PortalJumper</Name>
+    <ElementType>Goblins</ElementType>
+    <Damage>5</Damage>
+    <Cost>4</Cost>
+    <Health>28</Health>
+    <Skills>MovesToRandomSlotEachTurn;StunsOppositingSlotEachTurn;</Skills>
+    <Level>4</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Portal Jumper</DisplayName>
+        <Description>At the end of each owner's turn Portal Jumper stuns the creature in the opposite slot for one turn and moves to a random slot.</Description>
+      </en-US>
+    </Localization>
+  </Card>
+
+  <Card xsi:type="CreatureCard">
+    <Name>GoblinLooter</Name>
+    <ElementType>Goblins</ElementType>
+    <Damage>5</Damage>
+    <Cost>5</Cost>
+    <Health>28</Health>
+    <Skills>GivesRandomPowerWhenAnyCreatureDies_1;</Skills>
+    <Level>5</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Goblin Looter</DisplayName>
+        <Description>Each time any creature dies Goblin Looter increases a random power of its owner by 1.</Description>
+      </en-US>
+    </Localization>
+  </Card>
+
+  <Card xsi:type="CreatureCard">
+    <Name>GoblinRaider</Name>
+    <ElementType>Goblins</ElementType>
+    <Damage>4</Damage>
+    <Cost>6</Cost>
+    <Health>22</Health>
+    <Skills>SummonsClonesToNeighboringSlots;</Skills>
+    <Level>6</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Goblin Raider</DisplayName>
+        <Description>When Goblin Raider is summoned, two other Goblin Raiders come into play in random empty slots.</Description>
+      </en-US>
+    </Localization>
+  </Card>
+
+  <Card xsi:type="CreatureCard">
+    <Name>Ratsmaster</Name>
+    <ElementType>Goblins</ElementType>
+    <Damage>7</Damage>
+    <Cost>7</Cost>
+    <Health>37</Health>
+    <Skills>DealsDamageToAllOpponentsCreaturesEachTurn_6;ReducesRandomOwnersPowerEachTurn_3;</Skills>
+    <Level>6</Level>
+    <Localization>
+      <en-US>
+        <DisplayName>Ratsmaster</DisplayName>
+        <Description>Each turn Ratsmaster deals 6 damage to each opponent's creature and reduces a random power of its owner by 3.</Description>
+      </en-US>
+    </Localization>
+  </Card>
+
+
+
+
+
+  <!-- !!!!!!!!!!!!  NEUTRAL   !!!!!!!!!!!!-->
+  <!--в компании она находится в стеке игрока-->
+  <Card xsi:type="CreatureCard">
+    <Name>JadeStatue</Name>
+    <ElementType>Neutral</ElementType>
+    <Damage>3</Damage>
+    <Cost>6</Cost>
+    <Health>20</Health>
+    <Skills>ExplodesWhenDied_25;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Jade Statue</DisplayName>
+        <Description>When Jade Statue is destroyed it deals 25 damage to each creature</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName>Нефритовая статуя</DisplayName>
+        <Description>Нефритовая статуя наносит 25 урона всем существам, когда умирает.</Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Statue de Jade</DisplayName>
+        <Description>Lorsque la Statue de Jade est détruite, elle inflige 25 dommages à chaque créature</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>NettlingFaerie</Name>
+    <ElementType>Neutral</ElementType>
+    <Damage>3</Damage>
+    <Cost>4</Cost>
+    <Health>15</Health>
+    <Skills>MovesToRandomSlotEachTurn;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Nettling Faerie</DisplayName>
+        <Description>Nettling Faerie moves to a random empty slot at the end of owner's turn</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName></DisplayName>
+        <Description></Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Fée agaçante</DisplayName>
+        <Description>La Fée agaçante se déplace à un emplacement au hasard à la fin du tour de son propriétaire</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>EverrainingLand</Name>
+    <ElementType>Neutral</ElementType>
+    <Cost>9</Cost>
+    <IsNotAttackable>true</IsNotAttackable>
+    <Health>90</Health>
+    <Skills>Immune;IncreaseCardsCostForEveryone_2;DealsDamageToSkipper_5;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Everraining Land</DisplayName>
+        <Description>Everraining Land is immune to spells. Everraining Land increases the cost of all cards by 2 for both players. Each time any player skips a turn it deals 5 damage to him.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName></DisplayName>
+        <Description></Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Terres des pluies éternelles</DisplayName>
+        <Description>Les Terres des pluies éternelles sont immunisées aux sorts. Elles augmentent le coût des cartes de 2 pour chaque joueur. Chaque fois qu'un joueur passe son tour, elles lui infligent 5 dommages.</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <!--
+      0xxx00
+      00xxx0
+  -->
+  <Card xsi:type="CreatureCard">
+    <Name>AmbrosiaStone</Name>
+    <ElementType>Neutral</ElementType>
+    <Cost>2</Cost>
+    <IsNotAttackable>true</IsNotAttackable>
+    <Health>20</Health>
+    <Skills>OpponentReceivesHPwhenDied_20;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Ambrosia Stone</DisplayName>
+        <Description>When Ambrosia Stone is destroyed opponent receives 20 life</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName></DisplayName>
+        <Description></Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Pierre d'ambroisie</DisplayName>
+        <Description>Lorsque la Pierre d'ambroisie est détruite, l'adversaire reçoit 20 points de vie</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>BafflerRoost</Name>
+    <ElementType>Neutral</ElementType>
+    <Cost>8</Cost>
+    <IsNotAttackable>true</IsNotAttackable>
+    <Health>99</Health>
+    <Skills>Immune;IncreaseCardsCostForEveryone2xTimes;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Baffler Roost</DisplayName>
+        <Description>Baffler Roost is immune to spells. Baffler Roost doubles the cost of all cards for both players.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName></DisplayName>
+        <Description></Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Perchoir Déflecteur</DisplayName>
+        <Description>Le Perchoir Déflecteur est immunisé aux sorts. Il double de coût des cartes de chaque joueur</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>PhoenixHydra</Name>
+    <ElementType>Neutral</ElementType>
+    <Damage>0</Damage>
+    <Cost>3</Cost>
+    <Health>10</Health>
+    <Skills>AttackAllEnimies;PhoenixHydra</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Phoenix Hydra</DisplayName>
+        <Description>Phoenix Hydra's attack damages opponent and each of opponent's creatures. Each time Phoenix Hydra dies it reborn and its attack permanently increases by 1.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName></DisplayName>
+        <Description></Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Hydre phoenix</DisplayName>
+        <Description>Les attaques de l'Hydre phoenix touchent l'adversaire et toutes ses créatures. Chaque fois qu'elle meurt, l'Hydre phoenix revient à la vie et augmente son attaque de 1</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <!--
+  00x00x <-
+  0x00x0 ->  
+  -->
+  <Card xsi:type="CreatureCard">
+    <Name>MarchingStone</Name>
+    <ElementType>Neutral</ElementType>
+    <Cost>6</Cost>
+    <IsNotAttackable>true</IsNotAttackable>
+    <Health>99</Health>
+    <Skills>Immune;Marching;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Marching Stone</DisplayName>
+        <Description>Marching Stone is immune to spells. Marching Stone moves one slot to the right each turn, swapping positions with any creature in that slot</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName></DisplayName>
+        <Description></Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Rocher en Mouvement</DisplayName>
+        <Description>Le Rocher en Mouvement est immunisé aux sorts. Le Rocher en Mouvement se déplace d'un emplacement vers la droite à chaque tour, échangeant sa position avec une éventuelle autre créature.</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <!-- lord of air, 00300, 50 hp -->
+  <Card xsi:type="CreatureCard">
+    <Name>AirSpirit</Name>
+    <ElementType>Neutral</ElementType>
+    <Damage>0</Damage>
+    <Cost>10</Cost>
+    <Health>50</Health>
+    <Skills>AttackAllEnimies;DamageEqualOpponentsCreaturesCount;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Air Spirit</DisplayName>
+        <Description>Each Air Spirit's attack damages opponent and each of opponent's creatures.</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName></DisplayName>
+        <Description></Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Esprit de l'Air</DisplayName>
+        <Description>Les attaques de l'Esprit de l'Air touchent l'adversaire et toutes ses créatures</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>MerfolkRevolutionary</Name>
+    <ElementType>Neutral</ElementType>
+    <Damage>4</Damage>
+    <Cost>7</Cost>
+    <Health>50</Health>
+    <Skills>Revolutionary;IncreasesElementPowerBy1EachTurn_Water;DecreasesOpponentsElementPowerBy1EachTurn_Water;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Merfolk Revolutionary</DisplayName>
+        <Description>Merfolk Revolutionary increases the growth of owner's Water power by 1 and reducrs the growth of opponent's Water power by 1. Each turn Merfolk Revolutionary moves to the player with lower life</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName></DisplayName>
+        <Description></Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Révolutionnaire Ondin</DisplayName>
+        <Description>Le Révolutionnaire Ondin augmente la croissance de l'Eau de son propriétaire de 1 et diminue celle de l'adversaire de 1. Chaque tour, le Révolutionnaire Ondin se met au service du joueur ayant le moins de points de vie</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <Card xsi:type="CreatureCard">
+    <Name>PeaceTree</Name>
+    <ElementType>Neutral</ElementType>
+    <Cost>4</Cost>
+    <IsNotAttackable>true</IsNotAttackable>
+    <Health>25</Health>
+    <Skills>ReducesAttackOfOpponentsCreatures_1;</Skills>
+    <Localization>
+      <en-US>
+        <DisplayName>Peace Tree</DisplayName>
+        <Description>Peace Tree reduces attack of opponent's creatures by 1</Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName></DisplayName>
+        <Description></Description>
+      </ru-RU>
+      <fr-FR>
+        <DisplayName>Arbre de Paix</DisplayName>
+        <Description>L'Arbre de Paix réduit l'attaque des créatures adverses de 1</Description>
+      </fr-FR>
+    </Localization>
+  </Card>
+  <!--<Card xsi:type="SpellCard">
+    <Name></Name>
+    <ElementType></ElementType>
+    <Cost></Cost>
+    <Target></Target>
+    <Level></Level>
+    <Localization>
+      <en-US>
+        <DisplayName></DisplayName>
+        <Description></Description>
+      </en-US>
+      <ru-RU>
+        <DisplayName></DisplayName>
+        <Description></Description>
+      </ru-RU>
+    </Localization>
+  </Card>
+
+    <Card xsi:type="CreatureCard">
+      <Name></Name>
+      <ElementType></ElementType>
+      <Cost></Cost>
+      <Damage></Damage>
+      <Level></Level>
+      <Health></Health>
+      <Skills></Skills>
+      <Localization>
+        <en-US>
+          <DisplayName></DisplayName>
+          <Description></Description>
+        </en-US>
+        <ru-RU>
+          <DisplayName></DisplayName>
+          <Description></Description>
+        </ru-RU>
+      </Localization>
+    </Card>-->
+</ArrayOfCard>

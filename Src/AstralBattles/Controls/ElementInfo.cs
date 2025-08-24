@@ -1,0 +1,196 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: AstralBattles.Controls.ElementInfo
+// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
+// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
+// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
+
+using AstralBattles.Core.Model;
+using GalaSoft.MvvmLight;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+
+#nullable disable
+namespace AstralBattles.Controls
+{
+public partial class ElementInfo : UserControl
+  {
+    internal UserControl control;
+    internal Grid LayoutRoot;
+    internal VisualStateGroup VisualStateGroup;
+    internal Storyboard manaDecreasedStoryboard;
+    internal Storyboard manaIncreasedStoryboard;
+    internal VisualState Default;
+    internal VisualState ManaDecreased;
+    internal VisualState ManaIncreased;
+    internal VisualState Selected;
+    internal StackPanel stackPanel;
+    internal TextBlock textBlock;
+    internal Border border;
+    internal Border border1;
+    internal TextBlock overflowTextBox;
+    private bool _contentLoaded;
+    private readonly Queue<string> overflowTextChangesStack = new Queue<string>();
+    private bool isAnimated;
+    public static readonly DependencyProperty OverflowTextProperty = DependencyProperty.Register(nameof (OverflowText), typeof (string), typeof (ElementInfo), new PropertyMetadata((object) ""));
+    public static readonly DependencyProperty HideNameProperty = DependencyProperty.Register(nameof (HideName), typeof (bool), typeof (ElementInfo), new PropertyMetadata((object) false));
+    public static readonly DependencyProperty ElementProperty = DependencyProperty.Register(nameof (Element), typeof (Element), typeof (ElementInfo), new PropertyMetadata((object) null, new PropertyChangedCallback(ElementInfo.ElementPropertyChangedStatic)));
+
+    [DebuggerNonUserCode]
+    public void InitializeComponent()
+    {
+      if (this._contentLoaded)
+        return;
+      this._contentLoaded = true;
+      Application.LoadComponent((object) this, new Uri("/AstralBattles;component/Controls/ElementInfo.xaml", UriKind.Relative));
+      this.control = (UserControl) this.FindName("control");
+      this.LayoutRoot = (Grid) this.FindName("LayoutRoot");
+      this.VisualStateGroup = (VisualStateGroup) this.FindName("VisualStateGroup");
+      this.manaDecreasedStoryboard = (Storyboard) this.FindName("manaDecreasedStoryboard");
+      this.manaIncreasedStoryboard = (Storyboard) this.FindName("manaIncreasedStoryboard");
+      this.Default = (VisualState) this.FindName("Default");
+      this.ManaDecreased = (VisualState) this.FindName("ManaDecreased");
+      this.ManaIncreased = (VisualState) this.FindName("ManaIncreased");
+      this.Selected = (VisualState) this.FindName("Selected");
+      this.stackPanel = (StackPanel) this.FindName("stackPanel");
+      this.textBlock = (TextBlock) this.FindName("textBlock");
+      this.border = (Border) this.FindName("border");
+      this.border1 = (Border) this.FindName("border1");
+      this.overflowTextBox = (TextBlock) this.FindName("overflowTextBox");
+    }
+
+    public ElementInfo()
+    {
+      this.InitializeComponent();
+      if (ViewModelBase.IsInDesignModeStatic)
+        return;
+      this.manaIncreasedStoryboard.Completed += new EventHandler(this.ManaIncreasedStoryboardCompleted);
+      this.manaDecreasedStoryboard.Completed += new EventHandler(this.ManaDecreasedStoryboardCompleted);
+    }
+
+    private void ManaDecreasedStoryboardCompleted(object sender, EventArgs e)
+    {
+      this.isAnimated = false;
+      if (this.overflowTextChangesStack.Count <= 0)
+        return;
+      this.ManaChangesAnimation(this.overflowTextChangesStack.Dequeue());
+    }
+
+    private void ManaIncreasedStoryboardCompleted(object sender, EventArgs e)
+    {
+      this.isAnimated = false;
+      if (this.overflowTextChangesStack.Count <= 0)
+        return;
+      this.ManaChangesAnimation(this.overflowTextChangesStack.Dequeue());
+    }
+
+    public Element Element
+    {
+      get => (Element) this.GetValue(ElementInfo.ElementProperty);
+      set => this.SetValue(ElementInfo.ElementProperty, (object) value);
+    }
+
+    public bool HideName
+    {
+      get => (bool) this.GetValue(ElementInfo.HideNameProperty);
+      set => this.SetValue(ElementInfo.HideNameProperty, (object) value);
+    }
+
+    public string OverflowText
+    {
+      get => (string) this.GetValue(ElementInfo.OverflowTextProperty);
+      set => this.SetValue(ElementInfo.OverflowTextProperty, (object) value);
+    }
+
+    private static void ElementPropertyChangedStatic(
+      DependencyObject d,
+      DependencyPropertyChangedEventArgs e)
+    {
+      if (!(d is ElementInfo))
+        return;
+      ((ElementInfo) d).ElementPropertyChanged(e.OldValue as Element);
+    }
+
+    private void ElementPropertyChanged(Element oldElement)
+    {
+      if (oldElement != null)
+      {
+        oldElement.ManaDecreased -= new EventHandler<IntValueChangedEventArgs>(this.ElementManaDecreased);
+        oldElement.ManaIncreased -= new EventHandler<IntValueChangedEventArgs>(this.ElementManaIncreased);
+      }
+      if (this.Element == null)
+        return;
+      this.Element.ManaDecreased += new EventHandler<IntValueChangedEventArgs>(this.ElementManaDecreased);
+      this.Element.ManaIncreased += new EventHandler<IntValueChangedEventArgs>(this.ElementManaIncreased);
+    }
+
+    private void ManaChangesAnimation(string str)
+    {
+      if (string.IsNullOrWhiteSpace(str))
+        this.isAnimated = false;
+      else if (str.Contains("-"))
+        this.DecreaseElementAnimation(str);
+      else
+        this.IncreaseElementAnimation(str);
+    }
+
+    private void IncreaseElementAnimation(string str)
+    {
+      if (this.isAnimated)
+      {
+        this.overflowTextChangesStack.Enqueue(str);
+      }
+      else
+      {
+        this.overflowTextBox.Foreground = (Brush) new SolidColorBrush(Colors.Green);
+        this.OverflowText = str;
+        this.isAnimated = true;
+        this.manaIncreasedStoryboard.Begin();
+      }
+    }
+
+    private void ElementManaIncreased(object sender, IntValueChangedEventArgs e)
+    {
+      this.IncreaseElementAnimation("+" + (object) e.Value);
+    }
+
+    private void DecreaseElementAnimation(string str)
+    {
+      if (this.isAnimated)
+      {
+        this.overflowTextChangesStack.Enqueue(str);
+      }
+      else
+      {
+        this.overflowTextBox.Foreground = (Brush) new SolidColorBrush(Colors.Red);
+        this.OverflowText = str;
+        this.isAnimated = true;
+        this.manaDecreasedStoryboard.Begin();
+      }
+    }
+
+    private void ElementManaDecreased(object sender, IntValueChangedEventArgs e)
+    {
+      this.DecreaseElementAnimation("-" + (object) e.Value);
+    }
+
+    public event EventHandler Selecting = delegate { };
+
+    protected override void OnTap(GestureEventArgs e)
+    {
+      this.Element.IsSelected = true;
+      this.Selecting((object) this, EventArgs.Empty);
+      base.OnTap(e);
+    }
+
+    private void UserControlLoaded(object sender, RoutedEventArgs e)
+    {
+    }
+  }
+}
+

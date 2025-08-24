@@ -1,0 +1,32 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: AstralBattles.Core.Model.PlayerPoint
+// Assembly: AstralBattles.Core, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
+// MVID: 6DDFE75F-AA71-406D-841A-1AF1DF23E1FF
+// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.Core.dll
+
+#nullable disable
+namespace AstralBattles.Core.Model
+{
+  public class PlayerPoint
+  {
+    public PlayerPoint()
+    {
+    }
+
+    public PlayerPoint(string name, int points, int wins, bool isPlayer)
+    {
+      this.Name = name;
+      this.Points = points;
+      this.IsPlayer = this.IsPlayer;
+      this.Wins = wins;
+    }
+
+    public int Points { get; set; }
+
+    public string Name { get; set; }
+
+    public int Wins { get; set; }
+
+    public bool IsPlayer { get; set; }
+  }
+}

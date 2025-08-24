@@ -1,0 +1,27 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: AstralBattles.Core.Model.Skill
+// Assembly: AstralBattles.Core, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
+// MVID: 6DDFE75F-AA71-406D-841A-1AF1DF23E1FF
+// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.Core.dll
+
+using System;
+
+#nullable disable
+namespace AstralBattles.Core.Model
+{
+  public class Skill
+  {
+    public string Name { get; set; }
+
+    public string Argument { get; set; }
+
+    public override string ToString() => this.Name + " " + this.Argument;
+
+    public int GetArgumentAsInt() => int.Parse(this.Argument);
+
+    public ElementTypeEnum GetArgumentAsElement()
+    {
+      return (ElementTypeEnum) Enum.Parse(typeof (ElementTypeEnum), this.Argument, true);
+    }
+  }
+}
