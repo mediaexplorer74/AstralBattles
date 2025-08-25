@@ -17,8 +17,10 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
-    <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <LangVersion>latest</LangVersion>
+    <PackageCertificateThumbprint>334BEDDB0CCC705FADADB95C36F515EB1257EC67</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>AstralBattles_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -120,6 +122,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Core\Infrastructure\NamespaceMappings.cs" />
+    <Compile Include="Core\Infrastructure\PageConverter.cs" />
+    <Compile Include="Core\Services\NavigationService.cs" />
     <Compile Include="Controls\BusyIndicatorControl.cs" />
     <Compile Include="Controls\CampaignCanvas.cs" />
     <Compile Include="Controls\CampaignFoeFace.xaml.cs">
@@ -256,7 +261,7 @@
     <Compile Include="Model\DeckField.cs" />
     <Compile Include="Options\OptionsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\PathConstants.cs" />
+    <Compile Include="PathConstants.cs" />
     <Compile Include="ServiceLocator.cs" />
     <Compile Include="ServiceReference\GameInfo.cs" />
     <Compile Include="ServiceReference\GameServiceClient.cs" />
@@ -349,64 +354,105 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\ApplicationIcon.png" />
-    <Content Include="Assets\Background.png" />
-    <Content Include="Assets\icons\appbar.next.rest.png" />
-    <Content Include="Assets\Resources\Icons\appbar.right.png" />
-    <Content Include="Assets\Resources\Sounds\AcidicRain.wav" />
-    <Content Include="Assets\Resources\Sounds\Armageddon.wav" />
-    <Content Include="Assets\Resources\Sounds\ArmyOfRats.wav" />
-    <Content Include="Assets\Resources\Sounds\Attack.wav" />
-    <Content Include="Assets\Resources\Sounds\BloodRitual.wav" />
-    <Content Include="Assets\Resources\Sounds\BreatheFire.wav" />
-    <Content Include="Assets\Resources\Sounds\CalltoThunder.wav" />
-    <Content Include="Assets\Resources\Sounds\cannonade.wav" />
-    <Content Include="Assets\Resources\Sounds\ChainLightning.wav" />
-    <Content Include="Assets\Resources\Sounds\ChaoticWave.wav" />
-    <Content Include="Assets\Resources\Sounds\CursedFog.wav" />
-    <Content Include="Assets\Resources\Sounds\darkritual.wav" />
-    <Content Include="Assets\Resources\Sounds\Disintegrate.wav" />
-    <Content Include="Assets\Resources\Sounds\DivineIntervention.wav" />
-    <Content Include="Assets\Resources\Sounds\DivineJustice.wav" />
-    <Content Include="Assets\Resources\Sounds\doombolt.wav" />
-    <Content Include="Assets\Resources\Sounds\Drainsouls.wav" />
-    <Content Include="Assets\Resources\Sounds\Enrage.wav" />
-    <Content Include="Assets\Resources\Sounds\Explosion.wav" />
-    <Content Include="Assets\Resources\Sounds\Fireball.wav" />
-    <Content Include="Assets\Resources\Sounds\Flamewave.wav" />
-    <Content Include="Assets\Resources\Sounds\Gaze.wav" />
-    <Content Include="Assets\Resources\Sounds\HealingSpray.wav" />
-    <Content Include="Assets\Resources\Sounds\Hellfire.wav" />
-    <Content Include="Assets\Resources\Sounds\hypnosys.wav" />
-    <Content Include="Assets\Resources\Sounds\Inferno.wav" />
-    <Content Include="Assets\Resources\Sounds\LightningBolt.wav" />
-    <Content Include="Assets\Resources\Sounds\madness.wav" />
-    <Content Include="Assets\Resources\Sounds\ManaBurn.wav" />
-    <Content Include="Assets\Resources\Sounds\Meditation.wav" />
-    <Content Include="Assets\Resources\Sounds\MoveFalcon.wav" />
-    <Content Include="Assets\Resources\Sounds\NaturalFury.wav" />
-    <Content Include="Assets\Resources\Sounds\NaturalHealing.wav" />
-    <Content Include="Assets\Resources\Sounds\NatureRitual.wav" />
-    <Content Include="Assets\Resources\Sounds\overtime.wav" />
-    <Content Include="Assets\Resources\Sounds\Poison.wav" />
-    <Content Include="Assets\Resources\Sounds\PoisonousCloud.wav" />
-    <Content Include="Assets\Resources\Sounds\PowerChains.wav" />
-    <Content Include="Assets\Resources\Sounds\PumpEnergy.wav" />
-    <Content Include="Assets\Resources\Sounds\Rejuvenation.wav" />
-    <Content Include="Assets\Resources\Sounds\RescueOperation.wav" />
-    <Content Include="Assets\Resources\Sounds\RitualOfGlory.wav" />
-    <Content Include="Assets\Resources\Sounds\Sacrifice.wav" />
-    <Content Include="Assets\Resources\Sounds\SonicBoom.wav" />
-    <Content Include="Assets\Resources\Sounds\StealEssence.wav" />
-    <Content Include="Assets\Resources\Sounds\StoneRain.wav" />
-    <Content Include="Assets\Resources\Sounds\Summon.wav" />
-    <Content Include="Assets\Resources\Sounds\Tornado.wav" />
-    <Content Include="Assets\Resources\Sounds\Trumpet.wav" />
-    <Content Include="Assets\Resources\Sounds\Weakness.wav" />
-    <Content Include="Assets\Resources\Sounds\wrathofgod.wav" />
-    <Content Include="Assets\SplashScreenImage.jpg" />
-    <Content Include="Assets\Todo.txt" />
-    <Content Include="Assets\WMAppManifest.xml" />
+    <Content Include="Assets\LargeTile.scale-100.png" />
+    <Content Include="Assets\LargeTile.scale-125.png" />
+    <Content Include="Assets\LargeTile.scale-150.png" />
+    <Content Include="Assets\LargeTile.scale-200.png" />
+    <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\SmallTile.scale-100.png" />
+    <Content Include="Assets\SmallTile.scale-125.png" />
+    <Content Include="Assets\SmallTile.scale-150.png" />
+    <Content Include="Assets\SmallTile.scale-200.png" />
+    <Content Include="Assets\SmallTile.scale-400.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Resources\ApplicationIcon.png" />
+    <Content Include="Resources\Background.png" />
+    <Content Include="Resources\Icons\appbar.next.rest.png" />
+    <Content Include="Resources\Icons\appbar.right.png" />
+    <Content Include="Resources\Sounds\AcidicRain.wav" />
+    <Content Include="Resources\Sounds\Armageddon.wav" />
+    <Content Include="Resources\Sounds\ArmyOfRats.wav" />
+    <Content Include="Resources\Sounds\Attack.wav" />
+    <Content Include="Resources\Sounds\BloodRitual.wav" />
+    <Content Include="Resources\Sounds\BreatheFire.wav" />
+    <Content Include="Resources\Sounds\CalltoThunder.wav" />
+    <Content Include="Resources\Sounds\cannonade.wav" />
+    <Content Include="Resources\Sounds\ChainLightning.wav" />
+    <Content Include="Resources\Sounds\ChaoticWave.wav" />
+    <Content Include="Resources\Sounds\CursedFog.wav" />
+    <Content Include="Resources\Sounds\darkritual.wav" />
+    <Content Include="Resources\Sounds\Disintegrate.wav" />
+    <Content Include="Resources\Sounds\DivineIntervention.wav" />
+    <Content Include="Resources\Sounds\DivineJustice.wav" />
+    <Content Include="Resources\Sounds\doombolt.wav" />
+    <Content Include="Resources\Sounds\Drainsouls.wav" />
+    <Content Include="Resources\Sounds\Enrage.wav" />
+    <Content Include="Resources\Sounds\Explosion.wav" />
+    <Content Include="Resources\Sounds\Fireball.wav" />
+    <Content Include="Resources\Sounds\Flamewave.wav" />
+    <Content Include="Resources\Sounds\Gaze.wav" />
+    <Content Include="Resources\Sounds\HealingSpray.wav" />
+    <Content Include="Resources\Sounds\Hellfire.wav" />
+    <Content Include="Resources\Sounds\hypnosys.wav" />
+    <Content Include="Resources\Sounds\Inferno.wav" />
+    <Content Include="Resources\Sounds\LightningBolt.wav" />
+    <Content Include="Resources\Sounds\madness.wav" />
+    <Content Include="Resources\Sounds\ManaBurn.wav" />
+    <Content Include="Resources\Sounds\Meditation.wav" />
+    <Content Include="Resources\Sounds\MoveFalcon.wav" />
+    <Content Include="Resources\Sounds\NaturalFury.wav" />
+    <Content Include="Resources\Sounds\NaturalHealing.wav" />
+    <Content Include="Resources\Sounds\NatureRitual.wav" />
+    <Content Include="Resources\Sounds\overtime.wav" />
+    <Content Include="Resources\Sounds\Poison.wav" />
+    <Content Include="Resources\Sounds\PowerChains.wav" />
+    <Content Include="Resources\Sounds\PumpEnergy.wav" />
+    <Content Include="Resources\Sounds\Rejuvenation.wav" />
+    <Content Include="Resources\Sounds\RescueOperation.wav" />
+    <Content Include="Resources\Sounds\RitualOfGlory.wav" />
+    <Content Include="Resources\Sounds\Sacrifice.wav" />
+    <Content Include="Resources\Sounds\SonicBoom.wav" />
+    <Content Include="Resources\Sounds\StealEssence.wav" />
+    <Content Include="Resources\Sounds\StoneRain.wav" />
+    <Content Include="Resources\Sounds\Summon.wav" />
+    <Content Include="Resources\Sounds\Tornado.wav" />
+    <Content Include="Resources\Sounds\Trumpet.wav" />
+    <Content Include="Resources\Sounds\Weakness.wav" />
+    <Content Include="Resources\Sounds\wrathofgod.wav" />
     <Content Include="Core\CardDefinitions.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -414,278 +460,535 @@
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="Resources\avatars\batalus.jpg" />
-    <Content Include="Resources\avatars\drina.jpg" />
-    <Content Include="Resources\avatars\face1.jpg" />
-    <Content Include="Resources\avatars\face10.jpg" />
-    <Content Include="Resources\avatars\face11.jpg" />
-    <Content Include="Resources\avatars\face12.jpg" />
-    <Content Include="Resources\avatars\face13.jpg" />
-    <Content Include="Resources\avatars\face14.jpg" />
-    <Content Include="Resources\avatars\face15.jpg" />
-    <Content Include="Resources\avatars\face16.jpg" />
-    <Content Include="Resources\avatars\face17.jpg" />
-    <Content Include="Resources\avatars\face18.jpg" />
-    <Content Include="Resources\avatars\face19.jpg" />
-    <Content Include="Resources\avatars\face2.jpg" />
-    <Content Include="Resources\avatars\face20.jpg" />
-    <Content Include="Resources\avatars\face21.jpg" />
-    <Content Include="Resources\avatars\face22.jpg" />
-    <Content Include="Resources\avatars\face23.jpg" />
-    <Content Include="Resources\avatars\face24.jpg" />
-    <Content Include="Resources\avatars\face25.jpg" />
-    <Content Include="Resources\avatars\face26.jpg" />
-    <Content Include="Resources\avatars\face27.jpg" />
-    <Content Include="Resources\avatars\face28.jpg" />
-    <Content Include="Resources\avatars\face29.jpg" />
-    <Content Include="Resources\avatars\face3.jpg" />
-    <Content Include="Resources\avatars\face30.jpg" />
-    <Content Include="Resources\avatars\face31.jpg" />
-    <Content Include="Resources\avatars\face32.jpg" />
-    <Content Include="Resources\avatars\face33.jpg" />
-    <Content Include="Resources\avatars\face34.jpg" />
-    <Content Include="Resources\avatars\face35.jpg" />
-    <Content Include="Resources\avatars\face36.jpg" />
-    <Content Include="Resources\avatars\face37.jpg" />
-    <Content Include="Resources\avatars\face38.jpg" />
-    <Content Include="Resources\avatars\face39.jpg" />
-    <Content Include="Resources\avatars\face4.jpg" />
-    <Content Include="Resources\avatars\face40.jpg" />
-    <Content Include="Resources\avatars\face41.jpg" />
-    <Content Include="Resources\avatars\face42.jpg" />
-    <Content Include="Resources\avatars\face43.jpg" />
-    <Content Include="Resources\avatars\face44.jpg" />
-    <Content Include="Resources\avatars\face45.jpg" />
-    <Content Include="Resources\avatars\face46.jpg" />
-    <Content Include="Resources\avatars\face47.jpg" />
-    <Content Include="Resources\avatars\face48.jpg" />
-    <Content Include="Resources\avatars\face49.jpg" />
-    <Content Include="Resources\avatars\face5.jpg" />
-    <Content Include="Resources\avatars\face50.jpg" />
-    <Content Include="Resources\avatars\face51.jpg" />
-    <Content Include="Resources\avatars\face52.jpg" />
-    <Content Include="Resources\avatars\face53.jpg" />
-    <Content Include="Resources\avatars\face54.jpg" />
-    <Content Include="Resources\avatars\face55.jpg" />
-    <Content Include="Resources\avatars\face56.jpg" />
-    <Content Include="Resources\avatars\face57.jpg" />
-    <Content Include="Resources\avatars\face58.jpg" />
-    <Content Include="Resources\avatars\face59.jpg" />
-    <Content Include="Resources\avatars\face6.jpg" />
-    <Content Include="Resources\avatars\face60.jpg" />
-    <Content Include="Resources\avatars\face61.jpg" />
-    <Content Include="Resources\avatars\face62.jpg" />
-    <Content Include="Resources\avatars\face63.jpg" />
-    <Content Include="Resources\avatars\face64.jpg" />
-    <Content Include="Resources\avatars\face65.jpg" />
-    <Content Include="Resources\avatars\face66.jpg" />
-    <Content Include="Resources\avatars\face67.jpg" />
-    <Content Include="Resources\avatars\face68.jpg" />
-    <Content Include="Resources\avatars\face69.jpg" />
-    <Content Include="Resources\avatars\face7.jpg" />
-    <Content Include="Resources\avatars\face70.jpg" />
-    <Content Include="Resources\avatars\face71.jpg" />
-    <Content Include="Resources\avatars\face72.jpg" />
-    <Content Include="Resources\avatars\face73.jpg" />
-    <Content Include="Resources\avatars\face74.jpg" />
-    <Content Include="Resources\avatars\face75.jpg" />
-    <Content Include="Resources\avatars\face76.jpg" />
-    <Content Include="Resources\avatars\face77.jpg" />
-    <Content Include="Resources\avatars\face78.jpg" />
-    <Content Include="Resources\avatars\face79.jpg" />
-    <Content Include="Resources\avatars\face8.jpg" />
-    <Content Include="Resources\avatars\face9.jpg" />
-    <Content Include="Resources\avatars\forwor.jpg" />
-    <Content Include="Resources\avatars\frida.jpg" />
-    <Content Include="Resources\avatars\izza.jpg" />
-    <Content Include="Resources\avatars\kassandra.jpg" />
-    <Content Include="Resources\avatars\lina.jpg" />
-    <Content Include="Resources\avatars\player.jpg" />
-    <Content Include="Resources\avatars\roland.jpg" />
-    <Content Include="Resources\avatars\starper.jpg" />
-    <Content Include="Resources\avatars\unknown.png" />
-    <Content Include="Resources\avatars\vatrax.jpg" />
-    <Content Include="Resources\backgrounds\panoramabackground.jpg" />
-    <Content Include="Resources\backgrounds\steel.jpg" />
-    <Content Include="Resources\backgrounds\titanium-texture.jpg" />
-    <Content Include="Resources\backgrounds\top.jpg" />
-    <Content Include="Resources\campaign\circle.png" />
-    <Content Include="Resources\campaign\circle2.png" />
-    <Content Include="Resources\campaign\map1.jpg" />
-    <Content Include="Resources\campaign\small.png" />
-    <Content Include="Resources\cards\air\airelemental.jpg" />
-    <Content Include="Resources\cards\air\angel.jpg" />
-    <Content Include="Resources\cards\air\faerieapprentice.jpg" />
-    <Content Include="Resources\cards\air\faeriesage.jpg" />
-    <Content Include="Resources\cards\air\griffin.jpg" />
-    <Content Include="Resources\cards\air\lightningcloud.jpg" />
-    <Content Include="Resources\cards\air\phoenix.jpg" />
-    <Content Include="Resources\cards\air\spells\calltothunder.png" />
-    <Content Include="Resources\cards\air\spells\chainlightning.png" />
-    <Content Include="Resources\cards\air\spells\lightningbolt.png" />
-    <Content Include="Resources\cards\air\spells\locked.png" />
-    <Content Include="Resources\cards\air\spells\tornado.png" />
-    <Content Include="Resources\cards\air\titan.jpg" />
-    <Content Include="Resources\cards\air\walloflightnings.jpg" />
-    <Content Include="Resources\cards\beast\ancientdragon.jpg" />
-    <Content Include="Resources\cards\beast\basilisk.jpg" />
-    <Content Include="Resources\cards\beast\deathfalcon.jpg" />
-    <Content Include="Resources\cards\beast\energybeast.jpg" />
-    <Content Include="Resources\cards\beast\magichamster.jpg" />
-    <Content Include="Resources\cards\beast\scorpion.jpg" />
-    <Content Include="Resources\cards\beast\spells\breathefire.png" />
-    <Content Include="Resources\cards\beast\spells\enrage.png" />
-    <Content Include="Resources\cards\beast\spells\gaze.png" />
-    <Content Include="Resources\cards\beast\spells\movefalcon.png" />
-    <Content Include="Resources\cards\beast\spells\naturalhealing.png" />
-    <Content Include="Resources\cards\beast\spells\poison.png" />
-    <Content Include="Resources\cards\beast\spells\pumpenergy.png" />
-    <Content Include="Resources\cards\beast\spells\trumpet.png" />
-    <Content Include="Resources\cards\beast\whiteelephant.jpg" />
-    <Content Include="Resources\cards\beast\wolverine.jpg" />
-    <Content Include="Resources\cards\chaos\insanianberserker.jpg" />
-    <Content Include="Resources\cards\chaos\insaniancatapult.jpg" />
-    <Content Include="Resources\cards\chaos\insanianking.jpg" />
-    <Content Include="Resources\cards\chaos\insanianlord.jpg" />
-    <Content Include="Resources\cards\chaos\insanianpeacekeeper.jpg" />
-    <Content Include="Resources\cards\chaos\insanianshaman.jpg" />
-    <Content Include="Resources\cards\chaos\soldier.jpg" />
-    <Content Include="Resources\cards\chaos\spells\chaoticwave.png" />
-    <Content Include="Resources\cards\chaos\spells\doombolt.png" />
-    <Content Include="Resources\cards\control\ancientgiant.jpg" />
-    <Content Include="Resources\cards\control\ancienthorror.jpg" />
-    <Content Include="Resources\cards\control\ancientwitch.jpg" />
-    <Content Include="Resources\cards\control\dampingtower.jpg" />
-    <Content Include="Resources\cards\control\goblinshaman.jpg" />
-    <Content Include="Resources\cards\control\mindstealer.jpg" />
-    <Content Include="Resources\cards\control\spells\poisonouscloud.png" />
-    <Content Include="Resources\cards\control\spells\weakness.png" />
-    <Content Include="Resources\cards\death\ancientwitch.jpg" />
-    <Content Include="Resources\cards\death\banshee.jpg" />
-    <Content Include="Resources\cards\death\emissaryofdorlak.jpg" />
-    <Content Include="Resources\cards\death\insanianlord.jpg" />
-    <Content Include="Resources\cards\death\keeperofdeath.jpg" />
-    <Content Include="Resources\cards\death\masterlich.jpg" />
-    <Content Include="Resources\cards\death\spectralassassin.jpg" />
-    <Content Include="Resources\cards\death\spells\bloodritual.png" />
-    <Content Include="Resources\cards\death\spells\cursedfog.png" />
-    <Content Include="Resources\cards\death\spells\darkritual.png" />
-    <Content Include="Resources\cards\death\spells\drainsouls.png" />
-    <Content Include="Resources\cards\death\spells\emissaryofdorlakspell.png" />
-    <Content Include="Resources\cards\death\spells\locked.png" />
-    <Content Include="Resources\cards\death\vampire.jpg" />
-    <Content Include="Resources\cards\death\wolverine.jpg" />
-    <Content Include="Resources\cards\demonic\demonapostate.jpg" />
-    <Content Include="Resources\cards\demonic\demonquartermaster.jpg" />
-    <Content Include="Resources\cards\demonic\enragedquartermaster.jpg" />
-    <Content Include="Resources\cards\demonic\ergodemon.jpg" />
-    <Content Include="Resources\cards\demonic\greaterdemon.jpg" />
-    <Content Include="Resources\cards\demonic\lemure.jpg" />
-    <Content Include="Resources\cards\demonic\scrambledlemure.jpg" />
-    <Content Include="Resources\cards\demonic\spells\explosion.png" />
-    <Content Include="Resources\cards\demonic\spells\hellfire.png" />
-    <Content Include="Resources\cards\demonic\spells\powerchains.png" />
-    <Content Include="Resources\cards\demonic\threeheadeddemon.jpg" />
-    <Content Include="Resources\cards\earth\earthelemental.jpg" />
-    <Content Include="Resources\cards\earth\elfhermit.jpg" />
-    <Content Include="Resources\cards\earth\elvenhealer.jpg" />
-    <Content Include="Resources\cards\earth\forestspider.jpg" />
-    <Content Include="Resources\cards\earth\forestsprite.jpg" />
-    <Content Include="Resources\cards\earth\giantspider.jpg" />
-    <Content Include="Resources\cards\earth\hydra.jpg" />
-    <Content Include="Resources\cards\earth\masterhealer.jpg" />
-    <Content Include="Resources\cards\earth\spells\locked.png" />
-    <Content Include="Resources\cards\earth\spells\naturalfury.png" />
-    <Content Include="Resources\cards\earth\spells\natureritual.png" />
-    <Content Include="Resources\cards\earth\spells\rejuvenation.png" />
-    <Content Include="Resources\cards\earth\spells\stonerain.png" />
-    <Content Include="Resources\cards\earth\troll.jpg" />
-    <Content Include="Resources\cards\fire\bargul.jpg" />
-    <Content Include="Resources\cards\fire\dragon.jpg" />
-    <Content Include="Resources\cards\fire\firedrake.jpg" />
-    <Content Include="Resources\cards\fire\fireelemental.jpg" />
-    <Content Include="Resources\cards\fire\goblinberserker.jpg" />
-    <Content Include="Resources\cards\fire\minotaurcommander.jpg" />
-    <Content Include="Resources\cards\fire\orcchieftain.jpg" />
-    <Content Include="Resources\cards\fire\priestoffire.jpg" />
-    <Content Include="Resources\cards\fire\spells\armageddon.png" />
-    <Content Include="Resources\cards\fire\spells\flamewave.png" />
-    <Content Include="Resources\cards\fire\spells\inferno.png" />
-    <Content Include="Resources\cards\fire\spells\locked.png" />
-    <Content Include="Resources\cards\fire\walloffire.jpg" />
-    <Content Include="Resources\cards\goblins\goblinhero.png" />
-    <Content Include="Resources\cards\goblins\goblinlooter.png" />
-    <Content Include="Resources\cards\goblins\goblinraider.png" />
-    <Content Include="Resources\cards\goblins\goblinsaboteur.png" />
-    <Content Include="Resources\cards\goblins\portaljumper.png" />
-    <Content Include="Resources\cards\goblins\ratsmaster.png" />
-    <Content Include="Resources\cards\goblins\spells\armyofrats.png" />
-    <Content Include="Resources\cards\goblins\spells\rescueoperation.png" />
-    <Content Include="Resources\cards\holy\angel.jpg" />
-    <Content Include="Resources\cards\holy\archangel.jpg" />
-    <Content Include="Resources\cards\holy\holyguard.jpg" />
-    <Content Include="Resources\cards\holy\monk.jpg" />
-    <Content Include="Resources\cards\holy\paladin.jpg" />
-    <Content Include="Resources\cards\holy\spells\divineintervention.png" />
-    <Content Include="Resources\cards\holy\spells\divinejustice.png" />
-    <Content Include="Resources\cards\holy\spells\wrathofgod.png" />
-    <Content Include="Resources\cards\illusion\hypnotist.jpg" />
-    <Content Include="Resources\cards\illusion\oracle.jpg" />
-    <Content Include="Resources\cards\illusion\phantomwarrior.jpg" />
-    <Content Include="Resources\cards\illusion\spectralassassin.jpg" />
-    <Content Include="Resources\cards\illusion\spectralmage.jpg" />
-    <Content Include="Resources\cards\illusion\spells\hypnosys.png" />
-    <Content Include="Resources\cards\illusion\spells\madness.png" />
-    <Content Include="Resources\cards\illusion\wallofreflection.jpg" />
-    <Content Include="Resources\cards\mechanical\cannon.jpg" />
-    <Content Include="Resources\cards\mechanical\dwarvencraftsman.jpg" />
-    <Content Include="Resources\cards\mechanical\dwarvenrifleman.jpg" />
-    <Content Include="Resources\cards\mechanical\ornithopter.jpg" />
-    <Content Include="Resources\cards\mechanical\spells\cannonade.png" />
-    <Content Include="Resources\cards\mechanical\spells\overtime.png" />
-    <Content Include="Resources\cards\mechanical\steamtank.jpg" />
-    <Content Include="Resources\cards\mechanical\steelgolem.jpg" />
-    <Content Include="Resources\cards\sorcery\spells\disintegrate.png" />
-    <Content Include="Resources\cards\sorcery\spells\fireball.png" />
-    <Content Include="Resources\cards\sorcery\spells\healingspray.png" />
-    <Content Include="Resources\cards\sorcery\spells\manaburn.png" />
-    <Content Include="Resources\cards\sorcery\spells\ritualofglory.png" />
-    <Content Include="Resources\cards\sorcery\spells\sacrifice.png" />
-    <Content Include="Resources\cards\sorcery\spells\sonicboom.png" />
-    <Content Include="Resources\cards\sorcery\spells\stealessence.png" />
-    <Content Include="Resources\cards\water\astralguard.jpg" />
-    <Content Include="Resources\cards\water\giantturtle.jpg" />
-    <Content Include="Resources\cards\water\icegolem.jpg" />
-    <Content Include="Resources\cards\water\iceguard.jpg" />
-    <Content Include="Resources\cards\water\merfolkapostate.jpg" />
-    <Content Include="Resources\cards\water\merfolkelder.jpg" />
-    <Content Include="Resources\cards\water\merfolkoverlord.jpg" />
-    <Content Include="Resources\cards\water\mindmaster.jpg" />
-    <Content Include="Resources\cards\water\seasprite.jpg" />
-    <Content Include="Resources\cards\water\spells\acidicrain.png" />
-    <Content Include="Resources\cards\water\spells\locked.png" />
-    <Content Include="Resources\cards\water\spells\meditation.png" />
-    <Content Include="Resources\cards\water\waterelemental.jpg" />
-    <Content Include="Resources\common\appbar.align.left.png" />
-    <Content Include="Resources\common\appbar.timer.png" />
-    <Content Include="Resources\common\clock.png" />
-    <Content Include="Resources\common\smartphone-icon.png" />
-    <Content Include="Resources\elements\air.jpg" />
-    <Content Include="Resources\elements\beast.jpg" />
-    <Content Include="Resources\elements\chaos.jpg" />
-    <Content Include="Resources\elements\control.jpg" />
-    <Content Include="Resources\elements\death.jpg" />
-    <Content Include="Resources\elements\demonic.jpg" />
-    <Content Include="Resources\elements\earth.jpg" />
-    <Content Include="Resources\elements\fire.jpg" />
-    <Content Include="Resources\elements\holy.jpg" />
-    <Content Include="Resources\elements\illusion.jpg" />
-    <Content Include="Resources\elements\mechanical.jpg" />
-    <Content Include="Resources\elements\sorcery.jpg" />
-    <Content Include="Resources\elements\water.jpg" />
-    <Content Include="Resources\icons\skipturn.png" />
+    <Content Include="Resources\Avatars\batalus.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\drina.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face10.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face11.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face12.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face13.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face14.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face15.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face16.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face17.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face18.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face19.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face20.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face21.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face22.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face23.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face24.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face25.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face26.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face27.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face28.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face30.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face31.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face32.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face33.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face34.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face35.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face36.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face37.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face38.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face39.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face40.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face41.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face42.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face43.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face44.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face45.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face46.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face47.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face48.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face49.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face50.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face51.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face52.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face53.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face54.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face55.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face56.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face57.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face58.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face59.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face6.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face60.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face61.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face62.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face63.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face64.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face65.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face66.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face67.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face68.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face69.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face7.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face70.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face71.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face72.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face73.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face74.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face75.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face76.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face77.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face78.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face79.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face8.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\face9.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\forwor.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\frida.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\izza.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\kassandra.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\lina.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\player.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\roland.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\starper.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\unknown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Avatars\vatrax.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Backgrounds\panoramabackground.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Backgrounds\steel.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Backgrounds\titanium-texture.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Backgrounds\top.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Campaign\circle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Campaign\circle2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Campaign\map1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Campaign\small.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\air\airelemental.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\air\angel.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\air\faerieapprentice.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\air\faeriesage.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\air\griffin.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\air\lightningcloud.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\air\phoenix.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\air\spells\calltothunder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\air\spells\chainlightning.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\air\spells\lightningbolt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\air\spells\locked.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\air\spells\tornado.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\air\titan.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\air\walloflightnings.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\ancientdragon.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\basilisk.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\deathfalcon.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\energybeast.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\magichamster.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\scorpion.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\spells\breathefire.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\spells\enrage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\spells\gaze.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\spells\movefalcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\spells\naturalhealing.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\spells\poison.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\spells\pumpenergy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\spells\trumpet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\whiteelephant.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\beast\wolverine.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\chaos\insanianberserker.jpg" />
+    <Content Include="Resources\Cards\chaos\insaniancatapult.jpg" />
+    <Content Include="Resources\Cards\chaos\insanianking.jpg" />
+    <Content Include="Resources\Cards\chaos\insanianlord.jpg" />
+    <Content Include="Resources\Cards\chaos\insanianpeacekeeper.jpg" />
+    <Content Include="Resources\Cards\chaos\insanianshaman.jpg" />
+    <Content Include="Resources\Cards\chaos\soldier.jpg" />
+    <Content Include="Resources\Cards\chaos\spells\chaoticwave.png" />
+    <Content Include="Resources\Cards\chaos\spells\doombolt.png" />
+    <Content Include="Resources\Cards\control\ancientgiant.jpg" />
+    <Content Include="Resources\Cards\control\ancienthorror.jpg" />
+    <Content Include="Resources\Cards\control\ancientwitch.jpg" />
+    <Content Include="Resources\Cards\control\dampingtower.jpg" />
+    <Content Include="Resources\Cards\control\goblinshaman.jpg" />
+    <Content Include="Resources\Cards\control\mindstealer.jpg" />
+    <Content Include="Resources\Cards\control\spells\poisonouscloud.png" />
+    <Content Include="Resources\Cards\control\spells\weakness.png" />
+    <Content Include="Resources\Cards\death\ancientwitch.jpg" />
+    <Content Include="Resources\Cards\death\banshee.jpg" />
+    <Content Include="Resources\Cards\death\emissaryofdorlak.jpg" />
+    <Content Include="Resources\Cards\death\insanianlord.jpg" />
+    <Content Include="Resources\Cards\death\keeperofdeath.jpg" />
+    <Content Include="Resources\Cards\death\masterlich.jpg" />
+    <Content Include="Resources\Cards\death\spectralassassin.jpg" />
+    <Content Include="Resources\Cards\death\spells\bloodritual.png" />
+    <Content Include="Resources\Cards\death\spells\cursedfog.png" />
+    <Content Include="Resources\Cards\death\spells\darkritual.png" />
+    <Content Include="Resources\Cards\death\spells\drainsouls.png" />
+    <Content Include="Resources\Cards\death\spells\emissaryofdorlakspell.png" />
+    <Content Include="Resources\Cards\death\spells\locked.png" />
+    <Content Include="Resources\Cards\death\vampire.jpg" />
+    <Content Include="Resources\Cards\death\wolverine.jpg" />
+    <Content Include="Resources\Cards\demonic\demonapostate.jpg" />
+    <Content Include="Resources\Cards\demonic\demonquartermaster.jpg" />
+    <Content Include="Resources\Cards\demonic\enragedquartermaster.jpg" />
+    <Content Include="Resources\Cards\demonic\ergodemon.jpg" />
+    <Content Include="Resources\Cards\demonic\greaterdemon.jpg" />
+    <Content Include="Resources\Cards\demonic\lemure.jpg" />
+    <Content Include="Resources\Cards\demonic\scrambledlemure.jpg" />
+    <Content Include="Resources\Cards\demonic\spells\explosion.png" />
+    <Content Include="Resources\Cards\demonic\spells\hellfire.png" />
+    <Content Include="Resources\Cards\demonic\spells\powerchains.png" />
+    <Content Include="Resources\Cards\demonic\threeheadeddemon.jpg" />
+    <Content Include="Resources\Cards\earth\earthelemental.jpg" />
+    <Content Include="Resources\Cards\earth\elfhermit.jpg" />
+    <Content Include="Resources\Cards\earth\elvenhealer.jpg" />
+    <Content Include="Resources\Cards\earth\forestspider.jpg" />
+    <Content Include="Resources\Cards\earth\forestsprite.jpg" />
+    <Content Include="Resources\Cards\earth\giantspider.jpg" />
+    <Content Include="Resources\Cards\earth\hydra.jpg" />
+    <Content Include="Resources\Cards\earth\masterhealer.jpg" />
+    <Content Include="Resources\Cards\earth\spells\locked.png" />
+    <Content Include="Resources\Cards\earth\spells\naturalfury.png" />
+    <Content Include="Resources\Cards\earth\spells\natureritual.png" />
+    <Content Include="Resources\Cards\earth\spells\rejuvenation.png" />
+    <Content Include="Resources\Cards\earth\spells\stonerain.png" />
+    <Content Include="Resources\Cards\earth\troll.jpg" />
+    <Content Include="Resources\Cards\fire\bargul.jpg" />
+    <Content Include="Resources\Cards\fire\dragon.jpg" />
+    <Content Include="Resources\Cards\fire\firedrake.jpg" />
+    <Content Include="Resources\Cards\fire\fireelemental.jpg" />
+    <Content Include="Resources\Cards\fire\goblinberserker.jpg" />
+    <Content Include="Resources\Cards\fire\minotaurcommander.jpg" />
+    <Content Include="Resources\Cards\fire\orcchieftain.jpg" />
+    <Content Include="Resources\Cards\fire\priestoffire.jpg" />
+    <Content Include="Resources\Cards\fire\spells\armageddon.png" />
+    <Content Include="Resources\Cards\fire\spells\flamewave.png" />
+    <Content Include="Resources\Cards\fire\spells\inferno.png" />
+    <Content Include="Resources\Cards\fire\spells\locked.png" />
+    <Content Include="Resources\Cards\fire\walloffire.jpg" />
+    <Content Include="Resources\Cards\goblins\goblinhero.png" />
+    <Content Include="Resources\Cards\goblins\goblinlooter.png" />
+    <Content Include="Resources\Cards\goblins\goblinraider.png" />
+    <Content Include="Resources\Cards\goblins\goblinsaboteur.png" />
+    <Content Include="Resources\Cards\goblins\portaljumper.png" />
+    <Content Include="Resources\Cards\goblins\ratsmaster.png" />
+    <Content Include="Resources\Cards\goblins\spells\armyofrats.png" />
+    <Content Include="Resources\Cards\goblins\spells\rescueoperation.png" />
+    <Content Include="Resources\Cards\holy\angel.jpg" />
+    <Content Include="Resources\Cards\holy\archangel.jpg" />
+    <Content Include="Resources\Cards\holy\holyguard.jpg" />
+    <Content Include="Resources\Cards\holy\monk.jpg" />
+    <Content Include="Resources\Cards\holy\paladin.jpg" />
+    <Content Include="Resources\Cards\holy\spells\divineintervention.png" />
+    <Content Include="Resources\Cards\holy\spells\divinejustice.png" />
+    <Content Include="Resources\Cards\holy\spells\wrathofgod.png" />
+    <Content Include="Resources\Cards\illusion\hypnotist.jpg" />
+    <Content Include="Resources\Cards\illusion\oracle.jpg" />
+    <Content Include="Resources\Cards\illusion\phantomwarrior.jpg" />
+    <Content Include="Resources\Cards\illusion\spectralassassin.jpg" />
+    <Content Include="Resources\Cards\illusion\spectralmage.jpg" />
+    <Content Include="Resources\Cards\illusion\spells\hypnosys.png" />
+    <Content Include="Resources\Cards\illusion\spells\madness.png" />
+    <Content Include="Resources\Cards\illusion\wallofreflection.jpg" />
+    <Content Include="Resources\Cards\mechanical\cannon.jpg" />
+    <Content Include="Resources\Cards\mechanical\dwarvencraftsman.jpg" />
+    <Content Include="Resources\Cards\mechanical\dwarvenrifleman.jpg" />
+    <Content Include="Resources\Cards\mechanical\ornithopter.jpg" />
+    <Content Include="Resources\Cards\mechanical\spells\cannonade.png" />
+    <Content Include="Resources\Cards\mechanical\spells\overtime.png" />
+    <Content Include="Resources\Cards\mechanical\steamtank.jpg" />
+    <Content Include="Resources\Cards\mechanical\steelgolem.jpg" />
+    <Content Include="Resources\Cards\sorcery\spells\disintegrate.png" />
+    <Content Include="Resources\Cards\sorcery\spells\fireball.png" />
+    <Content Include="Resources\Cards\sorcery\spells\healingspray.png" />
+    <Content Include="Resources\Cards\sorcery\spells\manaburn.png" />
+    <Content Include="Resources\Cards\sorcery\spells\ritualofglory.png" />
+    <Content Include="Resources\Cards\sorcery\spells\sacrifice.png" />
+    <Content Include="Resources\Cards\sorcery\spells\sonicboom.png" />
+    <Content Include="Resources\Cards\sorcery\spells\stealessence.png" />
+    <Content Include="Resources\Cards\water\astralguard.jpg" />
+    <Content Include="Resources\Cards\water\giantturtle.jpg" />
+    <Content Include="Resources\Cards\water\icegolem.jpg" />
+    <Content Include="Resources\Cards\water\iceguard.jpg" />
+    <Content Include="Resources\Cards\water\merfolkapostate.jpg" />
+    <Content Include="Resources\Cards\water\merfolkelder.jpg" />
+    <Content Include="Resources\Cards\water\merfolkoverlord.jpg" />
+    <Content Include="Resources\Cards\water\mindmaster.jpg" />
+    <Content Include="Resources\Cards\water\seasprite.jpg" />
+    <Content Include="Resources\Cards\water\spells\acidicrain.png" />
+    <Content Include="Resources\Cards\water\spells\locked.png" />
+    <Content Include="Resources\Cards\water\spells\meditation.png" />
+    <Content Include="Resources\Cards\water\waterelemental.jpg" />
+    <Content Include="Resources\Common\appbar.align.left.png" />
+    <Content Include="Resources\Common\appbar.timer.png" />
+    <Content Include="Resources\Common\clock.png" />
+    <Content Include="Resources\Common\smartphone-icon.png" />
+    <Content Include="Resources\Elements\air.jpg" />
+    <Content Include="Resources\Elements\beast.jpg" />
+    <Content Include="Resources\Elements\chaos.jpg" />
+    <Content Include="Resources\Elements\control.jpg" />
+    <Content Include="Resources\Elements\death.jpg" />
+    <Content Include="Resources\Elements\demonic.jpg" />
+    <Content Include="Resources\Elements\earth.jpg" />
+    <Content Include="Resources\Elements\fire.jpg" />
+    <Content Include="Resources\Elements\holy.jpg" />
+    <Content Include="Resources\Elements\illusion.jpg" />
+    <Content Include="Resources\Elements\mechanical.jpg" />
+    <Content Include="Resources\Elements\sorcery.jpg" />
+    <Content Include="Resources\Elements\water.jpg" />
+    <Content Include="Resources\Icons\skipturn.png" />
     <Content Include="Resources\neutral\airspirit.jpg" />
     <Content Include="Resources\neutral\ambrosiastone.jpg" />
     <Content Include="Resources\neutral\bafflerroost.jpg" />
@@ -845,6 +1148,9 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.14</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>7.1.3</Version>
+    </PackageReference>
     <PackageReference Include="MonoGame.Framework.WindowsUniversal">
       <Version>3.8.0.1641</Version>
     </PackageReference>
@@ -865,10 +1171,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Resources\Videos\tutorial.mp4" />
+    <Content Include="Resources\Videos\tutorial.mp4" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\ServiceReferences.ClientConfig" />
+    <None Include="AstralBattles_TemporaryKey.pfx" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

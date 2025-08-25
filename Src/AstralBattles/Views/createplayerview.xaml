@@ -1,9 +1,9 @@
-﻿<phone:PhoneApplicationPage 
+﻿<Page 
     x:Class="AstralBattles.Views.CreatePlayerView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:phone="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
@@ -11,15 +11,14 @@
     xmlns:Controls="clr-namespace:AstralBattles.Controls" FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="White" 
-    SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="False">
+    >
 
-    <phone:PhoneApplicationPage.DataContext>
+    <Page.DataContext>
         <ViewModels:CreatePlayerViewModel/>
-    </phone:PhoneApplicationPage.DataContext>
+    </Page.DataContext>
     
-    <phone:PhoneApplicationPage.Resources>
+    <Page.Resources>
 
         <Converters:FaceImageConverter x:Key="faceImageConverter"/>
         <Converters:SpecialElementConverter x:Key="specialElementConverter" />
@@ -36,7 +35,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 
-                <TextBlock Grid.Column="1" Text="{Binding ., Converter={StaticResource specialElementConverter}}" 
+                <TextBlock Grid.Column="1" Label="{Binding ., Converter={StaticResource specialElementConverter}}" 
                            FontSize="27" Margin="10,0,0,0" VerticalAlignment="Center"/>
                 <Image Margin="0" Height="35" Source="{Binding ., Converter={StaticResource elementsImageConverter}}" />
             </Grid>
@@ -53,18 +52,18 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="1" Text="{Binding ., Converter={StaticResource specialElementConverter}}" 
+                <TextBlock Grid.Column="1" Label="{Binding ., Converter={StaticResource specialElementConverter}}" 
                            FontSize="48" Margin="15"/>
                 <Image Margin="10" Source="{Binding ., Converter={StaticResource elementsImageConverter}}" />
 
             </Grid>
         </DataTemplate>
         
-    </phone:PhoneApplicationPage.Resources>
+    </Page.Resources>
     <Controls:BusyIndicatorControl 
                     IsBusy="{Binding IsBusy}" 
                     Foreground="White"
-                    BusyText="{Binding CommonResources.Loading, Source={StaticResource ResourceWrapper}}"
+                    BusyLabel="{Binding CommonResources.Loading, Source={StaticResource ResourceWrapper}}"
                     Style="{StaticResource BusyIndicatorStyle}"
                     HideApplicationBar="True">
         
@@ -96,16 +95,16 @@
                     Command="{Binding ChangeFace}">
                     <Image Margin="-10" Source="{Binding Face, Converter={StaticResource faceImageConverter}}"/>
                 </Button>
-            <TextBlock Grid.Row="1" Margin="0,-10,0,30" Text="{Binding CommonResources.TapToChange, Source={StaticResource ResourceWrapper}}" HorizontalAlignment="Center" Foreground="Gray"/>
+            <TextBlock Grid.Row="1" Margin="0,-10,0,30" Label="{Binding CommonResources.TapToChange, Source={StaticResource ResourceWrapper}}" HorizontalAlignment="Center" Foreground="Gray"/>
 
-            <TextBlock Grid.Row="2" Foreground="Gray" Margin="10,0,0,0" Text="{Binding CommonResources.Name, Source={StaticResource ResourceWrapper}}"/>
+            <TextBlock Grid.Row="2" Foreground="Gray" Margin="10,0,0,0" Label="{Binding CommonResources.Name, Source={StaticResource ResourceWrapper}}"/>
             <TextBox Grid.Row="3" 
                      Margin="0,-4,0,0"
                      FontSize="28" 
-                     Text="{Binding Name, Mode=TwoWay}" 
+                     Label="{Binding Name, Mode=TwoWay}" 
                      Height="76"/>
 
-            <TextBlock Grid.Row="4" Foreground="Gray" Margin="10,0,0,0" Text="{Binding CommonResources.FifthElement, Source={StaticResource ResourceWrapper}}"/>
+            <TextBlock Grid.Row="4" Foreground="Gray" Margin="10,0,0,0" Label="{Binding CommonResources.FifthElement, Source={StaticResource ResourceWrapper}}"/>
             <toolkit:ListPicker Margin="11,0,12,0" VerticalAlignment="Top" Grid.Row="5" Height="76"
                                 ItemsSource="{Binding SpecialElements}" ExpansionMode="FullScreenOnly"
                                 SelectedItem="{Binding PlayerSpecialElement, Mode=TwoWay}"
@@ -128,4 +127,4 @@
         </Grid>
     </Controls:BusyIndicatorControl>
 
-</phone:PhoneApplicationPage>
+</Page>

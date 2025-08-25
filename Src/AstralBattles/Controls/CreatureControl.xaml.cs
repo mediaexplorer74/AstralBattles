@@ -284,7 +284,7 @@ public partial class CreatureControl : UserControl
       this.skipCompleted = (Action) null;
     }
 
-    private void GestureListenerTap(object sender, Microsoft.Phone.Controls.GestureEventArgs e)
+    private void GestureListenerTap(object sender, Windows.UI.Xaml.Controls.GestureEventArgs e)
     {
     }
 

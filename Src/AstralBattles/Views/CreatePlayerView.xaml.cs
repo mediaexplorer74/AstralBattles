@@ -5,13 +5,13 @@
 // Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
 
 using AstralBattles.ViewModels;
-using Microsoft.Phone.Controls;
+using Windows.UI.Xaml.Controls;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls;
 
 #nullable disable
@@ -24,15 +24,15 @@ public partial class CreatePlayerView : Page
 
     protected virtual void OnNavigatedTo(NavigationEventArgs e)
     {
-      bool enableDeckEditor = bool.Parse(((Page) this).NavigationContext.QueryString.GetValueOrDefault<string, string>("enableDeckEditor", "false"));
+      bool enableDeckEditor = bool.Parse(((Page) this).Frame.Navigate.QueryString.GetValueOrDefault<string, string>("enableDeckEditor", "false"));
       this.editDeckControl.Visibility = enableDeckEditor ? Visibility.Visible : Visibility.Collapsed;
-      ((CreatePlayerViewModel) ((FrameworkElement) this).DataContext).OnNavigatedTo(e, ((Page) this).NavigationContext, ((Page) this).NavigationService, enableDeckEditor);
+      ((CreatePlayerViewModel) ((FrameworkElement) this).DataContext).OnNavigatedTo(e, ((Page) this).Frame.Navigate, ((Page) this).Frame, enableDeckEditor);
       ((Page) this).OnNavigatedTo(e);
     }
 
     protected virtual void OnNavigatedFrom(NavigationEventArgs e)
     {
-      ((CreatePlayerViewModel) ((FrameworkElement) this).DataContext).OnNavigatedFrom(e, ((Page) this).NavigationContext, ((Page) this).NavigationService);
+      ((CreatePlayerViewModel) ((FrameworkElement) this).DataContext).OnNavigatedFrom(e, ((Page) this).Frame.Navigate, ((Page) this).Frame);
       ((Page) this).OnNavigatedFrom(e);
     }
 

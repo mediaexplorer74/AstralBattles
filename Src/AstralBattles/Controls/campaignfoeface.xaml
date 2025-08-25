@@ -4,7 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Width="110" Height="95" x:Name="control">
-    <Grid x:Name="LayoutRoot" DataContext="{Binding ElementName=control}">
+    <Grid x:Name="LayoutRoot" DataConLabel="{Binding ElementName=control}">
         <Border>
             <Image Stretch="None" x:Name="faceImage" Source="/AstralBattles;component/Resources/Campaign/small.png" Margin="10,9,0,0">
             </Image>

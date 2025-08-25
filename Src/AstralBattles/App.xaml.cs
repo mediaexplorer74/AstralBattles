@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -14,22 +15,83 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using AstralBattles.Core.Services;
 
-/*namespace AstralBattles
+namespace AstralBattles
 {
-    /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
-    sealed partial class App : Application
+    public sealed partial class App : Application
     {
-        /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
-        /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
+        private Frame _rootFrame;
+        private readonly Frame _Frame;
+
         public App()
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            this.UnhandledException += OnUnhandledException;
+            
+            _Frame = Frame.Instance;
+        }
+
+        private void Application_Launching(object sender, LaunchingEventArgs e)
+        {
+        }
+
+        private void Application_Activated(object sender, ActivatedEventArgs e)
+        {
+            int num = e.IsApplicationInstancePreserved ? 1 : 0;
+        }
+
+        private void Application_Deactivated(object sender, DeactivatedEventArgs e)
+        {
+        }
+
+        private void Application_Closing(object sender, ClosingEventArgs e)
+        {
+        }
+
+        private void RootFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
+        {
+            App.Logger.LogWarrning("RootFrame_NavigationFailed: {0}", (object)e.Exception);
+            if (!Debugger.IsAttached)
+                return;
+            Debugger.Break();
+        }
+
+        private void Application_UnhandledException(
+          object sender,
+          ApplicationUnhandledExceptionEventArgs e)
+        {
+            App.Logger.LogWarrning("Application_UnhandledException: {0}", (object)e.ExceptionObject);
+            if (Debugger.IsAttached)
+                Debugger.Break();
+            int num = (int)MessageBox.Show("Oops! Unhandled exception.");
+        }
+
+        private void InitializePhoneApplication()
+        {
+            if (this.phoneApplicationInitialized)
+                return;
+            this.RootFrame = new PhoneApplicationFrame();
+            ((Frame)this.RootFrame).Navigated += new NavigatedEventHandler(this.CompleteInitializePhoneApplication);
+            ((Frame)this.RootFrame).NavigationFailed += new NavigationFailedEventHandler(this.RootFrame_NavigationFailed);
+            this.phoneApplicationInitialized = true;
+        }
+
+        private void CompleteInitializePhoneApplication(object sender, NavigationEventArgs e)
+        {
+            if (this.RootVisual != this.RootFrame)
+                this.RootVisual = (UIElement)this.RootFrame;
+            ((Frame)this.RootFrame).Navigated -= new NavigatedEventHandler(this.CompleteInitializePhoneApplication);
+        }
+
+        [DebuggerNonUserCode]
+        public void InitializeComponent()
+        {
+            if (this._contentLoaded)
+                return;
+            this._contentLoaded = true;
+            Application.LoadComponent((object)this, new Uri("/AstralBattles;component/App.xaml", UriKind.Relative));
         }
 
         /// <summary>
@@ -96,50 +158,11 @@ using Windows.UI.Xaml.Navigation;
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
-    }
-}*/
 
-// Decompiled with JetBrains decompiler
-// Type: AstralBattles.App
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
-using AstralBattles.Core.Infrastructure;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using System;
-using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-
-#nullable disable
-namespace AstralBattles
-{
-    public partial class App : Application
-    {
-        private static readonly ILogger Logger = LogFactory.GetLogger<App>();
-        private bool phoneApplicationInitialized;
-        private bool _contentLoaded;
-
-        public PhoneApplicationFrame RootFrame { get; private set; }
-
-        public App()
+        private void OnUnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
         {
-            this.UnhandledException += new EventHandler<ApplicationUnhandledExceptionEventArgs>(this.Application_UnhandledException);
-            this.InitializeComponent();
-            this.InitializePhoneApplication();
-            if (!Debugger.IsAttached)
-                return;
-            Application.Current.Host.Settings.EnableFrameRateCounter = false;
-            PhoneApplicationService.Current.UserIdleDetectionMode = (IdleDetectionMode)1;
+            //TODO: Handle unhandled exception
         }
-
-        private void Application_Launching(object sender, LaunchingEventArgs e)
-        {
-        }
-
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
             int num = e.IsApplicationInstancePreserved ? 1 : 0;

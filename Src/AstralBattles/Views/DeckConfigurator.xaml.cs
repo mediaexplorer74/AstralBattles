@@ -6,14 +6,14 @@
 
 using AstralBattles.Controls;
 using AstralBattles.ViewModels;
-using Microsoft.Phone.Controls;
+using Windows.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
+using Windows.UI.Xaml.Controls;
 using System.Windows.Data;
-using System.Windows.Navigation;
+using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls;
 
 #nullable disable
@@ -39,7 +39,7 @@ public partial class DeckConfigurator : Page
 
     protected virtual void OnNavigatedTo(NavigationEventArgs e)
     {
-      this.ViewModel.OnNavigatedTo(e, ((Page) this).NavigationService);
+      this.ViewModel.OnNavigatedTo(e, ((Page) this).Frame);
       if (e.NavigationMode != NavigationMode.Back)
       {
         this.playerPanel.Children.Clear();

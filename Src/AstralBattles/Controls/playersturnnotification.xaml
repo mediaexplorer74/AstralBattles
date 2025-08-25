@@ -6,7 +6,7 @@
     xmlns:Converters="clr-namespace:AstralBattles.Converters" xmlns:Controls="clr-namespace:AstralBattles.Controls"
     xmlns:ViewModels="clr-namespace:AstralBattles.ViewModels" mc:Ignorable="d"
     Height="480" Width="800" x:Name="thisControl" Foreground="White"
-    d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=ViewModels:DesignTimeDataContext}">
+    d:DataConLabel="{d:DesignInstance IsDesignTimeCreatable=True, Type=ViewModels:DesignTimeDataContext}">
     
     <UserControl.Resources>
         <Converters:ElementsImageConverter x:Key="elementImageConverter"/>
@@ -21,7 +21,7 @@
     </UserControl.Resources>
 
 
-    <Grid x:Name="LayoutRoot" Background="#99000000" DataContext="{Binding ElementName=thisControl}">
+    <Grid x:Name="LayoutRoot" Background="#99000000" DataConLabel="{Binding ElementName=thisControl}">
         <Border x:Name="border" Tap="BorderTap" CornerRadius="10" 
                 Background="#595959" Width="431" Height="160" BorderBrush="#FF494949">
             <Grid>
@@ -46,10 +46,10 @@
                        VerticalAlignment="Center"
                        TextTrimming="WordEllipsis" 
                        TextWrapping="Wrap" Grid.Column="1" 
-                       Text="{Binding MessageBody}" 
+                       Label="{Binding MessageBody}" 
                        Foreground="White"/>
-                <TextBlock Grid.ColumnSpan="2" Text="{Binding CommonResources.NextTurn, Source={StaticResource ResourceWrapper}}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,-3" Foreground="#FFF3FF1D" FontSize="20"/>
-                <TextBlock Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-13,0,1" FontSize="20" Foreground="White"><Run FontWeight="Bold" Text="{Binding CommonResources.Tap, Source={StaticResource ResourceWrapper}}">
+                <TextBlock Grid.ColumnSpan="2" Label="{Binding CommonResources.NextTurn, Source={StaticResource ResourceWrapper}}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,-3" Foreground="#FFF3FF1D" FontSize="20"/>
+                <TextBlock Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-13,0,1" FontSize="20" Foreground="White"><Run FontWeight="Bold" Label="{Binding CommonResources.Tap, Source={StaticResource ResourceWrapper}}">
                 		<Run.Foreground>
                 			<SolidColorBrush Color="#FFF1FF00">
                 				<SolidColorBrush.RelativeTransform>
@@ -60,7 +60,7 @@
                 				</SolidColorBrush.Transform>
                 			</SolidColorBrush>
                 		</Run.Foreground>
-                	</Run><Run Text="{Binding CommonResources.ToContinue, Source={StaticResource ResourceWrapper}}"/></TextBlock>
+                	</Run><Run Label="{Binding CommonResources.ToContinue, Source={StaticResource ResourceWrapper}}"/></TextBlock>
             </Grid>
         </Border>
     </Grid>

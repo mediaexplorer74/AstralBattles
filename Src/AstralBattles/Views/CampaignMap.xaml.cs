@@ -6,12 +6,12 @@
 
 using AstralBattles.Controls;
 using AstralBattles.ViewModels;
-using Microsoft.Phone.Controls;
+using Windows.UI.Xaml.Controls;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
+using Windows.UI.Xaml.Controls;
 
 #nullable disable
 namespace AstralBattles.Views

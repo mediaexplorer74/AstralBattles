@@ -1,4 +1,4 @@
-// Decompiled with JetBrains decompiler
+﻿// Decompiled with JetBrains decompiler
 // Type: AstralBattles.Views.CampaignOptionsView
 // Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
 // MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
@@ -24,8 +24,8 @@ public partial class CampaignOptionsView : Page
     protected virtual void OnNavigatedTo(NavigationEventArgs e)
     {
       if (e.Uri.ToString().EndsWith("?back=true"))
-        ((Page) this).NavigationService.ClearBackStack();
-      IDictionary<string, string> queryString = ((Page) this).NavigationContext.QueryString;
+        ((Page) this).Frame.ClearBackStack();
+      IDictionary<string, string> queryString = ((Page) this).Frame.Navigate.QueryString;
       ((CampaignOptionsViewModel) ((FrameworkElement) this).DataContext).OnNavigatedTo(e.NavigationMode, e.Uri);
       ((Page) this).OnNavigatedTo(e);
     }

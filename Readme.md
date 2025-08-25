@@ -1,4 +1,7 @@
-﻿# AstralBattles 1.4.x - main branch
+﻿# AstralBattles 1.4.5 - main branch
+
+![Logo](Images/logo.png)
+
 
 AstralBattles.xap dirty decomp.
 
@@ -16,4 +19,6 @@ As is. No support. DIY.
 
 ## .
 [M][E] 2025
+
+![Logo](Images/footer.png)
 

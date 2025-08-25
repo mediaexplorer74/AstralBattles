@@ -36,7 +36,7 @@
                     <Border Visibility="{Binding IsFake, Converter={StaticResource falseToVisibleConverter}}" 
                             VerticalAlignment="Top" HorizontalAlignment="Left" Background="#97494949" 
                             Margin="3,3,3,3" Height="19" Width="22" CornerRadius="0,0,5,0">
-                        <TextBlock Text="{Binding Cost}" Margin="2,-3,2,0" 
+                        <TextBlock Label="{Binding Cost}" Margin="2,-3,2,0" 
 								   VerticalAlignment="Center" HorizontalAlignment="Center" 
 								   FontSize="17" Foreground="White"></TextBlock>
                     </Border>
@@ -45,7 +45,7 @@
                             Background="#97494949" Margin="3,3,3,3" Height="19"
                             Width="22" CornerRadius="0,5,0,0"
                             Visibility="{Binding ., Converter={StaticResource isCreatureToVisible}}">
-                        <TextBlock Text="{Binding DamageString}" Margin="2,-3,2,0" 
+                        <TextBlock Label="{Binding DamageString}" Margin="2,-3,2,0" 
 								   VerticalAlignment="Center" HorizontalAlignment="Center" 
 								   FontSize="17" Foreground="#FFFFF9CF"></TextBlock>
                     </Border>
@@ -53,7 +53,7 @@
                     <Border VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#97494949" 
                             Margin="3,3,3,3" Height="19" Width="22" CornerRadius="5,0,0,0"
                             Visibility="{Binding ., Converter={StaticResource isCreatureToVisible}}">
-                        <TextBlock Text="{Binding Health}" Margin="2,-3,2,0" 
+                        <TextBlock Label="{Binding Health}" Margin="2,-3,2,0" 
 								   VerticalAlignment="Center" HorizontalAlignment="Center" 
 								   FontSize="17" Foreground="#FF9DFF71"></TextBlock>
                     </Border>
@@ -87,8 +87,8 @@
     </UserControl.Resources>
 
     <Grid x:Name="LayoutRoot"
-          DataContext="{Binding ElementName=thisControl}"
-          d:DataContext="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}">
+          DataConLabel="{Binding ElementName=thisControl}"
+          d:DataConLabel="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="145"/>
             <ColumnDefinition Width="145"/>

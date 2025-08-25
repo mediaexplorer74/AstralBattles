@@ -19,13 +19,13 @@
         
     </UserControl.Resources>
     
-    <Grid x:Name="LayoutRoot" DataContext="{Binding ElementName=control, Path=Card}" 
-          d:DataContext="{Binding Card, Source={d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}}">
+    <Grid x:Name="LayoutRoot" DataConLabel="{Binding ElementName=control, Path=Card}" 
+          d:DataConLabel="{Binding Card, Source={d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}}">
         <Image Source="{Binding ., Converter={StaticResource cardImageConverter}}" />
 
         <Border VerticalAlignment="Top" HorizontalAlignment="Left" Background="#97494949" 
                 Margin="0" Height="30" Width="30" CornerRadius="0,0,5,0">
-            <TextBlock Text="{Binding Cost}" Margin="2,0,2,0" 
+            <TextBlock Label="{Binding Cost}" Margin="2,0,2,0" 
 								   VerticalAlignment="Center" HorizontalAlignment="Center" 
 								   FontSize="22" Foreground="White"></TextBlock>
         </Border>
@@ -34,7 +34,7 @@
                             Background="#97494949" Margin="0" Height="30"
                             Width="30" CornerRadius="0,5,0,0"
                             Visibility="{Binding ., Converter={StaticResource isCreatureToVisible}}">
-            <TextBlock Text="{Binding DamageString}" Margin="2,0,2,0" 
+            <TextBlock Label="{Binding DamageString}" Margin="2,0,2,0" 
 								   VerticalAlignment="Center" HorizontalAlignment="Center" 
 								   FontSize="22" Foreground="#FFFFF9CF"></TextBlock>
         </Border>
@@ -42,7 +42,7 @@
         <Border VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#97494949" 
                             Margin="0" Height="30" Width="30" CornerRadius="5,0,0,0"
                             Visibility="{Binding ., Converter={StaticResource isCreatureToVisible}}">
-            <TextBlock Text="{Binding Health}" Margin="2,0,2,0" 
+            <TextBlock Label="{Binding Health}" Margin="2,0,2,0" 
 								   VerticalAlignment="Center" HorizontalAlignment="Center" 
 								   FontSize="22" Foreground="#FF9DFF71"></TextBlock>
         </Border>-->

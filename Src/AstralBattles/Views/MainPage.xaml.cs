@@ -6,13 +6,13 @@
 
 using AstralBattles.Core.Services;
 using AstralBattles.ViewModels;
-using Microsoft.Phone.Controls;
+using Windows.UI.Xaml.Controls;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls;
 
 #nullable disable
@@ -30,7 +30,7 @@ public partial class MainPage : Page
       CardRegistry.Reload();
     }
 
-    private void PhoneApplicationPageLoaded(object sender, RoutedEventArgs e)
+    private void PageLoaded(object sender, RoutedEventArgs e)
     {
     }
 
@@ -41,7 +41,7 @@ public partial class MainPage : Page
     protected virtual void OnNavigatedTo(NavigationEventArgs e)
     {
       if (e.Uri.ToString().EndsWith("?back=true"))
-        ((Page) this).NavigationService.ClearBackStack();
+        ((Page) this).Frame.ClearBackStack();
       ((MainViewModel) ((FrameworkElement) this).DataContext).OnNavigatedTo();
       ((Page) this).OnNavigatedFrom(e);
     }

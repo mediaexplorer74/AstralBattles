@@ -12,7 +12,7 @@
     Height="34"
     x:Name="control"
     Loaded="UserControlLoaded"
-    d:DataContext="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}">
+    d:DataConLabel="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}">
     
     <UserControl.Resources>
         <Converters:ElementsImageConverter x:Key="elementImageConverter"/>
@@ -87,7 +87,7 @@
             </VisualStateGroup>
     	</VisualStateManager.VisualStateGroups>
         <StackPanel x:Name="stackPanel"
-                    DataContext="{Binding ElementName=control}"
+                    DataConLabel="{Binding ElementName=control}"
                     Orientation="Horizontal" 
                     Margin="0,3,0,3">
             <Image Source="{Binding Element.ElementType, Converter={StaticResource elementImageConverter}}" 
@@ -95,7 +95,7 @@
                    Width="28" 
                    Margin="4,0,0,0" />
             <TextBlock x:Name="textBlock" 
-                       Text="{Binding Element.ElementType, Converter={StaticResource elementTextConverter}}" 
+                       Label="{Binding Element.ElementType, Converter={StaticResource elementTextConverter}}" 
                        Width="75"
                        Visibility="{Binding HideName, Converter={StaticResource falseToVisibleConverter}}"
                        Margin="4,1,3,-3" 
@@ -107,7 +107,7 @@
             	<Border.Projection>
             		<PlaneProjection/>
             	</Border.Projection>
-                <TextBlock Text="{Binding Element.Mana}" 
+                <TextBlock Label="{Binding Element.Mana}" 
                            Foreground="Black" 
                            FontWeight="Bold" 
                            VerticalAlignment="Center" 
@@ -120,10 +120,10 @@
                     Width="Auto" 
                     Height="28" 
                     Opacity="0" RenderTransformOrigin="0.5,0.5" 
-                    DataContext="{Binding ElementName=control}"
+                    DataConLabel="{Binding ElementName=control}"
                     HorizontalAlignment="Right" Background="White"
                     >
-            <TextBlock x:Name="overflowTextBox" Text="{Binding OverflowText}" 
+            <TextBlock x:Name="overflowTextBox" Label="{Binding OverflowText}" 
                            Margin="3,-3,3,0"
                            Foreground="Green" 
                            FontWeight="Bold" 

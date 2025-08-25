@@ -4,15 +4,15 @@
 // MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
 // Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
 
-using Microsoft.Phone.Controls;
+using Windows.UI.Xaml.Controls;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
+using Windows.UI.Xaml.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
+using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls;
 
 #nullable disable
@@ -60,9 +60,9 @@ public partial class FaceSelectionView : Page
       if (!(sender is Button button) || button.DataContext == null)
         return;
       FaceSelectionView.LastSetPhoto = button.DataContext.ToString();
-      if (!((Page) this).NavigationService.CanGoBack)
+      if (!((Page) this).Frame.CanGoBack)
         return;
-      ((Page) this).NavigationService.GoBack();
+      ((Page) this).Frame.GoBack();
     }
 
    

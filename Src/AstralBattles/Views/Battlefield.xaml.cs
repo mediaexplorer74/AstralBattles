@@ -1,4 +1,4 @@
-// Decompiled with JetBrains decompiler
+﻿// Decompiled with JetBrains decompiler
 // Type: AstralBattles.Views.Battlefield
 // Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
 // MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
@@ -14,7 +14,7 @@ using System.Threading;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
-using System.Windows.Navigation;
+using Windows.UI.Xaml.Navigation;
 
 #nullable disable
 
@@ -33,15 +33,15 @@ namespace AstralBattles.Views
       bool flag2 = false;
       bool flag3 = false;
       bool flag4 = false;
-      if (((Page) this).NavigationContext.QueryString.GetBoolValue("isCampaign"))
+      if (((Page) this).Frame.Navigate.QueryString.GetBoolValue("isCampaign"))
         flag4 = true;
-      if (((Page) this).NavigationContext.QueryString.GetBoolValue("isTwoPlayersDuel"))
+      if (((Page) this).Frame.Navigate.QueryString.GetBoolValue("isTwoPlayersDuel"))
         flag2 = true;
-      if (((Page) this).NavigationContext.QueryString.GetBoolValue("isAiDuel"))
+      if (((Page) this).Frame.Navigate.QueryString.GetBoolValue("isAiDuel"))
         flag3 = true;
       bool flag5 = flag2 && !flag3;
       object obj;
-      if (!((Page) this).NavigationContext.QueryString.GetBoolValue("continueGame"))
+      if (!((Page) this).Frame.Navigate.QueryString.GetBoolValue("continueGame"))
       {
         obj = !flag4 ? (!flag5 ? (!flag3 ? (object) new TournamentBattlefieldViewModel(true) : (object) new QuickDuelWithAiBattlefieldViewModel(true)) : (object) new TwoPlayersDuelBattlefieldViewModel(true)) : (object) new CampaignBattlefieldViewModel(true);
       }
@@ -85,7 +85,7 @@ namespace AstralBattles.Views
       base.OnBackKeyPress(e);
     }
 
-    private void PhoneApplicationPageLoaded(object sender, RoutedEventArgs e)
+    private void PageLoaded(object sender, RoutedEventArgs e)
     {
     }
 

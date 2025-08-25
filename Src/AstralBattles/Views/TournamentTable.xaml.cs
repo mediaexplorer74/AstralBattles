@@ -5,7 +5,7 @@
 // Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
 
 using AstralBattles.ViewModels;
-using Microsoft.Phone.Shell;
+using Windows.UI.Xaml;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -28,7 +28,7 @@ public partial class TournamentTable : Page
 
     protected virtual void OnBackKeyPress(CancelEventArgs e)
     {
-      PageNavigationService.OpenMainMenu();
+      PageFrame.OpenMainMenu();
     }
 
     protected virtual void OnNavigatedTo(NavigationEventArgs e)
