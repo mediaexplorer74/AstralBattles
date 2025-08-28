@@ -4,12 +4,12 @@
 // MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
 // Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
 
-using Microsoft.Phone.Controls;
 using System;
-using System.Windows;
-using System.Windows.Controls;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
-#nullable disable
+
 namespace AstralBattles.Views
 {
   public static class PageNavigationService
@@ -34,7 +34,11 @@ namespace AstralBattles.Views
 
     private static void Navigate(string uri)
     {
-      ((Frame) (Application.Current.RootVisual as PhoneApplicationFrame)).Navigate(new Uri(uri, UriKind.Relative));
+      // UWP navigation - find current Frame and navigate
+      if (Window.Current?.Content is Frame rootFrame)
+      {
+        rootFrame.Navigate(typeof(MainPage), uri); // Simplified for MVP - would need proper page type mapping
+      }
     }
 
     public static void OpenMainMenu()

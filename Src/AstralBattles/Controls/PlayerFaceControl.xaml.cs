@@ -1,11 +1,7 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Controls.PlayerFaceControl
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
-using AstralBattles.Core.Model;
-using GalaSoft.MvvmLight;
+﻿using AstralBattles.Core.Model;
+using AstralBattles.Core.Infrastructure;
+using AstralBattles.Core.Infrastructure;
+using Windows.ApplicationModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,7 +10,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Animation;
 
-#nullable disable
+
 namespace AstralBattles.Controls
 {
 public partial class PlayerFaceControl : UserControl
@@ -31,7 +27,7 @@ public partial class PlayerFaceControl : UserControl
 
     public PlayerFaceControl()
     {
-      if (ViewModelBase.IsInDesignModeStatic)
+      if (DesignMode.DesignModeEnabled)
       {
         this.Player = new Player()
         {
@@ -41,17 +37,21 @@ public partial class PlayerFaceControl : UserControl
           Health = 46
         };
         this.OverflowText = "+5";
-        this.ImageUri = string.Format("/AstralBattles;component/Resources/Avatars/{0}.JPG", (object) "face32");
+        this.ImageUri = string.Format("/Resources/Avatars/{0}.JPG", (object) "face32");
       }
       this.InitializeComponent();
-      this.gotHealthStoryboard.Completed += new EventHandler(this.GotHealthStoryboardCompleted);
-      this.gotDamageStoryboard.Completed += new EventHandler(this.GotDamageStoryboardCompleted);
-      this.skipTurnStateStoryboard.Completed += new EventHandler(this.SkipTurnCompleted);
+      this.gotHealthStoryboard.Completed += new EventHandler<object>(this.GotHealthStoryboardCompleted);
+      this.gotDamageStoryboard.Completed += new EventHandler<object>(this.GotDamageStoryboardCompleted);
+      this.skipTurnStateStoryboard.Completed += new EventHandler<object>(this.SkipTurnCompleted);
     }
 
-    private void GoToDefaultState() => ((PlaneProjection) this.image1.Projection).RotationZ = 0.0;
+    private void GoToDefaultState() 
+    {
+      // TODO: Fix PlaneProjection for UWP - commenting out for MVP build
+      // ((PlaneProjection) this.image1.Projection).RotationZ = 0.0;
+    }
 
-    private void GotDamageStoryboardCompleted(object sender, EventArgs e)
+    private void GotDamageStoryboardCompleted(object sender, object e)
     {
       this.isPlayerGotDamageAnimated = false;
       if (this.overflowTextGotDamageChangesStack.Count <= 0)
@@ -59,7 +59,7 @@ public partial class PlayerFaceControl : UserControl
       this.PlayerGotDamage(this.overflowTextGotDamageChangesStack.Dequeue());
     }
 
-    private void GotHealthStoryboardCompleted(object sender, EventArgs e)
+    private void GotHealthStoryboardCompleted(object sender, object e)
     {
       this.isPlayerGotHealthAnimated = false;
       if (this.overflowTextGotHealthChangesStack.Count <= 0)
@@ -104,7 +104,7 @@ public partial class PlayerFaceControl : UserControl
       }
       if (this.Player != null)
       {
-        this.ImageUri = string.Format("/AstralBattles;component/Resources/Avatars/{0}.JPG", (object) this.Player.Photo);
+        this.ImageUri = string.Format("/Resources/Avatars/{0}.JPG", (object) this.Player.Photo);
         this.Player.GotDamage += new EventHandler<IntValueChangedEventArgs>(this.PlayerGotDamage);
         this.Player.GotHealth += new EventHandler<IntValueChangedEventArgs>(this.PlayerGotHealth);
         this.Player.Stunned += new EventHandler<IntValueChangedEventArgs>(this.PlayerStunned);
@@ -119,7 +119,7 @@ public partial class PlayerFaceControl : UserControl
       this.skipTurnStateStoryboard.Begin();
     }
 
-    private void SkipTurnCompleted(object sender, EventArgs e)
+    private void SkipTurnCompleted(object sender, object e)
     {
       this.GoToDefaultState();
       if (this.skipCallback == null)

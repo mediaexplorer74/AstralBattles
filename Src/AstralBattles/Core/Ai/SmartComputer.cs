@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-#nullable disable
+
 namespace AstralBattles.Core.Ai
 {
   public class SmartComputer : ComputerIntellect

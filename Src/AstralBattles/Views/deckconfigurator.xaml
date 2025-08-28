@@ -1,4 +1,4 @@
-﻿<Page 
+<Page 
     x:Class="AstralBattles.Views.DeckConfigurator"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,11 +6,11 @@
     
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ViewModels="clr-namespace:AstralBattles.ViewModels"
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
-    xmlns:Converters="clr-namespace:AstralBattles.Converters"
-    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
-    xmlns:Controls="clr-namespace:AstralBattles.Controls" 
+    xmlns:ViewModels="using:AstralBattles.ViewModels"
+    xmlns:toolkit="using:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:Converters="using:AstralBattles.Converters"
+    xmlns:i="using:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+    xmlns:Controls="using:AstralBattles.Controls" 
     mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="800"
     >
     <Page.Resources>
@@ -32,7 +32,7 @@
 				</Grid.ColumnDefinitions>
 				
 				<Image Width="38" Height="37" Source="{Binding ElementType, Converter={StaticResource elementImageConverter}}"/>
-                <TextBlock Margin="5,0,0,0" Width="115" VerticalAlignment="Center" FontSize="22" Grid.Column="1" Label="{Binding ElementType}"/>         
+                <TextBlock Margin="5,0,0,0" Width="115" VerticalAlignment="Center" FontSize="22" Grid.Column="1" Text="{Binding ElementType}"/>         
 			</Grid>
         </DataTemplate>
 
@@ -52,7 +52,7 @@
     
         <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Black" 
-          d:DataConLabel="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}">
+          d:DataConText="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="Auto" />
@@ -78,7 +78,7 @@
             <Border Visibility="{Binding SelectedCard.IsFake, Converter={StaticResource falseToVisibleConverter}}" 
                                 VerticalAlignment="Top" HorizontalAlignment="Left" Background="#97494949" 
                                 Margin="0" Height="30" Width="30" CornerRadius="0,0,5,0">
-                <TextBlock Label="{Binding SelectedCard.Cost}" Margin="2,0,2,0" 
+                <TextBlock Text="{Binding SelectedCard.Cost}" Margin="2,0,2,0" 
 								       VerticalAlignment="Center" HorizontalAlignment="Center" 
 								       FontSize="22" Foreground="White"></TextBlock>
                 </Border>
@@ -87,7 +87,7 @@
                                 Background="#97494949" Margin="0" Height="30"
                                 Width="30" CornerRadius="0,5,0,0"
                                 Visibility="{Binding SelectedCard, Converter={StaticResource isCreatureToVisible}}">
-                <TextBlock Label="{Binding SelectedCard.DamageString}" Margin="2,0,2,0" 
+                <TextBlock Text="{Binding SelectedCard.DamageString}" Margin="2,0,2,0" 
 								       VerticalAlignment="Center" HorizontalAlignment="Center" 
 								       FontSize="22" Foreground="#FFFFF9CF"></TextBlock>
                 </Border>
@@ -95,7 +95,7 @@
                 <Border VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#97494949" 
                                 Margin="0" Height="30" Width="30" CornerRadius="5,0,0,0"
                                 Visibility="{Binding SelectedCard, Converter={StaticResource isCreatureToVisible}}">
-                <TextBlock Label="{Binding SelectedCard.Health}" Margin="2,0,2,0" 
+                <TextBlock Text="{Binding SelectedCard.Health}" Margin="2,0,2,0" 
 								       VerticalAlignment="Center" HorizontalAlignment="Center" 
 								       FontSize="22" Foreground="#FF9DFF71"></TextBlock>
                 </Border>
@@ -106,13 +106,13 @@
 
             <StackPanel Margin="7,0,7,0" Grid.Column="1" 
                         Grid.RowSpan="2" >
-                <TextBlock Label="{Binding SelectedCardShortDescription}" Foreground="Gold" FontSize="20"/>
+                <TextBlock Text="{Binding SelectedCardShortDescription}" Foreground="Gold" FontSize="20"/>
                 <TextBlock 
                        LineStackingStrategy="BlockLineHeight"  
                        LineHeight="20" FontSize="20" Foreground="White"
                        TextTrimming="WordEllipsis" 
                        TextWrapping="Wrap"                        
-                       Label="{Binding SelectedCard.Localization.DefaultLanguage.Description}"/>
+                       Text="{Binding SelectedCard.Localization.DefaultLanguage.Description}"/>
             </StackPanel>
             
             <TextBlock Margin="0,0,0,5" 
@@ -123,7 +123,7 @@
                        TextTrimming="WordEllipsis" 
                        TextWrapping="Wrap" 
                        TextAlignment="Left"
-                       Label="{Binding SelectedCard.Localization.DefaultLanguage.DisplayName}" ></TextBlock>
+                       Text="{Binding SelectedCard.Localization.DefaultLanguage.DisplayName}" ></TextBlock>
 
         </Grid>
 
@@ -133,9 +133,9 @@
         <Button Command="{Binding Done}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White"
                 Content="{Binding CommonResources.Ok, Source={StaticResource ResourceWrapper}}" Width="170" Margin="0,0,-2,-2" BorderThickness="0" Background="#93A99D50"/>
 
-        <TextBlock Label="{Binding CommonResources.YourDeck, Source={StaticResource ResourceWrapper}}" Foreground="#B6B6B6" Margin="10,0,0,105" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+        <TextBlock Text="{Binding CommonResources.YourDeck, Source={StaticResource ResourceWrapper}}" Foreground="#B6B6B6" Margin="10,0,0,105" FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
         
-        <toolkit:WrapPanel x:Name="playerPanel" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+        <StackPanel x:Name="playerPanel" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
 
             <!--<Controls:DeckFieldBorder Style="{StaticResource cardBorderStyle}">
                 <Controls:DeckField Card="{Binding LibraryFields[0].Card}" DragBegun="DeckFieldDragBegun" DragFinished="DeckFieldDragFinished" Dragging="DeckFieldDragging" />
@@ -156,12 +156,12 @@
                 <Controls:DeckField Card="{Binding LibraryFields[0].Card}" DragBegun="DeckFieldDragBegun" DragFinished="DeckFieldDragFinished" Dragging="DeckFieldDragging" />
             </Controls:DeckFieldBorder>-->
         
-        </toolkit:WrapPanel>
+        </StackPanel>
 
         
         
     
-        <toolkit:WrapPanel x:Name="libraryPanel" Margin="5,5,0,0" Orientation="Horizontal" 
+        <StackPanel x:Name="libraryPanel" Margin="5,5,0,0" Orientation="Horizontal" 
                            HorizontalAlignment="Left" Width="630" Height="Auto" VerticalAlignment="Top">
 
             <!--<Controls:DeckFieldBorder Style="{StaticResource cardBorderStyle}">
@@ -202,17 +202,15 @@
             </Controls:DeckFieldBorder>-->
             
             
-        </toolkit:WrapPanel>
+        </StackPanel>
 
-        <Grid d:DataConLabel="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}" 
+        <Grid d:DataConText="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}" 
               Margin="0,8,0,0" VerticalAlignment="Top" HorizontalAlignment="Right">
             <Controls:FlickableListBox ItemsSource="{Binding DeckElements}"
                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
                      SelectedItem="{Binding SelectedElement, Mode=TwoWay}"
                      ItemTemplate="{StaticResource ElementDataTemplate}" >
-                <toolkit:GestureService.GestureListener>
-                    <toolkit:GestureListener Flick="GestureListener_Flick" />
-                </toolkit:GestureService.GestureListener>
+
             </Controls:FlickableListBox>
         </Grid>
         

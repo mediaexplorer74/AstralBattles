@@ -1,0 +1,67 @@
+Привет. Портирую с WP7 игрушку AstralBattles. Помоги с этим процессом, пожалуйста. Важно: на выходе должен получиться UWP с SDK 10240, чтобы была совместимость с ранними версиями ретро-ОС Windows 10 Mobile. Прошу ускорить подготовку MVP build. То есть мне сейчас важно быстро получить 0 ошибок компиляции. . Сборку производи строго командой msbuild, а не dotnet build!
+
+msbuild /p:Configuration=Debug /p:Platform=x86 /t:Rebuild /restore
+
+
+
+----------------
+
+
+Оставшиеся ошибки - это стандартные замены:
+
+DataConLabel → DataContext
+WrapPanel → StackPanel/Grid
+Pivot → NavigationView
+ApplicationBar → CommandBar
+ListPicker → ComboBox
+И другие подобные...
+
+
+Привет. Портирую с WP7 игрушку AstralBattles. Помоги с этим процессом, пожалуйста. Важно: на выходе должен получиться UWP с SDK 10240, чтобы была совместимость с ранними версиями ретро-ОС Windows 10 Mobile. Прошу ускорить подготовку MVP build. То есть мне сейчас важно быстро получить 0 ошибок компиляции. Можешь легко вырезать непроработанные блоки (устаревшая навигация, устаревшая реализация MVVM через MVVMLight, устаревшие элементы XAML-разметки). Сборку производи строго командой msbuild, а не dotnet build!
+msbuild /p:Configuration=Debug /p:Platform=x86 /t:Rebuild /restore
+
+Что сделано: 
+Удалил все зависимости MVVMLight
+✅ Упростил App.xaml.cs, убрав дублированный код
+✅ Заменил устаревшую навигацию PhoneApplicationFrame
+✅ Обновил MainPage.xaml на современную структуру
+✅ Заменил все Label на Text в XAML файлах
+✅ Удалил StringFormat из привязок
+
+App.xaml.cs - убрал весь дублированный код и PhoneApplicationFrame
+MainPage.xaml - заменил Panorama на современную структуру
+MainPage.xaml.cs - упростил и исправил навигацию
+✅ Убрал MVVMLight зависимости:
+
+(Удалил все using GalaSoft.MvvmLight из 6 файлов controls)
+Исправил в папке Core Extensions.cs - заменил Deployment.Current.Dispatcher на Window.Current.Dispatcher
+✅ Нашел и исправил ключевые WP7-специфичные элементы:
+
+Заменил Label на Text во всех XAML файлах
+Убрал StringFormat из привязок
+Исправил ToggleSwitch.Content на Header
+
+RelayCommand.cs - собственная реализация команд
+
+Необходимо оперативно исправить оставшиеся ошибки.
+Большинство из них - стандартные замены WP7 элементов на UWP:
+
+DataConLabel → DataContext
+WrapPanel → StackPanel или Grid
+Pivot → NavigationView
+ApplicationBar → CommandBar
+ListPicker → ComboBox
+И другие подобные замены
+
+--------------
+
+TO-DOs
+Fix UWP Frame navigation API incompatibilities (ClearBackStack, Navigate method usage)
+Fix Page.OnNavigatedTo/OnNavigatedFrom protected member access issues
+Add missing using statements for UWP XAML types (FrameworkElement, UIElement, Style, Binding, etc.)
+Fix ViewModelBase missing references and create stub if needed
+Fix EventHandler type conversion issues (EventHandler to EventHandler<object>)
+Fix UWP-specific API differences (Mouse events, Colors, Point, PlaneProjection, etc.)
+Fix Thread class missing references and replace with UWP equivalents
+Fix StringComparison.InvariantCultureIgnoreCase to OrdinalIgnoreCase for UWP
+Run final build verification to ensure all errors are resolved

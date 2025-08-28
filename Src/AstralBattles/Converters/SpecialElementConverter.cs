@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: AstralBattles.Converters.SpecialElementConverter
 // Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
 // MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
@@ -9,14 +9,14 @@ using AstralBattles.Localizations;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Windows.Data;
+using Windows.UI.Xaml.Data;
 
-#nullable disable
+
 namespace AstralBattles.Converters
 {
   public class SpecialElementConverter : IValueConverter
   {
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    public object Convert(object value, Type targetType, object parameter, string language)
     {
       return !(value is ElementTypeEnum spec) ? (object) "unknown" : (object) this.Convert(spec);
     }
@@ -77,7 +77,7 @@ namespace AstralBattles.Converters
       object value,
       Type targetType,
       object parameter,
-      CultureInfo culture)
+      string language)
     {
       if (value == null)
         value = (object) string.Empty;

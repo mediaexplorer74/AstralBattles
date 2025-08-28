@@ -10,7 +10,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.Serialization;
 
-#nullable disable
+
 namespace AstralBattles.ServiceReference
 {
   [DebuggerStepThrough]

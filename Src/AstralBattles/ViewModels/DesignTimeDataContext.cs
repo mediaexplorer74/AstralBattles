@@ -9,7 +9,7 @@ using AstralBattles.Model;
 using System;
 using System.Collections.ObjectModel;
 
-#nullable disable
+
 namespace AstralBattles.ViewModels
 {
   public class DesignTimeDataContext

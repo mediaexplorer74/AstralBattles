@@ -9,7 +9,7 @@ using System.CodeDom.Compiler;
 using System.Collections.ObjectModel;
 using System.ServiceModel;
 
-#nullable disable
+
 namespace AstralBattles.ServiceReference
 {
   [ServiceContract(ConfigurationName = "ServiceReference.IGameService")]

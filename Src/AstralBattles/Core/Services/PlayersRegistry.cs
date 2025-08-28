@@ -6,7 +6,7 @@
 
 using System.Collections.Generic;
 
-#nullable disable
+
 namespace AstralBattles.Core.Services
 {
   public class PlayersRegistry : IPlayersRegistry

@@ -1,18 +1,13 @@
-﻿<Page 
+<Page 
     x:Class="AstralBattles.Views.Battlefield"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:phone="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Controls="clr-namespace:AstralBattles.Controls" 
-    xmlns:ViewModels="clr-namespace:AstralBattles.ViewModels" 
-    xmlns:Converters="clr-namespace:AstralBattles.Converters"
-    xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
-    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
-    Loaded="PhoneApplicationPageLoaded"
+    xmlns:Controls="using:AstralBattles.Controls"
+    xmlns:ViewModels="using:AstralBattles.ViewModels"
+    xmlns:Converters="using:AstralBattles.Converters"
+    Loaded="PageLoaded"
     mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="800"
     x:Name="battlefieldView" Foreground="White" Background="Black"
     >
@@ -41,7 +36,7 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Black"
           IsHitTestVisible="{Binding IsWaitingForUserInput}"
-          d:DataConLabel="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}">
+          d:DataContext="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}">
         
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
@@ -62,7 +57,7 @@
         <Rectangle Fill="#3A3A3A" VerticalAlignment="Bottom" Height="170"/>
 
         <TextBlock VerticalAlignment="Top" 
-                   Label="{Binding LastLogItem}" 
+                   Text="{Binding LastLogItem}" 
                    Foreground="#FF898989" 
                    Margin="251,280,8,0"/>
 
@@ -91,17 +86,17 @@
                 <RowDefinition Height="110"/>
             </Grid.RowDefinitions>
 
-                <Controls:CreatureControl x:Name="spField1" Field="{Binding SecondPlayer.Fields[0]}" Selecting="SecondPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 1}" Margin="3" Grid.Column="0" Grid.Row="0" />
-                <Controls:CreatureControl x:Name="spField2" Field="{Binding SecondPlayer.Fields[1]}" Selecting="SecondPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 2}" Margin="3" Grid.Column="1" Grid.Row="0" />
-                <Controls:CreatureControl x:Name="spField3" Field="{Binding SecondPlayer.Fields[2]}" Selecting="SecondPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 3}" Margin="3" Grid.Column="2" Grid.Row="0" />
-                <Controls:CreatureControl x:Name="spField4" Field="{Binding SecondPlayer.Fields[3]}" Selecting="SecondPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 4}" Margin="3" Grid.Column="3" Grid.Row="0" />
-                <Controls:CreatureControl x:Name="spField5" Field="{Binding SecondPlayer.Fields[4]}" Selecting="SecondPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 5}" Margin="3" Grid.Column="4" Grid.Row="0" />
+                <Controls:CreatureControl x:Name="spField1" Field="{Binding SecondPlayer.Fields[0]}" Selecting="SecondPlayerFieldSelecting" FieldName="Slot 1" Margin="3" Grid.Column="0" Grid.Row="0" />
+                <Controls:CreatureControl x:Name="spField2" Field="{Binding SecondPlayer.Fields[1]}" Selecting="SecondPlayerFieldSelecting" FieldName="Slot 2" Margin="3" Grid.Column="1" Grid.Row="0" />
+                <Controls:CreatureControl x:Name="spField3" Field="{Binding SecondPlayer.Fields[2]}" Selecting="SecondPlayerFieldSelecting" FieldName="Slot 3" Margin="3" Grid.Column="2" Grid.Row="0" />
+                <Controls:CreatureControl x:Name="spField4" Field="{Binding SecondPlayer.Fields[3]}" Selecting="SecondPlayerFieldSelecting" FieldName="Slot 4" Margin="3" Grid.Column="3" Grid.Row="0" />
+                <Controls:CreatureControl x:Name="spField5" Field="{Binding SecondPlayer.Fields[4]}" Selecting="SecondPlayerFieldSelecting" FieldName="Slot 5" Margin="3" Grid.Column="4" Grid.Row="0" />
 
-                <Controls:CreatureControl x:Name="fpField1" Field="{Binding FirstPlayer.Fields[0]}" Selecting="FirstPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 1}" Margin="3" Grid.Column="0" Grid.Row="2" />
-                <Controls:CreatureControl x:Name="fpField2" Field="{Binding FirstPlayer.Fields[1]}" Selecting="FirstPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 2}" Margin="3" Grid.Column="1" Grid.Row="2" />
-                <Controls:CreatureControl x:Name="fpField3" Field="{Binding FirstPlayer.Fields[2]}" Selecting="FirstPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 3}" Margin="3" Grid.Column="2" Grid.Row="2" />
-                <Controls:CreatureControl x:Name="fpField4" Field="{Binding FirstPlayer.Fields[3]}" Selecting="FirstPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 4}" Margin="3" Grid.Column="3" Grid.Row="2" />
-                <Controls:CreatureControl x:Name="fpField5" Field="{Binding FirstPlayer.Fields[4]}" Selecting="FirstPlayerFieldSelecting" FieldName="{Binding Resources.CommonResources.Slot, StringFormat=\{0:\} 5}" Margin="3" Grid.Column="4" Grid.Row="2" />
+                <Controls:CreatureControl x:Name="fpField1" Field="{Binding FirstPlayer.Fields[0]}" Selecting="FirstPlayerFieldSelecting" FieldName="Slot 1" Margin="3" Grid.Column="0" Grid.Row="2" />
+                <Controls:CreatureControl x:Name="fpField2" Field="{Binding FirstPlayer.Fields[1]}" Selecting="FirstPlayerFieldSelecting" FieldName="Slot 2" Margin="3" Grid.Column="1" Grid.Row="2" />
+                <Controls:CreatureControl x:Name="fpField3" Field="{Binding FirstPlayer.Fields[2]}" Selecting="FirstPlayerFieldSelecting" FieldName="Slot 3" Margin="3" Grid.Column="2" Grid.Row="2" />
+                <Controls:CreatureControl x:Name="fpField4" Field="{Binding FirstPlayer.Fields[3]}" Selecting="FirstPlayerFieldSelecting" FieldName="Slot 4" Margin="3" Grid.Column="3" Grid.Row="2" />
+                <Controls:CreatureControl x:Name="fpField5" Field="{Binding FirstPlayer.Fields[4]}" Selecting="FirstPlayerFieldSelecting" FieldName="Slot 5" Margin="3" Grid.Column="4" Grid.Row="2" />
         </Grid>
 
         <Controls:PlayerFaceControl x:Name="secondPlayerFace" Width="130" 
@@ -126,7 +121,7 @@
                 BorderThickness="0" 
                 Background="#FF2B2B2B">
             <Image Height="60" Margin="0,-6,0,0" 
-                   Source="/AstralBattles;component/Resources/Common/appbar.timer.png"/>
+                   Source="/Resources/Common/appbar.timer.png"/>
         </Button>
 
         <Button Margin="144,219,0,0"
@@ -138,10 +133,10 @@
                 BorderThickness="0" 
                 Background="#FF2B2B2B">
             <Image Height="60" Margin="0,-6,0,0" 
-                   Source="/AstralBattles;component/Resources/Common/appbar.align.left.png"/>
+                   Source="/Resources/Common/appbar.align.left.png"/>
         </Button>
         
-        <Grid x:Name="CardsPanelLayoutRoot" d:DataConLabel="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}"
+        <Grid x:Name="CardsPanelLayoutRoot" d:DataContext="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}"
               Height="Auto" 
               VerticalAlignment="Bottom" 
               HorizontalAlignment="Left" 
@@ -186,14 +181,14 @@
                        FontSize="18" 
                        TextTrimming="WordEllipsis" 
                        Foreground="Gold"
-                       Label="{Binding SelectedCardOrCardTypeShortDesc}"/>
+                       Text="{Binding SelectedCardOrCardTypeShortDesc}"/>
                     
                     <TextBlock Margin="0,5,0,0"
                        LineStackingStrategy="BlockLineHeight"  
                        LineHeight="20" FontSize="18" 
                        TextTrimming="WordEllipsis" 
                        TextWrapping="Wrap"
-                       Label="{Binding SelectedCardOrCardType.Localization.DefaultLanguage.Description}"/>
+                       Text="{Binding SelectedCardOrCardType.Localization.DefaultLanguage.Description}"/>
                 </StackPanel>
             
             <TextBlock Margin="0,6,0,5" 
@@ -204,7 +199,7 @@
                        TextTrimming="WordEllipsis" 
                        TextWrapping="Wrap" 
                        TextAlignment="Center"
-                       Label="{Binding SelectedCardOrCardType.Localization.DefaultLanguage.DisplayName}"></TextBlock>
+                       Text="{Binding SelectedCardOrCardType.Localization.DefaultLanguage.DisplayName}"></TextBlock>
             <!--<ListBox Grid.ColumnSpan="2" Grid.Row="1" ItemsSource="{Binding Logs}" />-->
         </Grid>
 

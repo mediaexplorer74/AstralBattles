@@ -10,9 +10,8 @@ using AstralBattles.Core.Model;
 using AstralBattles.Core.Services;
 using AstralBattles.Options;
 using AstralBattles.Views;
-using System.IO.IsolatedStorage;
 
-#nullable disable
+
 namespace AstralBattles.ViewModels
 {
   public class TournamentBattlefieldViewModel : BattlefieldViewModel
@@ -29,7 +28,7 @@ namespace AstralBattles.ViewModels
     protected override void OnSaveState()
     {
       Serializer.Write<TournamentBattlefieldViewModel>(this, "CurrentTournamentGame__1_452.xml");
-      IsolatedStorageSettings.ApplicationSettings["LastPlayedMode__1_452"] = (object) GameModes.Tournament;
+      Windows.Storage.ApplicationData.Current.LocalSettings.Values["LastPlayedMode__1_452"] = GameModes.Tournament;
     }
 
     protected override GameRulesEngineBase CreateGameRulesEngine()
@@ -41,7 +40,7 @@ namespace AstralBattles.ViewModels
 
     protected override void OnGameOver(Player winner)
     {
-      TournamentService.Instance.EndRound(winner == this.FirstPlayer, PointsCalculator.Calculate(this.RoundIndex, winner.Kills, winner.Deaths));
+      TournamentService.Instance.EndRound(winner == FirstPlayer, PointsCalculator.Calculate(RoundIndex, winner.Kills, winner.Deaths));
       if (TournamentService.Instance.Tournament.CurrentRoundIndex < 9)
         Serializer.Write<TournamentBattlefieldViewModel>(new TournamentBattlefieldViewModel(true), "CurrentTournamentGame__1_452.xml");
       else

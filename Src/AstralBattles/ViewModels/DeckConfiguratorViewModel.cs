@@ -1,60 +1,53 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.ViewModels.DeckConfiguratorViewModel
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
-using AstralBattles.Converters;
+﻿using AstralBattles.Converters;
 using AstralBattles.Core.Model;
 using AstralBattles.Core.Services;
 using AstralBattles.Localizations;
 using AstralBattles.Model;
-using GalaSoft.MvvmLight.Command;
-using Microsoft.Phone.Shell;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using System.Windows.Navigation;
+using Windows.UI.Xaml.Navigation;
+using AstralBattles.Core.Infrastructure;
 
-#nullable disable
 namespace AstralBattles.ViewModels
 {
-  public class DeckConfiguratorViewModel : ViewModelBaseEx
+   public class DeckConfiguratorViewModel : ViewModelBaseEx
   {
     public const int LibraryCount = 12;
     public const int PlayerFieldsCount = 6;
     private DeckElement selectedElement;
     private ObservableCollection<DeckElement> deckElements;
     private Card selectedCard;
-    private NavigationService navigationService;
+    private Core.Infrastructure.NavigationService navigationService;
     private ElementTextConverter elementTextConverter = new ElementTextConverter();
     private string selectedCardShortDescription;
 
     public DeckConfiguratorViewModel()
     {
-      this.Done = new RelayCommand(new Action(this.DoneAction));
-      this.Resort = new RelayCommand(new Action(this.ResortAction));
-      this.DeckElements = new ObservableCollection<DeckElement>();
+      Done = new RelayCommand(DoneAction);
+      Resort = new RelayCommand(ResortAction);
+      Move = new RelayCommand(_ => { /* Move logic handled by MoveAction method */ });
+      DeckElements = new ObservableCollection<DeckElement>();
     }
 
     private void ResortAction()
     {
-      this.IsBusy = true;
-      foreach (DeckElement deckElement in (Collection<DeckElement>) this.DeckElements)
+      IsBusy = true;
+      foreach (DeckElement deckElement in (Collection<DeckElement>) DeckElements)
       {
         deckElement.Library = new ObservableCollection<DeckField>((IEnumerable<DeckField>) deckElement.Library.OrderBy<DeckField, int>((Func<DeckField, int>) (i => !i.IsEmpty ? i.Card.Cost : 100)).ThenBy<DeckField, int>((Func<DeckField, int>) (i => !i.IsEmpty ? i.Card.Level : 100)));
         deckElement.PlayerFields = new ObservableCollection<DeckField>((IEnumerable<DeckField>) deckElement.PlayerFields.OrderBy<DeckField, int>((Func<DeckField, int>) (i => !i.IsEmpty ? i.Card.Cost : 100)).ThenBy<DeckField, int>((Func<DeckField, int>) (i => !i.IsEmpty ? i.Card.Level : 100)));
       }
-      this.IsBusy = false;
+      IsBusy = false;
     }
 
     private DeckField SubscribeEvents(DeckField field)
     {
-      field.RequestMoveEvent += new EventHandler(this.FieldRequestMoveEvent);
-      field.PropertyChanged += new PropertyChangedEventHandler(this.FieldPropertyChanged);
+      field.RequestMoveEvent += new EventHandler(FieldRequestMoveEvent);
+      field.PropertyChanged += new PropertyChangedEventHandler(FieldPropertyChanged);
       return field;
     }
 
@@ -62,7 +55,7 @@ namespace AstralBattles.ViewModels
     {
       if (!(sender is DeckField destField))
         return;
-      this.MoveAction(destField);
+      MoveAction(destField);
     }
 
     private void FieldPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -71,10 +64,10 @@ namespace AstralBattles.ViewModels
         return;
       DeckField field = sender as DeckField;
       if (!field.IsEmpty && field.IsSelected)
-        this.SelectedCard = field.Card;
+        SelectedCard = field.Card;
       if (!field.IsSelected)
         return;
-      this.SelectedElement.Library.Concat<DeckField>((IEnumerable<DeckField>) this.SelectedElement.PlayerFields).ForEach<DeckField>((Action<DeckField>) (i =>
+      SelectedElement.Library.Concat<DeckField>((IEnumerable<DeckField>) SelectedElement.PlayerFields).ForEach<DeckField>((Action<DeckField>) (i =>
       {
         if (i != field)
           i.IsSelected = false;
@@ -89,35 +82,35 @@ namespace AstralBattles.ViewModels
 
     public void MoveAction(DeckField destField)
     {
-      DeckField deckField = this.SelectedElement.Library.Concat<DeckField>((IEnumerable<DeckField>) this.SelectedElement.PlayerFields).FirstOrDefault<DeckField>((Func<DeckField, bool>) (i => i.IsSelected));
+      DeckField deckField = SelectedElement.Library.Concat<DeckField>((IEnumerable<DeckField>) SelectedElement.PlayerFields).FirstOrDefault<DeckField>((Func<DeckField, bool>) (i => i.IsSelected));
       if (deckField == null || deckField.IsEmpty || destField == null || !destField.IsWaitingForChoise)
         return;
       destField.Card = deckField.Card;
       deckField.Card = (Card) null;
-      this.DeselectAll(true);
+      DeselectAll(true);
     }
 
     public void DeselectAll(bool full = false)
     {
-      this.DeckElements.ForEach<DeckElement>((Action<DeckElement>) (i => i.Library.ForEach<DeckField>((Action<DeckField>) (j => j.IsSelected = false))));
-      this.DeckElements.ForEach<DeckElement>((Action<DeckElement>) (i => i.PlayerFields.ForEach<DeckField>((Action<DeckField>) (j => j.IsSelected = false))));
+      DeckElements.ForEach<DeckElement>((Action<DeckElement>) (i => i.Library.ForEach<DeckField>((Action<DeckField>) (j => j.IsSelected = false))));
+      DeckElements.ForEach<DeckElement>((Action<DeckElement>) (i => i.PlayerFields.ForEach<DeckField>((Action<DeckField>) (j => j.IsSelected = false))));
       if (!full)
         return;
-      this.ClearWaitingsForChoise();
+      ClearWaitingsForChoise();
     }
 
     public void ClearWaitingsForChoise()
     {
-      this.DeckElements.ForEach<DeckElement>((Action<DeckElement>) (i => i.PlayerFields.ForEach<DeckField>((Action<DeckField>) (j => j.IsWaitingForChoise = false))));
-      this.DeckElements.ForEach<DeckElement>((Action<DeckElement>) (i => i.Library.ForEach<DeckField>((Action<DeckField>) (j => j.IsWaitingForChoise = false))));
+      DeckElements.ForEach<DeckElement>((Action<DeckElement>) (i => i.PlayerFields.ForEach<DeckField>((Action<DeckField>) (j => j.IsWaitingForChoise = false))));
+      DeckElements.ForEach<DeckElement>((Action<DeckElement>) (i => i.Library.ForEach<DeckField>((Action<DeckField>) (j => j.IsWaitingForChoise = false))));
     }
 
     private void DoneAction()
     {
-      PhoneApplicationService.Current.State["ConfiguratedDeck"] = (object) this.ToDeckObj(this.DeckElements);
-      if (!this.navigationService.CanGoBack)
+      Windows.Storage.ApplicationData.Current.LocalSettings.Values["ConfiguratedDeck"] = (object) ToDeckObj(DeckElements);
+      if (!navigationService.CanGoBack)
         return;
-      this.navigationService.GoBack();
+      navigationService.GoBack();
     }
 
     private Deck ToDeckObj(ObservableCollection<DeckElement> deckElement)
@@ -130,12 +123,12 @@ namespace AstralBattles.ViewModels
 
     public DeckElement SelectedElement
     {
-      get => this.selectedElement;
+      get => selectedElement;
       set
       {
-        this.selectedElement = value;
-        this.RaisePropertyChanged(nameof (SelectedElement));
-        this.DeselectAll(true);
+        selectedElement = value;
+        RaisePropertyChanged(nameof (SelectedElement));
+        DeselectAll(true);
       }
     }
 
@@ -147,49 +140,54 @@ namespace AstralBattles.ViewModels
 
     public ObservableCollection<DeckElement> DeckElements
     {
-      get => this.deckElements;
+      get => deckElements;
       set
       {
-        this.deckElements = value;
-        this.RaisePropertyChanged(nameof (DeckElements));
+        deckElements = value;
+        RaisePropertyChanged(nameof (DeckElements));
       }
     }
 
     public Card SelectedCard
     {
-      get => this.selectedCard;
+      get => selectedCard;
       set
       {
-        if (this.selectedCard == value)
+        if (selectedCard == value)
           return;
-        this.selectedCard = value;
-        this.RaisePropertyChanged(nameof (SelectedCard));
-        if (this.selectedCard is SpellCard)
-          this.SelectedCardShortDescription = string.Format(CommonResources.SpellShortDesc, this.elementTextConverter.Convert((object) this.selectedCard.ElementType, (Type) null, (object) null, (CultureInfo) null), (object) this.selectedCard.Cost);
-        if (!(this.selectedCard is CreatureCard))
+        selectedCard = value;
+        RaisePropertyChanged(nameof (SelectedCard));
+        if (selectedCard is SpellCard)
+          SelectedCardShortDescription = string.Format(CommonResources.SpellShortDesc,
+              elementTextConverter.Convert((object) selectedCard.ElementType, (Type) null, (object) null, null),
+              (object) selectedCard.Cost);
+        if (!(selectedCard is CreatureCard))
           return;
-        this.SelectedCardShortDescription = string.Format(CommonResources.CreatureShortDesc, this.elementTextConverter.Convert((object) this.selectedCard.ElementType, (Type) null, (object) null, (CultureInfo) null), (object) this.selectedCard.Damage, (object) this.selectedCard.Health, (object) this.selectedCard.Cost);
+        SelectedCardShortDescription = string.Format(CommonResources.CreatureShortDesc, 
+            elementTextConverter.Convert((object) selectedCard.ElementType, (Type) null, (object) null, null),
+            (object) selectedCard.Damage, (object) selectedCard.Health, (object) selectedCard.Cost);
       }
     }
 
     public void SetNextOrPreviousElement(bool next)
     {
-      if (this.DeckElements.Count < 1)
+      if (DeckElements.Count < 1)
         return;
-      int num = this.DeckElements.IndexOf(this.SelectedElement);
-      bool flag1 = num == this.DeckElements.Count - 1;
+      int num = DeckElements.IndexOf(SelectedElement);
+      bool flag1 = num == DeckElements.Count - 1;
       bool flag2 = num == 0;
-      this.SelectedElement = this.DeckElements[!flag1 || !next ? (!flag2 || next ? (!next ? num - 1 : num + 1) : this.DeckElements.Count - 1) : 0];
+      SelectedElement = DeckElements[!flag1 || !next ? (!flag2 || next ? (!next ? num - 1 : num + 1) : DeckElements.Count - 1) : 0];
     }
 
-    public void OnNavigatedTo(NavigationEventArgs e, NavigationService navigationService)
+    public void OnNavigatedTo(NavigationEventArgs e, Core.Infrastructure.NavigationService navigationService)
     {
-      this.navigationService = navigationService;
-      if (!(PhoneApplicationService.Current.State.PopValueOrDefault<object, string>("ConfiguratedDeck") is Deck deck))
+      navigationService = navigationService;
+      if (!(Windows.Storage.ApplicationData.Current.LocalSettings.Values.PopValueOrDefault<object, string>("ConfiguratedDeck")
+                is Deck deck))
         return;
-      this.DeckElements = this.ToDeckElements(deck);
-      this.SelectedElement = this.DeckElements.First<DeckElement>();
-      this.SelectedCard = CardRegistry.GetCardByName("GoblinBerserker");
+      DeckElements = ToDeckElements(deck);
+      SelectedElement = DeckElements.First<DeckElement>();
+      SelectedCard = CardRegistry.GetCardByName("GoblinBerserker");
       int navigationMode = (int) e.NavigationMode;
     }
 
@@ -207,11 +205,11 @@ namespace AstralBattles.ViewModels
           deckElements.Add(new DeckElement()
           {
             ElementType = item.Key,
-            PlayerFields = new ObservableCollection<DeckField>(item.Value.OrderBy<Card, int>((Func<Card, int>) (i => i != null ? i.Cost : 100)).ThenBy<Card, int>((Func<Card, int>) (i => i != null ? i.Level : 100)).Select<Card, DeckField>((Func<Card, DeckField>) (i => this.SubscribeEvents(new DeckField()
+            PlayerFields = new ObservableCollection<DeckField>(item.Value.OrderBy<Card, int>((Func<Card, int>) (i => i != null ? i.Cost : 100)).ThenBy<Card, int>((Func<Card, int>) (i => i != null ? i.Level : 100)).Select<Card, DeckField>((Func<Card, DeckField>) (i => SubscribeEvents(new DeckField()
             {
               Card = i
             })))),
-            Library = this.CreateLibrary(cardRegistry, item.Value)
+            Library = CreateLibrary(cardRegistry, item.Value)
           });
         }
       }
@@ -225,7 +223,7 @@ namespace AstralBattles.ViewModels
       List<Card> list = cardRegistry.Where<Card>((Func<Card, bool>) (i => !i.IsHidden && !playerCards.Any<Card>((Func<Card, bool>) (c => c != null && c.Name == i.Name)))).Take<Card>(12).ToList<Card>();
       while (list.Count < 12)
         list.Add((Card) null);
-      return new ObservableCollection<DeckField>(list.OrderBy<Card, int>((Func<Card, int>) (i => i != null ? i.Cost : 100)).ThenBy<Card, int>((Func<Card, int>) (i => i != null ? i.Level : 100)).Select<Card, DeckField>((Func<Card, DeckField>) (i => this.SubscribeEvents(new DeckField()
+      return new ObservableCollection<DeckField>(list.OrderBy<Card, int>((Func<Card, int>) (i => i != null ? i.Cost : 100)).ThenBy<Card, int>((Func<Card, int>) (i => i != null ? i.Level : 100)).Select<Card, DeckField>((Func<Card, DeckField>) (i => SubscribeEvents(new DeckField()
       {
         IsLibrary = true,
         Card = i
@@ -238,11 +236,11 @@ namespace AstralBattles.ViewModels
 
     public string SelectedCardShortDescription
     {
-      get => this.selectedCardShortDescription;
+      get => selectedCardShortDescription;
       set
       {
-        this.selectedCardShortDescription = value;
-        this.RaisePropertyChanged(nameof (SelectedCardShortDescription));
+        selectedCardShortDescription = value;
+        RaisePropertyChanged(nameof (SelectedCardShortDescription));
       }
     }
   }

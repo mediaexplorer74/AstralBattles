@@ -1,25 +1,20 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.ViewModels.TwoPlayersOptionsViewModel
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
-using AstralBattles.Converters;
+﻿using AstralBattles.Converters;
 using AstralBattles.Core.Infrastructure;
 using AstralBattles.Core.Model;
 using AstralBattles.Core.Services;
 using AstralBattles.Localizations;
 using AstralBattles.Views;
-using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
-using System.IO.IsolatedStorage;
 using System.Linq;
-using System.Windows;
+using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Navigation;
+using Windows.Storage;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
-#nullable disable
+
 namespace AstralBattles.ViewModels
 {
   public class TwoPlayersOptionsViewModel : ViewModelBaseEx
@@ -46,7 +41,7 @@ namespace AstralBattles.ViewModels
     {
       SpecializationConverter specializationConverter = new SpecializationConverter();
       SpecialElementConverter elementConverter = new SpecialElementConverter();
-      this.Specializations = new string[6]
+      Specializations = new string[6]
       {
         specializationConverter.Convert(Specialization.Pyromancer),
         specializationConverter.Convert(Specialization.IceLord),
@@ -55,31 +50,33 @@ namespace AstralBattles.ViewModels
         specializationConverter.Convert(Specialization.Necromancer),
         specializationConverter.Convert(Specialization.Elementalist)
       };
-      this.SpecialElements = ((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements).Select<ElementTypeEnum, string>(new Func<ElementTypeEnum, string>(elementConverter.Convert)).ToArray<string>();
-      this.Continue = new RelayCommand(new Action(this.ContinueAction), (Func<bool>) (() => this.CanContinue));
-      this.NewGame = new RelayCommand(new Action(this.NewGameAction));
-      this.Photos = Enumerable.Range(1, 79).Select<int, string>((Func<int, string>) (i => "face" + (object) i)).ToArray<string>();
-      this.ChangeFirstPlayer = (ICommand) new RelayCommand(new Action(this.ChangeFirstPlayerAction));
-      this.ChangeSecondPlayer = (ICommand) new RelayCommand(new Action(this.ChangeSecondPlayerAction));
-      if (!this.IsInDesignMode)
+      SpecialElements = ((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements).Select<ElementTypeEnum, string>(new Func<ElementTypeEnum, string>(elementConverter.Convert)).ToArray<string>();
+      Continue = new RelayCommand(ContinueAction, (Func<bool>) (() => CanContinue));
+      NewGame = new RelayCommand(NewGameAction);
+      Photos = Enumerable.Range(1, 79).Select<int, string>((Func<int, string>) (i => "face" + (object) i)).ToArray<string>();
+      ChangeFirstPlayer = (ICommand) new RelayCommand(ChangeFirstPlayerAction);
+      ChangeSecondPlayer = (ICommand) new RelayCommand(ChangeSecondPlayerAction);
+
+      if (!App.IsInDesignMode)
         return;
-      this.FirstPlayerPhoto = ((IEnumerable<string>) this.Photos).GetRandomElement<string>();
-      this.SecondPlayerPhoto = ((IEnumerable<string>) this.Photos).GetRandomElement<string>();
-      this.FirstPlayer = "Player3303032";
-      this.SecondPlayer = "Nagg";
+      
+      FirstPlayerPhoto = ((IEnumerable<string>) Photos).GetRandomElement<string>();
+      SecondPlayerPhoto = ((IEnumerable<string>) Photos).GetRandomElement<string>();
+      FirstPlayer = "Player3303032";
+      SecondPlayer = "Nagg";
     }
 
     private void ChangeSecondPlayerAction()
     {
       CreatePlayerViewModel.CreatePlayerInfo = new CreatePlayerInfo()
       {
-        Element = this.SecondPlayerSpecialElement,
-        Name = this.SecondPlayer,
-        Face = this.SecondPlayerPhoto,
-        Deck = this.SecondPlayerDeck
+        Element = SecondPlayerSpecialElement,
+        Name = SecondPlayer,
+        Face = SecondPlayerPhoto,
+        Deck = SecondPlayerDeck
       };
-      this.selectingFirstPlayerinfo = false;
-      this.selectingSecondPlayerinfo = true;
+      selectingFirstPlayerinfo = false;
+      selectingSecondPlayerinfo = true;
       PageNavigationService.OpenCreateNewPlayer(true);
     }
 
@@ -87,67 +84,91 @@ namespace AstralBattles.ViewModels
     {
       CreatePlayerViewModel.CreatePlayerInfo = new CreatePlayerInfo()
       {
-        Element = this.FirstPlayerSpecialElement,
-        Name = this.FirstPlayer,
-        Face = this.FirstPlayerPhoto,
-        Deck = this.FirstPlayerDeck
+        Element = FirstPlayerSpecialElement,
+        Name = FirstPlayer,
+        Face = FirstPlayerPhoto,
+        Deck = FirstPlayerDeck
       };
-      this.selectingFirstPlayerinfo = true;
-      this.selectingSecondPlayerinfo = false;
+      selectingFirstPlayerinfo = true;
+      selectingSecondPlayerinfo = false;
       PageNavigationService.OpenCreateNewPlayer(true);
     }
 
-    private void RefreshData()
+    private async Task RefreshData()
     {
-      IsolatedStorageSettings applicationSettings = IsolatedStorageSettings.ApplicationSettings;
-      this.FirstPlayer = applicationSettings.GetValueOrDefault<object, string>("FirstPlayer", (object) "Player 1").ToString();
-      this.SecondPlayer = applicationSettings.GetValueOrDefault<object, string>("SecondPlayer", (object) "Player 2").ToString();
-      this.CanContinue = Serializer.Exists("CurrentTwoPlayerDuelGame__1_452.xml") || Serializer.Exists("DuelWithAiBattlefieldViewModel__1_452.xml");
-      this.FirstPlayerSpecialization = (Specialization) applicationSettings.GetValueOrDefault<object, string>("FirstPlayerSpecialization", (object) Specialization.Elementalist);
-      this.SecondPlayerSpecialization = (Specialization) applicationSettings.GetValueOrDefault<object, string>("SecondPlayerSpecialization", (object) Specialization.Elementalist);
-      this.FirstPlayerSpecialElement = (ElementTypeEnum) applicationSettings.GetValueOrDefault<object, string>("FirstPlayerSpecialElement", (object) ((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements).GetRandomElement<ElementTypeEnum>());
-      this.SecondPlayerSpecialElement = (ElementTypeEnum) applicationSettings.GetValueOrDefault<object, string>("SecondPlayerSpecialElement", (object) ((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements).GetRandomElement<ElementTypeEnum>());
-      this.FirstPlayerPhoto = applicationSettings.GetValueOrDefault<object, string>("FirstPlayerPhoto", (object) ((IEnumerable<string>) this.Photos).GetRandomElement<string>()).ToString();
-      this.SecondPlayerPhoto = applicationSettings.GetValueOrDefault<object, string>("SecondPlayerPhoto", (object) ((IEnumerable<string>) this.Photos).GetRandomElement<string>()).ToString();
-      this.FirstPlayerDeck = Deck.Deserialize(applicationSettings.GetValueOrDefault<object, string>("FirstPlayerDeck", (object) "").ToStringIfNotNull(), PlayersFactory.CreateRandomDeck(this.FirstPlayerSpecialElement));
-      this.SecondPlayerDeck = Deck.Deserialize(applicationSettings.GetValueOrDefault<object, string>("SecondPlayerDeck", (object) "").ToStringIfNotNull(), PlayersFactory.CreateRandomDeck(this.SecondPlayerSpecialElement));
-      this.IsSecondPlayerComputer = (bool) applicationSettings.GetValueOrDefault<object, string>("IsSecondPlayerComputer", (object) false);
+      // UWP uses ApplicationData.Current.LocalSettings instead of IsolatedStorageSettings
+      var applicationSettings = Windows.Storage.ApplicationData.Current.LocalSettings.Values;
+      FirstPlayer = (applicationSettings.ContainsKey("FirstPlayer") ? applicationSettings["FirstPlayer"] : "Player 1").ToString();
+      SecondPlayer = (applicationSettings.ContainsKey("SecondPlayer") ? applicationSettings["SecondPlayer"] : "Player 2").ToString();
+      var a = await Serializer.Exists("CurrentTwoPlayerDuelGame__1_452.xml");
+      var b = await Serializer.Exists("DuelWithAiBattlefieldViewModel__1_452.xml");
+      CanContinue = a || b;
+      FirstPlayerSpecialization = (Specialization) (applicationSettings.ContainsKey("FirstPlayerSpecialization") ? applicationSettings["FirstPlayerSpecialization"] : Specialization.Elementalist);
+      SecondPlayerSpecialization = (Specialization) (applicationSettings.ContainsKey("SecondPlayerSpecialization") ? applicationSettings["SecondPlayerSpecialization"] : Specialization.Elementalist);
+      FirstPlayerSpecialElement = (ElementTypeEnum) (applicationSettings.ContainsKey("FirstPlayerSpecialElement") ? applicationSettings["FirstPlayerSpecialElement"] : ((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements).GetRandomElement<ElementTypeEnum>());
+      SecondPlayerSpecialElement = (ElementTypeEnum) (applicationSettings.ContainsKey("SecondPlayerSpecialElement") ? applicationSettings["SecondPlayerSpecialElement"] : ((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements).GetRandomElement<ElementTypeEnum>());
+      FirstPlayerPhoto = (applicationSettings.ContainsKey("FirstPlayerPhoto") ? applicationSettings["FirstPlayerPhoto"] : ((IEnumerable<string>) Photos).GetRandomElement<string>()).ToString();
+      SecondPlayerPhoto = (applicationSettings.ContainsKey("SecondPlayerPhoto") ? applicationSettings["SecondPlayerPhoto"] : ((IEnumerable<string>) Photos).GetRandomElement<string>()).ToString();
+      FirstPlayerDeck = Deck.Deserialize((applicationSettings.ContainsKey("FirstPlayerDeck") ? applicationSettings["FirstPlayerDeck"] : "").ToStringIfNotNull(), PlayersFactory.CreateRandomDeck(FirstPlayerSpecialElement));
+      SecondPlayerDeck = Deck.Deserialize((applicationSettings.ContainsKey("SecondPlayerDeck") ? applicationSettings["SecondPlayerDeck"] : "").ToStringIfNotNull(), PlayersFactory.CreateRandomDeck(SecondPlayerSpecialElement));
+      IsSecondPlayerComputer = (bool) (applicationSettings.ContainsKey("IsSecondPlayerComputer") ? applicationSettings["IsSecondPlayerComputer"] : false);
     }
 
     private void Save()
     {
-      IsolatedStorageSettings applicationSettings = IsolatedStorageSettings.ApplicationSettings;
-      applicationSettings["FirstPlayer"] = (object) this.FirstPlayer;
-      applicationSettings["SecondPlayer"] = (object) this.SecondPlayer;
-      applicationSettings["FirstPlayerSpecialization"] = (object) this.FirstPlayerSpecialization;
-      applicationSettings["SecondPlayerSpecialization"] = (object) this.SecondPlayerSpecialization;
-      applicationSettings["FirstPlayerSpecialElement"] = (object) this.FirstPlayerSpecialElement;
-      applicationSettings["SecondPlayerSpecialElement"] = (object) this.SecondPlayerSpecialElement;
-      applicationSettings["FirstPlayerPhoto"] = (object) this.FirstPlayerPhoto;
-      applicationSettings["SecondPlayerPhoto"] = (object) this.SecondPlayerPhoto;
-      applicationSettings["IsSecondPlayerComputer"] = (object) this.IsSecondPlayerComputer;
-      applicationSettings["FirstPlayerDeck"] = (object) Deck.Serialize(this.FirstPlayerDeck);
-      applicationSettings["SecondPlayerDeck"] = (object) Deck.Serialize(this.SecondPlayerDeck);
-      applicationSettings.Save();
+      // UWP uses ApplicationData.Current.LocalSettings instead of IsolatedStorageSettings
+      var applicationSettings = Windows.Storage.ApplicationData.Current.LocalSettings.Values;
+      applicationSettings["FirstPlayer"] = FirstPlayer;
+      applicationSettings["SecondPlayer"] = SecondPlayer;
+      applicationSettings["FirstPlayerSpecialization"] = FirstPlayerSpecialization;
+      applicationSettings["SecondPlayerSpecialization"] = SecondPlayerSpecialization;
+      applicationSettings["FirstPlayerSpecialElement"] = FirstPlayerSpecialElement;
+      applicationSettings["SecondPlayerSpecialElement"] = SecondPlayerSpecialElement;
+      applicationSettings["FirstPlayerPhoto"] = FirstPlayerPhoto;
+      applicationSettings["SecondPlayerPhoto"] = SecondPlayerPhoto;
+      applicationSettings["IsSecondPlayerComputer"] = IsSecondPlayerComputer;
+      applicationSettings["FirstPlayerDeck"] = Deck.Serialize(FirstPlayerDeck);
+      applicationSettings["SecondPlayerDeck"] = Deck.Serialize(SecondPlayerDeck);
+      // UWP automatically saves LocalSettings
     }
 
-    private void NewGameAction()
+    private async void NewGameAction()
     {
-      if (this.CanContinue && MessageBox.Show(CommonResources.GameWillBeOverwritten, CommonResources.Confirmation, MessageBoxButton.OKCancel) != MessageBoxResult.OK)
-        return;
-      if (string.IsNullOrWhiteSpace(this.FirstPlayer) || string.IsNullOrWhiteSpace(this.SecondPlayer))
+        if (CanContinue &&
+        await new ContentDialog
+        {
+            Title = CommonResources.Confirmation,
+            Content = CommonResources.GameWillBeOverwritten,
+            CloseButtonText = "OK",
+            SecondaryButtonText = "Cancel"
+        }.ShowAsync() == ContentDialogResult.Secondary)
+          return;
+        
+      if (string.IsNullOrWhiteSpace(FirstPlayer) || string.IsNullOrWhiteSpace(SecondPlayer))
       {
-        int num1 = (int) MessageBox.Show(CommonResources.NamesShouldBeNotEmptyMessage);
+            // Replace MessageBox with UWP ContentDialog for MVP
+            int num1 = (int)await new ContentDialog
+            {
+                Title = "Error",
+                Content = CommonResources.NamesShouldBeNotEmptyMessage,
+                CloseButtonText = "OK"
+            }.ShowAsync();
       }
-      else if (this.FirstPlayer == this.SecondPlayer)
+      else if (FirstPlayer == SecondPlayer)
       {
-        int num2 = (int) MessageBox.Show(CommonResources.NamesShouldBeNotEqualMessage);
-      }
+            // Replace MessageBox with UWP ContentDialog for MVP
+            int num2 = (int)await new ContentDialog
+            {
+                Title = "Error",
+                Content = CommonResources.NamesShouldBeNotEmptyMessage,
+                CloseButtonText = "OK"
+            }.ShowAsync();
+        }
       else
       {
-        this.IsBusy = true;
-        this.Save();
-        PageNavigationService.OpenBattlefield(false, true, this.IsSecondPlayerComputer);
+        IsBusy = true;
+        Save();
+        PageNavigationService.OpenBattlefield(false, true, IsSecondPlayerComputer);
       }
     }
 
@@ -157,178 +178,180 @@ namespace AstralBattles.ViewModels
 
     private void ContinueAction()
     {
-      this.IsBusy = true;
-      PageNavigationService.OpenBattlefield(true, true, (GameModes) IsolatedStorageSettings.ApplicationSettings.GetValueOrDefault<object, string>("LastPlayedMode__1_452", (object) GameModes.NotDefined) == GameModes.DuelWithAi);
+      IsBusy = true;
+      PageNavigationService.OpenBattlefield(true, true, (GameModes) (Windows.Storage.ApplicationData.Current.LocalSettings.Values.ContainsKey("LastPlayedMode__1_452") ? Windows.Storage.ApplicationData.Current.LocalSettings.Values["LastPlayedMode__1_452"] : GameModes.NotDefined) == GameModes.DuelWithAi);
     }
 
-    public void OnNavigatedTo(NavigationMode mode, Uri uri, NavigationService navigationService)
+    public async Task OnNavigatedTo(NavigationMode mode, Uri uri, Core.Infrastructure.NavigationService navigationService)
     {
-      this.IsBusy = false;
+      IsBusy = false;
       if (mode == NavigationMode.Back)
       {
         CreatePlayerInfo createPlayerInfo = CreatePlayerViewModel.CreatePlayerInfo;
-        if (this.selectingFirstPlayerinfo && createPlayerInfo != null)
+        if (selectingFirstPlayerinfo && createPlayerInfo != null)
         {
-          this.FirstPlayer = createPlayerInfo.Name;
-          this.FirstPlayerPhoto = createPlayerInfo.Face;
-          this.FirstPlayerSpecialElement = createPlayerInfo.Element;
-          this.FirstPlayerDeck = createPlayerInfo.Deck;
+          FirstPlayer = createPlayerInfo.Name;
+          FirstPlayerPhoto = createPlayerInfo.Face;
+          FirstPlayerSpecialElement = createPlayerInfo.Element;
+          FirstPlayerDeck = createPlayerInfo.Deck;
         }
-        if (this.selectingSecondPlayerinfo && createPlayerInfo != null)
+        if (selectingSecondPlayerinfo && createPlayerInfo != null)
         {
-          this.SecondPlayer = createPlayerInfo.Name;
-          this.SecondPlayerPhoto = createPlayerInfo.Face;
-          this.SecondPlayerSpecialElement = createPlayerInfo.Element;
-          this.SecondPlayerDeck = createPlayerInfo.Deck;
+          SecondPlayer = createPlayerInfo.Name;
+          SecondPlayerPhoto = createPlayerInfo.Face;
+          SecondPlayerSpecialElement = createPlayerInfo.Element;
+          SecondPlayerDeck = createPlayerInfo.Deck;
         }
-        this.selectingFirstPlayerinfo = false;
-        this.selectingSecondPlayerinfo = false;
+        selectingFirstPlayerinfo = false;
+        selectingSecondPlayerinfo = false;
       }
-      this.CanContinue = Serializer.Exists("CurrentTwoPlayerDuelGame__1_452.xml") || Serializer.Exists("DuelWithAiBattlefieldViewModel__1_452.xml");
+      var a = await Serializer.Exists("CurrentTwoPlayerDuelGame__1_452.xml");
+      var b = await Serializer.Exists("DuelWithAiBattlefieldViewModel__1_452.xml");
+      CanContinue = a || b;
       if (mode == NavigationMode.Back)
         return;
-      this.RefreshData();
+      RefreshData();
     }
 
-    public void OnNavigatedFrom() => this.Save();
+    public void OnNavigatedFrom() => Save();
 
     public string FirstPlayer
     {
-      get => this.firstPlayer;
+      get => firstPlayer;
       set
       {
-        this.firstPlayer = value;
-        this.RaisePropertyChanged(nameof (FirstPlayer));
+        firstPlayer = value;
+        RaisePropertyChanged(nameof (FirstPlayer));
       }
     }
 
     public string[] Specializations
     {
-      get => this.specializations;
+      get => specializations;
       set
       {
-        this.specializations = value;
-        this.RaisePropertyChanged(nameof (Specializations));
+        specializations = value;
+        RaisePropertyChanged(nameof (Specializations));
       }
     }
 
     public string[] SpecialElements
     {
-      get => this.specialElements;
+      get => specialElements;
       set
       {
-        this.specialElements = value;
-        this.RaisePropertyChanged(nameof (SpecialElements));
+        specialElements = value;
+        RaisePropertyChanged(nameof (SpecialElements));
       }
     }
 
     public Deck FirstPlayerDeck
     {
-      get => this.firstPlayerDeck;
+      get => firstPlayerDeck;
       set
       {
-        this.firstPlayerDeck = value;
-        this.RaisePropertyChanged(nameof (FirstPlayerDeck));
+        firstPlayerDeck = value;
+        RaisePropertyChanged(nameof (FirstPlayerDeck));
       }
     }
 
     public Deck SecondPlayerDeck
     {
-      get => this.secondPlayerDeck;
+      get => secondPlayerDeck;
       set
       {
-        this.secondPlayerDeck = value;
-        this.RaisePropertyChanged(nameof (SecondPlayerDeck));
+        secondPlayerDeck = value;
+        RaisePropertyChanged(nameof (SecondPlayerDeck));
       }
     }
 
     public string[] Photos
     {
-      get => this.photos;
+      get => photos;
       set
       {
-        this.photos = value;
-        this.RaisePropertyChanged(nameof (Photos));
+        photos = value;
+        RaisePropertyChanged(nameof (Photos));
       }
     }
 
     public Specialization FirstPlayerSpecialization
     {
-      get => this.firstPlayerSpecialization;
+      get => firstPlayerSpecialization;
       set
       {
-        this.firstPlayerSpecialization = value;
-        this.RaisePropertyChanged(nameof (FirstPlayerSpecialization));
+        firstPlayerSpecialization = value;
+        RaisePropertyChanged(nameof (FirstPlayerSpecialization));
       }
     }
 
     public string SecondPlayer
     {
-      get => this.secondPlayer;
+      get => secondPlayer;
       set
       {
-        this.secondPlayer = value;
-        this.RaisePropertyChanged(nameof (SecondPlayer));
+        secondPlayer = value;
+        RaisePropertyChanged(nameof (SecondPlayer));
       }
     }
 
     public string FirstPlayerPhoto
     {
-      get => this.firstPlayerPhoto;
+      get => firstPlayerPhoto;
       set
       {
-        this.firstPlayerPhoto = value;
-        this.RaisePropertyChanged(nameof (FirstPlayerPhoto));
+        firstPlayerPhoto = value;
+        RaisePropertyChanged(nameof (FirstPlayerPhoto));
       }
     }
 
     public string SecondPlayerPhoto
     {
-      get => this.secondPlayerPhoto;
+      get => secondPlayerPhoto;
       set
       {
-        this.secondPlayerPhoto = value;
-        this.RaisePropertyChanged(nameof (SecondPlayerPhoto));
+        secondPlayerPhoto = value;
+        RaisePropertyChanged(nameof (SecondPlayerPhoto));
       }
     }
 
     public Specialization SecondPlayerSpecialization
     {
-      get => this.secondPlayerSpecialization;
+      get => secondPlayerSpecialization;
       set
       {
-        this.secondPlayerSpecialization = value;
-        this.RaisePropertyChanged(nameof (SecondPlayerSpecialization));
+        secondPlayerSpecialization = value;
+        RaisePropertyChanged(nameof (SecondPlayerSpecialization));
       }
     }
 
     public ElementTypeEnum FirstPlayerSpecialElement
     {
-      get => this.firstPlayerSpecialElement;
+      get => firstPlayerSpecialElement;
       set
       {
-        this.firstPlayerSpecialElement = value;
-        this.RaisePropertyChanged(nameof (FirstPlayerSpecialElement));
+        firstPlayerSpecialElement = value;
+        RaisePropertyChanged(nameof (FirstPlayerSpecialElement));
       }
     }
 
     public ElementTypeEnum SecondPlayerSpecialElement
     {
-      get => this.secondPlayerSpecialElement;
+      get => secondPlayerSpecialElement;
       set
       {
-        this.secondPlayerSpecialElement = value;
-        this.RaisePropertyChanged(nameof (SecondPlayerSpecialElement));
+        secondPlayerSpecialElement = value;
+        RaisePropertyChanged(nameof (SecondPlayerSpecialElement));
       }
     }
 
     public bool CanContinue
     {
-      get => this.canContinue;
+      get => canContinue;
       set
       {
-        this.canContinue = value;
-        this.Continue.RaiseCanExecuteChanged();
+        canContinue = value;
+        Continue.RaiseCanExecuteChanged();
       }
     }
 
@@ -338,22 +361,22 @@ namespace AstralBattles.ViewModels
 
     public bool IsSecondPlayerComputer
     {
-      get => this.isSecondPlayerComputer;
+      get => isSecondPlayerComputer;
       set
       {
-        if (this.isSecondPlayerComputer == value)
+        if (isSecondPlayerComputer == value)
           return;
-        this.isSecondPlayerComputer = value;
-        this.RaisePropertyChanged(nameof (IsSecondPlayerComputer));
-        if (value && this.SecondPlayer == "Player 2")
+        isSecondPlayerComputer = value;
+        RaisePropertyChanged(nameof (IsSecondPlayerComputer));
+        if (value && SecondPlayer == "Player 2")
         {
-          this.SecondPlayer = "Computer";
+          SecondPlayer = "Computer";
         }
         else
         {
-          if (value || !(this.SecondPlayer == "Computer"))
+          if (value || !(SecondPlayer == "Computer"))
             return;
-          this.SecondPlayer = "Player 2";
+          SecondPlayer = "Player 2";
         }
       }
     }

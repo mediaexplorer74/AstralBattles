@@ -8,12 +8,10 @@ using AstralBattles.Controls;
 using AstralBattles.ViewModels;
 using Windows.UI.Xaml.Controls;
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Windows;
-using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
 
-#nullable disable
+
 namespace AstralBattles.Views
 {
 public partial class CampaignMap : Page
@@ -22,11 +20,7 @@ public partial class CampaignMap : Page
 
     public CampaignMap() => this.InitializeComponent();
 
-    protected virtual void OnBackKeyPress(CancelEventArgs e)
-    {
-      ((CampaignViewModel) ((FrameworkElement) this).DataContext).OnBackKeyPress(e);
-      base.OnBackKeyPress(e);
-    }
+    // Removed OnBackKeyPress - not available in UWP
 
     
   }

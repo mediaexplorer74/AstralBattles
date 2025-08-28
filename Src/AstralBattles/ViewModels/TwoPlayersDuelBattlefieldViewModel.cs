@@ -9,9 +9,8 @@ using AstralBattles.Core.Infrastructure;
 using AstralBattles.Core.Model;
 using AstralBattles.Core.Services;
 using AstralBattles.Views;
-using System.IO.IsolatedStorage;
 
-#nullable disable
+
 namespace AstralBattles.ViewModels
 {
   public class TwoPlayersDuelBattlefieldViewModel : BattlefieldViewModel
@@ -28,7 +27,7 @@ namespace AstralBattles.ViewModels
     protected override void OnSaveState()
     {
       Serializer.Write<TwoPlayersDuelBattlefieldViewModel>(this, "CurrentTwoPlayerDuelGame__1_452.xml");
-      IsolatedStorageSettings.ApplicationSettings["LastPlayedMode__1_452"] = (object) GameModes.HotsitDuel;
+      Windows.Storage.ApplicationData.Current.LocalSettings.Values["LastPlayedMode__1_452"] = GameModes.HotsitDuel;
     }
 
     protected override void OnGameOver(Player winner)
@@ -44,7 +43,7 @@ namespace AstralBattles.ViewModels
 
     public void OnClosingNextTurnDialog()
     {
-      ((TwoPlayersDuelRulesEngine) this.GameRulesEngine).OnClosingNextTurnDialog();
+      ((TwoPlayersDuelRulesEngine) GameRulesEngine).OnClosingNextTurnDialog();
     }
   }
 }

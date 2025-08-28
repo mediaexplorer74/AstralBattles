@@ -1,11 +1,6 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Controls.PlayersTurnNotification
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
 using AstralBattles.Localizations;
-using GalaSoft.MvvmLight;
+using AstralBattles.Core.Infrastructure;
+using Windows.ApplicationModel;
 using System;
 using System.Diagnostics;
 using Windows.UI.Xaml;
@@ -13,7 +8,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 
 
-#nullable disable
+
 namespace AstralBattles.Controls
 {
 public partial class PlayersTurnNotification : UserControl
@@ -28,7 +23,7 @@ public partial class PlayersTurnNotification : UserControl
     public PlayersTurnNotification()
     {
       this.InitializeComponent();
-      if (ViewModelBase.IsInDesignModeStatic)
+      if (DesignMode.DesignModeEnabled)
         return;
       this.Visibility = Visibility.Collapsed;
     }
@@ -84,12 +79,12 @@ public partial class PlayersTurnNotification : UserControl
 
     public void WaitingNextPlayersTurnPropertyChanged()
     {
-      if (ViewModelBase.IsInDesignModeStatic || !this.WaitingNextPlayersTurn || this.Visibility == Visibility.Visible)
+      if (DesignMode.DesignModeEnabled || !this.WaitingNextPlayersTurn || this.Visibility == Visibility.Visible)
         return;
       this.Visibility = Visibility.Visible;
     }
 
-    protected override void OnTap(GestureEventArgs e)
+    protected override void OnTapped(TappedRoutedEventArgs e)
     {
       if (this.isHiding || this.Visibility == Visibility.Collapsed)
         return;
@@ -97,14 +92,14 @@ public partial class PlayersTurnNotification : UserControl
       this.Visibility = Visibility.Collapsed;
       this.PanelHiding((object) this, EventArgs.Empty);
       this.isHiding = false;
-      base.OnTap(e);
+      base.OnTapped(e);
     }
 
     private void HidingAnimationCompleted(object sender, EventArgs e)
     {
     }
 
-    private void BorderTap(object sender, GestureEventArgs e)
+    private void BorderTap(object sender, TappedRoutedEventArgs e)
     {
     }
    

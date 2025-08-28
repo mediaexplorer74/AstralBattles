@@ -14,7 +14,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Threading;
 
-#nullable disable
+
 namespace AstralBattles.ServiceReference
 {
   [DebuggerStepThrough]

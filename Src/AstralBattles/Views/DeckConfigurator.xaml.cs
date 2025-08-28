@@ -1,22 +1,15 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Views.DeckConfigurator
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
 using AstralBattles.Controls;
 using AstralBattles.ViewModels;
-using Windows.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Windows;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using System.Windows.Data;
+using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Navigation;
-using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
-#nullable disable
+
 namespace AstralBattles.Views
 {
 public partial class DeckConfigurator : Page
@@ -39,7 +32,7 @@ public partial class DeckConfigurator : Page
 
     protected virtual void OnNavigatedTo(NavigationEventArgs e)
     {
-      this.ViewModel.OnNavigatedTo(e, ((Page) this).Frame);
+      this.ViewModel.OnNavigatedTo(e, null);
       if (e.NavigationMode != NavigationMode.Back)
       {
         this.playerPanel.Children.Clear();
@@ -48,8 +41,9 @@ public partial class DeckConfigurator : Page
         {
           DeckFieldBorder deckFieldBorder = new DeckFieldBorder();
           deckFieldBorder.Style = ((FrameworkElement) this).Resources[(object) "cardBorderStyle"] as Style;
-          deckFieldBorder.SetBinding(DeckFieldBorder.DeckCardProperty, new Binding("SelectedElement.PlayerFields[" + (object) index + "]")
+          deckFieldBorder.SetBinding(DeckFieldBorder.DeckCardProperty, new Binding()
           {
+            Path = new PropertyPath("SelectedElement.PlayerFields[" + (object) index + "]"),
             Source = ((FrameworkElement) this).DataContext
           });
           this.playerPanel.Children.Add((UIElement) deckFieldBorder);
@@ -59,21 +53,22 @@ public partial class DeckConfigurator : Page
         {
           DeckFieldBorder deckFieldBorder = new DeckFieldBorder();
           deckFieldBorder.Style = ((FrameworkElement) this).Resources[(object) "cardBorderStyle"] as Style;
-          deckFieldBorder.SetBinding(DeckFieldBorder.DeckCardProperty, new Binding("SelectedElement.Library[" + (object) index + "]")
+          deckFieldBorder.SetBinding(DeckFieldBorder.DeckCardProperty, new Binding()
           {
+            Path = new PropertyPath("SelectedElement.Library[" + (object) index + "]"),
             Source = ((FrameworkElement) this).DataContext
           });
           this.libraryPanel.Children.Add((UIElement) deckFieldBorder);
           this.librariesBorders.Add(deckFieldBorder);
         }
       }
-      ((Page) this).OnNavigatedTo(e);
+      base.OnNavigatedTo(e);
     }
 
-    protected virtual void OnNavigatedFrom(NavigationEventArgs e)
+    protected override void OnNavigatedFrom(NavigationEventArgs e)
     {
       this.ViewModel.OnNavigatedFrom(e);
-      ((Page) this).OnNavigatedFrom(e);
+      base.OnNavigatedFrom(e);
     }
 
     private DeckConfiguratorViewModel ViewModel
@@ -81,11 +76,11 @@ public partial class DeckConfigurator : Page
       get => ((FrameworkElement) this).DataContext as DeckConfiguratorViewModel;
     }
 
-    private void GestureListener_Flick(object sender, FlickGestureEventArgs e)
+    private void GestureListener_Flick(object sender, ManipulationDeltaRoutedEventArgs e)
     {
-      if (e.Direction != Orientation.Vertical || this.ViewModel == null)
+      if (this.ViewModel == null) // Orientation.Vertical is not directly available in ManipulationDeltaRoutedEventArgs, will need to check delta.Translation.Y
         return;
-      this.ViewModel.SetNextOrPreviousElement(e.VerticalVelocity < 0.0);
+      this.ViewModel.SetNextOrPreviousElement(e.Delta.Translation.Y < 0.0);
     }
   }
 }

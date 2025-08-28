@@ -6,7 +6,7 @@
 
 using AstralBattles.Core.Model;
 
-#nullable disable
+
 namespace AstralBattles.Core.Ai
 {
   public class CardSummonInfo

@@ -1,23 +1,16 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.ViewModels.StatisticsViewModel
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
-using AstralBattles.Core.Infrastructure;
+﻿using AstralBattles.Core.Infrastructure;
 using AstralBattles.Core.Model;
 using AstralBattles.Core.Services;
 using AstralBattles.Localizations;
 using AstralBattles.Views;
-using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
+using Windows.UI.Xaml;
 using System.Windows.Input;
 
-#nullable disable
+
 namespace AstralBattles.ViewModels
 {
   public class StatisticsViewModel : ViewModelBaseEx
@@ -29,7 +22,7 @@ namespace AstralBattles.ViewModels
 
     public StatisticsViewModel()
     {
-      if (this.IsInDesignMode)
+      if (App.IsInDesignMode)
       {
         List<string> names = new PlayersRegistry().GetNames();
         ObservableCollection<StatisticsMember> observableCollection1 = new ObservableCollection<StatisticsMember>();
@@ -94,20 +87,20 @@ namespace AstralBattles.ViewModels
           Wins = 3,
           Points = 99
         });
-        this.Total = observableCollection1;
+        Total = observableCollection1;
         ObservableCollection<AstralBattles.Core.Infrastructure.Tuple<string, string>> observableCollection2 = new ObservableCollection<AstralBattles.Core.Infrastructure.Tuple<string, string>>();
         observableCollection2.Add(new AstralBattles.Core.Infrastructure.Tuple<string, string>(names[0], names[1]));
         observableCollection2.Add(new AstralBattles.Core.Infrastructure.Tuple<string, string>(names[6], names[2]));
         observableCollection2.Add(new AstralBattles.Core.Infrastructure.Tuple<string, string>(names[7], names[3]));
         observableCollection2.Add(new AstralBattles.Core.Infrastructure.Tuple<string, string>(names[8], names[4]));
         observableCollection2.Add(new AstralBattles.Core.Infrastructure.Tuple<string, string>(names[8], names[5]));
-        this.RoundResult = this.NextRound = observableCollection2;
+        RoundResult = NextRound = observableCollection2;
       }
       else
       {
-        this.RoundName = CommonResources.Game + " " + (object) TournamentService.Instance.Tournament.CurrentRoundIndex;
-        this.StartNewRound = (ICommand) new RelayCommand(new Action(this.StartNewRoundAction), new Func<bool>(this.StartNewRoundCanExecute));
-        this.Total = new ObservableCollection<StatisticsMember>(TournamentService.Instance.Tournament.Stat.OrderByDescending<PlayerPoint, int>((Func<PlayerPoint, int>) (i => i.Wins)).ThenByDescending<PlayerPoint, int>((Func<PlayerPoint, int>) (i => i.Points)).Select<PlayerPoint, StatisticsMember>((Func<PlayerPoint, StatisticsMember>) (i => new StatisticsMember()
+        RoundName = CommonResources.Game + " " + (object) TournamentService.Instance.Tournament.CurrentRoundIndex;
+        StartNewRound = (ICommand) new RelayCommand(StartNewRoundAction, new Func<bool>(StartNewRoundCanExecute));
+        Total = new ObservableCollection<StatisticsMember>(TournamentService.Instance.Tournament.Stat.OrderByDescending<PlayerPoint, int>((Func<PlayerPoint, int>) (i => i.Wins)).ThenByDescending<PlayerPoint, int>((Func<PlayerPoint, int>) (i => i.Points)).Select<PlayerPoint, StatisticsMember>((Func<PlayerPoint, StatisticsMember>) (i => new StatisticsMember()
         {
           Name = i.Name,
           Points = i.Points,
@@ -115,19 +108,19 @@ namespace AstralBattles.ViewModels
           Wins = i.Wins
         })));
         if (TournamentService.Instance.Tournament.CurrentRoundIndex == 0)
-          this.NextRound = new ObservableCollection<AstralBattles.Core.Infrastructure.Tuple<string, string>>();
+          NextRound = new ObservableCollection<AstralBattles.Core.Infrastructure.Tuple<string, string>>();
         else
-          this.RoundResult = new ObservableCollection<AstralBattles.Core.Infrastructure.Tuple<string, string>>(TournamentService.Instance.Tournament.PreviousRound);
+          RoundResult = new ObservableCollection<AstralBattles.Core.Infrastructure.Tuple<string, string>>(TournamentService.Instance.Tournament.PreviousRound);
         if (TournamentService.Instance.Tournament.CurrentRoundIndex == 9)
-          this.NextRound = new ObservableCollection<AstralBattles.Core.Infrastructure.Tuple<string, string>>();
+          NextRound = new ObservableCollection<AstralBattles.Core.Infrastructure.Tuple<string, string>>();
         else
-          this.NextRound = new ObservableCollection<AstralBattles.Core.Infrastructure.Tuple<string, string>>(TournamentService.Instance.Tournament.CurrentRound);
+          NextRound = new ObservableCollection<AstralBattles.Core.Infrastructure.Tuple<string, string>>(TournamentService.Instance.Tournament.CurrentRound);
       }
     }
 
     private bool StartNewRoundCanExecute() => true;
 
-    public void OnNavigatedTo() => this.IsBusy = false;
+    public void OnNavigatedTo() => IsBusy = false;
 
     private void StartNewRoundAction()
     {
@@ -148,53 +141,54 @@ namespace AstralBattles.ViewModels
             break;
         }
         Serializer.Delete("CurrentTournamentGame__1_452.xml");
-        int num2 = (int) MessageBox.Show(string.Format(CommonResources.Congratulations, (object) str));
+        // Replace MessageBox with UWP ContentDialog for MVP
+        // int num2 = (int) MessageBox.Show(string.Format(CommonResources.Congratulations, (object) str));
         PageNavigationService.OpenMainMenu();
       }
       else
       {
-        this.IsBusy = true;
+        IsBusy = true;
         PageNavigationService.OpenBattlefield(false);
       }
     }
 
     public string RoundName
     {
-      get => this.roundName;
+      get => roundName;
       set
       {
-        this.roundName = value;
-        this.RaisePropertyChanged(nameof (RoundName));
+        roundName = value;
+        RaisePropertyChanged(nameof (RoundName));
       }
     }
 
     public ObservableCollection<StatisticsMember> Total
     {
-      get => this.total;
+      get => total;
       set
       {
-        this.total = value;
-        this.RaisePropertyChanged(nameof (Total));
+        total = value;
+        RaisePropertyChanged(nameof (Total));
       }
     }
 
     public ObservableCollection<AstralBattles.Core.Infrastructure.Tuple<string, string>> RoundResult
     {
-      get => this.roundResult;
+      get => roundResult;
       set
       {
-        this.roundResult = value;
-        this.RaisePropertyChanged(nameof (RoundResult));
+        roundResult = value;
+        RaisePropertyChanged(nameof (RoundResult));
       }
     }
 
     public ObservableCollection<AstralBattles.Core.Infrastructure.Tuple<string, string>> NextRound
     {
-      get => this.nextRound;
+      get => nextRound;
       set
       {
-        this.nextRound = value;
-        this.RaisePropertyChanged(nameof (NextRound));
+        nextRound = value;
+        RaisePropertyChanged(nameof (NextRound));
       }
     }
 

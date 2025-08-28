@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Audio;
 using System;
 using System.IO;
 
-#nullable disable
+
 namespace AstralBattles
 {
   public static class SoundPlayer

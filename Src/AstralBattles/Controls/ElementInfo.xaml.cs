@@ -1,21 +1,17 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Controls.ElementInfo
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
 using AstralBattles.Core.Model;
-using GalaSoft.MvvmLight;
+using AstralBattles.Core.Infrastructure;
+using Windows.ApplicationModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 
-#nullable disable
+
 namespace AstralBattles.Controls
 {
 public partial class ElementInfo : UserControl
@@ -29,13 +25,13 @@ public partial class ElementInfo : UserControl
        public ElementInfo()
     {
       this.InitializeComponent();
-      if (ViewModelBase.IsInDesignModeStatic)
+      if (DesignMode.DesignModeEnabled)
         return;
-      this.manaIncreasedStoryboard.Completed += new EventHandler(this.ManaIncreasedStoryboardCompleted);
-      this.manaDecreasedStoryboard.Completed += new EventHandler(this.ManaDecreasedStoryboardCompleted);
+      this.manaIncreasedStoryboard.Completed += new EventHandler<object>(this.ManaIncreasedStoryboardCompleted);
+      this.manaDecreasedStoryboard.Completed += new EventHandler<object>(this.ManaDecreasedStoryboardCompleted);
     }
 
-    private void ManaDecreasedStoryboardCompleted(object sender, EventArgs e)
+    private void ManaDecreasedStoryboardCompleted(object sender, object e)
     {
       this.isAnimated = false;
       if (this.overflowTextChangesStack.Count <= 0)
@@ -43,7 +39,7 @@ public partial class ElementInfo : UserControl
       this.ManaChangesAnimation(this.overflowTextChangesStack.Dequeue());
     }
 
-    private void ManaIncreasedStoryboardCompleted(object sender, EventArgs e)
+    private void ManaIncreasedStoryboardCompleted(object sender, object e)
     {
       this.isAnimated = false;
       if (this.overflowTextChangesStack.Count <= 0)
@@ -143,11 +139,11 @@ public partial class ElementInfo : UserControl
 
     public event EventHandler Selecting = delegate { };
 
-    protected override void OnTap(GestureEventArgs e)
+    protected override void OnTapped(TappedRoutedEventArgs e)
     {
       this.Element.IsSelected = true;
       this.Selecting((object) this, EventArgs.Empty);
-      base.OnTap(e);
+      base.OnTapped(e);
     }
 
     private void UserControlLoaded(object sender, RoutedEventArgs e)

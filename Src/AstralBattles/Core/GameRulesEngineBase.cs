@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Xml.Serialization;
 
-#nullable disable
+
 namespace AstralBattles.Core
 {
   [XmlInclude(typeof (DuelWithAiGameRulesEngine))]

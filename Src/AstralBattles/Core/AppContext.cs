@@ -1,14 +1,9 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Core.AppContext
-// Assembly: AstralBattles.Core, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 6DDFE75F-AA71-406D-841A-1AF1DF23E1FF
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.Core.dll
-
+﻿
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Threading;
 
-#nullable disable
+
 namespace AstralBattles.Core
 {
   public static class AppContext
@@ -24,7 +19,7 @@ namespace AstralBattles.Core
 
     static AppContext()
     {
-      string lower = Thread.CurrentThread.CurrentUICulture.Name.ToLower();
+      string lower = CultureInfo.CurrentUICulture.Name.ToLower();
       if (((IEnumerable<string>) AppContext.Locales).Contains<string>(lower))
         AppContext.Locale = lower;
       else

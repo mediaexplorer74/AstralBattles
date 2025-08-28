@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CurrentTournamentWillBeOverwritten" xml:space="preserve">
+    <value>Das aktuelle Turnier wird überschrieben.</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ContinueCampaignTip" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="TwoPlayersTip" xml:space="preserve">
+    <value>Zwei Spieler Modus</value>
+  </data>
+  <data name="LoadGame" xml:space="preserve">
+    <value>zuletzt erstelltes Spiel laden</value>
+  </data>
+  <data name="ReviewGame" xml:space="preserve">
+    <value>Spiel bewerten</value>
+  </data>
+  <data name="NextGame" xml:space="preserve">
+    <value>Nächster Gegner</value>
+  </data>
+  <data name="NextTurn" xml:space="preserve">
+    <value>Nächste Runde</value>
+  </data>
+  <data name="Congratulations" xml:space="preserve">
+    <value>Glückwunsch, du hast das Turnier mit dem {0} Platz beendet. Danke für´s Spielen, warte auf Astral Battles 2 mit Kampagne und Online Multiplayer!</value>
+  </data>
+  <data name="ConfigureDeck" xml:space="preserve">
+    <value>   </value>
+  </data>
+  <data name="TapToChange" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="TwoPlayers" xml:space="preserve">
+    <value>Zwei Spieler</value>
+  </data>
+  <data name="HasCasted" xml:space="preserve">
+    <value>{0} hat {1} gezaubert</value>
+  </data>
+  <data name="TutorialTip" xml:space="preserve">
+    <value>Ein kurzes tutorial ansehen</value>
+  </data>
+  <data name="Vibration" xml:space="preserve">
+    <value>Vibration</value>
+  </data>
+  <data name="Spec_Elementalist" xml:space="preserve">
+    <value>Elementarmagier</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Sorcery" xml:space="preserve">
+    <value>Magie</value>
+  </data>
+  <data name="Player2NameLabel" xml:space="preserve">
+    <value>Spieler 2 Name:</value>
+  </data>
+  <data name="Spec_Pyromancer" xml:space="preserve">
+    <value>Feuerbeschwörer</value>
+  </data>
+  <data name="HasWon" xml:space="preserve">
+    <value>{0} hat gewonnen!</value>
+  </data>
+  <data name="ContinueTournamentTip" xml:space="preserve">
+    <value>zuletzt gespieltes Turnier fortsetzen</value>
+  </data>
+  <data name="Goblins" xml:space="preserve">
+    <value>   </value>
+  </data>
+  <data name="ViaSockets" xml:space="preserve">
+    <value>Netzwerkmodus</value>
+  </data>
+  <data name="NewGameTip" xml:space="preserve">
+    <value>Neues Spiel für 2 Spieler starten</value>
+  </data>
+  <data name="FaceSelection" xml:space="preserve">
+    <value>Portraitauwahl</value>
+  </data>
+  <data name="NamesShouldBeNotEmptyMessage" xml:space="preserve">
+    <value>Name darf nicht leer sein</value>
+  </data>
+  <data name="NamesShouldBeNotEqualMessage" xml:space="preserve">
+    <value>Name sollte einzigartig sein</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Turnier Schwierigkeit</value>
+  </data>
+  <data name="Spec_StormbringerTip" xml:space="preserve">
+    <value>Spieler erhält +2 Bonus auf seine Luft-Element Energie und startet mit Greif Kreatur. Zusätzliche Karten: Titan, Phoenix</value>
+  </data>
+  <data name="Campaign" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="CampaignTip" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="CreatureShortDesc" xml:space="preserve">
+    <value>   </value>
+  </data>
+  <data name="Resort" xml:space="preserve">
+    <value>   </value>
+  </data>
+  <data name="FifthElement" xml:space="preserve">
+    <value>Fünftes Element</value>
+  </data>
+  <data name="NewGame" xml:space="preserve">
+    <value>Neues Spiel</value>
+  </data>
+  <data name="Sounds" xml:space="preserve">
+    <value>Sounds</value>
+  </data>
+  <data name="IsComputer" xml:space="preserve">
+    <value>Ist Computer (K.I)</value>
+  </data>
+  <data name="OnOneDevice" xml:space="preserve">
+    <value>Hot seat Modus</value>
+  </data>
+  <data name="NewCampaignTip" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="HasSkipped" xml:space="preserve">
+    <value>{0} hat seinen Zug übersprungen</value>
+  </data>
+  <data name="JoinToServerTip" xml:space="preserve">
+    <value>Server mit IP beitreten</value>
+  </data>
+  <data name="RoundStarted" xml:space="preserve">
+    <value>Runde {0} hat begonnen</value>
+  </data>
+  <data name="SpellShortDesc2" xml:space="preserve">
+    <value>   </value>
+  </data>
+  <data name="Tutorial" xml:space="preserve">
+    <value>Tutorial</value>
+  </data>
+  <data name="Control" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Casting" xml:space="preserve">
+    <value>{0} zaubert {1}</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Bestätigung</value>
+  </data>
+  <data name="Spec_Stormbringer" xml:space="preserve">
+    <value>Sturmbringer</value>
+  </data>
+  <data name="Tournament" xml:space="preserve">
+    <value>Turnier</value>
+  </data>
+  <data name="Spec_Druid" xml:space="preserve">
+    <value>Druide</value>
+  </data>
+  <data name="HasSummoned" xml:space="preserve">
+    <value>{0} hat {1} gerufen</value>
+  </data>
+  <data name="Demonic" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="PlayersName" xml:space="preserve">
+    <value>Spieler Name:</value>
+  </data>
+  <data name="Specialization" xml:space="preserve">
+    <value>Spezialisierung</value>
+  </data>
+  <data name="MainMenu" xml:space="preserve">
+    <value>Spiel</value>
+  </data>
+  <data name="NewTournamentTip" xml:space="preserve">
+    <value>Neues Turnier starten</value>
+  </data>
+  <data name="JoinToServer" xml:space="preserve">
+    <value>Server beitreten</value>
+  </data>
+  <data name="Spec_ElementalistTip" xml:space="preserve">
+    <value>Spieler erhält +1 Bonus auf Feuer, Wasser, Luft, Erde und Tod</value>
+  </data>
+  <data name="Spec_Necromancer" xml:space="preserve">
+    <value>Geisterbeschwörer</value>
+  </data>
+  <data name="Ok" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="TournamentTip" xml:space="preserve">
+    <value>Turniermodus</value>
+  </data>
+  <data name="SpellShortDesc" xml:space="preserve">
+    <value>   </value>
+  </data>
+  <data name="AboutBody" xml:space="preserve">
+    <value>Dieses Spiel ist eine mobile Verison des beliebten PC-Spiels Spectromancer. Alle Kartentexte sind urheberrechlich geschützt (c) Three Donkeys LLC. Sie können mich ausserdem über jabber main@conference.jabber.uruchie.org kontaktieren.</value>
+  </data>
+  <data name="HelpImproveLanguages" xml:space="preserve">
+    <value>* Kontaktieren Sie mich wenn Sie mir mit anderen Sprachen helfen können</value>
+  </data>
+  <data name="HostAServer" xml:space="preserve">
+    <value>Server erstellen</value>
+  </data>
+  <data name="Air" xml:space="preserve">
+    <value>Luft</value>
+  </data>
+  <data name="Tap" xml:space="preserve">
+    <value>tippen</value>
+  </data>
+  <data name="You" xml:space="preserve">
+    <value>Du</value>
+  </data>
+  <data name="Earth" xml:space="preserve">
+    <value>Erde</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Death" xml:space="preserve">
+    <value>Tod</value>
+  </data>
+  <data name="Beast" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>schließen</value>
+  </data>
+  <data name="Chaos" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Water" xml:space="preserve">
+    <value>Wasser</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Turnier Statistik</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Gesamt</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Feedback senden</value>
+  </data>
+  <data name="ToContinue" xml:space="preserve">
+    <value>um Fortzufahren…</value>
+  </data>
+  <data name="NewTournament" xml:space="preserve">
+    <value>Neues Turnier</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Fortsetzen</value>
+  </data>
+  <data name="Mechanical" xml:space="preserve">
+    <value>Maschine</value>
+  </data>
+  <data name="ContinueTip" xml:space="preserve">
+    <value>Aktuelle Runde fortsetzen</value>
+  </data>
+  <data name="Spec_IceLord" xml:space="preserve">
+    <value>Eis Lord</value>
+  </data>
+  <data name="CreatureShortDesc2" xml:space="preserve">
+    <value>   </value>
+  </data>
+  <data name="Spec_DruidTip" xml:space="preserve">
+    <value>Spieler erhält +2 Bonus auf seine Erd-Element Energie und erhält +1 Leben jede Runde. Zusätzliche Karten: Meister Heiler, Steinhagel</value>
+  </data>
+  <data name="Spec_IceLordTip" xml:space="preserve">
+    <value>Spieler erhält +2 Bonus auf seine Wasser-Element Energie und gibt einer zufälligen gegnerische Kreatur 1 Schaden. Zusätzliche Karten: Astral Wächter, Melfolk Overlord</value>
+  </data>
+  <data name="Spec_NecromancerTip" xml:space="preserve">
+    <value>Spieler erhält +4 Lebenspunkte wenn Kreaturen Sterben. Zusätzliche Karten: Vampir, Seelenstehler</value>
+  </data>
+  <data name="Spec_PyromancerTip" xml:space="preserve">
+    <value>Spieler erhält +2 Bonus auf seine Feuer-Element Energie und alle gegnerischen Kreaturen erhalten 2 Schaden bei Beschwörungen. Zusätzliche Karten: Armageddon, Drache</value>
+  </data>
+  <data name="YourDeck" xml:space="preserve">
+    <value>   </value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Optionen</value>
+  </data>
+  <data name="OnOneDeviceTip" xml:space="preserve">
+    <value>Ein Duell an einem Gerät spielen</value>
+  </data>
+  <data name="Player1NameLabel" xml:space="preserve">
+    <value>Spieler 1 Name:</value>
+  </data>
+  <data name="Copyrights" xml:space="preserve">
+    <value>Copyright (c) 2011 Egor Bogatov</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Lädt…</value>
+  </data>
+  <data name="TournamentDescription" xml:space="preserve">
+    <value>Im Turnier wirst du gegen 8 Gegner in folge kämpfen um den ersten Platz zu erreichen</value>
+  </data>
+  <data name="LoadGameTip" xml:space="preserve">
+    <value>zuletzt als Server erstelltes Spiel laden</value>
+  </data>
+  <data name="HostAServerTip" xml:space="preserve">
+    <value>Server für Duell erstellen</value>
+  </data>
+  <data name="NextTurnMessage" xml:space="preserve">
+    <value>{0}, du bist am Zug!</value>
+  </data>
+  <data name="GameWillBeOverwritten" xml:space="preserve">
+    <value>zuletzt gespieltes Spiel wird überschrieben.</value>
+  </data>
+  <data name="ViaSocketsTip" xml:space="preserve">
+    <value>Spiel ein Duell über das Netzwerk (PvP)</value>
+  </data>
+  <data name="NewCampaign" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Easy" xml:space="preserve">
+    <value>Leicht</value>
+  </data>
+  <data name="Fire" xml:space="preserve">
+    <value>Feuer</value>
+  </data>
+  <data name="Game" xml:space="preserve">
+    <value>Spiel</value>
+  </data>
+  <data name="Name" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="Holy" xml:space="preserve">
+    <value>Heilig</value>
+  </data>
+  <data name="Hard" xml:space="preserve">
+    <value>Schwer</value>
+  </data>
+  <data name="Slot" xml:space="preserve">
+    <value>Slot</value>
+  </data>
+  <data name="Illusion" xml:space="preserve">
+    <value>Illusion</value>
+  </data>
+  <data name="Summoning" xml:space="preserve">
+    <value>{0} ruft {1}</value>
+  </data>
+</root>

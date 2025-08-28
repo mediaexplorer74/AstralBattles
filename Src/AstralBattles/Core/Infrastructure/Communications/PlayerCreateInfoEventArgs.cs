@@ -7,7 +7,7 @@
 using AstralBattles.Core.Model;
 using System;
 
-#nullable disable
+
 namespace AstralBattles.Core.Infrastructure.Communications
 {
   public class PlayerCreateInfoEventArgs : EventArgs

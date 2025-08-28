@@ -8,7 +8,7 @@ using System;
 using System.Net;
 using System.Text;
 
-#nullable disable
+
 namespace AstralBattles.Core.Infrastructure.Communications
 {
   public class UdpPacketReceivedEventArgs : EventArgs

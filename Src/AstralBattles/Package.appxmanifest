@@ -8,20 +8,21 @@
   IgnorableNamespaces="uap mp uap3">
 
   <Identity
-    Name="b2f4c480-94d6-494e-8996-a9f687e636be"
+    Name="ME.AstralBattlesV1"
     Publisher="CN=Admin"
     Version="1.4.6.0" />
 
   <mp:PhoneIdentity PhoneProductId="b2f4c480-94d6-494e-8996-a9f687e636be" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>AstralBattles v1.4.x</DisplayName>
+    <DisplayName>AstralBattles v1.4.6</DisplayName>
     <PublisherDisplayName>Admin</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
-    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10240.0" MaxVersionTested="10.0.10240.0" />
+    <TargetDeviceFamily Name="Windows.Mobile" MinVersion="10.0.10240.0" MaxVersionTested="10.0.10240.0" />
   </Dependencies>
 
   <Resources>
@@ -33,7 +34,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="AstralBattles.App">
       <uap:VisualElements
-        DisplayName="AstralBattles 1.4.x"
+        DisplayName="AstralBattles 1.4.6"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="AstralBattles"
@@ -43,14 +44,17 @@
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="landscape"/>
           <uap:Rotation Preference="portrait"/>
-          <uap:Rotation Preference="landscapeFlipped"/></uap:InitialRotationPreference>
+          <uap:Rotation Preference="landscapeFlipped"/>
+          <uap:Rotation Preference="portraitFlipped"/></uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>
   </Applications>
 
   <Capabilities>
     <Capability Name="internetClient" />
-    <uap3:Capability Name="backgroundMediaPlayback"/>
+    <Capability Name="privateNetworkClientServer" />
     <uap:Capability Name="removableStorage"/>
+    <DeviceCapability Name="webcam" />
+    <DeviceCapability Name="microphone" />
   </Capabilities>
 </Package>

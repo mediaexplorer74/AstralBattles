@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: AstralBattles.Controls.CardsBook
 // Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
 // MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
@@ -8,11 +8,11 @@ using AstralBattles.Core.Model;
 using AstralBattles.ViewModels;
 using System;
 using System.Diagnostics;
-using System.Windows;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
-#nullable disable
+
 namespace AstralBattles.Controls
 {
 public partial class CardsBook : UserControl
@@ -85,11 +85,11 @@ public partial class CardsBook : UserControl
     {
     }
 
-    private void GestureListenerFlick(object sender, FlickGestureEventArgs e)
+    private void GestureListenerFlick(object sender, ManipulationDeltaRoutedEventArgs e)
     {
-      if (e.Direction != Orientation.Vertical || this.BattlefieldViewModel == null)
+      if (this.BattlefieldViewModel == null)
         return;
-      this.BattlefieldViewModel.SetNextOrPreviousElement(e.VerticalVelocity < 0.0);
+      this.BattlefieldViewModel.SetNextOrPreviousElement(e.Delta.Translation.Y < 0.0);
     }
 
     private void ListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)

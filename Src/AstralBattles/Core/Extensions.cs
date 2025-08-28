@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: AstralBattles.Extensions
 // Assembly: AstralBattles.Core, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
 // MVID: 6DDFE75F-AA71-406D-841A-1AF1DF23E1FF
@@ -8,10 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Windows;
-using System.Windows.Threading;
+using System.Threading.Tasks;
+using Windows.UI.Xaml;
+using Windows.UI.Core;
 
-#nullable disable
+
 namespace AstralBattles
 {
   public static class Extensions
@@ -66,19 +67,13 @@ namespace AstralBattles
       }
     }
 
-    public static T GetValueOrDefault<T, TKey>(
-      this IDictionary<TKey, T> dictionary,
-      TKey key,
-      T defaultValue = null)
+    public static T GetValueOrDefault<T, TKey>(this IDictionary<TKey, T> dictionary, TKey key, T defaultValue = default(T))
     {
       T obj;
       return dictionary.TryGetValue(key, out obj) ? obj : defaultValue;
     }
 
-    public static T PopValueOrDefault<T, TKey>(
-      this IDictionary<TKey, T> dictionary,
-      TKey key,
-      T defaultValue = null)
+    public static T PopValueOrDefault<T, TKey>(this IDictionary<TKey, T> dictionary, TKey key, T defaultValue = default(T))
     {
       T valueOrDefault = dictionary.GetValueOrDefault<T, TKey>(key, defaultValue);
       dictionary[key] = defaultValue;
@@ -93,12 +88,12 @@ namespace AstralBattles
 
     public static void ExecuteWithDelay(this Action action, int ms)
     {
-      Dispatcher dispatcher = Deployment.Current.Dispatcher;
-      ThreadPool.QueueUserWorkItem((WaitCallback) (i =>
+      CoreDispatcher dispatcher = Window.Current.Dispatcher;
+      Task.Run(async () =>
       {
-        Thread.Sleep(ms);
-        dispatcher.BeginInvoke(action);
-      }));
+        await Task.Delay(ms);
+        await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => action());
+      });
     }
 
     public static IEnumerable<T> TakeRandom<T>(this IEnumerable<T> source, int limit)

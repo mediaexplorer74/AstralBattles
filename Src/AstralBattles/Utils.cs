@@ -1,18 +1,12 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Utils
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Navigation;
-using System.Windows.Threading;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Core;
 
-#nullable disable
+
 namespace AstralBattles
 {
   public static class Utils
@@ -76,46 +70,23 @@ namespace AstralBattles
       return child1;
     }
 
-    public static Dispatcher CurrentDispatcher { get; set; }
+    public static CoreDispatcher CurrentDispatcher { get; set; }
 
-    public static void ClearBackStack(this NavigationService service)
+    public static void ClearBackStack(object service)
     {
-      bool flag = false;
-      int num = 0;
-      while (service.BackStack.Any<JournalEntry>())
-      {
-        if (flag)
-          break;
-        try
-        {
-          ++num;
-          if (num > 100)
-            break;
-          service.RemoveBackEntry();
-        }
-        catch
-        {
-          flag = true;
-        }
-      }
+      // UWP navigation uses Frame.BackStack instead of NavigationService
+      // This method is commented out for MVP - implement Frame-based navigation later
     }
 
     public static bool GetBoolValue(this IDictionary<string, string> dictionary, string key)
     {
-      return dictionary.ContainsKey(key) && string.Equals(dictionary[key] ?? string.Empty, "true", StringComparison.InvariantCultureIgnoreCase);
+      return dictionary.ContainsKey(key) && string.Equals(dictionary[key] ?? string.Empty, "true", StringComparison.OrdinalIgnoreCase);
     }
 
-    public static bool IsNavigatedFrom(this NavigationService servie, string url)
+    public static bool IsNavigatedFrom(object service, string url)
     {
-      try
-      {
-        JournalEntry journalEntry = servie.BackStack.LastOrDefault<JournalEntry>();
-        return journalEntry != null && journalEntry.Source == new Uri(url);
-      }
-      catch
-      {
-        return false;
-      }
+      // UWP navigation - stub for MVP
+      return false;
     }
   }
 }

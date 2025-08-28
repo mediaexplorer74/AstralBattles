@@ -1,30 +1,34 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Core.Services.CardRegistry
-// Assembly: AstralBattles.Core, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 6DDFE75F-AA71-406D-841A-1AF1DF23E1FF
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.Core.dll
-
-using AstralBattles.Core.Model;
+﻿using AstralBattles.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Serialization;
+using Windows.UI.Xaml.Shapes;
 
-#nullable disable
+
 namespace AstralBattles.Core.Services
 {
   public static class CardRegistry
   {
-    private const string CardsResourceName = "AstralBattles.Core.CardDefinitions.xml";
+    private const string CardsResourceName = "AstralBattles.Resources.CardDefinitions.xml";//"AstralBattles.Core.CardDefinitions.xml";
     private static readonly XmlSerializer Serializer = new XmlSerializer(typeof (Card[]));
     private static IEnumerable<Card> cards = (IEnumerable<Card>) null;
 
+       
     public static void Reload()
     {
-      using (Stream manifestResourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("AstralBattles.Core.CardDefinitions.xml"))
-        CardRegistry.cards = (IEnumerable<Card>) (CardRegistry.Serializer.Deserialize(manifestResourceStream) as Card[]);
+        Assembly asmb = typeof(CardRegistry).GetTypeInfo().Assembly;
+        var m_AssemblyName = asmb.FullName;
+
+        // RnD / TODO / fix it
+        using (Stream stream = asmb.GetManifestResourceStream(CardsResourceName))
+        { 
+           if (stream != null)
+            CardRegistry.cards = (IEnumerable<Card>)(CardRegistry.Serializer.Deserialize(stream) as Card[]);
+        }
+       
     }
 
     public static IEnumerable<Card> Cards

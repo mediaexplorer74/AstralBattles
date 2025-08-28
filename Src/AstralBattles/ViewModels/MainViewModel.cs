@@ -1,112 +1,136 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.ViewModels.MainViewModel
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
-using AstralBattles.Core.Infrastructure;
+﻿using AstralBattles.Core.Infrastructure;
 using AstralBattles.Core.Model;
 using AstralBattles.Localizations;
 using AstralBattles.Options;
 using AstralBattles.Views;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using Microsoft.Phone.Tasks;
 using System;
 using System.Collections.Generic;
-using System.IO.IsolatedStorage;
+using Windows.Storage;
 using System.Linq;
+using Windows.Media.Playback;
+using Windows.Media.Core;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+using System.Diagnostics;
 
-#nullable disable
+
 namespace AstralBattles.ViewModels
 {
   public class MainViewModel : ViewModelBaseEx
   {
     private static readonly ILogger Logger = LogFactory.GetLogger<MainViewModel>();
-    private bool canContinue;
-    private bool isSoundsEnabled;
-    private bool isVibrationEnabled;
-    private string language;
+    private bool canContinue = false; //!
+    private bool isSoundsEnabled = false; //!
+    private bool isVibrationEnabled = false; //! 
+    private string language = "Russian"; //!
     private string[] languages;
 
     public MainViewModel()
     {
-      this.Continue = new RelayCommand(new Action(this.ContinueAction), new Func<bool>(this.ContinueCanExecute));
-      this.Tournament = new RelayCommand(new Action(this.TournamentAction), new Func<bool>(this.TournamentCanExecute));
-      this.ShowTutorial = new RelayCommand(new Action(this.ShowTutorialAction));
-      if (ViewModelBase.IsInDesignModeStatic)
+      Continue = new RelayCommand(ContinueAction, new Func<bool>(ContinueCanExecute));
+      Tournament = new RelayCommand(TournamentAction, new Func<bool>(TournamentCanExecute));
+      ShowTutorial = new RelayCommand(ShowTutorialAction);
+      
+      if (ViewModelBaseEx.IsInDesignModeStatic)
         return;
-      this.Languages = ((IEnumerable<AstralBattles.Localizations.Language>) LocalizationManager.Instance.Languages).Select<AstralBattles.Localizations.Language, string>((Func<AstralBattles.Localizations.Language, string>) (i => i.Name)).ToArray<string>();
-      OptionsManager.Reload();
-      this.IsSoundsEnabled = OptionsManager.Current.EnableSounds;
-      this.IsVibrationEnabled = OptionsManager.Current.EnableVibration;
-      this.Language = OptionsManager.Current.Language;
-      this.TwoPlayers = new RelayCommand((Action) (() => PageNavigationService.TwoPlayersOptions()));
-      this.Campaign = new RelayCommand((Action) (() => PageNavigationService.CampaignOptions()));
-      this.OnNavigatedTo();
+
+      Languages = ((IEnumerable<AstralBattles.Localizations.Language>) LocalizationManager.Instance.Languages)
+                .Select<AstralBattles.Localizations.Language, string>((Func<AstralBattles.Localizations.Language, string>) 
+                (i => i.Name)).ToArray<string>();
+
+      OptionsLoad();
+
+     if (OptionsManager.Current != null)
+     {
+        IsSoundsEnabled = OptionsManager.Current.EnableSounds;
+        IsVibrationEnabled = OptionsManager.Current.EnableVibration;
+        Language = OptionsManager.Current.Language;
+     }
+     else
+     {
+        //IsSoundsEnabled = false;
+        //IsVibrationEnabled = false;
+        //Language = Languages[0];
+     }
+
+      TwoPlayers = new RelayCommand((Action)(() => PageNavigationService.TwoPlayersOptions()));
+      Campaign = new RelayCommand((Action) (() => PageNavigationService.CampaignOptions()));
+      OnNavigatedTo();
+    }
+
+    private async void OptionsLoad()
+    {
+        await OptionsManager.ReloadAsync();
     }
 
     private void ShowTutorialAction()
     {
-      new MediaPlayerLauncher()
-      {
-        Media = new Uri("Resources/Videos/tutorial.mp4", UriKind.Relative),
-        Location = ((MediaLocationType) 1),
-        Controls = ((MediaPlaybackControls) 0),
-        Orientation = ((MediaPlayerOrientation) 0)
-      }.Show();
+        var mediaPlayer = new MediaPlayer();
+        var uri = new Uri("ms-appx:///Resources/Videos/tutorial.mp4");
+        mediaPlayer.Source = MediaSource.CreateFromUri(uri);
+        mediaPlayer.Play();
     }
 
-    public void OnNavigatedTo()
+    public async void OnNavigatedTo()
     {
-      this.IsBusy = false;
-      this.CanContinue = Serializer.Exists("CurrentTournamentGame__1_452.xml") || Serializer.Exists("CurrentTwoPlayerDuelGame__1_452.xml") || Serializer.Exists("DuelWithAiBattlefieldViewModel__1_452.xml");
+      IsBusy = false;
+      var a = await Serializer.Exists("CurrentTournamentGame__1_452.xml");
+      var b = await Serializer.Exists("CurrentTwoPlayerDuelGame__1_452.xml");
+      var c = await Serializer.Exists("DuelWithAiBattlefieldViewModel__1_452.xml");
+      CanContinue = a || b || c;
     }
 
     private void TournamentAction() => PageNavigationService.OpenTournamentOptions();
 
     public bool CanContinue
     {
-      get => this.canContinue;
+      get => canContinue;
       set
       {
-        this.canContinue = value;
-        this.RaisePropertyChanged(nameof (CanContinue));
-        this.Continue.RaiseCanExecuteChanged();
+        canContinue = value;
+        RaisePropertyChanged(nameof (CanContinue));
+        Continue.RaiseCanExecuteChanged();
       }
     }
 
     private bool TournamentCanExecute() => true;
 
-    private void ContinueAction()
+    private async void ContinueAction()
     {
       try
       {
-        this.IsBusy = true;
-        bool flag1 = Serializer.Exists("CurrentTwoPlayerDuelGame__1_452.xml");
-        bool flag2 = Serializer.Exists("CurrentTournamentGame__1_452.xml");
-        bool flag3 = Serializer.Exists("DuelWithAiBattlefieldViewModel__1_452.xml");
-        GameModes valueOrDefault = (GameModes) IsolatedStorageSettings.ApplicationSettings.GetValueOrDefault<object, string>("LastPlayedMode__1_452", (object) GameModes.NotDefined);
+        IsBusy = true;
+        bool flag1 = await Serializer.Exists("CurrentTwoPlayerDuelGame__1_452.xml");
+        bool flag2 = await Serializer.Exists("CurrentTournamentGame__1_452.xml");
+        bool flag3 = await Serializer.Exists("DuelWithAiBattlefieldViewModel__1_452.xml");
+        GameModes valueOrDefault = (GameModes) 
+                    (Windows.Storage.ApplicationData.Current.LocalSettings.Values.ContainsKey("LastPlayedMode__1_452")
+                    ? Windows.Storage.ApplicationData.Current.LocalSettings.Values["LastPlayedMode__1_452"] : GameModes.NotDefined);
         bool is2PlayersDuel = valueOrDefault == GameModes.HotsitDuel || valueOrDefault == GameModes.DuelWithAi;
         bool isAiDuel = valueOrDefault == GameModes.DuelWithAi;
-        if ((valueOrDefault != GameModes.DuelWithAi || !flag3) && (valueOrDefault != GameModes.HotsitDuel || !flag1) && (valueOrDefault != GameModes.Tournament || !flag2) || valueOrDefault == GameModes.NotDefined)
+
+        if ((valueOrDefault != GameModes.DuelWithAi || !flag3) 
+                    && (valueOrDefault != GameModes.HotsitDuel || !flag1)
+                    && (valueOrDefault != GameModes.Tournament || !flag2) 
+                    || valueOrDefault == GameModes.NotDefined)
         {
           is2PlayersDuel = flag1;
           isAiDuel = flag3;
         }
         if (valueOrDefault == GameModes.NotDefined)
-          this.IsBusy = false;
+          IsBusy = false;
         else
           PageNavigationService.OpenBattlefield(true, is2PlayersDuel, isAiDuel);
       }
       catch (Exception ex)
       {
+        Debug.WriteLine("[ex] MainViewModel - ContinueAction error: " + ex.Message);
         MainViewModel.Logger.LogError(ex);
-        throw;
+        //throw;
       }
     }
 
-    private bool ContinueCanExecute() => this.CanContinue;
+    private bool ContinueCanExecute() => CanContinue;
 
     public RelayCommand ShowTutorial { get; set; }
 
@@ -124,11 +148,11 @@ namespace AstralBattles.ViewModels
 
     public bool IsSoundsEnabled
     {
-      get => this.isSoundsEnabled;
+      get => isSoundsEnabled;
       set
       {
-        this.isSoundsEnabled = value;
-        this.RaisePropertyChanged(nameof (IsSoundsEnabled));
+        isSoundsEnabled = value;
+        RaisePropertyChanged(nameof (IsSoundsEnabled));
         OptionsManager.Current.EnableSounds = value;
         OptionsManager.Save();
       }
@@ -136,11 +160,11 @@ namespace AstralBattles.ViewModels
 
     public bool IsVibrationEnabled
     {
-      get => this.isVibrationEnabled;
+      get => isVibrationEnabled;
       set
       {
-        this.isVibrationEnabled = value;
-        this.RaisePropertyChanged(nameof (IsVibrationEnabled));
+        isVibrationEnabled = value;
+        RaisePropertyChanged(nameof (IsVibrationEnabled));
         OptionsManager.Current.EnableVibration = value;
         OptionsManager.Save();
       }
@@ -148,11 +172,11 @@ namespace AstralBattles.ViewModels
 
     public string Language
     {
-      get => this.language;
+      get => language;
       set
       {
-        this.language = value;
-        this.RaisePropertyChanged(nameof (Language));
+        language = value;
+        RaisePropertyChanged(nameof (Language));
         OptionsManager.Current.Language = value;
         LocalizationManager.ChangeLanguage(value);
         OptionsManager.Save();
@@ -161,8 +185,8 @@ namespace AstralBattles.ViewModels
 
     public string[] Languages
     {
-      get => this.languages;
-      set => this.languages = value;
+      get => languages;
+      set => languages = value;
     }
   }
 }

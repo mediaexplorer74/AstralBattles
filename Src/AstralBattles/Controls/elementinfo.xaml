@@ -1,18 +1,16 @@
-﻿<UserControl x:Class="AstralBattles.Controls.ElementInfo"
+<UserControl x:Class="AstralBattles.Controls.ElementInfo"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Converters="clr-namespace:AstralBattles.Converters" 
-    xmlns:ViewModels="clr-namespace:AstralBattles.ViewModels"
+    xmlns:Converters="using:AstralBattles.Converters" 
+    xmlns:ViewModels="using:AstralBattles.ViewModels"
     mc:Ignorable="d"
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
-    FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="White"
     Height="34"
     x:Name="control"
     Loaded="UserControlLoaded"
-    d:DataConLabel="{d:DesignInstance Type=ViewModels:DesignTimeDataContext, IsDesignTimeCreatable=True}">
+    >
     
     <UserControl.Resources>
         <Converters:ElementsImageConverter x:Key="elementImageConverter"/>
@@ -87,7 +85,7 @@
             </VisualStateGroup>
     	</VisualStateManager.VisualStateGroups>
         <StackPanel x:Name="stackPanel"
-                    DataConLabel="{Binding ElementName=control}"
+                    
                     Orientation="Horizontal" 
                     Margin="0,3,0,3">
             <Image Source="{Binding Element.ElementType, Converter={StaticResource elementImageConverter}}" 
@@ -95,7 +93,7 @@
                    Width="28" 
                    Margin="4,0,0,0" />
             <TextBlock x:Name="textBlock" 
-                       Label="{Binding Element.ElementType, Converter={StaticResource elementTextConverter}}" 
+                       Text="{Binding Element.ElementType, Converter={StaticResource elementTextConverter}}" 
                        Width="75"
                        Visibility="{Binding HideName, Converter={StaticResource falseToVisibleConverter}}"
                        Margin="4,1,3,-3" 
@@ -107,7 +105,7 @@
             	<Border.Projection>
             		<PlaneProjection/>
             	</Border.Projection>
-                <TextBlock Label="{Binding Element.Mana}" 
+                <TextBlock Text="{Binding Element.Mana}" 
                            Foreground="Black" 
                            FontWeight="Bold" 
                            VerticalAlignment="Center" 
@@ -120,10 +118,10 @@
                     Width="Auto" 
                     Height="28" 
                     Opacity="0" RenderTransformOrigin="0.5,0.5" 
-                    DataConLabel="{Binding ElementName=control}"
+                    
                     HorizontalAlignment="Right" Background="White"
                     >
-            <TextBlock x:Name="overflowTextBox" Label="{Binding OverflowText}" 
+            <TextBlock x:Name="overflowTextBox" Text="{Binding OverflowText}" 
                            Margin="3,-3,3,0"
                            Foreground="Green" 
                            FontWeight="Bold" 

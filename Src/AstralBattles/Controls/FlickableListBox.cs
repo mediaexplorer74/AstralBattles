@@ -1,18 +1,22 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Controls.FlickableListBox
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
+﻿﻿using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+using System;
 
-using Windows.UI.Xaml.Controls;
 
-#nullable disable
 namespace AstralBattles.Controls
 {
-public partial class FlickableListBox : ListBox
+  // Stub class for missing UWP manipulation events
+  public class ManipulationCompletedEventArgs : EventArgs
   {
-    private void gl_Flick(object sender, FlickGestureEventArgs e)
+    // Stub properties for MVP compatibility
+  }
+
+  public partial class FlickableListBox : ListBox
+  {
+    // UWP would use Manipulation events instead of Flick
+    private void HandleManipulation(object sender, ManipulationCompletedEventArgs e)
     {
+      // Stub for MVP - implement flick gesture using UWP Manipulation events
     }
   }
 }

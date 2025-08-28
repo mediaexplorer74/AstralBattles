@@ -1,4 +1,4 @@
-﻿<Page 
+<Page 
     x:Class="AstralBattles.Views.FaceSelectionView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,11 +6,11 @@
     
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:toolkit="using:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
+    
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
     >
 
@@ -23,31 +23,22 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Label="{Binding CommonResources.FaceSelection, Source={StaticResource ResourceWrapper}}" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="ApplicationTitle" Text="{Binding CommonResources.FaceSelection, Source={StaticResource ResourceWrapper}}" Style="{StaticResource PhoneTextNormalStyle}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <ScrollViewer>
-                <toolkit:WrapPanel x:Name="panel" CacheMode="BitmapCache">
-                    <!--<Button BorderThickness="0" toolkit:TiltEffect.IsTiltEnabled="True" Click="Button_Click">
-                    <Image Width="90" Margin="-10,-5" Height="90" Source="/AstralBattles;component/Resources/Avatars/face31.jpg"/>
-                </Button>-->
-                </toolkit:WrapPanel>
+                <StackPanel x:Name="FacesPanel" Margin="0,0,0,12" Orientation="Horizontal">
+                    <StackPanel.RenderTransform>
+                        <CompositeTransform/>
+                    </StackPanel.RenderTransform>
+                </StackPanel>
             </ScrollViewer>
         </Grid>
     </Grid>
  
-    <!--Sample code showing usage of ApplicationBar-->
-    <!--<Page.ApplicationBar>
-        <CommandBar IsVisible="True" IsMenuEnabled="True">
-            <CommandBarIconButton Icon="/Images/appbar_button1.png" Label="Button 1"/>
-            <CommandBarIconButton Icon="/Images/appbar_button2.png" Label="Button 2"/>
-            <CommandBar.MenuItems>
-                <CommandBarMenuItem Label="MenuItem 1"/>
-                <CommandBarMenuItem Label="MenuItem 2"/>
-            </CommandBar.MenuItems>
-        </CommandBar>
-    </Page.ApplicationBar>-->
+
+
 
 </Page>

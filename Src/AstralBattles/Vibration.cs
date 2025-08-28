@@ -5,10 +5,9 @@
 // Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
 
 using AstralBattles.Options;
-using Microsoft.Devices;
 using System;
 
-#nullable disable
+
 namespace AstralBattles
 {
   public static class Vibration
@@ -19,7 +18,8 @@ namespace AstralBattles
       {
         if (!OptionsManager.Current.EnableVibration)
           return;
-        VibrateController.Default.Start(TimeSpan.FromSeconds(0.3));
+        // UWP vibration would use Windows.Phone.Devices.Notification.VibrationDevice
+        // Stubbed for MVP build
       }
       catch
       {

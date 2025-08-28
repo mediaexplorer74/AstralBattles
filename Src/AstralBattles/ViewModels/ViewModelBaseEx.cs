@@ -1,54 +1,49 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.ViewModels.ViewModelBaseEx
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
+using AstralBattles.Core.Infrastructure;
 using AstralBattles.Localizations.Cyclops.MainApplication.Localization;
-using GalaSoft.MvvmLight;
 using System;
-using System.Windows;
+
 using System.Xml.Serialization;
 
-#nullable disable
 namespace AstralBattles.ViewModels
 {
-  public class ViewModelBaseEx : ViewModelBase
-  {
-    private bool isBusy;
-    private ResourceWrapper resources;
-
-    public ViewModelBaseEx()
+    public class ViewModelBaseEx : NotifyPropertyChangedBase
     {
-      this.Resources = Application.Current.Resources[(object) "ResourceWrapper"] as ResourceWrapper;
-    }
+        private bool _isBusy;
+        private ResourceWrapper _resources;
 
-    public bool IsBusy
-    {
-      get => this.isBusy;
-      set
-      {
-        this.isBusy = value;
-        this.RaisePropertyChanged(nameof (IsBusy));
-      }
-    }
+        public ViewModelBaseEx()
+        {
+            // _resources = Application.Current.Resources["ResourceWrapper"] as ResourceWrapper;
+        }
 
-    [XmlIgnore]
-    public ResourceWrapper Resources
-    {
-      get
-      {
-        if (this.resources == null)
-          this.Resources = Application.Current.Resources[(object) "ResourceWrapper"] as ResourceWrapper;
-        return this.resources;
-      }
-      set
-      {
-        this.resources = value;
-        this.RaisePropertyChanged(nameof (Resources));
-      }
-    }
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set => SetProperty(ref _isBusy, value);
+        }
 
-    public DateTime SerializationDate { get; set; }
-  }
+        [XmlIgnore]
+        public ResourceWrapper Resources
+        {
+            get
+            {
+                // if (_resources == null)
+                //     _resources = Application.Current.Resources["ResourceWrapper"] as ResourceWrapper;
+                return _resources;
+            }
+            set => SetProperty(ref _resources, value);
+        }
+
+        protected bool SetProperty<T>(ref T field, T value, [System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
+        {
+            if (object.Equals(field, value)) return false;
+            field = value;
+            RaisePropertyChanged(propertyName);
+            return true;
+        }
+
+        public DateTime SerializationDate { get; set; }
+
+        public static bool IsInDesignModeStatic { get; set; } = false; //!
+    }
 }

@@ -8,7 +8,7 @@ using AstralBattles.Core.Model;
 using AstralBattles.ViewModels;
 using System;
 
-#nullable disable
+
 namespace AstralBattles.Model
 {
   public class DeckField : ViewModelBaseEx

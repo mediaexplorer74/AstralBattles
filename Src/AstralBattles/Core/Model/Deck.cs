@@ -1,16 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Core.Model.Deck
-// Assembly: AstralBattles.Core, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 6DDFE75F-AA71-406D-841A-1AF1DF23E1FF
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.Core.dll
-
 using AstralBattles.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-#nullable disable
+
 namespace AstralBattles.Core.Model
 {
   public class Deck : Dictionary<ElementTypeEnum, ObservableCollection<Card>>
@@ -23,10 +17,6 @@ namespace AstralBattles.Core.Model
         string cards = "";
         keyValuePair.Value.ForEach<Card>((Action<Card>) (i =>
         {
-          // ISSUE: variable of a compiler-generated type
-          Deck.\u003C\u003Ec__DisplayClass1 cDisplayClass1 = this;
-          // ISSUE: reference to a compiler-generated field
-          string cards1 = cDisplayClass1.cards;
           string str2;
           switch (i)
           {
@@ -38,8 +28,7 @@ namespace AstralBattles.Core.Model
               str2 = i.Name;
               break;
           }
-          // ISSUE: reference to a compiler-generated field
-          cDisplayClass1.cards = cards1 + str2 + ";";
+          cards = cards + str2 + ";";
         }));
         str1 += string.Format("[{0}:{1}]", (object) keyValuePair.Key, (object) cards);
       }

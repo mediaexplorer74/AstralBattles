@@ -1,20 +1,16 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Controls.DeckFieldControl
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
 using AstralBattles.Core.Model;
-using GalaSoft.MvvmLight;
+using AstralBattles.Core.Infrastructure;
+using Windows.ApplicationModel;
 using System;
 using System.Diagnostics;
 using Windows.Devices.Input;
+using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 
-#nullable disable
+
 namespace AstralBattles.Controls
 {
 public partial class DeckFieldControl : UserControl
@@ -27,7 +23,7 @@ public partial class DeckFieldControl : UserControl
     public DeckFieldControl()
     {
       this.InitializeComponent();
-      if (!ViewModelBase.IsInDesignModeStatic)
+      if (!DesignMode.DesignModeEnabled)
         return;
       CreatureCard creatureCard = new CreatureCard();
       creatureCard.IsActive = true;
@@ -39,31 +35,25 @@ public partial class DeckFieldControl : UserControl
       this.Card = (Card) creatureCard;
     }
 
-    private void DeckField_MouseMove(object sender, MouseEventArgs e)
+    private void DeckField_MouseMove(object sender, PointerRoutedEventArgs e)
     {
       if (this == null || !this.isDragging)
         return;
-      Point point = e.GetPosition((UIElement) null);
-      point = new Point(point.Y, 480.0 - point.X);
-      if (!(this.RenderTransform is TranslateTransform translateTransform))
-      {
-        translateTransform = new TranslateTransform();
-        this.RenderTransform = (Transform) translateTransform;
-      }
-      translateTransform.X = point.X - this.Width / 2.0;
-      translateTransform.Y = point.Y - this.Height / 2.0;
+      // Using UWP Pointer API instead of Mouse API
+      Point point = e.GetCurrentPoint(null).Position;
+      // ... existing code ...
     }
 
-    private void DeckField_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+    private void DeckField_PointerReleased(object sender, PointerRoutedEventArgs e)
     {
       this.isDragging = false;
-      this.ReleaseMouseCapture();
+      this.ReleasePointerCapture(e.Pointer);
     }
 
-    private void DeckField_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    private void DeckField_PointerPressed(object sender, PointerRoutedEventArgs e)
     {
       this.isDragging = true;
-      this.CaptureMouse();
+      this.CapturePointer(e.Pointer);
     }
 
     public Card Card
@@ -72,26 +62,26 @@ public partial class DeckFieldControl : UserControl
       set => this.SetValue(DeckFieldControl.CardProperty, (object) value);
     }
 
-    private void MouseDragElementBehaviorDragBegun(object sender, MouseEventArgs e)
+    private void MouseDragElementBehaviorDragBegun(object sender, PointerRoutedEventArgs e)
     {
       this.DragBegun((object) this, e);
     }
 
-    private void MouseDragElementBehaviorDragFinished(object sender, MouseEventArgs e)
+    private void MouseDragElementBehaviorDragFinished(object sender, PointerRoutedEventArgs e)
     {
       this.DragFinished(sender, e);
     }
 
-    private void MouseDragElementBehaviorDragging(object sender, MouseEventArgs e)
+    private void MouseDragElementBehaviorDragging(object sender, PointerRoutedEventArgs e)
     {
       this.Dragging(sender, e);
     }
 
-    public event EventHandler<MouseEventArgs> DragBegun = delegate { };
+    public event EventHandler<PointerRoutedEventArgs> DragBegun = delegate { };
 
-    public event EventHandler<MouseEventArgs> DragFinished = delegate { };
+    public event EventHandler<PointerRoutedEventArgs> DragFinished = delegate { };
 
-    public event EventHandler<MouseEventArgs> Dragging = delegate { };
+    public event EventHandler<PointerRoutedEventArgs> Dragging = delegate { };
   }
 }
 

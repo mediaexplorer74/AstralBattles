@@ -1,18 +1,13 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.ViewModels.CampaignViewModel
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
-using AstralBattles.Core.Model;
+﻿using AstralBattles.Core.Model;
 using AstralBattles.Views;
-using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 
-#nullable disable
+
+using AstralBattles.Core.Infrastructure;
+
 namespace AstralBattles.ViewModels
 {
   public class CampaignViewModel : ViewModelBaseEx
@@ -23,8 +18,8 @@ namespace AstralBattles.ViewModels
 
     public CampaignViewModel()
     {
-      this.CloseFoeDialog = new RelayCommand(new Action(this.CloseFoeDialogAction));
-      this.FightWithFoe = new RelayCommand(new Action(this.FightWithFoeAction));
+      CloseFoeDialog = new RelayCommand(CloseFoeDialogAction);
+      FightWithFoe = new RelayCommand(FightWithFoeAction);
       ObservableCollection<CampaignOpponent> observableCollection1 = new ObservableCollection<CampaignOpponent>();
       ObservableCollection<CampaignOpponent> observableCollection2 = observableCollection1;
       CampaignOpponent campaignOpponent1 = new CampaignOpponent();
@@ -271,18 +266,18 @@ namespace AstralBattles.ViewModels
       CampaignOpponent campaignOpponent38 = campaignOpponent37;
       observableCollection20.Add(campaignOpponent38);
       ObservableCollection<CampaignOpponent> items = observableCollection1;
-      items.ForEach<CampaignOpponent>((Action<CampaignOpponent>) (i => i.PropertyChanged += new PropertyChangedEventHandler(this.OpponentPropertyChanged)));
-      this.Opponents = items;
+      items.ForEach<CampaignOpponent>((Action<CampaignOpponent>) (i => i.PropertyChanged += new PropertyChangedEventHandler(OpponentPropertyChanged)));
+      Opponents = items;
     }
 
-    private void FightWithFoeAction() => this.CloseFoeDialogAction();
+    private void FightWithFoeAction() => CloseFoeDialogAction();
 
     private void CloseFoeDialogAction()
     {
-      if (this.SelectedCampaignOpponent == null)
+      if (SelectedCampaignOpponent == null)
         return;
-      this.SelectedCampaignOpponent.IsSelected = false;
-      this.SelectedCampaignOpponent = (CampaignOpponent) null;
+      SelectedCampaignOpponent.IsSelected = false;
+      SelectedCampaignOpponent = (CampaignOpponent) null;
     }
 
     private void OpponentPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -290,27 +285,27 @@ namespace AstralBattles.ViewModels
       CampaignOpponent opponent = sender as CampaignOpponent;
       if (!(e.PropertyName == "IsSelected") || opponent == null || !opponent.IsSelected)
         return;
-      this.Opponents.Where<CampaignOpponent>((Func<CampaignOpponent, bool>) (i => i != opponent)).ForEach<CampaignOpponent>((Action<CampaignOpponent>) (i => i.IsSelected = false));
-      this.SelectedCampaignOpponent = opponent;
+      Opponents.Where<CampaignOpponent>((Func<CampaignOpponent, bool>) (i => i != opponent)).ForEach<CampaignOpponent>((Action<CampaignOpponent>) (i => i.IsSelected = false));
+      SelectedCampaignOpponent = opponent;
     }
 
     public ObservableCollection<CampaignOpponent> Opponents
     {
-      get => this.opponents;
+      get => opponents;
       set
       {
-        this.opponents = value;
-        this.RaisePropertyChanged(nameof (Opponents));
+        opponents = value;
+        RaisePropertyChanged(nameof (Opponents));
       }
     }
 
     public bool IsWaitingUserChoise
     {
-      get => this.isWaitingUserChoise;
+      get => isWaitingUserChoise;
       set
       {
-        this.isWaitingUserChoise = value;
-        this.RaisePropertyChanged(nameof (IsWaitingUserChoise));
+        isWaitingUserChoise = value;
+        RaisePropertyChanged(nameof (IsWaitingUserChoise));
       }
     }
 
@@ -320,24 +315,23 @@ namespace AstralBattles.ViewModels
 
     public CampaignOpponent SelectedCampaignOpponent
     {
-      get => this.selectedCampaignOpponent;
+      get => selectedCampaignOpponent;
       set
       {
-        this.selectedCampaignOpponent = value;
-        this.RaisePropertyChanged(nameof (SelectedCampaignOpponent));
-        this.IsWaitingUserChoise = value != null;
+        selectedCampaignOpponent = value;
+        RaisePropertyChanged(nameof (SelectedCampaignOpponent));
+        IsWaitingUserChoise = value != null;
       }
     }
 
-    public void OnBackKeyPress(CancelEventArgs cancelEventArgs)
+    // Modified for UWP compatibility - removed CancelEventArgs
+    public void OnBackKeyPress()
     {
-      if (this.SelectedCampaignOpponent != null)
+      if (SelectedCampaignOpponent != null)
       {
-        this.SelectedCampaignOpponent.IsSelected = false;
-        this.SelectedCampaignOpponent = (CampaignOpponent) null;
-        cancelEventArgs.Cancel = true;
+        SelectedCampaignOpponent.IsSelected = false;
+        SelectedCampaignOpponent = (CampaignOpponent) null;
       }
-      cancelEventArgs.Cancel = true;
       PageNavigationService.CampaignOptions(true);
     }
   }

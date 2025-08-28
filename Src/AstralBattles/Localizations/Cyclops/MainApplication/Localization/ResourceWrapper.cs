@@ -6,7 +6,7 @@
 
 using System.ComponentModel;
 
-#nullable disable
+
 namespace AstralBattles.Localizations.Cyclops.MainApplication.Localization
 {
   public class ResourceWrapper : INotifyPropertyChanged

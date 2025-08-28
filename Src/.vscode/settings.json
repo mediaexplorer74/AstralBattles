@@ -1,0 +1,12 @@
+{
+    "diffEditor.diffAlgorithm": "legacy",
+    "diffEditor.experimental.showMoves": true,
+    "diffEditor.experimental.useTrueInlineView": true,
+    "diffEditor.maxComputationTime": 10000,
+    "diffEditor.maxFileSize": 0,
+    "multiDiffEditor.experimental.enabled": true,
+    "editor.minimap.autohide": true,
+    "editor.acceptSuggestionOnEnter": "off",
+    "files.autoSave": "afterDelay",
+    "mergeEditor.diffAlgorithm": "legacy"
+}

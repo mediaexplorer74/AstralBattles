@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: AstralBattles.Converters.SpecializationConverter
 // Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
 // MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
@@ -8,14 +8,14 @@ using AstralBattles.Core.Model;
 using AstralBattles.Localizations;
 using System;
 using System.Globalization;
-using System.Windows.Data;
+using Windows.UI.Xaml.Data;
 
-#nullable disable
+
 namespace AstralBattles.Converters
 {
   public class SpecializationConverter : IValueConverter
   {
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    public object Convert(object value, Type targetType, object parameter, string language)
     {
       return (object) this.Convert((Specialization) value);
     }
@@ -60,7 +60,7 @@ namespace AstralBattles.Converters
       object value,
       Type targetType,
       object parameter,
-      CultureInfo culture)
+      string language)
     {
       return (object) this.ConvertBack(value.ToString());
     }

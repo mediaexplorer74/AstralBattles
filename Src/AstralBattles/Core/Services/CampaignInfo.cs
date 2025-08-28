@@ -6,7 +6,7 @@
 
 using AstralBattles.Core.Model;
 
-#nullable disable
+
 namespace AstralBattles.Core.Services
 {
   public class CampaignInfo

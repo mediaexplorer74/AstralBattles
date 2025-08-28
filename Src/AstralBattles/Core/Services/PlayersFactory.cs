@@ -9,10 +9,10 @@ using AstralBattles.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO.IsolatedStorage;
+using Windows.Storage;
 using System.Linq;
 
-#nullable disable
+
 namespace AstralBattles.Core.Services
 {
   public static class PlayersFactory
@@ -200,12 +200,13 @@ namespace AstralBattles.Core.Services
 
     public static Player CreateSecondPlayerForDuel()
     {
-      IsolatedStorageSettings applicationSettings = IsolatedStorageSettings.ApplicationSettings;
-      string str1 = applicationSettings.GetValueOrDefault<object, string>("SecondPlayer", (object) "Player 2").ToString();
-      string str2 = applicationSettings.GetValueOrDefault<object, string>("SecondPlayerPhoto", (object) "face4").ToString();
-      int valueOrDefault1 = (int) applicationSettings.GetValueOrDefault<object, string>("SecondPlayerSpecialization", (object) Specialization.Elementalist);
-      ElementTypeEnum valueOrDefault2 = (ElementTypeEnum) applicationSettings.GetValueOrDefault<object, string>("SecondPlayerSpecialElement", (object) ((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements).GetRandomElement<ElementTypeEnum>());
-      ObservableCollection<Element> elements = PlayersFactory.DeckToElements(Deck.Deserialize(applicationSettings.GetValueOrDefault<object, string>("SecondPlayerDeck", (object) "").ToStringIfNotNull(), PlayersFactory.CreateRandomDeck(valueOrDefault2)));
+      // UWP uses ApplicationData.Current.LocalSettings instead of IsolatedStorageSettings
+      var applicationSettings = Windows.Storage.ApplicationData.Current.LocalSettings.Values;
+      string str1 = (applicationSettings.ContainsKey("SecondPlayer") ? applicationSettings["SecondPlayer"] : "Player 2").ToString();
+      string str2 = (applicationSettings.ContainsKey("SecondPlayerPhoto") ? applicationSettings["SecondPlayerPhoto"] : "face4").ToString();
+      int valueOrDefault1 = (int) (applicationSettings.ContainsKey("SecondPlayerSpecialization") ? applicationSettings["SecondPlayerSpecialization"] : Specialization.Elementalist);
+      ElementTypeEnum valueOrDefault2 = (ElementTypeEnum) (applicationSettings.ContainsKey("SecondPlayerSpecialElement") ? applicationSettings["SecondPlayerSpecialElement"] : ((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements).GetRandomElement<ElementTypeEnum>());
+      ObservableCollection<Element> elements = PlayersFactory.DeckToElements(Deck.Deserialize((applicationSettings.ContainsKey("SecondPlayerDeck") ? applicationSettings["SecondPlayerDeck"] : "").ToStringIfNotNull(), PlayersFactory.CreateRandomDeck(valueOrDefault2)));
       return new Player()
       {
         DisplayName = str1,
@@ -220,12 +221,13 @@ namespace AstralBattles.Core.Services
 
     public static Player CreateFirstPlayerForDuel()
     {
-      IsolatedStorageSettings applicationSettings = IsolatedStorageSettings.ApplicationSettings;
-      string str1 = applicationSettings.GetValueOrDefault<object, string>("FirstPlayer", (object) "Player 1").ToString();
-      string str2 = applicationSettings.GetValueOrDefault<object, string>("FirstPlayerPhoto", (object) "face2").ToString();
-      int valueOrDefault1 = (int) applicationSettings.GetValueOrDefault<object, string>("FirstPlayerSpecialization", (object) Specialization.Elementalist);
-      ElementTypeEnum valueOrDefault2 = (ElementTypeEnum) applicationSettings.GetValueOrDefault<object, string>("FirstPlayerSpecialElement", (object) ((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements).GetRandomElement<ElementTypeEnum>());
-      ObservableCollection<Element> elements = PlayersFactory.DeckToElements(Deck.Deserialize(applicationSettings.GetValueOrDefault<object, string>("FirstPlayerDeck", (object) "").ToStringIfNotNull(), PlayersFactory.CreateRandomDeck(valueOrDefault2)));
+      // UWP uses ApplicationData.Current.LocalSettings instead of IsolatedStorageSettings
+      var applicationSettings = Windows.Storage.ApplicationData.Current.LocalSettings.Values;
+      string str1 = (applicationSettings.ContainsKey("FirstPlayer") ? applicationSettings["FirstPlayer"] : "Player 1").ToString();
+      string str2 = (applicationSettings.ContainsKey("FirstPlayerPhoto") ? applicationSettings["FirstPlayerPhoto"] : "face2").ToString();
+      int valueOrDefault1 = (int) (applicationSettings.ContainsKey("FirstPlayerSpecialization") ? applicationSettings["FirstPlayerSpecialization"] : Specialization.Elementalist);
+      ElementTypeEnum valueOrDefault2 = (ElementTypeEnum) (applicationSettings.ContainsKey("FirstPlayerSpecialElement") ? applicationSettings["FirstPlayerSpecialElement"] : ((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements).GetRandomElement<ElementTypeEnum>());
+      ObservableCollection<Element> elements = PlayersFactory.DeckToElements(Deck.Deserialize((applicationSettings.ContainsKey("FirstPlayerDeck") ? applicationSettings["FirstPlayerDeck"] : "").ToStringIfNotNull(), PlayersFactory.CreateRandomDeck(valueOrDefault2)));
       return new Player()
       {
         DisplayName = str1,

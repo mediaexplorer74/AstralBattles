@@ -1,15 +1,15 @@
-﻿<UserControl x:Class="AstralBattles.Controls.CampaignFoeFace"
+<UserControl x:Class="AstralBattles.Controls.CampaignFoeFace"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Width="110" Height="95" x:Name="control">
-    <Grid x:Name="LayoutRoot" DataConLabel="{Binding ElementName=control}">
+    <Grid x:Name="LayoutRoot">
         <Border>
-            <Image Stretch="None" x:Name="faceImage" Source="/AstralBattles;component/Resources/Campaign/small.png" Margin="10,9,0,0">
+            <Image Stretch="None" x:Name="faceImage" Source="/Resources/Campaign/small.png" Margin="10,9,0,0">
             </Image>
             <Border.Clip>
-                <EllipseGeometry RadiusX="33" RadiusY="33" Center="45,45"/>
+                <RectangleGeometry Rect="0,0,90,90"/>
             </Border.Clip>
         </Border>
         <Image Width="110" Height="95" Source="{Binding BorderImage}"/>

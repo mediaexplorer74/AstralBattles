@@ -8,7 +8,7 @@ using AstralBattles.Core.Model;
 using System;
 using System.Collections.Generic;
 
-#nullable disable
+
 namespace AstralBattles.Core.Services
 {
   public class SkillsRegistry

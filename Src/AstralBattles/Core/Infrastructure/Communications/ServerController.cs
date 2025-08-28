@@ -7,7 +7,7 @@
 using System;
 using System.Net;
 
-#nullable disable
+
 namespace AstralBattles.Core.Infrastructure.Communications
 {
   public class ServerController : NotifyPropertyChangedBase

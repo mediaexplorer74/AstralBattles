@@ -7,43 +7,30 @@
 using AstralBattles.Core.Services;
 using AstralBattles.ViewModels;
 using Windows.UI.Xaml.Controls;
-using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Windows;
-using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Windows.UI.Xaml.Controls;
+using System;
+using System.Diagnostics;
 
-#nullable disable
+
 namespace AstralBattles.Views
 {
 public partial class MainPage : Page
   {
-    private bool _contentLoaded;
-
-   
+       
     public MainPage()
     {
-      Utils.CurrentDispatcher = ((DependencyObject) this).Dispatcher;
+      Utils.CurrentDispatcher = this.Dispatcher;
       this.InitializeComponent();
       CardRegistry.Reload();
     }
 
-    private void PageLoaded(object sender, RoutedEventArgs e)
+    protected override void OnNavigatedTo(NavigationEventArgs e)
     {
-    }
-
-    protected virtual void OnBackKeyPress(CancelEventArgs e)
-    {
-    }
-
-    protected virtual void OnNavigatedTo(NavigationEventArgs e)
-    {
-      if (e.Uri.ToString().EndsWith("?back=true"))
-        ((Page) this).Frame.ClearBackStack();
-      ((MainViewModel) ((FrameworkElement) this).DataContext).OnNavigatedTo();
-      ((Page) this).OnNavigatedFrom(e);
+      base.OnNavigatedTo(e);
+      if (DataContext is MainViewModel mainViewModel)
+      {
+        mainViewModel.OnNavigatedTo();
+      }
     }
   }
 }

@@ -5,8 +5,13 @@
 
 AstralBattles.xap dirty decomp.
 
+## Screenshot(s)
+![Logo](Images/sshot01.png)
+
 ## Status
-- Init state of R.E.
+- App build - success
+- App start - success
+- App UI -- damaged (not ported properly!)
 
 ## Plans
 - See Plans.md at /Docs folder

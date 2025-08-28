@@ -10,14 +10,16 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Resources;
 using System.Runtime.CompilerServices;
-using System.Reflection;
+//using System.Reflection;
+//using Windows.ApplicationModel.Resources.Core;
+//using ResourceManager = Windows.ApplicationModel.Resources.Core.ResourceManager;
 
-#nullable disable
+
 namespace AstralBattles.Localizations
 {
-  [DebuggerNonUserCode]
-  [CompilerGenerated]
-  [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+  //[DebuggerNonUserCode]
+  //[CompilerGenerated]
+  //[GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
   public class CommonResources
   {
     private static ResourceManager resourceMan;
@@ -27,18 +29,19 @@ namespace AstralBattles.Localizations
     {
     }
 
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    //[EditorBrowsable(EditorBrowsableState.Advanced)]
     public static ResourceManager ResourceManager
     {
       get
       {
-        if (object.ReferenceEquals((object) CommonResources.resourceMan, (object) null))
-          CommonResources.resourceMan = new ResourceManager("AstralBattles.Localizations.CommonResources", /*typeof(CommonResources).Assembly*/default);
+        if (object.ReferenceEquals((object) CommonResources.resourceMan, null))
+          CommonResources.resourceMan = 
+                        new ResourceManager("AstralBattles.Localizations.CommonResources", /*typeof(CommonResources).Assembly*/default);
         return CommonResources.resourceMan;
       }
     }
 
-    [EditorBrowsable(EditorBrowsableState.Advanced)]
+    //[EditorBrowsable(EditorBrowsableState.Advanced)]
     public static CultureInfo Culture
     {
       get => CommonResources.resourceCulture;
@@ -49,7 +52,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (About), CommonResources.resourceCulture);
+                return "About";//CommonResources.ResourceManager.GetString(nameof (About), CommonResources.resourceCulture);
       }
     }
 
@@ -57,7 +60,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (AboutBody), CommonResources.resourceCulture);
+                return "ABOUT";//CommonResources.ResourceManager.GetString(nameof (AboutBody), CommonResources.resourceCulture);
       }
     }
 
@@ -65,7 +68,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Air), CommonResources.resourceCulture);
+                return "Air";//CommonResources.ResourceManager.GetString(nameof (Air), CommonResources.resourceCulture);
       }
     }
 
@@ -73,7 +76,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Beast), CommonResources.resourceCulture);
+                return "Beast";//CommonResources.ResourceManager.GetString(nameof (Beast), CommonResources.resourceCulture);
       }
     }
 
@@ -81,7 +84,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Campaign), CommonResources.resourceCulture);
+                return "Campaign";//CommonResources.ResourceManager.GetString(nameof (Campaign), CommonResources.resourceCulture);
       }
     }
 
@@ -89,7 +92,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (CampaignTip), CommonResources.resourceCulture);
+                return "CampaignTip";//CommonResources.ResourceManager.GetString(nameof (CampaignTip), CommonResources.resourceCulture);
       }
     }
 
@@ -97,7 +100,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Casting), CommonResources.resourceCulture);
+                return "Casting";// CommonResources.ResourceManager.GetString(nameof (Casting), CommonResources.resourceCulture);
       }
     }
 
@@ -105,7 +108,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Chaos), CommonResources.resourceCulture);
+                return "Chaos";//CommonResources.ResourceManager.GetString(nameof (Chaos), CommonResources.resourceCulture);
       }
     }
 
@@ -113,7 +116,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Close), CommonResources.resourceCulture);
+                return "Close";//CommonResources.ResourceManager.GetString(nameof (Close), CommonResources.resourceCulture);
       }
     }
 
@@ -121,7 +124,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (ConfigureDeck), CommonResources.resourceCulture);
+                return "Configure Deck";//CommonResources.ResourceManager.GetString(nameof (ConfigureDeck), CommonResources.resourceCulture);
       }
     }
 
@@ -129,7 +132,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Confirmation), CommonResources.resourceCulture);
+                return "Confirm.";//CommonResources.ResourceManager.GetString(nameof (Confirmation), CommonResources.resourceCulture);
       }
     }
 
@@ -137,7 +140,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Congratulations), CommonResources.resourceCulture);
+                return "Congratulations";//CommonResources.ResourceManager.GetString(nameof (Congratulations), CommonResources.resourceCulture);
       }
     }
 
@@ -145,7 +148,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Continue), CommonResources.resourceCulture);
+                return "Continue";//CommonResources.ResourceManager.GetString(nameof (Continue), CommonResources.resourceCulture);
       }
     }
 
@@ -153,7 +156,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (ContinueCampaignTip), CommonResources.resourceCulture);
+                return "ContinueCampaignTip";//CommonResources.ResourceManager.GetString(nameof (ContinueCampaignTip), CommonResources.resourceCulture);
       }
     }
 
@@ -161,7 +164,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (ContinueTip), CommonResources.resourceCulture);
+                return "ContinueTip";//CommonResources.ResourceManager.GetString(nameof (ContinueTip), CommonResources.resourceCulture);
       }
     }
 
@@ -169,7 +172,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (ContinueTournamentTip), CommonResources.resourceCulture);
+                return "ContinueTournamentTip";//CommonResources.ResourceManager.GetString(nameof (ContinueTournamentTip), CommonResources.resourceCulture);
       }
     }
 
@@ -177,7 +180,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Control), CommonResources.resourceCulture);
+                return "Control";//CommonResources.ResourceManager.GetString(nameof (Control), CommonResources.resourceCulture);
       }
     }
 
@@ -185,7 +188,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Copyrights), CommonResources.resourceCulture);
+                return "Copyrights";//CommonResources.ResourceManager.GetString(nameof (Copyrights), CommonResources.resourceCulture);
       }
     }
 
@@ -193,7 +196,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (CreatureShortDesc), CommonResources.resourceCulture);
+                return "CreatureShortDesc";//CommonResources.ResourceManager.GetString(nameof (CreatureShortDesc), CommonResources.resourceCulture);
       }
     }
 
@@ -233,7 +236,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Difficulty), CommonResources.resourceCulture);
+                return "Difficulty";//CommonResources.ResourceManager.GetString(nameof (Difficulty), CommonResources.resourceCulture);
       }
     }
 
@@ -241,7 +244,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Earth), CommonResources.resourceCulture);
+                return "Earth";//CommonResources.ResourceManager.GetString(nameof (Earth), CommonResources.resourceCulture);
       }
     }
 
@@ -249,7 +252,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Easy), CommonResources.resourceCulture);
+                return "Easy"; //CommonResources.ResourceManager.GetString(nameof (Easy), CommonResources.resourceCulture);
       }
     }
 
@@ -257,7 +260,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (FaceSelection), CommonResources.resourceCulture);
+                return "FaceSelection"; //CommonResources.ResourceManager.GetString(nameof (FaceSelection), CommonResources.resourceCulture);
       }
     }
 
@@ -289,7 +292,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Game), CommonResources.resourceCulture);
+                return "Game";// CommonResources.ResourceManager.GetString(nameof (Game), CommonResources.resourceCulture);
       }
     }
 
@@ -369,7 +372,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (HostAServer), CommonResources.resourceCulture);
+                return "HostAServer";// CommonResources.ResourceManager.GetString(nameof (HostAServer), CommonResources.resourceCulture);
       }
     }
 
@@ -417,7 +420,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (LoadGame), CommonResources.resourceCulture);
+                return "LoadGame";//CommonResources.ResourceManager.GetString(nameof (LoadGame), CommonResources.resourceCulture);
       }
     }
 
@@ -425,7 +428,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (LoadGameTip), CommonResources.resourceCulture);
+                return "LoadGameTip";//CommonResources.ResourceManager.GetString(nameof (LoadGameTip), CommonResources.resourceCulture);
       }
     }
 
@@ -433,7 +436,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Loading), CommonResources.resourceCulture);
+                return "Loading";//CommonResources.ResourceManager.GetString(nameof (Loading), CommonResources.resourceCulture);
       }
     }
 
@@ -441,7 +444,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (MainMenu), CommonResources.resourceCulture);
+                return "MainMenu";//CommonResources.ResourceManager.GetString(nameof (MainMenu), CommonResources.resourceCulture);
       }
     }
 
@@ -457,7 +460,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Name), CommonResources.resourceCulture);
+                return "Name"; //CommonResources.ResourceManager.GetString(nameof (Name), CommonResources.resourceCulture);
       }
     }
 
@@ -481,7 +484,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (NewCampaign), CommonResources.resourceCulture);
+                return "NewCampaign";//CommonResources.ResourceManager.GetString(nameof (NewCampaign), CommonResources.resourceCulture);
       }
     }
 
@@ -489,7 +492,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (NewCampaignTip), CommonResources.resourceCulture);
+                return "NewCampaignTip";//CommonResources.ResourceManager.GetString(nameof (NewCampaignTip), CommonResources.resourceCulture);
       }
     }
 
@@ -497,7 +500,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (NewGame), CommonResources.resourceCulture);
+                return "New Game";//CommonResources.ResourceManager.GetString(nameof (NewGame), CommonResources.resourceCulture);
       }
     }
 
@@ -505,7 +508,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (NewGameTip), CommonResources.resourceCulture);
+                return "New Game Tip";//CommonResources.ResourceManager.GetString(nameof (NewGameTip), CommonResources.resourceCulture);
       }
     }
 
@@ -513,7 +516,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (NewTournament), CommonResources.resourceCulture);
+                return "New Tournament";//CommonResources.ResourceManager.GetString(nameof (NewTournament), CommonResources.resourceCulture);
       }
     }
 
@@ -529,7 +532,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Next), CommonResources.resourceCulture);
+                return "Next"; //CommonResources.ResourceManager.GetString(nameof (Next), CommonResources.resourceCulture);
       }
     }
 
@@ -537,7 +540,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (NextGame), CommonResources.resourceCulture);
+                return "Next Game";//CommonResources.ResourceManager.GetString(nameof (NextGame), CommonResources.resourceCulture);
       }
     }
 
@@ -569,7 +572,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Ok), CommonResources.resourceCulture);
+                return "Ok"; //CommonResources.ResourceManager.GetString(nameof (Ok), CommonResources.resourceCulture);
       }
     }
 
@@ -577,7 +580,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (OnOneDevice), CommonResources.resourceCulture);
+                return "On One Device";//CommonResources.ResourceManager.GetString(nameof (OnOneDevice), CommonResources.resourceCulture);
       }
     }
 
@@ -593,7 +596,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Options), CommonResources.resourceCulture);
+                return "Options";//CommonResources.ResourceManager.GetString(nameof (Options), CommonResources.resourceCulture);
       }
     }
 
@@ -601,7 +604,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Player1NameLabel), CommonResources.resourceCulture);
+                return "Player1NameLabel";//CommonResources.ResourceManager.GetString(nameof (Player1NameLabel), CommonResources.resourceCulture);
       }
     }
 
@@ -665,7 +668,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Sounds), CommonResources.resourceCulture);
+                return "Sounds";//CommonResources.ResourceManager.GetString(nameof (Sounds), CommonResources.resourceCulture);
       }
     }
 
@@ -801,7 +804,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Tap), CommonResources.resourceCulture);
+                return "Tap";//CommonResources.ResourceManager.GetString(nameof (Tap), CommonResources.resourceCulture);
       }
     }
 
@@ -817,7 +820,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Title), CommonResources.resourceCulture);
+                return "Title";//CommonResources.ResourceManager.GetString(nameof (Title), CommonResources.resourceCulture);
       }
     }
 
@@ -865,7 +868,7 @@ namespace AstralBattles.Localizations
     {
       get
       {
-        return CommonResources.ResourceManager.GetString(nameof (Tutorial), CommonResources.resourceCulture);
+                return "Tutorial";//CommonResources.ResourceManager.GetString(nameof (Tutorial), CommonResources.resourceCulture);
       }
     }
 

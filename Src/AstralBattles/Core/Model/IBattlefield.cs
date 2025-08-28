@@ -7,7 +7,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-#nullable disable
+
 namespace AstralBattles.Core.Model
 {
   public interface IBattlefield

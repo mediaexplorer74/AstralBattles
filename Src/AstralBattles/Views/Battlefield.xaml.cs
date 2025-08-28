@@ -1,22 +1,15 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Views.Battlefield
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
-using AstralBattles.Controls;
+﻿using AstralBattles.Controls;
 using AstralBattles.Core.Infrastructure;
 using AstralBattles.ViewModels;
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Threading;
+using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
-#nullable disable
+
 
 namespace AstralBattles.Views
 {
@@ -25,7 +18,7 @@ namespace AstralBattles.Views
     
     public Battlefield() => this.InitializeComponent();
 
-    protected virtual void OnNavigatedTo(NavigationEventArgs e)
+    protected override async void OnNavigatedTo(NavigationEventArgs e)
     {
       if (((FrameworkElement) this).DataContext is BattlefieldViewModel)
         return;
@@ -33,18 +26,22 @@ namespace AstralBattles.Views
       bool flag2 = false;
       bool flag3 = false;
       bool flag4 = false;
-      if (((Page) this).Frame.Navigate.QueryString.GetBoolValue("isCampaign"))
-        flag4 = true;
-      if (((Page) this).Frame.Navigate.QueryString.GetBoolValue("isTwoPlayersDuel"))
-        flag2 = true;
-      if (((Page) this).Frame.Navigate.QueryString.GetBoolValue("isAiDuel"))
-        flag3 = true;
+      // TODO: Replace with UWP navigation parameter handling
+      // For MVP build, using default values instead of QueryString
+      // if (queryParams.ContainsKey("isCampaign"))
+      //   flag4 = true;
+      // if (queryParams.ContainsKey("isTwoPlayersDuel"))
+      //   flag2 = true;
+      // if (queryParams.ContainsKey("isAiDuel"))
+      //   flag3 = true;
       bool flag5 = flag2 && !flag3;
       object obj;
-      if (!((Page) this).Frame.Navigate.QueryString.GetBoolValue("continueGame"))
+      // For MVP: using default new game mode
+      // if (!continueGame)
       {
         obj = !flag4 ? (!flag5 ? (!flag3 ? (object) new TournamentBattlefieldViewModel(true) : (object) new QuickDuelWithAiBattlefieldViewModel(true)) : (object) new TwoPlayersDuelBattlefieldViewModel(true)) : (object) new CampaignBattlefieldViewModel(true);
       }
+      /*
       else
       {
         try
@@ -59,6 +56,7 @@ namespace AstralBattles.Views
           obj = !flag4 ? (!flag5 ? (!flag3 ? (object) new TournamentBattlefieldViewModel(true) : (object) new QuickDuelWithAiBattlefieldViewModel(true)) : (object) new TwoPlayersDuelBattlefieldViewModel(true)) : (object) new CampaignBattlefieldViewModel(true);
         }
       }
+      */
       if (flag5)
       {
         this.summoningDialog.Visibility = Visibility.Collapsed;
@@ -70,23 +68,15 @@ namespace AstralBattles.Views
       }
       ((FrameworkElement) this).DataContext = obj;
       if (flag1)
-        Thread.Sleep(1000);
-      ((Page) this).OnNavigatedTo(e);
+        await Task.Delay(1000); // Replace Thread.Sleep with async delay for UWP
+      base.OnNavigatedTo(e);
     }
 
-    protected virtual void OnBackKeyPress(CancelEventArgs e)
-    {
-      BattlefieldViewModel dataContext = (BattlefieldViewModel) ((FrameworkElement) this).DataContext;
-      if (dataContext.ShowLogMode)
-      {
-        dataContext.ShowLogMode = false;
-        e.Cancel = true;
-      }
-      base.OnBackKeyPress(e);
-    }
+    // Removed OnBackKeyPress - not available in UWP
 
     private void PageLoaded(object sender, RoutedEventArgs e)
     {
+      // UWP page loaded event - replaces PhoneApplicationPageLoaded
     }
 
     private void SummoningDialogPanelHiding(object sender, EventArgs e)

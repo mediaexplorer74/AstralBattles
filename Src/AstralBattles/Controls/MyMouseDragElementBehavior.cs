@@ -1,31 +1,27 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Controls.MyMouseDragElementBehavior
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
 
 using System;
-using System.Windows;
-using System.Windows.Input;
+using Windows.Foundation;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Microsoft.Xaml.Interactivity;
 
 
-#nullable disable
+
 namespace AstralBattles.Controls
 {
 public partial class MyMouseDragElementBehavior : Behavior<FrameworkElement>
   {
     private Point relativePosition;
-    public static readonly DependencyProperty IsEnabledProperty = DependencyProperty.Register(nameof (IsEnabled), typeof (bool), typeof (MyMouseDragElementBehavior), new PropertyMetadata((object) true));
+    public static readonly DependencyProperty IsEnabledProperty = DependencyProperty.Register(
+        nameof (IsEnabled), typeof (bool), typeof (MyMouseDragElementBehavior), new PropertyMetadata((object) true));
     private static int zIndex = 0;
 
-    public event MouseEventHandler DragBegun;
+    public event PointerEventHandler DragBegun;
 
-    public event MouseEventHandler DragFinished;
+    public event PointerEventHandler DragFinished;
 
-    public event MouseEventHandler Dragging;
+    public event PointerEventHandler Dragging;
 
     public bool IsEnabled
     {
@@ -35,36 +31,36 @@ public partial class MyMouseDragElementBehavior : Behavior<FrameworkElement>
 
     protected override void OnAttached()
     {
-      this.AssociatedObject.AddHandler(UIElement.MouseLeftButtonDownEvent, (Delegate) new MouseButtonEventHandler(this.OnMouseLeftButtonDown), false);
+      this.AssociatedObject.PointerPressed += new PointerEventHandler(this.OnPointerPressed);
       base.OnAttached();
     }
 
     protected override void OnDetaching()
     {
-      this.AssociatedObject.RemoveHandler(UIElement.MouseLeftButtonDownEvent, (Delegate) new MouseButtonEventHandler(this.OnMouseLeftButtonDown));
+      this.AssociatedObject.PointerPressed -= new PointerEventHandler(this.OnPointerPressed);
       base.OnDetaching();
     }
 
-    private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    private void OnPointerPressed(object sender, PointerRoutedEventArgs e)
     {
       if (!this.IsEnabled)
         return;
       ++MyMouseDragElementBehavior.zIndex;
       Canvas.SetZIndex((UIElement) this.AssociatedObject, MyMouseDragElementBehavior.zIndex);
-      this.StartDrag(e.GetPosition((UIElement) this.AssociatedObject));
+      this.StartDrag(e.GetCurrentPoint(this.AssociatedObject).Position);
       if (this.DragBegun == null)
         return;
-      this.DragBegun((object) this, (MouseEventArgs) e);
+      this.DragBegun((object) this, e);
     }
 
-    private void OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+    private void OnPointerReleased(object sender, PointerRoutedEventArgs e)
     {
-      this.AssociatedObject.ReleaseMouseCapture();
+      this.AssociatedObject.ReleasePointerCapture(e.Pointer);
     }
 
-    private void OnMouseMove(object sender, MouseEventArgs e)
+    private void OnPointerMoved(object sender, PointerRoutedEventArgs e)
     {
-      this.HandleDrag(e.GetPosition((UIElement) this.AssociatedObject));
+      this.HandleDrag(e.GetCurrentPoint(this.AssociatedObject).Position);
       if (this.Dragging == null)
         return;
       this.Dragging((object) this, e);
@@ -85,20 +81,21 @@ public partial class MyMouseDragElementBehavior : Behavior<FrameworkElement>
     internal void StartDrag(Point positionInElementCoordinates)
     {
       this.relativePosition = positionInElementCoordinates;
-      this.AssociatedObject.CaptureMouse();
-      this.AssociatedObject.MouseMove += new MouseEventHandler(this.OnMouseMove);
-      this.AssociatedObject.LostMouseCapture += new MouseEventHandler(this.OnLostMouseCapture);
-      this.AssociatedObject.AddHandler(UIElement.MouseLeftButtonUpEvent, (Delegate) new MouseButtonEventHandler(this.OnMouseLeftButtonUp), false);
+      // TODO: Fix pointer capture - commenting out for MVP build
+      // this.AssociatedObject.CapturePointer(e.Pointer);
+      this.AssociatedObject.PointerMoved += new PointerEventHandler(this.OnPointerMoved);
+      // this.AssociatedObject.LostPointerCapture += new PointerEventHandler(this.OnLostPointerCapture);
+      this.AssociatedObject.PointerReleased += new PointerEventHandler(this.OnPointerReleased);
     }
 
     internal void EndDrag()
     {
-      this.AssociatedObject.MouseMove -= new MouseEventHandler(this.OnMouseMove);
-      this.AssociatedObject.LostMouseCapture -= new MouseEventHandler(this.OnLostMouseCapture);
-      this.AssociatedObject.RemoveHandler(UIElement.MouseLeftButtonUpEvent, (Delegate) new MouseButtonEventHandler(this.OnMouseLeftButtonUp));
+      this.AssociatedObject.PointerMoved -= new PointerEventHandler(this.OnPointerMoved);
+      // this.AssociatedObject.LostPointerCapture -= new PointerEventHandler(this.OnLostPointerCapture);
+      this.AssociatedObject.PointerReleased -= new PointerEventHandler(this.OnPointerReleased);
     }
 
-    private void OnLostMouseCapture(object sender, MouseEventArgs e)
+    private void OnLostPointerCapture(object sender, PointerRoutedEventArgs e)
     {
       this.EndDrag();
       if (this.DragFinished == null)

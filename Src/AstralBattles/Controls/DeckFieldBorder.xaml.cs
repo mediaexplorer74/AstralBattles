@@ -13,11 +13,11 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Shapes;
 
-#nullable disable
+
 
 namespace AstralBattles.Controls
 {
-  [Windows.UI.Xaml.Markup.ContentProperty("DeckCard")]
+  [Windows.UI.Xaml.Markup.ContentProperty(Name = "DeckCard")]
 public partial class DeckFieldBorder : UserControl
   {
     public static readonly DependencyProperty DeckCardProperty = DependencyProperty.Register(nameof (DeckCard), typeof (DeckField), typeof (DeckFieldBorder), new PropertyMetadata(new PropertyChangedCallback(DeckFieldBorder.DeckCardChangedStatic)));
@@ -40,18 +40,18 @@ public partial class DeckFieldBorder : UserControl
       ((DeckFieldBorder) d).DeckCardChanged();
     }
 
-    protected override void OnTap(GestureEventArgs e)
+    protected override void OnTapped(TappedRoutedEventArgs e)
     {
       if (this.DeckCard != null && this.DeckCard.IsWaitingForChoise)
       {
         this.DeckCard.RequestMove();
-        base.OnTap(e);
+        base.OnTapped(e);
       }
       else
       {
         if (this.DeckCard != null && this.DeckCard.Card != null)
           this.DeckCard.IsSelected = true;
-        base.OnTap(e);
+        base.OnTapped(e);
       }
     }
 

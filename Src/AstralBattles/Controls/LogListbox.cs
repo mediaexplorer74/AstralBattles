@@ -6,21 +6,30 @@
 
 using System.Collections.Specialized;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
 
-#nullable disable
+
 namespace AstralBattles.Controls
 {
-public partial class LogListbox : ListBox
+  public partial class LogListbox : ListBox
   {
-    protected override void OnItemsChanged(NotifyCollectionChangedEventArgs e)
+    public LogListbox()
     {
-      if (this.Items.Count > 0)
-      {
-        this.SelectedIndex = this.Items.Count - 1;
-        this.ScrollIntoView(this.SelectedItem);
-      }
-      base.OnItemsChanged(e);
+      this.Loaded += OnLoaded;
     }
+
+    private void OnLoaded(object sender, RoutedEventArgs e)
+    {
+      // UWP approach - listen to ItemsSource changes
+      if (Items.Count > 0)
+      {
+        SelectedIndex = Items.Count - 1;
+        ScrollIntoView(SelectedItem);
+      }
+    }
+    
+    // UWP doesn't have OnItemsChanged - stub for MVP
+    // Would need to implement INotifyCollectionChanged handling for full functionality
   }
 }
 

@@ -1,15 +1,11 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Helpers.ColorFromString
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
 
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Windows.Media;
+using Windows.UI;
+using Windows.UI.Xaml.Media;
 
-#nullable disable
+
 namespace AstralBattles.Helpers
 {
   public static class ColorFromString
@@ -61,7 +57,7 @@ namespace AstralBattles.Helpers
         return false;
       foreach (char character in value.ToCharArray())
       {
-        if (!Uri.IsHexDigit(character))
+        if (!((character >= '0' && character <= '9') || (character >= 'a' && character <= 'f') || (character >= 'A' && character <= 'F')))
           return false;
       }
       return true;

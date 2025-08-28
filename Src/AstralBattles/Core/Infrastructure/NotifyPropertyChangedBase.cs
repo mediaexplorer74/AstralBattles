@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: AstralBattles.Core.Infrastructure.NotifyPropertyChangedBase
 // Assembly: AstralBattles.Core, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
 // MVID: 6DDFE75F-AA71-406D-841A-1AF1DF23E1FF
@@ -6,7 +6,7 @@
 
 using System.ComponentModel;
 
-#nullable disable
+
 namespace AstralBattles.Core.Infrastructure
 {
   public class NotifyPropertyChangedBase : INotifyPropertyChanged
@@ -18,11 +18,6 @@ namespace AstralBattles.Core.Infrastructure
       this.PropertyChanged((object) this, new PropertyChangedEventArgs(property));
     }
 
-    public event PropertyChangingEventHandler PropertyChanging = delegate { };
 
-    protected void RaisePropertyChanging(string property)
-    {
-      this.PropertyChanging((object) this, new PropertyChangingEventArgs(property));
-    }
   }
 }

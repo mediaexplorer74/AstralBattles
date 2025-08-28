@@ -7,7 +7,7 @@
 using AstralBattles.Core.Model;
 using System;
 
-#nullable disable
+
 namespace AstralBattles.Core.Ai
 {
   public class StrategicalIntellect : ComputerIntellect

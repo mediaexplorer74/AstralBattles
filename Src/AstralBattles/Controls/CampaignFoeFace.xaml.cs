@@ -7,13 +7,11 @@
 using AstralBattles.Core.Model;
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Windows;
-using System.Windows.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
-#nullable disable
+
 namespace AstralBattles.Controls
 {
 public partial class CampaignFoeFace : UserControl
@@ -29,7 +27,8 @@ public partial class CampaignFoeFace : UserControl
     public CampaignFoeFace()
     {
       this.InitializeComponent();
-      this.BorderImage = "/AstralBattles;component/Resources/Campaign/circle.png";
+      this.BorderImage = "/Resources/Campaign/circle.png";
+      this.Tapped += OnTapped;
     }
 
     public bool IsSelected
@@ -69,13 +68,12 @@ public partial class CampaignFoeFace : UserControl
         return;
       this.faceImage.Margin = new Thickness((double) (10 - 67 * this.Foe.ImageXindex), (double) (9 - 67 * this.Foe.ImageYindex), 0.0, 0.0);
       this.Foe.PropertyChanged += new PropertyChangedEventHandler(this.FoePropertyChanged);
-      this.BorderImage = this.Foe.IsSelected ? "/AstralBattles;component/Resources/Campaign/circle2.png" : "/AstralBattles;component/Resources/Campaign/circle.png";
+      this.BorderImage = this.Foe.IsSelected ? "/Resources/Campaign/circle2.png" : "/Resources/Campaign/circle.png";
     }
 
-    protected override void OnTap(GestureEventArgs e)
+    private void OnTapped(object sender, TappedRoutedEventArgs e)
     {
       this.Foe.IsSelected = !this.Foe.IsSelected;
-      base.OnTap(e);
     }
 
     private void FoePropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -83,7 +81,7 @@ public partial class CampaignFoeFace : UserControl
       if (!(e.PropertyName == "IsSelected"))
         return;
       this.IsSelected = this.Foe.IsSelected;
-      this.BorderImage = this.Foe.IsSelected ? "/AstralBattles;component/Resources/Campaign/circle2.png" : "/AstralBattles;component/Resources/Campaign/circle.png";
+      this.BorderImage = this.Foe.IsSelected ? "/Resources/Campaign/circle2.png" : "/Resources/Campaign/circle.png";
     }
 
     public string BorderImage

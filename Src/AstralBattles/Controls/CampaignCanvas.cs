@@ -1,16 +1,11 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Controls.CampaignCanvas
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
 
 using AstralBattles.Core.Model;
 using System.Collections.ObjectModel;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 
-#nullable disable
+
 namespace AstralBattles.Controls
 {
 public partial class CampaignCanvas : Canvas
@@ -43,10 +38,10 @@ public partial class CampaignCanvas : Canvas
       }
       else
       {
-        foreach (CampaignOpponent opponent in (Collection<CampaignOpponent>) this.Opponents)
+        foreach (CampaignOpponent opponent in (System.Collections.Generic.IEnumerable<CampaignOpponent>) this.Opponents)
         {
           CampaignFoeFace element = new CampaignFoeFace();
-          element.SetBinding(CampaignFoeFace.FoeProperty, new Binding(".")
+          element.SetBinding(CampaignFoeFace.FoeProperty, new Binding()
           {
             Source = (object) opponent
           });

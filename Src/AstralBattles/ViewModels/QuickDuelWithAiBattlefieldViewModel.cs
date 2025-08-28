@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+﻿﻿﻿﻿// Decompiled with JetBrains decompiler
 // Type: AstralBattles.ViewModels.QuickDuelWithAiBattlefieldViewModel
 // Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
 // MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
@@ -9,9 +9,8 @@ using AstralBattles.Core.Infrastructure;
 using AstralBattles.Core.Model;
 using AstralBattles.Core.Services;
 using AstralBattles.Views;
-using System.IO.IsolatedStorage;
 
-#nullable disable
+
 namespace AstralBattles.ViewModels
 {
   public class QuickDuelWithAiBattlefieldViewModel : BattlefieldViewModel
@@ -28,7 +27,7 @@ namespace AstralBattles.ViewModels
     protected override void OnSaveState()
     {
       Serializer.Write<QuickDuelWithAiBattlefieldViewModel>(this, "DuelWithAiBattlefieldViewModel__1_452.xml");
-      IsolatedStorageSettings.ApplicationSettings["LastPlayedMode__1_452"] = (object) GameModes.DuelWithAi;
+      Windows.Storage.ApplicationData.Current.LocalSettings.Values["LastPlayedMode__1_452"] = GameModes.DuelWithAi;
     }
 
     protected override GameRulesEngineBase CreateGameRulesEngine()

@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: AstralBattles.Converters.CardImageConverter
 // Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
 // MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
@@ -6,15 +6,15 @@
 
 using AstralBattles.Core.Model;
 using System;
-using System.Globalization;
-using System.Windows.Data;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Data;
 
-#nullable disable
+
 namespace AstralBattles.Converters
 {
   public class CardImageConverter : IValueConverter
   {
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    public object Convert(object value, Type targetType, object parameter, string language)
     {
       return (object) this.Convert(value as Card);
     }
@@ -23,7 +23,7 @@ namespace AstralBattles.Converters
     {
       if (card == null)
         return (string) null;
-      string str = "/AstralBattles;component/Resources/Cards/" + card.ElementType.ToString() + "/";
+      string str = "/Resources/Cards/" + card.ElementType.ToString() + "/";
       return card is SpellCard || card is FakeCard ? str + "Spells/" + card.Name + ".png" : str + card.Name + ".jpg";
     }
 
@@ -31,7 +31,7 @@ namespace AstralBattles.Converters
       object value,
       Type targetType,
       object parameter,
-      CultureInfo culture)
+      string language)
     {
       throw new NotImplementedException();
     }

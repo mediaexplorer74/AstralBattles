@@ -1,13 +1,13 @@
-﻿<Page 
+<Page 
     x:Class="AstralBattles.Views.InfoView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     
-    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:controls="using:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
+    xmlns:toolkit="using:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
     mc:Ignorable="d" 
     d:DesignWidth="480" d:DesignHeight="800"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -18,23 +18,24 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
-        <controls:Pivot Title="MY APPLICATION">
+        <Pivot Title="MY APPLICATION">
             <!--Pivot item one-->
-            <controls:PivotItem Header="cards">
+            <PivotItem Header="cards">
                 <ScrollViewer>
                     <StackPanel>
-                        <toolkit:ExpanderView Header="Fire">
-                            <TextBlock Label="sss"/>
-                        </toolkit:ExpanderView>
+                        <StackPanel>
+                            <TextBlock Text="Fire" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding FireDescription}" TextWrapping="Wrap"/>
+                        </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
-            </controls:PivotItem>
+            </PivotItem>
 
             <!--Pivot item two-->
-            <!--<controls:PivotItem Header="">
+            <!--<PivotItem Header="">
                 <Grid/>
-            </controls:PivotItem>-->
-        </controls:Pivot>
+            </PivotItem>-->
+        </Pivot>
     </Grid>
     
 </Page>

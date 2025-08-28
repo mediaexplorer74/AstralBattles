@@ -1,17 +1,11 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.ViewModels.NetworkViewModel
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
+﻿
 using AstralBattles.ServiceReference;
-using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.ObjectModel;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using AstralBattles.Core.Infrastructure;
 
-#nullable disable
 namespace AstralBattles.ViewModels
 {
   public class NetworkViewModel : ViewModelBaseEx
@@ -25,7 +19,10 @@ namespace AstralBattles.ViewModels
 
     public NetworkViewModel()
     {
-      if (this.IsInDesignMode)
+      Refresh = new RelayCommand(() => RefreshData());
+      CreateTicket = new RelayCommand(() => { /* CreateTicket functionality - stub for MVP */ });
+      
+      if (App.IsInDesignMode)
       {
         ObservableCollection<PlayerInfo> observableCollection1 = new ObservableCollection<PlayerInfo>();
         observableCollection1.Add(new PlayerInfo()
@@ -61,7 +58,7 @@ namespace AstralBattles.ViewModels
           Name = "Un1c0rn",
           Id = 3
         });
-        this.Top25 = observableCollection1;
+        Top25 = observableCollection1;
         ObservableCollection<GameInfo> observableCollection2 = new ObservableCollection<GameInfo>();
         observableCollection2.Add(new GameInfo()
         {
@@ -79,8 +76,8 @@ namespace AstralBattles.ViewModels
           HosterName = "Hellrider",
           StartedAt = DateTime.Now
         });
-        this.Games = observableCollection2;
-        this.CurrentPlayer = new PlayerInfo()
+        Games = observableCollection2;
+        CurrentPlayer = new PlayerInfo()
         {
           Country = "Russia",
           Games = 30,
@@ -92,7 +89,7 @@ namespace AstralBattles.ViewModels
         };
       }
       else
-        this.RefreshData();
+        RefreshData();
     }
 
     public RelayCommand Refresh { get; set; }
@@ -101,11 +98,11 @@ namespace AstralBattles.ViewModels
 
     private void RefreshData()
     {
-      this.loadsCount = 0;
+      loadsCount = 0;
       GameServiceClient gameServiceClient = new GameServiceClient((Binding) new BasicHttpBinding(), new EndpointAddress("http://192.168.1.2/AstralBattles.Server2/GamingService.svc"));
-      this.IsBusy = true;
-      gameServiceClient.GetAvailableGamesCompleted += new EventHandler<GetAvailableGamesCompletedEventArgs>(this.ServiceGetAvailableGamesCompleted);
-      gameServiceClient.GetTop25PlayersCompleted += new EventHandler<GetTop25PlayersCompletedEventArgs>(this.ServiceGetTop25PlayersCompleted);
+      IsBusy = true;
+      gameServiceClient.GetAvailableGamesCompleted += new EventHandler<GetAvailableGamesCompletedEventArgs>(ServiceGetAvailableGamesCompleted);
+      gameServiceClient.GetTop25PlayersCompleted += new EventHandler<GetTop25PlayersCompletedEventArgs>(ServiceGetTop25PlayersCompleted);
       gameServiceClient.GetAvailableGamesAsync();
       gameServiceClient.GetTop25PlayersAsync();
     }
@@ -114,70 +111,70 @@ namespace AstralBattles.ViewModels
       object sender,
       GetAvailableGamesCompletedEventArgs e)
     {
-      ++this.loadsCount;
-      this.IsBusy = this.loadsCount < 2;
+      ++loadsCount;
+      IsBusy = loadsCount < 2;
       int place = 1;
       e.Result.ForEach<GameInfo>((Action<GameInfo>) (i => i.Place = place++));
-      this.Games = e.Result;
+      Games = e.Result;
     }
 
     private void ServiceGetTop25PlayersCompleted(object sender, GetTop25PlayersCompletedEventArgs e)
     {
-      ++this.loadsCount;
-      this.IsBusy = this.loadsCount < 2;
+      ++loadsCount;
+      IsBusy = loadsCount < 2;
       int place = 1;
       ObservableCollection<PlayerInfo> result = e.Result;
       result.ForEach<PlayerInfo>((Action<PlayerInfo>) (i => i.Place = place++));
-      this.Top25 = result;
+      Top25 = result;
     }
 
     public ObservableCollection<PlayerInfo> Top25
     {
-      get => this.top25;
+      get => top25;
       set
       {
-        this.top25 = value;
-        this.RaisePropertyChanged(nameof (Top25));
+        top25 = value;
+        RaisePropertyChanged(nameof (Top25));
       }
     }
 
     public PlayerInfo SelectedPlayer
     {
-      get => this.selectedPlayer;
+      get => selectedPlayer;
       set
       {
-        this.selectedPlayer = value;
-        this.RaisePropertyChanged(nameof (SelectedPlayer));
+        selectedPlayer = value;
+        RaisePropertyChanged(nameof (SelectedPlayer));
       }
     }
 
     public PlayerInfo CurrentPlayer
     {
-      get => this.currentPlayer;
+      get => currentPlayer;
       set
       {
-        this.currentPlayer = value;
-        this.RaisePropertyChanged(nameof (CurrentPlayer));
+        currentPlayer = value;
+        RaisePropertyChanged(nameof (CurrentPlayer));
       }
     }
 
     public GameInfo SelectedGameItem
     {
-      get => this.selectedGameItem;
+      get => selectedGameItem;
       set
       {
-        this.selectedGameItem = value;
-        this.RaisePropertyChanged(nameof (SelectedGameItem));
+        selectedGameItem = value;
+        RaisePropertyChanged(nameof (SelectedGameItem));
       }
     }
 
     public ObservableCollection<GameInfo> Games
     {
-      get => this.games;
+      get => games;
       set
       {
-        this.games = value;
-        this.RaisePropertyChanged(nameof (Games));
+        games = value;
+        RaisePropertyChanged(nameof (Games));
       }
     }
   }

@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+﻿﻿﻿﻿﻿﻿﻿﻿﻿// Decompiled with JetBrains decompiler
 // Type: AstralBattles.ViewModels.CreatePlayerViewModel
 // Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
 // MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
@@ -7,15 +7,15 @@
 using AstralBattles.Core.Model;
 using AstralBattles.Core.Services;
 using AstralBattles.Views;
-using GalaSoft.MvvmLight.Command;
-using Microsoft.Phone.Shell;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows.Navigation;
+using Windows.UI.Xaml.Navigation;
+using AstralBattles.Core.Infrastructure;
 
-#nullable disable
+
+
 namespace AstralBattles.ViewModels
 {
   public class CreatePlayerViewModel : ViewModelBaseEx
@@ -25,28 +25,28 @@ namespace AstralBattles.ViewModels
     private ElementTypeEnum playerSpecialElement;
     private ObservableCollection<ElementTypeEnum> specialElements;
     private readonly Random random = new Random();
-    private NavigationService navigationService;
+    private AstralBattles.Core.Infrastructure.NavigationService navigationService;
 
     public CreatePlayerViewModel()
     {
-      this.SpecialElements = new ObservableCollection<ElementTypeEnum>((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements);
-      if (this.IsInDesignMode)
+      SpecialElements = new ObservableCollection<ElementTypeEnum>((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements);
+      
+      // Initialize RelayCommands regardless of design mode
+      EditDeck = new RelayCommand(EditDeckAction);
+      ChangeFace = new RelayCommand(ChangeFaceAction);
+      Ok = new RelayCommand(OkAction);
+      
+      if (App.IsInDesignMode)
       {
-        this.Face = "face33";
-        this.Name = "Egorbo";
-      }
-      else
-      {
-        this.EditDeck = new RelayCommand(new Action(this.EditDeckAction));
-        this.ChangeFace = new RelayCommand(new Action(this.ChangeFaceAction));
-        this.Ok = new RelayCommand(new Action(this.OkAction));
+        Face = "face33";
+        Name = "Egorbo";
       }
     }
 
     private void EditDeckAction()
     {
-      this.IsBusy = true;
-      PhoneApplicationService.Current.State["ConfiguratedDeck"] = (object) CreatePlayerViewModel.CreatePlayerInfo.Deck;
+      IsBusy = true;
+      Windows.Storage.ApplicationData.Current.LocalSettings.Values["ConfiguratedDeck"] = CreatePlayerViewModel.CreatePlayerInfo.Deck;
       PageNavigationService.OpenDeckEditor();
     }
 
@@ -54,19 +54,19 @@ namespace AstralBattles.ViewModels
     {
       CreatePlayerViewModel.CreatePlayerInfo = new CreatePlayerInfo()
       {
-        Element = this.PlayerSpecialElement,
-        Face = this.Face,
-        Name = this.Name,
+        Element = PlayerSpecialElement,
+        Face = Face,
+        Name = Name,
         Deck = CreatePlayerViewModel.CreatePlayerInfo.Deck
       };
-      if (this.navigationService == null || !this.navigationService.CanGoBack)
+      if (navigationService == null || !navigationService.CanGoBack)
         return;
-      this.navigationService.GoBack();
+      navigationService.GoBack();
     }
 
     private void ChangeFaceAction()
     {
-      this.IsBusy = true;
+      IsBusy = true;
       PageNavigationService.FaceSelectionView();
     }
 
@@ -78,44 +78,44 @@ namespace AstralBattles.ViewModels
 
     public ElementTypeEnum PlayerSpecialElement
     {
-      get => this.playerSpecialElement;
+      get => playerSpecialElement;
       set
       {
-        this.playerSpecialElement = value;
-        this.RaisePropertyChanged(nameof (PlayerSpecialElement));
-        if (CreatePlayerViewModel.CreatePlayerInfo == null || CreatePlayerViewModel.CreatePlayerInfo.Deck == null || this.PlayerSpecialElement == CreatePlayerViewModel.CreatePlayerInfo.Deck.Last<KeyValuePair<ElementTypeEnum, ObservableCollection<Card>>>().Key)
+        playerSpecialElement = value;
+        RaisePropertyChanged(nameof (PlayerSpecialElement));
+        if (CreatePlayerViewModel.CreatePlayerInfo == null || CreatePlayerViewModel.CreatePlayerInfo.Deck == null || PlayerSpecialElement == CreatePlayerViewModel.CreatePlayerInfo.Deck.Last<KeyValuePair<ElementTypeEnum, ObservableCollection<Card>>>().Key)
           return;
-        CreatePlayerViewModel.CreatePlayerInfo.Deck = PlayersFactory.CreateRandomDeck(this.PlayerSpecialElement);
+        CreatePlayerViewModel.CreatePlayerInfo.Deck = PlayersFactory.CreateRandomDeck(PlayerSpecialElement);
       }
     }
 
     public ObservableCollection<ElementTypeEnum> SpecialElements
     {
-      get => this.specialElements;
+      get => specialElements;
       set
       {
-        this.specialElements = value;
-        this.RaisePropertyChanged(nameof (SpecialElements));
+        specialElements = value;
+        RaisePropertyChanged(nameof (SpecialElements));
       }
     }
 
     public string Face
     {
-      get => this.face;
+      get => face;
       set
       {
-        this.face = value;
-        this.RaisePropertyChanged(nameof (Face));
+        face = value;
+        RaisePropertyChanged(nameof (Face));
       }
     }
 
     public string Name
     {
-      get => this.name;
+      get => name;
       set
       {
-        this.name = value;
-        this.RaisePropertyChanged(nameof (Name));
+        name = value;
+        RaisePropertyChanged(nameof (Name));
       }
     }
 
@@ -123,41 +123,43 @@ namespace AstralBattles.ViewModels
 
     public void OnNavigatedTo(
       NavigationEventArgs navigationEventArgs,
-      NavigationContext navContext,
-      NavigationService navService,
+      AstralBattles.Core.Infrastructure.NavigationContext navContext,
+      AstralBattles.Core.Infrastructure.NavigationService navService,
       bool enableDeckEditor)
     {
-      this.IsBusy = false;
+      IsBusy = false;
       if (navigationEventArgs.NavigationMode == NavigationMode.Back)
       {
         if (!string.IsNullOrWhiteSpace(FaceSelectionView.LastSetPhoto))
-          this.Face = FaceSelectionView.LastSetPhoto;
-        if (!(PhoneApplicationService.Current.State.PopValueOrDefault<object, string>("ConfiguratedDeck") is Deck deck))
-          return;
+          Face = FaceSelectionView.LastSetPhoto;
+
+        if (Windows.Storage.ApplicationData.Current.LocalSettings.Values.PopValueOrDefault<object, string>("ConfiguratedDeck") as Deck == null)//!= null)
+            return;
+        Deck deck = (Windows.Storage.ApplicationData.Current.LocalSettings.Values.PopValueOrDefault<object, string>("ConfiguratedDeck") as Deck);
         CreatePlayerViewModel.CreatePlayerInfo.Deck = deck;
       }
       else
       {
-        this.navigationService = navService;
+        navigationService = navService;
         if (CreatePlayerViewModel.CreatePlayerInfo == null)
         {
-          this.Face = "face" + (object) this.random.Next(5, 40);
-          this.Name = "Player" + (object) this.random.Next(10000, 19999);
-          this.PlayerSpecialElement = ElementTypeEnum.Holy;
+          Face = "face" + (object) random.Next(5, 40);
+          Name = "Player" + (object) random.Next(10000, 19999);
+          PlayerSpecialElement = ElementTypeEnum.Holy;
         }
         else
         {
-          this.Face = CreatePlayerViewModel.CreatePlayerInfo.Face;
-          this.Name = CreatePlayerViewModel.CreatePlayerInfo.Name;
-          this.PlayerSpecialElement = CreatePlayerViewModel.CreatePlayerInfo.Element;
+          Face = CreatePlayerViewModel.CreatePlayerInfo.Face;
+          Name = CreatePlayerViewModel.CreatePlayerInfo.Name;
+          PlayerSpecialElement = CreatePlayerViewModel.CreatePlayerInfo.Element;
         }
       }
     }
 
     public void OnNavigatedFrom(
       NavigationEventArgs navigationEventArgs,
-      NavigationContext navContext,
-      NavigationService navService)
+      AstralBattles.Core.Infrastructure.NavigationContext navContext,
+      AstralBattles.Core.Infrastructure.NavigationService navService)
     {
     }
 

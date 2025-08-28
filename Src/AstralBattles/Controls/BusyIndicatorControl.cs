@@ -1,14 +1,8 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Controls.BusyIndicatorControl
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
 
-using Microsoft.Phone.Controls;
-using System.Windows;
-using System.Windows.Controls;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
-#nullable disable
+
 namespace AstralBattles.Controls
 {
   [TemplateVisualState(Name = "Visible", GroupName = "VisibilityStates")]
@@ -37,11 +31,12 @@ public partial class BusyIndicatorControl : ContentControl
       set => this.SetValue(BusyIndicatorControl.HideApplicationBarProperty, (object) value);
     }
 
-    public override void OnApplyTemplate()
+    protected override void OnApplyTemplate()
     {
       base.OnApplyTemplate();
+      // For UWP MVP build, call OnIsBusyChanged with default values
+      // UWP DependencyPropertyChangedEventArgs doesn't have a public constructor
       this.ChangeVisualState(false);
-      this.OnIsBusyChanged(new DependencyPropertyChangedEventArgs());
     }
 
     protected virtual void ChangeVisualState(bool useTransitions)
@@ -51,12 +46,8 @@ public partial class BusyIndicatorControl : ContentControl
 
     protected virtual void OnIsBusyChanged(DependencyPropertyChangedEventArgs e)
     {
-      if (this.HideApplicationBar && Application.Current.RootVisual is PhoneApplicationFrame rootVisual && ((ContentControl) rootVisual).Content is PhoneApplicationPage)
-      {
-        PhoneApplicationPage content = (PhoneApplicationPage) ((ContentControl) rootVisual).Content;
-        if (content.ApplicationBar != null)
-          content.ApplicationBar.IsVisible = !this.IsBusy;
-      }
+      // UWP doesn't have ApplicationBar - stub for MVP
+      // Original WP7 code handled ApplicationBar visibility here
       this.ChangeVisualState(true);
     }
 

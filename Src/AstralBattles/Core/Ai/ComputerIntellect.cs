@@ -8,7 +8,7 @@ using AstralBattles.Core.Model;
 using AstralBattles.Core.Services;
 using System.Xml.Serialization;
 
-#nullable disable
+
 namespace AstralBattles.Core.Ai
 {
   [XmlInclude(typeof (SmartestComputer))]

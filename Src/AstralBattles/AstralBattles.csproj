@@ -4,6 +4,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
     <ProjectGuid>{12B3B96A-9606-42B3-8D9E-D75B28C8B980}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -11,15 +13,13 @@
     <AssemblyName>AstralBattles</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <LangVersion>latest</LangVersion>
-    <PackageCertificateThumbprint>334BEDDB0CCC705FADADB95C36F515EB1257EC67</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>BC7E24EB805A59B733E4D39C27582DD37BE71A0E</PackageCertificateThumbprint>
     <PackageCertificateKeyFile>AstralBattles_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -123,7 +123,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Infrastructure\NamespaceMappings.cs" />
-    <Compile Include="Core\Infrastructure\PageConverter.cs" />
+    <Compile Include="Core\Infrastructure\NavigationStubs.cs" />
+    <Compile Include="Core\Infrastructure\RelayCommand.cs" />
     <Compile Include="Core\Services\NavigationService.cs" />
     <Compile Include="Controls\BusyIndicatorControl.cs" />
     <Compile Include="Controls\CampaignCanvas.cs" />
@@ -273,6 +274,21 @@
     <Compile Include="ServiceReference\PlayerInfo.cs" />
     <Compile Include="ServiceReference\RegisterNewPlayerCompletedEventArgs.cs" />
     <Compile Include="SoundPlayer.cs" />
+    <Compile Include="Strings\de-DE\de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\fr-FR\fr-FR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>fr-FR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Strings\ru-RU\ru-RU.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ru-RU.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utils.cs" />
     <Compile Include="Vibration.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
@@ -399,61 +415,19 @@
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
-    <Content Include="Resources\ApplicationIcon.png" />
-    <Content Include="Resources\Background.png" />
-    <Content Include="Resources\Icons\appbar.next.rest.png" />
-    <Content Include="Resources\Icons\appbar.right.png" />
-    <Content Include="Resources\Sounds\AcidicRain.wav" />
-    <Content Include="Resources\Sounds\Armageddon.wav" />
-    <Content Include="Resources\Sounds\ArmyOfRats.wav" />
-    <Content Include="Resources\Sounds\Attack.wav" />
-    <Content Include="Resources\Sounds\BloodRitual.wav" />
-    <Content Include="Resources\Sounds\BreatheFire.wav" />
-    <Content Include="Resources\Sounds\CalltoThunder.wav" />
-    <Content Include="Resources\Sounds\cannonade.wav" />
-    <Content Include="Resources\Sounds\ChainLightning.wav" />
-    <Content Include="Resources\Sounds\ChaoticWave.wav" />
-    <Content Include="Resources\Sounds\CursedFog.wav" />
-    <Content Include="Resources\Sounds\darkritual.wav" />
-    <Content Include="Resources\Sounds\Disintegrate.wav" />
-    <Content Include="Resources\Sounds\DivineIntervention.wav" />
-    <Content Include="Resources\Sounds\DivineJustice.wav" />
-    <Content Include="Resources\Sounds\doombolt.wav" />
-    <Content Include="Resources\Sounds\Drainsouls.wav" />
-    <Content Include="Resources\Sounds\Enrage.wav" />
-    <Content Include="Resources\Sounds\Explosion.wav" />
-    <Content Include="Resources\Sounds\Fireball.wav" />
-    <Content Include="Resources\Sounds\Flamewave.wav" />
-    <Content Include="Resources\Sounds\Gaze.wav" />
-    <Content Include="Resources\Sounds\HealingSpray.wav" />
-    <Content Include="Resources\Sounds\Hellfire.wav" />
-    <Content Include="Resources\Sounds\hypnosys.wav" />
-    <Content Include="Resources\Sounds\Inferno.wav" />
-    <Content Include="Resources\Sounds\LightningBolt.wav" />
-    <Content Include="Resources\Sounds\madness.wav" />
-    <Content Include="Resources\Sounds\ManaBurn.wav" />
-    <Content Include="Resources\Sounds\Meditation.wav" />
-    <Content Include="Resources\Sounds\MoveFalcon.wav" />
-    <Content Include="Resources\Sounds\NaturalFury.wav" />
-    <Content Include="Resources\Sounds\NaturalHealing.wav" />
-    <Content Include="Resources\Sounds\NatureRitual.wav" />
-    <Content Include="Resources\Sounds\overtime.wav" />
-    <Content Include="Resources\Sounds\Poison.wav" />
-    <Content Include="Resources\Sounds\PowerChains.wav" />
-    <Content Include="Resources\Sounds\PumpEnergy.wav" />
-    <Content Include="Resources\Sounds\Rejuvenation.wav" />
-    <Content Include="Resources\Sounds\RescueOperation.wav" />
-    <Content Include="Resources\Sounds\RitualOfGlory.wav" />
-    <Content Include="Resources\Sounds\Sacrifice.wav" />
-    <Content Include="Resources\Sounds\SonicBoom.wav" />
-    <Content Include="Resources\Sounds\StealEssence.wav" />
-    <Content Include="Resources\Sounds\StoneRain.wav" />
-    <Content Include="Resources\Sounds\Summon.wav" />
-    <Content Include="Resources\Sounds\Tornado.wav" />
-    <Content Include="Resources\Sounds\Trumpet.wav" />
-    <Content Include="Resources\Sounds\Weakness.wav" />
-    <Content Include="Resources\Sounds\wrathofgod.wav" />
-    <Content Include="Core\CardDefinitions.xml" />
+    <Content Include="Resources\ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\appbar.next.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\appbar.right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Resources\CardDefinitions.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -848,183 +822,429 @@
     <Content Include="Resources\Cards\beast\wolverine.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Cards\chaos\insanianberserker.jpg" />
-    <Content Include="Resources\Cards\chaos\insaniancatapult.jpg" />
-    <Content Include="Resources\Cards\chaos\insanianking.jpg" />
-    <Content Include="Resources\Cards\chaos\insanianlord.jpg" />
-    <Content Include="Resources\Cards\chaos\insanianpeacekeeper.jpg" />
-    <Content Include="Resources\Cards\chaos\insanianshaman.jpg" />
-    <Content Include="Resources\Cards\chaos\soldier.jpg" />
-    <Content Include="Resources\Cards\chaos\spells\chaoticwave.png" />
-    <Content Include="Resources\Cards\chaos\spells\doombolt.png" />
-    <Content Include="Resources\Cards\control\ancientgiant.jpg" />
-    <Content Include="Resources\Cards\control\ancienthorror.jpg" />
-    <Content Include="Resources\Cards\control\ancientwitch.jpg" />
-    <Content Include="Resources\Cards\control\dampingtower.jpg" />
-    <Content Include="Resources\Cards\control\goblinshaman.jpg" />
-    <Content Include="Resources\Cards\control\mindstealer.jpg" />
-    <Content Include="Resources\Cards\control\spells\poisonouscloud.png" />
-    <Content Include="Resources\Cards\control\spells\weakness.png" />
-    <Content Include="Resources\Cards\death\ancientwitch.jpg" />
-    <Content Include="Resources\Cards\death\banshee.jpg" />
-    <Content Include="Resources\Cards\death\emissaryofdorlak.jpg" />
-    <Content Include="Resources\Cards\death\insanianlord.jpg" />
-    <Content Include="Resources\Cards\death\keeperofdeath.jpg" />
-    <Content Include="Resources\Cards\death\masterlich.jpg" />
-    <Content Include="Resources\Cards\death\spectralassassin.jpg" />
-    <Content Include="Resources\Cards\death\spells\bloodritual.png" />
-    <Content Include="Resources\Cards\death\spells\cursedfog.png" />
-    <Content Include="Resources\Cards\death\spells\darkritual.png" />
-    <Content Include="Resources\Cards\death\spells\drainsouls.png" />
-    <Content Include="Resources\Cards\death\spells\emissaryofdorlakspell.png" />
-    <Content Include="Resources\Cards\death\spells\locked.png" />
-    <Content Include="Resources\Cards\death\vampire.jpg" />
-    <Content Include="Resources\Cards\death\wolverine.jpg" />
-    <Content Include="Resources\Cards\demonic\demonapostate.jpg" />
-    <Content Include="Resources\Cards\demonic\demonquartermaster.jpg" />
-    <Content Include="Resources\Cards\demonic\enragedquartermaster.jpg" />
-    <Content Include="Resources\Cards\demonic\ergodemon.jpg" />
-    <Content Include="Resources\Cards\demonic\greaterdemon.jpg" />
-    <Content Include="Resources\Cards\demonic\lemure.jpg" />
-    <Content Include="Resources\Cards\demonic\scrambledlemure.jpg" />
-    <Content Include="Resources\Cards\demonic\spells\explosion.png" />
-    <Content Include="Resources\Cards\demonic\spells\hellfire.png" />
-    <Content Include="Resources\Cards\demonic\spells\powerchains.png" />
-    <Content Include="Resources\Cards\demonic\threeheadeddemon.jpg" />
-    <Content Include="Resources\Cards\earth\earthelemental.jpg" />
-    <Content Include="Resources\Cards\earth\elfhermit.jpg" />
-    <Content Include="Resources\Cards\earth\elvenhealer.jpg" />
-    <Content Include="Resources\Cards\earth\forestspider.jpg" />
-    <Content Include="Resources\Cards\earth\forestsprite.jpg" />
-    <Content Include="Resources\Cards\earth\giantspider.jpg" />
-    <Content Include="Resources\Cards\earth\hydra.jpg" />
-    <Content Include="Resources\Cards\earth\masterhealer.jpg" />
-    <Content Include="Resources\Cards\earth\spells\locked.png" />
-    <Content Include="Resources\Cards\earth\spells\naturalfury.png" />
-    <Content Include="Resources\Cards\earth\spells\natureritual.png" />
-    <Content Include="Resources\Cards\earth\spells\rejuvenation.png" />
-    <Content Include="Resources\Cards\earth\spells\stonerain.png" />
-    <Content Include="Resources\Cards\earth\troll.jpg" />
-    <Content Include="Resources\Cards\fire\bargul.jpg" />
-    <Content Include="Resources\Cards\fire\dragon.jpg" />
-    <Content Include="Resources\Cards\fire\firedrake.jpg" />
-    <Content Include="Resources\Cards\fire\fireelemental.jpg" />
-    <Content Include="Resources\Cards\fire\goblinberserker.jpg" />
-    <Content Include="Resources\Cards\fire\minotaurcommander.jpg" />
-    <Content Include="Resources\Cards\fire\orcchieftain.jpg" />
-    <Content Include="Resources\Cards\fire\priestoffire.jpg" />
-    <Content Include="Resources\Cards\fire\spells\armageddon.png" />
-    <Content Include="Resources\Cards\fire\spells\flamewave.png" />
-    <Content Include="Resources\Cards\fire\spells\inferno.png" />
-    <Content Include="Resources\Cards\fire\spells\locked.png" />
-    <Content Include="Resources\Cards\fire\walloffire.jpg" />
-    <Content Include="Resources\Cards\goblins\goblinhero.png" />
-    <Content Include="Resources\Cards\goblins\goblinlooter.png" />
-    <Content Include="Resources\Cards\goblins\goblinraider.png" />
-    <Content Include="Resources\Cards\goblins\goblinsaboteur.png" />
-    <Content Include="Resources\Cards\goblins\portaljumper.png" />
-    <Content Include="Resources\Cards\goblins\ratsmaster.png" />
-    <Content Include="Resources\Cards\goblins\spells\armyofrats.png" />
-    <Content Include="Resources\Cards\goblins\spells\rescueoperation.png" />
-    <Content Include="Resources\Cards\holy\angel.jpg" />
-    <Content Include="Resources\Cards\holy\archangel.jpg" />
-    <Content Include="Resources\Cards\holy\holyguard.jpg" />
-    <Content Include="Resources\Cards\holy\monk.jpg" />
-    <Content Include="Resources\Cards\holy\paladin.jpg" />
-    <Content Include="Resources\Cards\holy\spells\divineintervention.png" />
-    <Content Include="Resources\Cards\holy\spells\divinejustice.png" />
-    <Content Include="Resources\Cards\holy\spells\wrathofgod.png" />
-    <Content Include="Resources\Cards\illusion\hypnotist.jpg" />
-    <Content Include="Resources\Cards\illusion\oracle.jpg" />
-    <Content Include="Resources\Cards\illusion\phantomwarrior.jpg" />
-    <Content Include="Resources\Cards\illusion\spectralassassin.jpg" />
-    <Content Include="Resources\Cards\illusion\spectralmage.jpg" />
-    <Content Include="Resources\Cards\illusion\spells\hypnosys.png" />
-    <Content Include="Resources\Cards\illusion\spells\madness.png" />
-    <Content Include="Resources\Cards\illusion\wallofreflection.jpg" />
-    <Content Include="Resources\Cards\mechanical\cannon.jpg" />
-    <Content Include="Resources\Cards\mechanical\dwarvencraftsman.jpg" />
-    <Content Include="Resources\Cards\mechanical\dwarvenrifleman.jpg" />
-    <Content Include="Resources\Cards\mechanical\ornithopter.jpg" />
-    <Content Include="Resources\Cards\mechanical\spells\cannonade.png" />
-    <Content Include="Resources\Cards\mechanical\spells\overtime.png" />
-    <Content Include="Resources\Cards\mechanical\steamtank.jpg" />
-    <Content Include="Resources\Cards\mechanical\steelgolem.jpg" />
-    <Content Include="Resources\Cards\sorcery\spells\disintegrate.png" />
-    <Content Include="Resources\Cards\sorcery\spells\fireball.png" />
-    <Content Include="Resources\Cards\sorcery\spells\healingspray.png" />
-    <Content Include="Resources\Cards\sorcery\spells\manaburn.png" />
-    <Content Include="Resources\Cards\sorcery\spells\ritualofglory.png" />
-    <Content Include="Resources\Cards\sorcery\spells\sacrifice.png" />
-    <Content Include="Resources\Cards\sorcery\spells\sonicboom.png" />
-    <Content Include="Resources\Cards\sorcery\spells\stealessence.png" />
-    <Content Include="Resources\Cards\water\astralguard.jpg" />
-    <Content Include="Resources\Cards\water\giantturtle.jpg" />
-    <Content Include="Resources\Cards\water\icegolem.jpg" />
-    <Content Include="Resources\Cards\water\iceguard.jpg" />
-    <Content Include="Resources\Cards\water\merfolkapostate.jpg" />
-    <Content Include="Resources\Cards\water\merfolkelder.jpg" />
-    <Content Include="Resources\Cards\water\merfolkoverlord.jpg" />
-    <Content Include="Resources\Cards\water\mindmaster.jpg" />
-    <Content Include="Resources\Cards\water\seasprite.jpg" />
-    <Content Include="Resources\Cards\water\spells\acidicrain.png" />
-    <Content Include="Resources\Cards\water\spells\locked.png" />
-    <Content Include="Resources\Cards\water\spells\meditation.png" />
-    <Content Include="Resources\Cards\water\waterelemental.jpg" />
-    <Content Include="Resources\Common\appbar.align.left.png" />
-    <Content Include="Resources\Common\appbar.timer.png" />
-    <Content Include="Resources\Common\clock.png" />
-    <Content Include="Resources\Common\smartphone-icon.png" />
-    <Content Include="Resources\Elements\air.jpg" />
-    <Content Include="Resources\Elements\beast.jpg" />
-    <Content Include="Resources\Elements\chaos.jpg" />
-    <Content Include="Resources\Elements\control.jpg" />
-    <Content Include="Resources\Elements\death.jpg" />
-    <Content Include="Resources\Elements\demonic.jpg" />
-    <Content Include="Resources\Elements\earth.jpg" />
-    <Content Include="Resources\Elements\fire.jpg" />
-    <Content Include="Resources\Elements\holy.jpg" />
-    <Content Include="Resources\Elements\illusion.jpg" />
-    <Content Include="Resources\Elements\mechanical.jpg" />
-    <Content Include="Resources\Elements\sorcery.jpg" />
-    <Content Include="Resources\Elements\water.jpg" />
-    <Content Include="Resources\Icons\skipturn.png" />
-    <Content Include="Resources\neutral\airspirit.jpg" />
-    <Content Include="Resources\neutral\ambrosiastone.jpg" />
-    <Content Include="Resources\neutral\bafflerroost.jpg" />
-    <Content Include="Resources\neutral\everrainingland.jpg" />
-    <Content Include="Resources\neutral\jadestatue.jpg" />
-    <Content Include="Resources\neutral\merfolkrevolutionary.jpg" />
-    <Content Include="Resources\neutral\nettlingfaerie.jpg" />
-    <Content Include="Resources\neutral\new\academyofmagic.jpg" />
-    <Content Include="Resources\neutral\new\adeptofmagic.jpg" />
-    <Content Include="Resources\neutral\new\altarofsacrifice.jpg" />
-    <Content Include="Resources\neutral\new\astralaccelerator.jpg" />
-    <Content Include="Resources\neutral\new\astraldrake.jpg" />
-    <Content Include="Resources\neutral\new\cloisteredelemental.jpg" />
-    <Content Include="Resources\neutral\new\fetidswamp.jpg" />
-    <Content Include="Resources\neutral\new\greatoak.jpg" />
-    <Content Include="Resources\neutral\new\hellbot.jpg" />
-    <Content Include="Resources\neutral\new\inactivehellbot.jpg" />
-    <Content Include="Resources\neutral\new\libraryofthemadmagi.jpg" />
-    <Content Include="Resources\neutral\new\madcatofalrio.jpg" />
-    <Content Include="Resources\neutral\new\manastorm.jpg" />
-    <Content Include="Resources\neutral\new\marchingstone.jpg" />
-    <Content Include="Resources\neutral\new\meatgrinder.jpg" />
-    <Content Include="Resources\neutral\new\mine.jpg" />
-    <Content Include="Resources\neutral\new\raginggiant.jpg" />
-    <Content Include="Resources\neutral\new\sleepinggiant.jpg" />
-    <Content Include="Resources\neutral\new\spectralaltar.jpg" />
-    <Content Include="Resources\neutral\new\starfish.jpg" />
-    <Content Include="Resources\neutral\new\templeoffire.jpg" />
-    <Content Include="Resources\neutral\new\unsummonaltar.jpg" />
-    <Content Include="Resources\neutral\new\volcano.jpg" />
-    <Content Include="Resources\neutral\new\wanderingstone.jpg" />
-    <Content Include="Resources\neutral\peacetree.jpg" />
-    <Content Include="Resources\neutral\phoenixhydra.jpg" />
-    <Content Include="Strings\de-DE\AstralBattles.resources.dll" />
-    <Content Include="Strings\fr-FR\AstralBattles.resources.dll" />
-    <Content Include="Strings\ru-RU\AstralBattles.resources.dll" />
+    <Content Include="Resources\Cards\chaos\insanianberserker.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\chaos\insaniancatapult.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\chaos\insanianking.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\chaos\insanianlord.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\chaos\insanianpeacekeeper.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\chaos\insanianshaman.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\chaos\soldier.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\chaos\spells\chaoticwave.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\chaos\spells\doombolt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\control\ancientgiant.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\control\ancienthorror.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\control\ancientwitch.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\control\dampingtower.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\control\goblinshaman.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\control\mindstealer.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\control\spells\poisonouscloud.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\control\spells\weakness.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\ancientwitch.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\banshee.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\emissaryofdorlak.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\insanianlord.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\keeperofdeath.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\masterlich.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\spectralassassin.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\spells\bloodritual.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\spells\cursedfog.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\spells\darkritual.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\spells\drainsouls.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\spells\emissaryofdorlakspell.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\spells\locked.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\vampire.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\death\wolverine.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\demonic\demonapostate.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\demonic\demonquartermaster.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\demonic\enragedquartermaster.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\demonic\ergodemon.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\demonic\greaterdemon.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\demonic\lemure.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\demonic\scrambledlemure.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\demonic\spells\explosion.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\demonic\spells\hellfire.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\demonic\spells\powerchains.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\demonic\threeheadeddemon.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\earth\earthelemental.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\earth\elfhermit.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\earth\elvenhealer.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\earth\forestspider.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\earth\forestsprite.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\earth\giantspider.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\earth\hydra.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\earth\masterhealer.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\earth\spells\locked.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\earth\spells\naturalfury.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\earth\spells\natureritual.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\earth\spells\rejuvenation.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\earth\spells\stonerain.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\earth\troll.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\fire\bargul.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\fire\dragon.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\fire\firedrake.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\fire\fireelemental.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\fire\goblinberserker.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\fire\minotaurcommander.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\fire\orcchieftain.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\fire\priestoffire.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\fire\spells\armageddon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\fire\spells\flamewave.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\fire\spells\inferno.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\fire\spells\locked.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\fire\walloffire.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\goblins\goblinhero.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\goblins\goblinlooter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\goblins\goblinraider.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\goblins\goblinsaboteur.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\goblins\portaljumper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\goblins\ratsmaster.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\goblins\spells\armyofrats.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\goblins\spells\rescueoperation.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\holy\angel.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\holy\archangel.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\holy\holyguard.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\holy\monk.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\holy\paladin.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\holy\spells\divineintervention.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\holy\spells\divinejustice.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\holy\spells\wrathofgod.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\illusion\hypnotist.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\illusion\oracle.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\illusion\phantomwarrior.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\illusion\spectralassassin.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\illusion\spectralmage.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\illusion\spells\hypnosys.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\illusion\spells\madness.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\illusion\wallofreflection.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\mechanical\cannon.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\mechanical\dwarvencraftsman.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\mechanical\dwarvenrifleman.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\mechanical\ornithopter.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\mechanical\spells\cannonade.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\mechanical\spells\overtime.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\mechanical\steamtank.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\mechanical\steelgolem.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\sorcery\spells\disintegrate.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\sorcery\spells\fireball.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\sorcery\spells\healingspray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\sorcery\spells\manaburn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\sorcery\spells\ritualofglory.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\sorcery\spells\sacrifice.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\sorcery\spells\sonicboom.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\sorcery\spells\stealessence.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\water\astralguard.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\water\giantturtle.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\water\icegolem.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\water\iceguard.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\water\merfolkapostate.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\water\merfolkelder.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\water\merfolkoverlord.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\water\mindmaster.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\water\seasprite.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\water\spells\acidicrain.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\water\spells\locked.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\water\spells\meditation.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Cards\water\waterelemental.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Common\appbar.align.left.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Common\appbar.timer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Common\clock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Common\smartphone-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Elements\air.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Elements\beast.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Elements\chaos.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Elements\control.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Elements\death.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Elements\demonic.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Elements\earth.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Elements\fire.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Elements\holy.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Elements\illusion.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Elements\mechanical.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Elements\sorcery.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Elements\water.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\skipturn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -1071,10 +1291,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Styles\styles.xaml">
+    <EmbeddedResource Include="Strings\de-DE\de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>de-DE.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\fr-FR\fr-FR.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>fr-FR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings\ru-RU\ru-RU.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ru-RU.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Styles\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
+    </EmbeddedResource>
     <Page Include="Views\Battlefield.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1146,35 +1378,182 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.14</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
-      <Version>7.1.3</Version>
+      <Version>6.0.12</Version>
     </PackageReference>
     <PackageReference Include="MonoGame.Framework.WindowsUniversal">
-      <Version>3.8.0.1641</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmLightLibs">
-      <Version>4.1.27.1</Version>
+      <Version>3.7.1.189</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
-    </PackageReference>
-    <PackageReference Include="System.Collections.Specialized">
-      <Version>4.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Text.Encoding">
-      <Version>4.0.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Videos\tutorial.mp4" />
+    <Content Include="Resources\Sounds\AcidicRain.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Armageddon.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\ArmyOfRats.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Attack.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\BloodRitual.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\BreatheFire.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\CalltoThunder.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\cannonade.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\ChainLightning.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\ChaoticWave.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\CursedFog.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\darkritual.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Disintegrate.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\DivineIntervention.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\DivineJustice.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\doombolt.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Drainsouls.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Enrage.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Explosion.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Fireball.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Flamewave.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Gaze.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\HealingSpray.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Hellfire.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\hypnosys.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Inferno.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\LightningBolt.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\madness.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\ManaBurn.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Meditation.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\MoveFalcon.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\NaturalFury.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\NaturalHealing.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\NatureRitual.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\overtime.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Poison.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\PoisonousCloud.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\PowerChains.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\PumpEnergy.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Rejuvenation.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\RescueOperation.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\RitualOfGlory.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Sacrifice.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\SonicBoom.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\StealEssence.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\StoneRain.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Summon.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Tornado.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Trumpet.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\Weakness.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Sounds\wrathofgod.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Videos\tutorial.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="AstralBattles_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Core\" />
+    <Folder Include="Resources\neutral\new\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

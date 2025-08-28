@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace AstralBattles.Core.Infrastructure
 {
     public static class NamespaceMappings

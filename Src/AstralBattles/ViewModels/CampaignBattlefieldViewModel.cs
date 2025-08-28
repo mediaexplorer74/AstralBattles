@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+﻿﻿// Decompiled with JetBrains decompiler
 // Type: AstralBattles.ViewModels.CampaignBattlefieldViewModel
 // Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
 // MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
@@ -8,9 +8,8 @@ using AstralBattles.Core;
 using AstralBattles.Core.Infrastructure;
 using AstralBattles.Core.Model;
 using AstralBattles.Core.Services;
-using System.IO.IsolatedStorage;
 
-#nullable disable
+
 namespace AstralBattles.ViewModels
 {
   public class CampaignBattlefieldViewModel : BattlefieldViewModel
@@ -27,7 +26,7 @@ namespace AstralBattles.ViewModels
     protected override void OnSaveState()
     {
       Serializer.Write<CampaignBattlefieldViewModel>(this, "CampaignBattlefieldViewModel__1_452.xml");
-      IsolatedStorageSettings.ApplicationSettings["LastPlayedMode__1_452"] = (object) GameModes.Campaign;
+      Windows.Storage.ApplicationData.Current.LocalSettings.Values["LastPlayedMode__1_452"] = GameModes.Campaign;
     }
 
     protected override GameRulesEngineBase CreateGameRulesEngine()

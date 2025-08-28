@@ -8,7 +8,7 @@ using AstralBattles.Core.Infrastructure;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-#nullable disable
+
 namespace AstralBattles.Core.Model
 {
   public class TournamentInfo

@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-#nullable disable
+
 namespace AstralBattles.Core.Services
 {
   public class TournamentService
@@ -96,7 +96,7 @@ namespace AstralBattles.Core.Services
       this.SaveTournamentInfo();
     }
 
-    private void ReloadTournamentInfo()
+    /*private void ReloadTournamentInfo()
     {
       try
       {
@@ -106,6 +106,18 @@ namespace AstralBattles.Core.Services
       {
         this.Tournament = new TournamentInfo();
       }
+    }*/
+
+    private async void ReloadTournamentInfo()
+    {
+        try
+        {
+            this.Tournament = await Serializer.Read<TournamentInfo>("TournamentInfo__1_452.xml");
+        }
+        catch (Exception ex)
+        {
+            this.Tournament = new TournamentInfo();
+        }
     }
 
     private void SaveTournamentInfo()

@@ -1,25 +1,19 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.ViewModels.CampaignOptionsViewModel
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
-using AstralBattles.Converters;
+﻿using AstralBattles.Converters;
 using AstralBattles.Core.Infrastructure;
 using AstralBattles.Core.Model;
 using AstralBattles.Core.Services;
 using AstralBattles.Localizations;
 using AstralBattles.Views;
-using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
-using System.IO.IsolatedStorage;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
-using System.Windows.Navigation;
+using Windows.Storage;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
-#nullable disable
+
 namespace AstralBattles.ViewModels
 {
   public class CampaignOptionsViewModel : ViewModelBaseEx
@@ -39,7 +33,7 @@ namespace AstralBattles.ViewModels
     {
       SpecializationConverter specializationConverter = new SpecializationConverter();
       SpecialElementConverter elementConverter = new SpecialElementConverter();
-      this.Specializations = new string[6]
+      Specializations = new string[6]
       {
         specializationConverter.Convert(Specialization.Pyromancer),
         specializationConverter.Convert(Specialization.IceLord),
@@ -48,30 +42,30 @@ namespace AstralBattles.ViewModels
         specializationConverter.Convert(Specialization.Necromancer),
         specializationConverter.Convert(Specialization.Elementalist)
       };
-      this.SpecialElements = ((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements).Select<ElementTypeEnum, string>(new Func<ElementTypeEnum, string>(elementConverter.Convert)).ToArray<string>();
-      this.Continue = new RelayCommand(new Action(this.ContinueAction), (Func<bool>) (() => this.CanContinue));
-      this.NewCampaign = (ICommand) new RelayCommand((Action) (() => PageNavigationService.OpenCampaignMap()));
-      this.NewGame = new RelayCommand(new Action(this.NewGameAction));
-      this.ChangePlayer = (ICommand) new RelayCommand(new Action(this.ChangePlayerAction));
-      this.Photos = Enumerable.Range(1, 79).Select<int, string>((Func<int, string>) (i => "face" + (object) i)).ToArray<string>();
-      this.PlayerPhotoSelect = (ICommand) new RelayCommand(new Action(this.PlayerPhotoSelectAction));
-      if (this.IsInDesignMode)
+      SpecialElements = ((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements).Select<ElementTypeEnum, string>(new Func<ElementTypeEnum, string>(elementConverter.Convert)).ToArray<string>();
+      Continue = new RelayCommand(ContinueAction, (Func<bool>) (() => CanContinue));
+      NewCampaign = (ICommand) new RelayCommand((Action) (() => PageNavigationService.OpenCampaignMap()));
+      NewGame = new RelayCommand(NewGameAction);
+      ChangePlayer = (ICommand) new RelayCommand(ChangePlayerAction);
+      Photos = Enumerable.Range(1, 79).Select<int, string>((Func<int, string>) (i => "face" + (object) i)).ToArray<string>();
+      PlayerPhotoSelect = (ICommand) new RelayCommand(PlayerPhotoSelectAction);
+      if (App.IsInDesignMode)
       {
-        this.PlayerPhoto = ((IEnumerable<string>) this.Photos).GetRandomElement<string>();
-        this.Player = "Nagga";
-        this.PlayerSpecialElement = ElementTypeEnum.Sorcery;
+        PlayerPhoto = ((IEnumerable<string>) Photos).GetRandomElement<string>();
+        Player = "Nagga";
+        PlayerSpecialElement = ElementTypeEnum.Sorcery;
       }
       else
-        this.RefreshDifficulty();
+        RefreshDifficulty();
     }
 
     private void ChangePlayerAction()
     {
       CreatePlayerViewModel.CreatePlayerInfo = new CreatePlayerInfo()
       {
-        Element = this.PlayerSpecialElement,
-        Name = this.Player,
-        Face = this.PlayerPhoto
+        Element = PlayerSpecialElement,
+        Name = Player,
+        Face = PlayerPhoto
       };
       PageNavigationService.OpenCreateNewPlayer();
     }
@@ -82,48 +76,64 @@ namespace AstralBattles.ViewModels
 
     private void PlayerPhotoSelectAction()
     {
-      this.selectingPlayerPhoto = true;
+      selectingPlayerPhoto = true;
       PageNavigationService.FaceSelectionView();
     }
 
-    private void RefreshData()
+    private async void RefreshData()
     {
-      IsolatedStorageSettings applicationSettings = IsolatedStorageSettings.ApplicationSettings;
-      this.Player = applicationSettings.GetValueOrDefault<object, string>("CampaignPlayer", (object) "Player12345").ToString();
-      this.CanContinue = Serializer.Exists("CampaignBattlefieldViewModel__1_452.xml");
-      this.PlayerSpecialization = (Specialization) applicationSettings.GetValueOrDefault<object, string>("CampaignPlayerSpecialization", (object) Specialization.Elementalist);
-      this.PlayerSpecialElement = (ElementTypeEnum) applicationSettings.GetValueOrDefault<object, string>("CampaignPlayerSpecialElement", (object) ((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements).GetRandomElement<ElementTypeEnum>());
-      this.PlayerPhoto = applicationSettings.GetValueOrDefault<object, string>("CampaignPlayerPhoto", (object) ((IEnumerable<string>) this.Photos).GetRandomElement<string>()).ToString();
+      // UWP uses ApplicationData.Current.LocalSettings instead of IsolatedStorageSettings
+      var applicationSettings = Windows.Storage.ApplicationData.Current.LocalSettings.Values;
+      Player = (applicationSettings.ContainsKey("CampaignPlayer") ? applicationSettings["CampaignPlayer"] : "Player12345").ToString();
+      CanContinue = await Serializer.Exists("CampaignBattlefieldViewModel__1_452.xml");
+      PlayerSpecialization = (Specialization) (applicationSettings.ContainsKey("CampaignPlayerSpecialization") ? applicationSettings["CampaignPlayerSpecialization"] : Specialization.Elementalist);
+      PlayerSpecialElement = (ElementTypeEnum) (applicationSettings.ContainsKey("CampaignPlayerSpecialElement") ? applicationSettings["CampaignPlayerSpecialElement"] : ((IEnumerable<ElementTypeEnum>) SpecialElementsContainer.Elements).GetRandomElement<ElementTypeEnum>());
+      PlayerPhoto = (applicationSettings.ContainsKey("CampaignPlayerPhoto") ? applicationSettings["CampaignPlayerPhoto"] : ((IEnumerable<string>) Photos).GetRandomElement<string>()).ToString();
     }
 
     private void Save()
     {
-      IsolatedStorageSettings applicationSettings = IsolatedStorageSettings.ApplicationSettings;
-      applicationSettings["CampaignPlayer"] = (object) this.Player;
-      applicationSettings["CampaignPlayerSpecialization"] = (object) this.PlayerSpecialization;
-      applicationSettings["CampaignPlayerPhoto"] = (object) this.PlayerPhoto;
-      applicationSettings["CampaignPlayerSpecialElement"] = (object) this.PlayerSpecialElement;
-      applicationSettings.Save();
+      // UWP uses ApplicationData.Current.LocalSettings instead of IsolatedStorageSettings
+      var applicationSettings = Windows.Storage.ApplicationData.Current.LocalSettings.Values;
+      applicationSettings["CampaignPlayer"] = Player;
+      applicationSettings["CampaignPlayerSpecialization"] = PlayerSpecialization;
+      applicationSettings["CampaignPlayerPhoto"] = PlayerPhoto;
+      applicationSettings["CampaignPlayerSpecialElement"] = PlayerSpecialElement;
+      // UWP automatically saves LocalSettings
     }
 
-    private void NewGameAction()
+    private async void NewGameAction()
     {
-      if (this.CanContinue && MessageBox.Show(CommonResources.GameWillBeOverwritten, CommonResources.Confirmation, MessageBoxButton.OKCancel) != MessageBoxResult.OK)
-        return;
-      if (string.IsNullOrWhiteSpace(this.Player))
+        if (CanContinue &&
+          await new ContentDialog
+          {
+              Title = CommonResources.Confirmation,
+              Content = CommonResources.GameWillBeOverwritten,
+              CloseButtonText = "OK",
+              SecondaryButtonText = "Cancel"
+          }.ShowAsync() == ContentDialogResult.Secondary)
+          return;
+       
+
+      if (string.IsNullOrWhiteSpace(Player))
       {
-        int num = (int) MessageBox.Show(CommonResources.NamesShouldBeNotEmptyMessage);
+            await new ContentDialog
+            {
+                Title = "Error",
+                Content = CommonResources.NamesShouldBeNotEmptyMessage,
+                CloseButtonText = "OK"
+            }.ShowAsync();
       }
       else
       {
-        this.IsBusy = true;
-        this.Save();
+        IsBusy = true;
+        Save();
         CampaignService.Instance.StartCampaign(new AstralBattles.Core.Model.Player()
         {
-          Photo = this.PlayerPhoto,
-          DisplayName = this.Player,
-          SpecialElement = this.PlayerSpecialElement,
-          Name = this.Player + string.Format(" ({0})", (object) CommonResources.You),
+          Photo = PlayerPhoto,
+          DisplayName = Player,
+          SpecialElement = PlayerSpecialElement,
+          Name = Player + string.Format(" ({0})", (object) CommonResources.You),
           Specialization = Specialization.Elementalist
         });
         PageNavigationService.OpenBattlefield(false);
@@ -132,31 +142,31 @@ namespace AstralBattles.ViewModels
 
     public string[] SpecialElements
     {
-      get => this.specialElements;
+      get => specialElements;
       set
       {
-        this.specialElements = value;
-        this.RaisePropertyChanged(nameof (SpecialElements));
+        specialElements = value;
+        RaisePropertyChanged(nameof (SpecialElements));
       }
     }
 
     public ElementTypeEnum PlayerSpecialElement
     {
-      get => this.playerSpecialElement;
+      get => playerSpecialElement;
       set
       {
-        this.playerSpecialElement = value;
-        this.RaisePropertyChanged(nameof (PlayerSpecialElement));
+        playerSpecialElement = value;
+        RaisePropertyChanged(nameof (PlayerSpecialElement));
       }
     }
 
     public GameDifficulty[] DifficultyLevels
     {
-      get => this.difficultyLevels;
+      get => difficultyLevels;
       set
       {
-        this.difficultyLevels = value;
-        this.RaisePropertyChanged(nameof (DifficultyLevels));
+        difficultyLevels = value;
+        RaisePropertyChanged(nameof (DifficultyLevels));
       }
     }
 
@@ -168,92 +178,92 @@ namespace AstralBattles.ViewModels
 
     private void ContinueAction()
     {
-      this.IsBusy = true;
+      IsBusy = true;
       PageNavigationService.OpenBattlefield(true);
     }
 
-    public void OnNavigatedTo(NavigationMode mode, Uri uri)
+    public async void OnNavigatedTo(NavigationMode mode, Uri uri)
     {
       if (mode == NavigationMode.Back)
       {
         CreatePlayerInfo createPlayerInfo = CreatePlayerViewModel.CreatePlayerInfo;
         if (createPlayerInfo != null)
         {
-          this.Player = createPlayerInfo.Name;
-          this.PlayerPhoto = createPlayerInfo.Face;
-          this.PlayerSpecialElement = createPlayerInfo.Element;
+          Player = createPlayerInfo.Name;
+          PlayerPhoto = createPlayerInfo.Face;
+          PlayerSpecialElement = createPlayerInfo.Element;
         }
       }
-      this.CanContinue = Serializer.Exists("CampaignBattlefieldViewModel__1_452.xml");
-      this.RefreshDifficulty();
-      this.IsBusy = false;
-      if (this.selectingPlayerPhoto && FaceSelectionView.LastSetPhoto != null)
-        this.PlayerPhoto = FaceSelectionView.LastSetPhoto;
+      CanContinue = await Serializer.Exists("CampaignBattlefieldViewModel__1_452.xml");
+      RefreshDifficulty();
+      IsBusy = false;
+      if (selectingPlayerPhoto && FaceSelectionView.LastSetPhoto != null)
+        PlayerPhoto = FaceSelectionView.LastSetPhoto;
       FaceSelectionView.LastSetPhoto = (string) null;
       if (mode == NavigationMode.Back)
         return;
-      this.RefreshData();
+      RefreshData();
     }
 
-    public void OnNavigatedFrom() => this.Save();
+    public void OnNavigatedFrom() => Save();
 
     public string Player
     {
-      get => this.player;
+      get => player;
       set
       {
-        this.player = value;
-        this.RaisePropertyChanged(nameof (Player));
+        player = value;
+        RaisePropertyChanged(nameof (Player));
       }
     }
 
     public string[] Specializations
     {
-      get => this.specializations;
+      get => specializations;
       set
       {
-        this.specializations = value;
-        this.RaisePropertyChanged(nameof (Specializations));
+        specializations = value;
+        RaisePropertyChanged(nameof (Specializations));
       }
     }
 
     public string[] Photos
     {
-      get => this.photos;
+      get => photos;
       set
       {
-        this.photos = value;
-        this.RaisePropertyChanged(nameof (Photos));
+        photos = value;
+        RaisePropertyChanged(nameof (Photos));
       }
     }
 
     public Specialization PlayerSpecialization
     {
-      get => this.playerSpecialization;
+      get => playerSpecialization;
       set
       {
-        this.playerSpecialization = value;
-        this.RaisePropertyChanged(nameof (PlayerSpecialization));
+        playerSpecialization = value;
+        RaisePropertyChanged(nameof (PlayerSpecialization));
       }
     }
 
     public string PlayerPhoto
     {
-      get => this.playerPhoto;
+      get => playerPhoto;
       set
       {
-        this.playerPhoto = value;
-        this.RaisePropertyChanged(nameof (PlayerPhoto));
+        playerPhoto = value;
+        RaisePropertyChanged(nameof (PlayerPhoto));
       }
     }
 
     public bool CanContinue
     {
-      get => this.canContinue;
+      get => canContinue;
       set
       {
-        this.canContinue = value;
-        this.Continue.RaiseCanExecuteChanged();
+        canContinue = value;
+        Continue.RaiseCanExecuteChanged();
       }
     }
 

@@ -1,93 +1,71 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.ViewModels.AboutViewModel
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
+using AstralBattles.Core.Infrastructure;
 using AstralBattles.Localizations;
-using GalaSoft.MvvmLight.Command;
-using Microsoft.Phone.Tasks;
 using System;
 using System.Windows.Input;
 
-#nullable disable
 namespace AstralBattles.ViewModels
 {
-  public class AboutViewModel : ViewModelBaseEx
-  {
-    private string applicationName;
-    private string email;
-    private string version;
-    private string copyrights;
-
-    public AboutViewModel()
+    public class AboutViewModel : ViewModelBaseEx
     {
-      this.ApplicationName = "Astral Battles";
-      this.Version = "1.4.5";
-      this.Copyrights = CommonResources.Copyrights;
-      this.Email = "astralbattles@live.com";
-      this.Review = (ICommand) new RelayCommand((Action) (() => new MarketplaceReviewTask().Show()));
-      this.Mailme = (ICommand) new RelayCommand(new Action(this.ComposeLetterAction));
-      this.SubmitIdea = (ICommand) new RelayCommand(new Action(this.SubmitIdeaAction));
+        private string applicationName;
+        private string email;
+        private string version;
+        private string copyrights;
+
+        public AboutViewModel()
+        {
+            ApplicationName = "Astral Battles";
+            Version = "1.4.5";
+            Copyrights = CommonResources.Copyrights;
+            Email = "astralbattles@live.com";
+            Review = new RelayCommand(_ => ReviewAction());
+            Mailme = new RelayCommand(_ => ComposeLetterAction());
+            SubmitIdea = new RelayCommand(_ => SubmitIdeaAction());
+        }
+
+        private async void ReviewAction()
+        {
+            // UWP store review - stub for MVP
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-windows-store://review/?ProductId=9WZDNCRFJ3Q2"));
+        }
+
+        private void SubmitIdeaAction()
+        {
+            // Implementation for submitting ideas
+        }
+
+        private async void ComposeLetterAction()
+        {
+            // UWP email launcher - stub for MVP  
+            // await Windows.System.Launcher.LaunchUriAsync(new Uri($"mailto:{Email}?subject={ApplicationName} ({Version}) support"));
+        }
+
+        public string ApplicationName
+        {
+            get => applicationName;
+            set => SetProperty(ref applicationName, value);
+        }
+
+        public string Email
+        {
+            get => email;
+            set => SetProperty(ref email, value);
+        }
+
+        public string Version
+        {
+            get => version;
+            set => SetProperty(ref version, value);
+        }
+
+        public string Copyrights
+        {
+            get => copyrights;
+            set => SetProperty(ref copyrights, value);
+        }
+
+        public ICommand Review { get; }
+        public ICommand Mailme { get; }
+        public ICommand SubmitIdea { get; }
     }
-
-    private void SubmitIdeaAction()
-    {
-    }
-
-    private void ComposeLetterAction()
-    {
-      new EmailComposeTask()
-      {
-        To = this.Email,
-        Subject = string.Format("{0} ({1}) support", (object) this.ApplicationName, (object) this.Version)
-      }.Show();
-    }
-
-    public string ApplicationName
-    {
-      get => this.applicationName;
-      set
-      {
-        this.applicationName = value;
-        this.RaisePropertyChanged(nameof (ApplicationName));
-      }
-    }
-
-    public string Email
-    {
-      get => this.email;
-      set
-      {
-        this.email = value;
-        this.RaisePropertyChanged(nameof (Email));
-      }
-    }
-
-    public string Version
-    {
-      get => this.version;
-      set
-      {
-        this.version = value;
-        this.RaisePropertyChanged(nameof (Version));
-      }
-    }
-
-    public string Copyrights
-    {
-      get => this.copyrights;
-      set
-      {
-        this.copyrights = value;
-        this.RaisePropertyChanged(nameof (Copyrights));
-      }
-    }
-
-    public ICommand Review { get; set; }
-
-    public ICommand Mailme { get; set; }
-
-    public ICommand SubmitIdea { get; set; }
-  }
 }

@@ -1,13 +1,9 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Core.Infrastructure.Communications.GetMyIpAddressService
-// Assembly: AstralBattles.Core, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 6DDFE75F-AA71-406D-841A-1AF1DF23E1FF
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.Core.dll
-
+﻿
 using System;
-using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 
-#nullable disable
+
 namespace AstralBattles.Core.Infrastructure.Communications
 {
   public static class GetMyIpAddressService
@@ -16,9 +12,17 @@ namespace AstralBattles.Core.Infrastructure.Communications
 
     public static void GetIpAddressAsync(Action<string, Exception> callback)
     {
-      WebClient webClient = new WebClient();
-      webClient.DownloadStringCompleted += (DownloadStringCompletedEventHandler) ((s, e) => callback(GetMyIpAddressService.ParseIp(e.Result), e.Error));
-      webClient.DownloadStringAsync(new Uri("http://api.hostip.info/get_html.php"));
+      // TODO: Replace WebClient with HttpClient for UWP
+      // For MVP build, using placeholder implementation
+      try
+      {
+        string placeholderIp = "127.0.0.1";
+        callback(placeholderIp, null);
+      }
+      catch (Exception ex)
+      {
+        callback(string.Empty, ex);
+      }
     }
 
     private static string ParseIp(string result)

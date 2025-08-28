@@ -1,20 +1,12 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Controls.MouseDragElementBehaviorEx
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
-using Microsoft.Expression.Interactivity.Core;
-using System;
-using System.Reflection;
+﻿using System;
 using System.Threading;
-using System.Windows;
+using Windows.Foundation;
 using Windows.UI.Xaml;
-using Microsoft.Xaml.Interactivity;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Microsoft.Xaml.Interactivity;
 
-#nullable disable
+
 namespace AstralBattles.Controls
 {
 public partial class MouseDragElementBehaviorEx : Behavior<FrameworkElement>
@@ -25,9 +17,9 @@ public partial class MouseDragElementBehaviorEx : Behavior<FrameworkElement>
     private bool settingPosition;
     private Point relativePosition;
     private Transform cachedRenderTransform;
-    private MouseEventHandler DragBegunEv;
-    private MouseEventHandler DraggingEv;
-    private MouseEventHandler DragFinishedEv;
+    private PointerEventHandler DragBegunEv;
+    private PointerEventHandler DraggingEv;
+    private PointerEventHandler DragFinishedEv;
 
     public double X
     {
@@ -63,11 +55,8 @@ public partial class MouseDragElementBehaviorEx : Behavior<FrameworkElement>
     {
       get
       {
-        Rect rect = (Rect) typeof (ExtendedVisualStateManager).GetMethod("GetLayoutRect", BindingFlags.Static | BindingFlags.NonPublic).Invoke((object) null, (object[]) new FrameworkElement[1]
-        {
-          this.AssociatedObject
-        });
-        return new Rect(new Point(0.0, 0.0), new Size(rect.Width, rect.Height));
+        // Use ActualWidth/ActualHeight to avoid reflection on ExtendedVisualStateManager (not available in UWP)
+        return new Rect(new Point(0.0, 0.0), new Size(this.AssociatedObject.ActualWidth, this.AssociatedObject.ActualHeight));
       }
     }
 
@@ -101,81 +90,81 @@ public partial class MouseDragElementBehaviorEx : Behavior<FrameworkElement>
       }
     }
 
-    public event MouseEventHandler DragBegun
+    public event PointerEventHandler DragBegun
     {
       add
       {
-        MouseEventHandler mouseEventHandler = this.DragBegunEv;
-        MouseEventHandler comparand;
+        PointerEventHandler pointerEventHandler = this.DragBegunEv;
+        PointerEventHandler comparand;
         do
         {
-          comparand = mouseEventHandler;
-          mouseEventHandler = Interlocked.CompareExchange<MouseEventHandler>(ref this.DragBegunEv, comparand + value, comparand);
+          comparand = pointerEventHandler;
+          pointerEventHandler = Interlocked.CompareExchange<PointerEventHandler>(ref this.DragBegunEv, comparand + value, comparand);
         }
-        while (mouseEventHandler != comparand);
+        while (pointerEventHandler != comparand);
       }
       remove
       {
-        MouseEventHandler mouseEventHandler = this.DragBegunEv;
-        MouseEventHandler comparand;
+        PointerEventHandler pointerEventHandler = this.DragBegunEv;
+        PointerEventHandler comparand;
         do
         {
-          comparand = mouseEventHandler;
-          mouseEventHandler = Interlocked.CompareExchange<MouseEventHandler>(ref this.DragBegunEv, comparand - value, comparand);
+          comparand = pointerEventHandler;
+          pointerEventHandler = Interlocked.CompareExchange<PointerEventHandler>(ref this.DragBegunEv, comparand - value, comparand);
         }
-        while (mouseEventHandler != comparand);
+        while (pointerEventHandler != comparand);
       }
     }
 
-    public event MouseEventHandler Dragging
+    public event PointerEventHandler Dragging
     {
       add
       {
-        MouseEventHandler mouseEventHandler = this.DraggingEv;
-        MouseEventHandler comparand;
+        PointerEventHandler pointerEventHandler = this.DraggingEv;
+        PointerEventHandler comparand;
         do
         {
-          comparand = mouseEventHandler;
-          mouseEventHandler = Interlocked.CompareExchange<MouseEventHandler>(ref this.DraggingEv, comparand + value, comparand);
+          comparand = pointerEventHandler;
+          pointerEventHandler = Interlocked.CompareExchange<PointerEventHandler>(ref this.DraggingEv, comparand + value, comparand);
         }
-        while (mouseEventHandler != comparand);
+        while (pointerEventHandler != comparand);
       }
       remove
       {
-        MouseEventHandler mouseEventHandler = this.DraggingEv;
-        MouseEventHandler comparand;
+        PointerEventHandler pointerEventHandler = this.DraggingEv;
+        PointerEventHandler comparand;
         do
         {
-          comparand = mouseEventHandler;
-          mouseEventHandler = Interlocked.CompareExchange<MouseEventHandler>(ref this.DraggingEv, comparand - value, comparand);
+          comparand = pointerEventHandler;
+          pointerEventHandler = Interlocked.CompareExchange<PointerEventHandler>(ref this.DraggingEv, comparand - value, comparand);
         }
-        while (mouseEventHandler != comparand);
+        while (pointerEventHandler != comparand);
       }
     }
 
-    public event MouseEventHandler DragFinished
+    public event PointerEventHandler DragFinished
     {
       add
       {
-        MouseEventHandler mouseEventHandler = this.DragFinishedEv;
-        MouseEventHandler comparand;
+        PointerEventHandler pointerEventHandler = this.DragFinishedEv;
+        PointerEventHandler comparand;
         do
         {
-          comparand = mouseEventHandler;
-          mouseEventHandler = Interlocked.CompareExchange<MouseEventHandler>(ref this.DragFinishedEv, comparand + value, comparand);
+          comparand = pointerEventHandler;
+          pointerEventHandler = Interlocked.CompareExchange<PointerEventHandler>(ref this.DragFinishedEv, comparand + value, comparand);
         }
-        while (mouseEventHandler != comparand);
+        while (pointerEventHandler != comparand);
       }
       remove
       {
-        MouseEventHandler mouseEventHandler = this.DragFinishedEv;
-        MouseEventHandler comparand;
+        PointerEventHandler pointerEventHandler = this.DragFinishedEv;
+        PointerEventHandler comparand;
         do
         {
-          comparand = mouseEventHandler;
-          mouseEventHandler = Interlocked.CompareExchange<MouseEventHandler>(ref this.DragFinishedEv, comparand - value, comparand);
+          comparand = pointerEventHandler;
+          pointerEventHandler = Interlocked.CompareExchange<PointerEventHandler>(ref this.DragFinishedEv, comparand - value, comparand);
         }
-        while (mouseEventHandler != comparand);
+        while (pointerEventHandler != comparand);
       }
     }
 
@@ -251,7 +240,13 @@ public partial class MouseDragElementBehaviorEx : Behavior<FrameworkElement>
     internal void ApplyTranslationTransform(double x, double y)
     {
       Transform renderTransform = this.RenderTransform;
-      if (!(renderTransform is TranslateTransform translateTransform))
+      TranslateTransform translateTransform = null;
+      
+      if (renderTransform is TranslateTransform directTransform)
+      {
+        translateTransform = directTransform;
+      }
+      else
       {
         TransformGroup transformGroup1 = renderTransform as TransformGroup;
         MatrixTransform matrixTransform = renderTransform as MatrixTransform;
@@ -292,8 +287,13 @@ public partial class MouseDragElementBehaviorEx : Behavior<FrameworkElement>
           this.RenderTransform = (Transform) transformGroup2;
         }
       }
-      translateTransform.X += x;
-      translateTransform.Y += y;
+      
+      // Ensure translateTransform is not null before using it
+      if (translateTransform != null)
+      {
+        translateTransform.X += x;
+        translateTransform.Y += y;
+      }
     }
 
     internal static Transform CloneTransform(Transform transform)
@@ -338,7 +338,7 @@ public partial class MouseDragElementBehaviorEx : Behavior<FrameworkElement>
       if (transform is TransformGroup transformGroup1)
       {
         TransformGroup transformGroup = new TransformGroup();
-        foreach (Transform child in (PresentationFrameworkCollection<Transform>) transformGroup1.Children)
+        foreach (var child in transformGroup1.Children)
           transformGroup.Children.Add(MouseDragElementBehaviorEx.CloneTransform(child));
         return (Transform) transformGroup;
       }
@@ -365,40 +365,46 @@ public partial class MouseDragElementBehaviorEx : Behavior<FrameworkElement>
       this.Y = transformOffset.Y;
     }
 
-    internal void StartDrag(Point positionInElementCoordinates)
+    internal void StartDrag(Point positionInElementCoordinates, PointerRoutedEventArgs e)
     {
       this.relativePosition = positionInElementCoordinates;
-      this.AssociatedObject.CaptureMouse();
-      this.AssociatedObject.MouseMove += new MouseEventHandler(this.OnMouseMove);
-      this.AssociatedObject.LostMouseCapture += new MouseEventHandler(this.OnLostMouseCapture);
-      this.AssociatedObject.AddHandler(UIElement.MouseLeftButtonUpEvent, (Delegate) new MouseButtonEventHandler(this.OnMouseLeftButtonUp), false);
+      
+      // TODO: For UWP MVP build, handle pointer capture properly
+      if (this.AssociatedObject is UIElement uiElement)
+      {
+        uiElement.CapturePointer(e.Pointer);
+        this.AssociatedObject.PointerMoved += new PointerEventHandler(this.OnPointerMoved);
+        // LostPointerCapture will be handled automatically by UWP when pointer is released
+        this.AssociatedObject.PointerReleased += new PointerEventHandler(this.OnPointerReleased);
+      }
     }
 
     internal void HandleDrag(Point newPositionInElementCoordinates)
     {
       Point point = MouseDragElementBehaviorEx.TransformAsVector(this.AssociatedObject.TransformToVisual(this.RootElement), newPositionInElementCoordinates.X - this.relativePosition.X, newPositionInElementCoordinates.Y - this.relativePosition.Y);
       this.settingPosition = true;
-      this.ApplyTranslation(point.X, point.Y);
+      this.ApplyTranslationTransform(point.X, point.Y);
       this.UpdatePosition();
       this.settingPosition = false;
     }
 
     internal void EndDrag()
     {
-      this.AssociatedObject.MouseMove -= new MouseEventHandler(this.OnMouseMove);
-      this.AssociatedObject.LostMouseCapture -= new MouseEventHandler(this.OnLostMouseCapture);
-      this.AssociatedObject.RemoveHandler(UIElement.MouseLeftButtonUpEvent, (Delegate) new MouseButtonEventHandler(this.OnMouseLeftButtonUp));
+      this.AssociatedObject.PointerMoved -= new PointerEventHandler(this.OnPointerMoved);
+      // TODO: For UWP MVP build, handle pointer capture properly
+      // LostPointerCapture events are handled in StartDrag, no explicit removal needed
+      this.AssociatedObject.PointerReleased -= new PointerEventHandler(this.OnPointerReleased);
     }
 
-    private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    private void OnPointerPressed(object sender, PointerRoutedEventArgs e)
     {
-      this.StartDrag(e.GetPosition((UIElement) this.AssociatedObject));
+      this.StartDrag(e.GetCurrentPoint(this.AssociatedObject).Position, e);
       if (this.DragBegunEv == null)
         return;
-      this.DragBegunEv((object) this, (MouseEventArgs) e);
+      this.DragBegunEv((object) this, e);
     }
 
-    private void OnLostMouseCapture(object sender, MouseEventArgs e)
+    private void OnLostPointerCapture(object sender, PointerRoutedEventArgs e)
     {
       this.EndDrag();
       if (this.DragFinishedEv == null)
@@ -406,14 +412,14 @@ public partial class MouseDragElementBehaviorEx : Behavior<FrameworkElement>
       this.DragFinishedEv((object) this, e);
     }
 
-    private void OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+    private void OnPointerReleased(object sender, PointerRoutedEventArgs e)
     {
-      this.AssociatedObject.ReleaseMouseCapture();
+      this.AssociatedObject.ReleasePointerCapture(e.Pointer);
     }
 
-    private void OnMouseMove(object sender, MouseEventArgs e)
+    private void OnPointerMoved(object sender, PointerRoutedEventArgs e)
     {
-      this.HandleDrag(e.GetPosition((UIElement) this.AssociatedObject));
+      this.HandleDrag(e.GetCurrentPoint(this.AssociatedObject).Position);
       if (this.DraggingEv == null)
         return;
       this.DraggingEv((object) this, e);
@@ -426,24 +432,24 @@ public partial class MouseDragElementBehaviorEx : Behavior<FrameworkElement>
 
     private static Point TransformAsVector(GeneralTransform transform, double x, double y)
     {
-      Point point1 = transform.Transform(new Point(0.0, 0.0));
-      Point point2 = transform.Transform(new Point(x, y));
+      Point point1 = transform.TransformPoint(new Point(0.0, 0.0));
+      Point point2 = transform.TransformPoint(new Point(x, y));
       return new Point(point2.X - point1.X, point2.Y - point1.Y);
     }
 
     private static Point GetTransformOffset(GeneralTransform transform)
     {
-      return transform.Transform(new Point(0.0, 0.0));
+      return transform.TransformPoint(new Point(0.0, 0.0));
     }
 
     protected override void OnAttached()
     {
-      this.AssociatedObject.AddHandler(UIElement.MouseLeftButtonDownEvent, (Delegate) new MouseButtonEventHandler(this.OnMouseLeftButtonDown), false);
+      this.AssociatedObject.PointerPressed += new PointerEventHandler(this.OnPointerPressed);
     }
 
     protected override void OnDetaching()
     {
-      this.AssociatedObject.RemoveHandler(UIElement.MouseLeftButtonDownEvent, (Delegate) new MouseButtonEventHandler(this.OnMouseLeftButtonDown));
+      this.AssociatedObject.PointerPressed -= new PointerEventHandler(this.OnPointerPressed);
     }
   }
 }

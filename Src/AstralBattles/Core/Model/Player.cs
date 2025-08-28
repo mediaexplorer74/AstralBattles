@@ -13,7 +13,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Xml.Serialization;
 
-#nullable disable
+
 namespace AstralBattles.Core.Model
 {
   [XmlInclude(typeof (CampaignOpponent))]

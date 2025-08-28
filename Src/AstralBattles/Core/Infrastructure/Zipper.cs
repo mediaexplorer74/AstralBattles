@@ -4,38 +4,38 @@
 // MVID: 6DDFE75F-AA71-406D-841A-1AF1DF23E1FF
 // Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.Core.dll
 
-using ICSharpCode.SharpZipLib.GZip;
 using System;
 using System.IO;
+using System.IO.Compression;
 using System.Xml.Serialization;
 
-#nullable disable
+
 namespace AstralBattles.Core.Infrastructure
 {
   public static class Zipper
   {
     public static MemoryStream Decompress(byte[] data)
     {
-      MemoryStream baseInputStream = new MemoryStream(data);
-      MemoryStream memoryStream = new MemoryStream();
-      GZipInputStream gzipInputStream = new GZipInputStream((Stream) baseInputStream);
-      byte[] buffer = new byte[8192];
-      int count;
-      while ((count = gzipInputStream.Read(buffer, 0, 8192)) > 0)
-        memoryStream.Write(buffer, 0, count);
-      memoryStream.Position = 0L;
-      return memoryStream;
+      using (var input = new MemoryStream(data))
+      using (var gzipStream = new GZipStream(input, CompressionMode.Decompress))
+      {
+        var output = new MemoryStream();
+        gzipStream.CopyTo(output);
+        output.Position = 0;
+        return output;
+      }
     }
 
     public static byte[] Compress(byte[] data)
     {
-      MemoryStream baseOutputStream = new MemoryStream();
-      GZipOutputStream gzipOutputStream = new GZipOutputStream((Stream) baseOutputStream);
-      gzipOutputStream.SetLevel(7);
-      gzipOutputStream.Write(data, 0, data.Length);
-      gzipOutputStream.Finish();
-      gzipOutputStream.Close();
-      return baseOutputStream.ToArray();
+      using (var output = new MemoryStream())
+      {
+        using (var gzipStream = new GZipStream(output, CompressionLevel.Optimal))
+        {
+          gzipStream.Write(data, 0, data.Length);
+        }
+        return output.ToArray();
+      }
     }
 
     public static byte[] SerializeToCompressedData<T>(T obj)

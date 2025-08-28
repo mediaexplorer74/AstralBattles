@@ -6,7 +6,7 @@
 
 using System.Xml.Serialization;
 
-#nullable disable
+
 namespace AstralBattles.Core.Model
 {
   public class CampaignOpponent : Player

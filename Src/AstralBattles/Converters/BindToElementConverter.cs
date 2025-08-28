@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+// Decompiled with JetBrains decompiler
 // Type: AstralBattles.Converters.BindToElementConverter
 // Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
 // MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
@@ -7,14 +7,14 @@
 using System;
 using System.Collections;
 using System.Globalization;
-using System.Windows.Data;
+using Windows.UI.Xaml.Data;
 
-#nullable disable
+
 namespace AstralBattles.Converters
 {
   public class BindToElementConverter : IValueConverter
   {
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    public object Convert(object value, Type targetType, object parameter, string language)
     {
       return ((IList) value)[int.Parse(parameter.ToString())];
     }
@@ -23,7 +23,7 @@ namespace AstralBattles.Converters
       object value,
       Type targetType,
       object parameter,
-      CultureInfo culture)
+      string language)
     {
       throw new NotImplementedException();
     }

@@ -1,109 +1,166 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Core.Infrastructure.Serializer
-// Assembly: AstralBattles.Core, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 6DDFE75F-AA71-406D-841A-1AF1DF23E1FF
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.Core.dll
-
+﻿﻿
 using System;
+using System.Diagnostics;
 using System.IO;
-using System.IO.IsolatedStorage;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Windows.Storage;
+using Windows.Storage.Streams;
 
-#nullable disable
+
 namespace AstralBattles.Core.Infrastructure
 {
   public class Serializer
   {
     private static readonly ILogger Logger = LogFactory.GetLogger<Serializer>();
 
-    public static T Read<T>(string fileName, bool tryTwice = true)
+    public static async Task<T> Read<T>(string fileName, bool tryTwice = true)
+    {
+        try
+        {
+            return await ReadAsync<T>(fileName, tryTwice);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine("[ex] Serializer - Read T error: " + ex.Message);
+            Serializer.Logger.LogError(ex);
+            //DebugHelper.Break();
+            return default(T);
+        }
+    }
+
+    private static async Task<T> ReadAsync<T>(string fileName, bool tryTwice = true)
     {
       try
       {
-        T obj = default (T);
-        using (IsolatedStorageFile storeForApplication = IsolatedStorageFile.GetUserStoreForApplication())
-        {
-          using (IsolatedStorageFileStream storageFileStream = storeForApplication.OpenFile(fileName, FileMode.Open, FileAccess.Read))
-          {
-            using (StreamReader streamReader = new StreamReader((Stream) storageFileStream))
-              obj = (T) new XmlSerializer(typeof (T)).Deserialize((TextReader) new StringReader(streamReader.ReadToEnd()));
-          }
-        }
-        return obj;
+        StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+        StorageFile file = await localFolder.GetFileAsync(fileName);
+        string content = await FileIO.ReadTextAsync(file);
+        return (T)new XmlSerializer(typeof(T)).Deserialize(new StringReader(content));
       }
       catch (Exception ex1)
       {
         try
         {
-          if (tryTwice)
-            return Serializer.Read<T>(fileName, false);
+            Debug.WriteLine("[ex1] Serializer - ReadAsync T error: " + ex1.Message);
+
+            //if (tryTwice)
+            //  return await ReadAsync<T>(fileName, false);
         }
         catch (Exception ex2)
         {
-          Serializer.Logger.LogError(ex2);
+            Debug.WriteLine("[ex2] Serializer - ReadAsync error: " + ex2.Message);
+            Serializer.Logger.LogError(ex2);
         }
-        DebugHelper.Break();
-        return default (T);
+        return default(T);
       }
     }
 
-    public static void Write<T>(T obj, string fileName)
+    public static async void Write<T>(T obj, string fileName)
     {
       try
       {
-        using (IsolatedStorageFile storeForApplication = IsolatedStorageFile.GetUserStoreForApplication())
-        {
-          if (storeForApplication.FileExists(fileName))
-            storeForApplication.DeleteFile(fileName);
-          using (IsolatedStorageFileStream storageFileStream = storeForApplication.OpenFile(fileName, FileMode.Create))
-          {
-            new XmlSerializer(typeof (T)).Serialize((Stream) storageFileStream, (object) obj);
-            storageFileStream.Flush(true);
-            storageFileStream.Close();
-          }
-        }
+         await WriteAsync<T>(obj, fileName);//.GetAwaiter().GetResult();
       }
       catch (Exception ex)
       {
+        Debug.WriteLine("[ex] Serializer - Write error: " + ex.Message);
         Serializer.Logger.LogError(ex);
-        DebugHelper.Break();
-        throw;
+        //DebugHelper.Break();
+        //throw;
       }
     }
 
-    public static void Delete(string file)
+    private static async Task WriteAsync<T>(T obj, string fileName)
+    {
+      StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+      StorageFile file = await localFolder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
+      
+      using (var stream = new StringWriter())
+      {
+        new XmlSerializer(typeof(T)).Serialize(stream, obj);
+        await FileIO.WriteTextAsync(file, stream.ToString());
+      }
+    }
+
+    public async static void Delete(string file)
     {
       try
       {
-        using (IsolatedStorageFile storeForApplication = IsolatedStorageFile.GetUserStoreForApplication())
-          storeForApplication.DeleteFile(file);
+           await DeleteAsync(file);//.GetAwaiter().GetResult();
       }
       catch (Exception ex)
       {
+        Debug.WriteLine("[ex] Serializer - Delete error: " + ex.Message);
         Serializer.Logger.LogError(ex);
-        DebugHelper.Break();
+        //DebugHelper.Break();
       }
     }
 
-    public static void ClearStorage()
-    {
-      using (IsolatedStorageFile storeForApplication = IsolatedStorageFile.GetUserStoreForApplication())
-      {
-        foreach (string fileName in storeForApplication.GetFileNames())
-          storeForApplication.DeleteFile(fileName);
-      }
-    }
-
-    public static bool Exists(string file)
+    private static async Task DeleteAsync(string file)
     {
       try
       {
-        using (IsolatedStorageFile storeForApplication = IsolatedStorageFile.GetUserStoreForApplication())
-          return storeForApplication.FileExists(file);
+        StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+        StorageFile fileToDelete = await localFolder.GetFileAsync(file);
+        await fileToDelete.DeleteAsync();
+      }
+      catch (Exception ex)//(FileNotFoundException)
+      {
+        Debug.WriteLine("[ex] Serializer - DeleteAsync error: " + ex.Message);
+        // File doesn't exist, nothing to delete
+      }
+    }
+
+    public static async void ClearStorage()
+    {
+      try
+      {
+          await ClearStorageAsync();//.GetAwaiter().GetResult();
       }
       catch (Exception ex)
       {
+        Debug.WriteLine("[ex] Serializer - ClearStorage error: " + ex.Message);
         Serializer.Logger.LogError(ex);
+        //DebugHelper.Break();
+      }
+    }
+
+    private static async Task ClearStorageAsync()
+    {
+      StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+      var files = await localFolder.GetFilesAsync();
+      foreach (var file in files)
+      {
+        await file.DeleteAsync();
+      }
+    }
+
+    public static async Task<bool> Exists(string filename)
+    {
+      try
+      {
+          return await ExistsAsync(filename);//.GetAwaiter().GetResult();
+      }
+      catch (Exception ex)
+      {
+        Debug.WriteLine("[ex] Serializer - file  "+ filename + " error: " + ex.Message);
+        Serializer.Logger.LogError(ex);
+        return false;
+      }
+    }
+
+    private static async Task<bool> ExistsAsync(string filename)
+    {
+      try
+      {
+        StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+        await localFolder.GetFileAsync(filename);
+        return true;
+      }
+      catch (Exception ex)//(FileNotFoundException)
+      {
+        Debug.WriteLine("[ex] Serializer - "+ filename + " file not found: " + ex.Message);
         return false;
       }
     }

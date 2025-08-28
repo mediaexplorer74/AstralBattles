@@ -6,10 +6,10 @@
 
 using System;
 using System.Diagnostics;
-using System.Windows;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-#nullable disable
+
 namespace AstralBattles.Views
 {
 public partial class ViaNetworkGameModes : Page

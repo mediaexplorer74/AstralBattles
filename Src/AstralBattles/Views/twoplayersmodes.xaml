@@ -1,4 +1,4 @@
-﻿<Page 
+<Page 
     x:Class="AstralBattles.Views.TwoPlayersModes"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,10 +6,10 @@
     
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ViewModels="clr-namespace:AstralBattles.ViewModels" FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:ViewModels="using:AstralBattles.ViewModels" FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
+    
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
     >
     <Page.DataContext>
@@ -26,7 +26,7 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="PageTitle" Label="two players" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="PageTitle" Text="two players" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -39,7 +39,7 @@
                              Style="{StaticResource HyperlinkButtonStyle}"/>
                 <TextBlock Foreground="Gray" 
                        Margin="15,-5,0,20" 
-                       Label="{Binding Resources.CommonResources.OnOneDeviceTip}"/>
+                       Text="{Binding Resources.CommonResources.OnOneDeviceTip}"/>
 
 
 
@@ -49,7 +49,7 @@
                              Style="{StaticResource HyperlinkButtonStyle}"/>
                 <TextBlock Foreground="Gray" 
                        Margin="15,-5,0,20" 
-                       Label="{Binding Resources.CommonResources.ViaSocketsTip}"/>
+                       Text="{Binding Resources.CommonResources.ViaSocketsTip}"/>
 
 
             </StackPanel>
@@ -59,16 +59,6 @@
         </Grid>
     </Grid>
  
-    <!--Sample code showing usage of ApplicationBar-->
-    <!--<Page.ApplicationBar>
-        <CommandBar IsVisible="True" IsMenuEnabled="True">
-            <CommandBarIconButton Icon="/Images/appbar_button1.png" Label="Button 1"/>
-            <CommandBarIconButton Icon="/Images/appbar_button2.png" Label="Button 2"/>
-            <CommandBar.MenuItems>
-                <CommandBarMenuItem Label="MenuItem 1"/>
-                <CommandBarMenuItem Label="MenuItem 2"/>
-            </CommandBar.MenuItems>
-        </CommandBar>
-    </Page.ApplicationBar>-->
+
 
 </Page>

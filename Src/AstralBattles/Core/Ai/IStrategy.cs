@@ -7,7 +7,7 @@
 using AstralBattles.Core.Model;
 using System.Collections.Generic;
 
-#nullable disable
+
 namespace AstralBattles.Core.Ai
 {
   public interface IStrategy

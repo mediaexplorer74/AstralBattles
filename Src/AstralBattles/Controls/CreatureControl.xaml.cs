@@ -1,23 +1,17 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Controls.CreatureControl
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
 using AstralBattles.Converters;
 using AstralBattles.Core.Model;
-using GalaSoft.MvvmLight;
+using AstralBattles.Core.Infrastructure;
+using Windows.ApplicationModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Windows;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Shapes;
 
-#nullable disable
+
 namespace AstralBattles.Controls
 {
 public partial class CreatureControl : UserControl
@@ -39,7 +33,7 @@ public partial class CreatureControl : UserControl
 
     public CreatureControl()
     {
-      if (ViewModelBase.IsInDesignModeStatic)
+      if (DesignMode.DesignModeEnabled)
       {
         this.Field = new Field(new Player())
         {
@@ -60,18 +54,18 @@ public partial class CreatureControl : UserControl
         this.ImageUri = this.imageConverter.Convert((Card) this.Field.Card);
       }
       this.InitializeComponent();
-      if (ViewModelBase.IsInDesignModeStatic)
+      if (DesignMode.DesignModeEnabled)
         return;
-      this.attackBottomStateStoryboard.Completed += new EventHandler(this.FieldAttackingCompleted);
-      this.attackTopStateStoryboard.Completed += new EventHandler(this.FieldAttackingCompleted);
-      this.dieStateStoryboard.Completed += new EventHandler(this.DieStateCompleted);
-      this.creationStateStoryboard.Completed += new EventHandler(this.SummonCompleted);
-      this.skipTurnStateStoryboard.Completed += new EventHandler(this.SkipCompleted);
-      this.gotDamageStateStoryboard.Completed += new EventHandler(this.GotDamageStoryboardCompleted);
-      this.gotHealthStateStoryboard.Completed += new EventHandler(this.GotHealthStoryboardCompleted);
+      this.attackBottomStateStoryboard.Completed += new EventHandler<object>(this.FieldAttackingCompleted);
+      this.attackTopStateStoryboard.Completed += new EventHandler<object>(this.FieldAttackingCompleted);
+      this.dieStateStoryboard.Completed += new EventHandler<object>(this.DieStateCompleted);
+      this.creationStateStoryboard.Completed += new EventHandler<object>(this.SummonCompleted);
+      this.skipTurnStateStoryboard.Completed += new EventHandler<object>(this.SkipCompleted);
+      this.gotDamageStateStoryboard.Completed += new EventHandler<object>(this.GotDamageStoryboardCompleted);
+      this.gotHealthStateStoryboard.Completed += new EventHandler<object>(this.GotHealthStoryboardCompleted);
     }
 
-    private void GotDamageStoryboardCompleted(object sender, EventArgs e)
+    private void GotDamageStoryboardCompleted(object sender, object e)
     {
       this.isPlayerGotDamageAnimated = false;
       if (this.overflowTextGotDamageChangesStack.Count <= 0)
@@ -81,7 +75,7 @@ public partial class CreatureControl : UserControl
       this.gotDamageStateStoryboard.Begin();
     }
 
-    private void GotHealthStoryboardCompleted(object sender, EventArgs e)
+    private void GotHealthStoryboardCompleted(object sender, object e)
     {
       this.isPlayerGotHealthAnimated = false;
       if (this.overflowTextGotHealthChangesStack.Count <= 0)
@@ -121,7 +115,7 @@ public partial class CreatureControl : UserControl
     private void FieldPropertyChanged(Field oldField)
     {
       this.UpdateImage();
-      if (ViewModelBase.IsInDesignModeStatic)
+      if (DesignMode.DesignModeEnabled)
         return;
       if (oldField != null)
       {
@@ -234,20 +228,20 @@ public partial class CreatureControl : UserControl
 
     public event EventHandler Selecting = delegate { };
 
-    protected override void OnTap(System.Windows.Input.GestureEventArgs e)
+    protected override void OnTapped(Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
     {
       if (this.Field == null)
         return;
       this.Field.IsSelected = true;
       this.Selecting((object) this, EventArgs.Empty);
-      base.OnTap(e);
+      base.OnTapped(e);
     }
 
     private void MainControlLoaded(object sender, RoutedEventArgs e)
     {
     }
 
-    private void DieStateCompleted(object sender, EventArgs e)
+    private void DieStateCompleted(object sender, object e)
     {
       if (this.dieStateCompleted != null)
       {
@@ -258,7 +252,7 @@ public partial class CreatureControl : UserControl
       this.UpdateImage();
     }
 
-    private void SummonCompleted(object sender, EventArgs e)
+    private void SummonCompleted(object sender, object e)
     {
       if (this.summonCompleted != null)
       {
@@ -268,7 +262,7 @@ public partial class CreatureControl : UserControl
       this.UpdateImage();
     }
 
-    private void FieldAttackingCompleted(object sender, EventArgs e)
+    private void FieldAttackingCompleted(object sender, object e)
     {
       if (this.fieldAttackingCompleted == null)
         return;
@@ -276,7 +270,7 @@ public partial class CreatureControl : UserControl
       this.fieldAttackingCompleted = (Action) null;
     }
 
-    private void SkipCompleted(object sender, EventArgs e)
+    private void SkipCompleted(object sender, object e)
     {
       if (this.skipCompleted == null)
         return;
@@ -284,7 +278,7 @@ public partial class CreatureControl : UserControl
       this.skipCompleted = (Action) null;
     }
 
-    private void GestureListenerTap(object sender, Windows.UI.Xaml.Controls.GestureEventArgs e)
+    private void GestureListenerTap(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
     {
     }
 

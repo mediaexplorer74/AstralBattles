@@ -1,24 +1,15 @@
-﻿<Page
+<Page
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:phone="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Controls="clr-namespace:AstralBattles.Controls" 
-    xmlns:ViewModels="clr-namespace:AstralBattles.ViewModels" 
-    xmlns:Converters="clr-namespace:AstralBattles.Converters"
-    xmlns:ec="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" 
-    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:Controls="using:AstralBattles.Controls"
+    xmlns:ViewModels="using:AstralBattles.ViewModels"
+    xmlns:Converters="using:AstralBattles.Converters"
     x:Class="AstralBattles.Views.MainPage"
-    mc:Ignorable="d" 
+    mc:Ignorable="d"
     d:DesignWidth="480" d:DesignHeight="800"
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
-    FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="White" Background="Black"
-    Loaded="PhoneApplicationPageLoaded"
     >
     <Page.DataContext>
         <ViewModels:MainViewModel />
@@ -29,101 +20,71 @@
             
 
     </Page.Resources>
+
+    <!--TODO: BusyText="{Binding CommonResources.Loading, Source={StaticResource ResourceWrapper}}"-->
+        <Controls:BusyIndicatorControl
+            BusyText="Loading..."
+    IsBusy="{Binding IsBusy}"
+    Foreground="White"
     
-    <!--<toolkit:TransitionService.NavigationInTransition>
-        <toolkit:NavigationInTransition>
-            <toolkit:NavigationInTransition.Backward>
-                <toolkit:TurnstileTransition Mode="BackwardIn"/>
-            </toolkit:NavigationInTransition.Backward>
-            <toolkit:NavigationInTransition.Forward>
-                <toolkit:TurnstileTransition Mode="ForwardIn"/>
-            </toolkit:NavigationInTransition.Forward>
-        </toolkit:NavigationInTransition>
-    </toolkit:TransitionService.NavigationInTransition>
-    <toolkit:TransitionService.NavigationOutTransition>
-        <toolkit:NavigationOutTransition>
-            <toolkit:NavigationOutTransition.Backward>
-                <toolkit:TurnstileTransition Mode="BackwardOut"/>
-            </toolkit:NavigationOutTransition.Backward>
-            <toolkit:NavigationOutTransition.Forward>
-                <toolkit:TurnstileTransition Mode="ForwardOut"/>
-            </toolkit:NavigationOutTransition.Forward>
-        </toolkit:NavigationOutTransition>
-    </toolkit:TransitionService.NavigationOutTransition>-->
+    Style="{StaticResource BusyIndicatorStyle}">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Backgrounds/PanoramaBackground.jpg"/>
+        </Grid.Background>
 
-    <Controls:BusyIndicatorControl 
-        IsBusy="{Binding IsBusy}" 
-        Foreground="White"
-        BusyLabel="{Binding CommonResources.Loading, Source={StaticResource ResourceWrapper}}"
-        Style="{StaticResource BusyIndicatorStyle}"
-        HideApplicationBar="True">
-        <Grid>
-            <controls:Panorama Title="Astral Battles" Foreground="White">
-            <controls:Panorama.Background>
-                <ImageBrush ImageSource="/AstralBattles;component/Resources/Backgrounds/PanoramaBackground.jpg"/>
-            </controls:Panorama.Background>
-                <controls:PanoramaItem Margin="0,-30,0,0" Header="{Binding CommonResources.MainMenu, Source={StaticResource ResourceWrapper}}">
-                <StackPanel Margin="0,0,22,0" d:LayoutOverrides="Width">
-                        <HyperlinkButton Command="{Binding Continue}" Opacity="{Binding CanContinue, Converter={StaticResource trueToOpacityConverter}}" Content="{Binding Resources.CommonResources.Continue}" Style="{StaticResource HyperlinkButtonStyle}"/>
-                        <TextBlock Foreground="#D2D2D2" Margin="15,-8,0,0" Opacity="{Binding CanContinue, Converter={StaticResource trueToOpacityConverter}}" Label="{Binding Resources.CommonResources.ContinueTip}"/>
+        <!-- Main Menu -->
+        <ScrollViewer>
+            <StackPanel Margin="20">
+                <TextBlock Text="Astral Battles" FontSize="48" 
+                           Foreground="#FFFFEA00" HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
-                        <!--<HyperlinkButton Command="{Binding Campaign}" Content="{Binding Resources.CommonResources.Campaign}" Margin="0,0,0,0" Style="{StaticResource HyperlinkButtonStyle}"/>
-                        <TextBlock Foreground="#D2D2D2" Margin="15,-8,0,0" Label="{Binding Resources.CommonResources.CampaignTip}"/>-->
+                <!-- Menu Buttons -->
+                <!--Button Command="{Binding Continue}" Opacity="{Binding CanContinue, Converter={StaticResource trueToOpacityConverter}}"
+                        Content="{Binding Resources.CommonResources.Continue}" Margin="0,0,0,10" Background="Transparent" 
+                        Foreground="White" BorderBrush="White"/-->
+                    <Button Command="{Binding Continue}" Opacity="{Binding CanContinue, Converter={StaticResource trueToOpacityConverter}}"
+                     Content="Continue" Margin="0,0,0,10" Background="Transparent" 
+                     Foreground="White" BorderBrush="White"/>   
+                    <TextBlock Foreground="#D2D2D2" Margin="15,0,0,20" Opacity="{Binding CanContinue, Converter={StaticResource trueToOpacityConverter}}"
+                           Text="{Binding Resources.CommonResources.ContinueTip}"/>
 
-                        <HyperlinkButton Command="{Binding Tournament}" Content="{Binding Resources.CommonResources.Tournament}" Margin="0,0,0,0" Style="{StaticResource HyperlinkButtonStyle}"/>
-                        <TextBlock Foreground="#D2D2D2" Margin="15,-8,0,0" Label="{Binding Resources.CommonResources.TournamentTip}"/>
+                    <!--Button Command="{Binding Tournament}" Content="{Binding Resources.CommonResources.Tournament}" Margin="0,0,0,10"
+        Background="Transparent" Foreground="White" BorderBrush="White"/-->
+                    <Button Command="{Binding Tournament}" Content="Tournament" Margin="0,0,0,10"
+                        Background="Transparent" Foreground="White" BorderBrush="White"/>
+                <TextBlock Foreground="#D2D2D2" Margin="15,0,0,20" Text="{Binding Resources.CommonResources.TournamentTip}"/>
 
-                        <HyperlinkButton Command="{Binding TwoPlayers}" Content="{Binding Resources.CommonResources.TwoPlayers}" Margin="0,0,0,0" Style="{StaticResource HyperlinkButtonStyle}"/>
-                        <TextBlock Foreground="#D2D2D2" Margin="15,-8,0,0" Label="{Binding Resources.CommonResources.TwoPlayersTip}"/>
+                <!--Button Command="{Binding TwoPlayers}" Content="{Binding Resources.CommonResources.TwoPlayers}" Margin="0,0,0,10"
+                        Background="Transparent" Foreground="White" BorderBrush="White"/>
+                <TextBlock Foreground="#D2D2D2" Margin="15,0,0,20" Text="{Binding Resources.CommonResources.TwoPlayersTip}"/-->
+                    <Button Command="{Binding TwoPlayers}" Content="Two Players" Margin="0,0,0,10"
+         Background="Transparent" Foreground="White" BorderBrush="White"/>
+                    <TextBlock Foreground="#D2D2D2" Margin="15,0,0,20" Text="Two Players Tip"/>
 
-                        <HyperlinkButton Command="{Binding ShowTutorial}" Content="{Binding Resources.CommonResources.Tutorial}" Margin="0,90,0,0" Style="{StaticResource HyperlinkButtonStyle}"/>
-                        <TextBlock Foreground="#D2D2D2" Margin="15,-8,0,0" Label="{Binding Resources.CommonResources.TutorialTip}"/>
-            
-			    </StackPanel>
-            </controls:PanoramaItem>
-                <controls:PanoramaItem Margin="0,-30,0,0"  Header="{Binding Resources.CommonResources.Options}">
-                <StackPanel>
-                        <toolkit:ToggleSwitch Foreground="White" Content="{Binding Resources.CommonResources.Sounds}" IsChecked="{Binding IsSoundsEnabled, Mode=TwoWay}"></toolkit:ToggleSwitch>
-                        <toolkit:ToggleSwitch Foreground="White" Content="{Binding Resources.CommonResources.Vibration}" IsChecked="{Binding IsVibrationEnabled, Mode=TwoWay}"/>
-                        <toolkit:ListPicker Margin="10,20,35,0" ItemsSource="{Binding Languages}" SelectedItem="{Binding Language, Mode=TwoWay}"></toolkit:ListPicker>
+                    <!--Button Command="{Binding ShowTutorial}" Content="{Binding Resources.CommonResources.Tutorial}" Margin="0,30,0,10"
+                        Background="Transparent" Foreground="White" BorderBrush="White"/>
+                <TextBlock Foreground="#D2D2D2" Margin="15,0,0,40" Text="{Binding Resources.CommonResources.TutorialTip}"/-->
+                    <Button Command="{Binding ShowTutorial}" Content="Tutorial" Margin="0,30,0,10"
+                  Background="Transparent" Foreground="White" BorderBrush="White"/>
+                    <TextBlock Foreground="#D2D2D2" Margin="15,0,0,40" Text="Tutorial Tip"/>
 
-                        <TextBlock Width="400" TextWrapping="Wrap" Label="{Binding Resources.CommonResources.HelpImproveLanguages}"/>
-                </StackPanel>
-            </controls:PanoramaItem>
-                <controls:PanoramaItem  Margin="0,-30,0,0" Header="{Binding Resources.CommonResources.About}">
-                <controls:PanoramaItem.DataContext>
-                    <ViewModels:AboutViewModel/>
-                </controls:PanoramaItem.DataContext>
-                <Grid Background="#91000000">
-            	    <Grid.RowDefinitions>
-            		    <RowDefinition Height="Auto" />
-					    <RowDefinition Height="Auto" />   
-					    <RowDefinition Height="Auto" />  
-					    <RowDefinition Height="Auto" />   
-					    <RowDefinition Height="Auto" />      	
-					    <RowDefinition />        	
-				    </Grid.RowDefinitions>
-				    <StackPanel Orientation="Horizontal">
-					    <TextBlock Label="{Binding ApplicationName}" FontSize="48" Foreground="#FFFFEA00" Margin="10,0,0,0"/>
-					    <TextBlock Label="{Binding Version}" FontWeight="Bold" Margin="8,12,0,0" FontSize="24"/>
-				    </StackPanel>        
-				    <TextBlock Grid.Row="1" Label="{Binding Resources.CommonResources.Copyrights}" FontSize="25" Foreground="#FFC8C8C8" FontWeight="Bold" Margin="10,0,10,10"/>
-                        <TextBlock Grid.Row="2" TextWrapping="Wrap" FontSize="20" 
-					           Foreground="White" LineStackingStrategy="BlockLineHeight" 
-                               Label="{Binding Resources.CommonResources.AboutBody}"
-                               LineHeight="29.333" Margin="13,0,12,0"/>
+                    <!-- Options -->
+                <!--TextBlock Text="{Binding Resources.CommonResources.Options}" FontSize="32" Foreground="White" Margin="0,20,0,20"/-->
+                    <TextBlock Text="Options" FontSize="32" Foreground="White" Margin="0,20,0,20"/>
+                    <!--ToggleSwitch Header="{Binding Resources.CommonResources.Sounds}" IsOn="{Binding IsSoundsEnabled, Mode=TwoWay}" Foreground="White"/>
+                <ToggleSwitch Header="{Binding Resources.CommonResources.Vibration}" IsOn="{Binding IsVibrationEnabled, Mode=TwoWay}" Foreground="White"/-->
+                    <ToggleSwitch Header="Sounds" IsOn="{Binding IsSoundsEnabled, Mode=TwoWay}" Foreground="White"/>
+                    <ToggleSwitch Header="Vibration" IsOn="{Binding IsVibrationEnabled, Mode=TwoWay}" Foreground="White"/>
+                    <ComboBox Margin="0,20,0,0" ItemsSource="{Binding Languages}" SelectedItem="{Binding Language, Mode=TwoWay}" 
+                          Foreground="DarkCyan"/>
+                <TextBlock Text="{Binding Resources.CommonResources.HelpImproveLanguages}" TextWrapping="Wrap" Foreground="White" Margin="0,20,0,0"/>
+            </StackPanel>
+        </ScrollViewer>
 
-                        <Button Width="400" Grid.Row="3" Content="{Binding Resources.CommonResources.ReviewGame}" Command="{Binding Review}" Margin="0,20,0,20" Background="#FF7E774D" BorderBrush="#FF9D9D9D" BorderThickness="0"/>
-                        <Button Width="400" Grid.Row="4" Content="{Binding Resources.CommonResources.Feedback}" Command="{Binding Mailme}" Background="#FF7E774D" BorderBrush="#FF9D9D9D" BorderThickness="0" />
-			    </Grid>
-            </controls:PanoramaItem>
-
-        </controls:Panorama>
-
-        <HyperlinkButton NavigateUri="http://www.spectromancer.com" TargetName="_blank" 
-                         Content="www.spectromancer.com" FontSize="24"
-                         VerticalAlignment="Bottom" HorizontalAlignment="Center" 
-                         Margin="0,0,0,12" Foreground="#FFC6C6C6"/>
-        </Grid>
-    </Controls:BusyIndicatorControl>
+        <!-- Footer Link -->
+        <HyperlinkButton NavigateUri="http://www.spectromancer.com" Content="www.spectromancer.com" FontSize="24"
+                         VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,12" Foreground="#FFC6C6C6"/>
+    </Grid>
+</Controls:BusyIndicatorControl>
 </Page>

@@ -8,7 +8,7 @@ using AstralBattles.Core.Model;
 using AstralBattles.Core.Services;
 using System;
 
-#nullable disable
+
 namespace AstralBattles.Core
 {
   public class TwoPlayersDuelRulesEngine : GameRulesEngineBase

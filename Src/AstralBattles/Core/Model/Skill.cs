@@ -6,7 +6,7 @@
 
 using System;
 
-#nullable disable
+
 namespace AstralBattles.Core.Model
 {
   public class Skill

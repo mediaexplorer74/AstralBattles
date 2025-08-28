@@ -8,7 +8,7 @@ using AstralBattles.Core.Infrastructure;
 using System;
 using System.Collections.ObjectModel;
 
-#nullable disable
+
 namespace AstralBattles.Core.Model
 {
   public class Element : NotifyPropertyChangedBase

@@ -1,18 +1,11 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: AstralBattles.Localizations.LocalizationManager
-// Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
-// MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
-// Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
-
-using AstralBattles.Localizations.Cyclops.MainApplication.Localization;
+﻿using AstralBattles.Localizations.Cyclops.MainApplication.Localization;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
+using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Windows;
+using Windows.UI.Xaml;
 
-#nullable disable
+
 namespace AstralBattles.Localizations
 {
   public class LocalizationManager
@@ -26,10 +19,11 @@ namespace AstralBattles.Localizations
       if (string.IsNullOrWhiteSpace(name1))
         name1 = CultureInfo.CurrentCulture.Name;
       AstralBattles.Core.AppContext.Locale = name1;
-      if (Thread.CurrentThread.CurrentUICulture.Name.Equals(name1))
+      if (CultureInfo.CurrentUICulture.Name.Equals(name1))
         return;
-      Thread.CurrentThread.CurrentUICulture = new CultureInfo(name1);
-      Thread.CurrentThread.CurrentCulture = new CultureInfo(name1);
+      // TODO: UWP doesn't support Thread.CurrentThread culture changes for MVP build
+      // CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(name1);
+      // CultureInfo.DefaultThreadCurrentCulture = new CultureInfo(name1);
       if (!(Application.Current.Resources[(object) "ResourceWrapper"] is ResourceWrapper resource))
         return;
       resource.Refresh();

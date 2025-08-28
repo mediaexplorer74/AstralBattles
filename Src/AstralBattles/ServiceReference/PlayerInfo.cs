@@ -9,7 +9,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.Serialization;
 
-#nullable disable
+
 namespace AstralBattles.ServiceReference
 {
   [GeneratedCode("System.Runtime.Serialization", "4.0.0.0")]

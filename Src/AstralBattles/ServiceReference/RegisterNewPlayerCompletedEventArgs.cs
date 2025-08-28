@@ -9,7 +9,7 @@ using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
 
-#nullable disable
+
 namespace AstralBattles.ServiceReference
 {
   [GeneratedCode("System.ServiceModel", "4.0.0.0")]
