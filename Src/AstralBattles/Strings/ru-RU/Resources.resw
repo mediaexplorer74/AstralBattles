@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="About" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="AboutBody" xml:space="preserve">
+    <value>Astral Battles - стратегическая карточная игра. Призывайте существ, колдуйте заклинания и побеждайте!</value>
+  </data>
+  <data name="Air" xml:space="preserve">
+    <value>Воздух</value>
+  </data>
+  <data name="Beast" xml:space="preserve">
+    <value>Зверь</value>
+  </data>
+  <data name="Campaign" xml:space="preserve">
+    <value>Компания</value>
+  </data>
+  <data name="CampaignTip" xml:space="preserve">
+    <value>Одиночная игра</value>
+  </data>
+  <data name="Casting" xml:space="preserve">
+    <value>Заклинание</value>
+  </data>
+  <data name="Chaos" xml:space="preserve">
+    <value>Хаос</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="ConfigureDeck" xml:space="preserve">
+    <value>Настроить колоду</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Подтверждение</value>
+  </data>
+  <data name="Congratulations" xml:space="preserve">
+    <value>Поздравляем! вы закончили турнир на {0} месте. Спасибо за игру, надеюсь, вы получили удовольствие и не поленитесь поставить 5ку - это поспособствует скорейшему выходу Astral Battles 2 с большой и интересной компанией.</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Продолжить</value>
+  </data>
+  <data name="ContinueCampaignTip" xml:space="preserve">
+    <value>Продолжить начатую компанию</value>
+  </data>
+  <data name="ContinueTip" xml:space="preserve">
+    <value>Продолжить игру</value>
+  </data>
+  <data name="ContinueTournamentTip" xml:space="preserve">
+    <value>Продолжить турнир</value>
+  </data>
+  <data name="Control" xml:space="preserve">
+    <value>Управление</value>
+  </data>
+  <data name="Copyrights" xml:space="preserve">
+    <value>© 2011-2025 Команда Astral Battles</value>
+  </data>
+  <data name="TwoPlayers" xml:space="preserve">
+    <value>Два игрока</value>
+  </data>
+  <data name="TwoPlayersTip" xml:space="preserve">
+    <value>Игра вдвоём на одном устройстве</value>
+  </data>
+  <data name="NewGameTip" xml:space="preserve">
+    <value>Начать новую игру на двоих игроков</value>
+  </data>
+  <data name="FaceSelection" xml:space="preserve">
+    <value>Выбор аватара</value>
+  </data>
+  <data name="LoadGame" xml:space="preserve">
+    <value>Загрузить игру</value>
+  </data>
+  <data name="ReviewGame" xml:space="preserve">
+    <value>Поставить оценку</value>
+  </data>
+  <data name="NextGame" xml:space="preserve">
+    <value>Следующая игра</value>
+  </data>
+  <data name="NextTurn" xml:space="preserve">
+    <value>Следующий ход</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Сложность</value>
+  </data>
+  <data name="Easy" xml:space="preserve">
+    <value>Легко</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Нормально</value>
+  </data>
+  <data name="Hard" xml:space="preserve">
+    <value>Сложно</value>
+  </data>
+  <data name="Fire" xml:space="preserve">
+    <value>Огонь</value>
+  </data>
+  <data name="Water" xml:space="preserve">
+    <value>Вода</value>
+  </data>
+  <data name="Earth" xml:space="preserve">
+    <value>Земля</value>
+  </data>
+  <data name="Death" xml:space="preserve">
+    <value>Смерть</value>
+  </data>
+</root>

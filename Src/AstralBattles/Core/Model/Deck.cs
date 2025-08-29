@@ -2,6 +2,7 @@ using AstralBattles.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 
 
@@ -12,7 +13,8 @@ namespace AstralBattles.Core.Model
     public static string Serialize(Deck deck)
     {
       string str1 = "";
-      foreach (KeyValuePair<ElementTypeEnum, ObservableCollection<Card>> keyValuePair in (Dictionary<ElementTypeEnum, ObservableCollection<Card>>) deck)
+      foreach (KeyValuePair<ElementTypeEnum, ObservableCollection<Card>> keyValuePair 
+                in (Dictionary<ElementTypeEnum, ObservableCollection<Card>>) deck)
       {
         string cards = "";
         keyValuePair.Value.ForEach<Card>((Action<Card>) (i =>
@@ -59,6 +61,7 @@ namespace AstralBattles.Core.Model
       }
       catch (Exception ex)
       {
+        Debug.WriteLine("[ex] Deck - Deserialize error: " + ex.Message);
         return defaultDeck;
       }
     }

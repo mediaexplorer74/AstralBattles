@@ -1,4 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
+﻿﻿// Decompiled with JetBrains decompiler
 // Type: AstralBattles.Views.MainPage
 // Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
 // MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
@@ -6,6 +6,7 @@
 
 using AstralBattles.Core.Services;
 using AstralBattles.ViewModels;
+using AstralBattles.Localizations.Cyclops.MainApplication.Localization;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using System;
@@ -16,6 +17,7 @@ namespace AstralBattles.Views
 {
 public partial class MainPage : Page
   {
+    private ResourceWrapper ResourceWrapper => (ResourceWrapper)Resources["ResourceWrapper"];
        
     public MainPage()
     {

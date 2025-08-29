@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AboutBody" xml:space="preserve">
+    <value>Astral Battles is a strategic card game. Summon creatures, cast spells and defeat your opponents!</value>
+  </data>
+  <data name="Air" xml:space="preserve">
+    <value>Air</value>
+  </data>
+  <data name="Beast" xml:space="preserve">
+    <value>Beast</value>
+  </data>
+  <data name="Campaign" xml:space="preserve">
+    <value>Campaign</value>
+  </data>
+  <data name="CampaignTip" xml:space="preserve">
+    <value>Play single player campaign</value>
+  </data>
+  <data name="Casting" xml:space="preserve">
+    <value>Casting</value>
+  </data>
+  <data name="Chaos" xml:space="preserve">
+    <value>Chaos</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ConfigureDeck" xml:space="preserve">
+    <value>Configure Deck</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="Congratulations" xml:space="preserve">
+    <value>Congratulations! You finished the tournament at {0} place. Thanks for playing!</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="ContinueCampaignTip" xml:space="preserve">
+    <value>Continue started campaign</value>
+  </data>
+  <data name="ContinueTip" xml:space="preserve">
+    <value>Continue game</value>
+  </data>
+  <data name="ContinueTournamentTip" xml:space="preserve">
+    <value>Continue tournament</value>
+  </data>
+  <data name="Control" xml:space="preserve">
+    <value>Control</value>
+  </data>
+  <data name="Copyrights" xml:space="preserve">
+    <value>© 2011-2025 Astral Battles Team</value>
+  </data>
+  <data name="TwoPlayers" xml:space="preserve">
+    <value>Two Players</value>
+  </data>
+  <data name="TwoPlayersTip" xml:space="preserve">
+    <value>Two players on one device</value>
+  </data>
+  <data name="NewGameTip" xml:space="preserve">
+    <value>Start new two players game</value>
+  </data>
+  <data name="FaceSelection" xml:space="preserve">
+    <value>Face Selection</value>
+  </data>
+  <data name="LoadGame" xml:space="preserve">
+    <value>Load Game</value>
+  </data>
+  <data name="ReviewGame" xml:space="preserve">
+    <value>Review Game</value>
+  </data>
+  <data name="NextGame" xml:space="preserve">
+    <value>Next Game</value>
+  </data>
+  <data name="NextTurn" xml:space="preserve">
+    <value>Next Turn</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Difficulty</value>
+  </data>
+  <data name="Easy" xml:space="preserve">
+    <value>Easy</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Hard" xml:space="preserve">
+    <value>Hard</value>
+  </data>
+  <data name="Fire" xml:space="preserve">
+    <value>Fire</value>
+  </data>
+  <data name="Water" xml:space="preserve">
+    <value>Water</value>
+  </data>
+  <data name="Earth" xml:space="preserve">
+    <value>Earth</value>
+  </data>
+  <data name="Death" xml:space="preserve">
+    <value>Death</value>
+  </data>
+</root>

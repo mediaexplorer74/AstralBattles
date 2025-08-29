@@ -1,10 +1,11 @@
-﻿// Decompiled with JetBrains decompiler
+﻿﻿// Decompiled with JetBrains decompiler
 // Type: AstralBattles.Views.PageNavigationService
 // Assembly: AstralBattles, Version=1.4.5.0, Culture=neutral, PublicKeyToken=null
 // MVID: 0ADAD7A2-9432-4E3E-A56A-475E988D1430
 // Assembly location: C:\Users\Admin\Desktop\RE\Astral_Battles_v1.4\AstralBattles.dll
 
 using System;
+using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -14,8 +15,23 @@ namespace AstralBattles.Views
 {
   public static class PageNavigationService
   {
-    public const string FaceSelectionUrl = "/Views/FaceSelectionView.xaml";
-    public const string CreatePlayerViewUrl = "/Views/CreatePlayerView.xaml";
+    // Page type mappings for UWP navigation
+    private static readonly Dictionary<string, Type> PageTypeMap = new Dictionary<string, Type>
+    {
+      {"/Views/MainPage.xaml", typeof(MainPage)},
+      {"/Views/Battlefield.xaml", typeof(Battlefield)},
+      {"/Views/CampaignMap.xaml", typeof(CampaignMap)},
+      {"/Views/TwoPlayersOptions.xaml", typeof(TwoPlayersOptions)},
+      {"/Views/CampaignOptionsView.xaml", typeof(CampaignOptionsView)},
+      {"/Views/FaceSelectionView.xaml", typeof(FaceSelectionView)},
+      {"/Views/TournamentOptions.xaml", typeof(TournamentTable)}, // Assuming TournamentOptions maps to TournamentTable
+      {"/Views/DeckConfigurator.xaml", typeof(DeckConfigurator)},
+      {"/Views/CreatePlayerView.xaml", typeof(CreatePlayerView)},
+      {"/Views/TwoPlayersModes.xaml", typeof(TwoPlayersModes)},
+      {"/Views/ViaNetworkGameModes.xaml", typeof(ViaNetworkGameModes)},
+      {"/Views/HostingServer.xaml", typeof(HostingServer)},
+      {"/Views/TournamentTable.xaml", typeof(TournamentTable)}
+    };
 
     public static void OpenBattlefield(bool continueGame, bool is2PlayersDuel = false, bool isAiDuel = false)
     {
@@ -32,13 +48,32 @@ namespace AstralBattles.Views
       PageNavigationService.Navigate("/Views/TournamentTable.xaml");
     }
 
-    private static void Navigate(string uri)
+    private static Frame GetCurrentFrame()
     {
-      // UWP navigation - find current Frame and navigate
-      if (Window.Current?.Content is Frame rootFrame)
+      return Window.Current?.Content as Frame;
+    }
+
+    private static void Navigate(string uri, object parameter = null)
+    {
+      var frame = GetCurrentFrame();
+      if (frame != null && PageTypeMap.TryGetValue(ExtractPagePath(uri), out Type pageType))
       {
-        rootFrame.Navigate(typeof(MainPage), uri); // Simplified for MVP - would need proper page type mapping
+        frame.Navigate(pageType, parameter ?? ExtractParameters(uri));
       }
+    }
+
+    private static string ExtractPagePath(string uri)
+    {
+      // Extract just the page path without parameters
+      int questionMarkIndex = uri.IndexOf('?');
+      return questionMarkIndex >= 0 ? uri.Substring(0, questionMarkIndex) : uri;
+    }
+
+    private static object ExtractParameters(string uri)
+    {
+      // Extract parameters from URI for navigation
+      int questionMarkIndex = uri.IndexOf('?');
+      return questionMarkIndex >= 0 ? uri.Substring(questionMarkIndex + 1) : null;
     }
 
     public static void OpenMainMenu()

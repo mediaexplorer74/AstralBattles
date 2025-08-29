@@ -1,4 +1,4 @@
-﻿# AstralBattles 1.4.5 - main branch
+﻿# AstralBattles 1.4.6-pre-pre-pre-alpha - main branch
 
 ![Logo](Images/logo.png)
 
@@ -9,9 +9,12 @@ AstralBattles.xap dirty decomp.
 ![Logo](Images/sshot01.png)
 
 ## Status
+- Pre-pre-pre-alpha! Work-in-progress
 - App build - success
 - App start - success
 - App UI -- damaged (not ported properly!)
+- Navigation - damaged
+- Localization: EN & RU only
 
 ## Plans
 - See Plans.md at /Docs folder

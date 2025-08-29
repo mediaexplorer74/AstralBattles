@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
     <ProjectGuid>{12B3B96A-9606-42B3-8D9E-D75B28C8B980}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
@@ -274,21 +274,6 @@
     <Compile Include="ServiceReference\PlayerInfo.cs" />
     <Compile Include="ServiceReference\RegisterNewPlayerCompletedEventArgs.cs" />
     <Compile Include="SoundPlayer.cs" />
-    <Compile Include="Strings\de-DE\de-DE.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>de-DE.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Strings\fr-FR\fr-FR.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>fr-FR.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Strings\ru-RU\ru-RU.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ru-RU.resx</DependentUpon>
-    </Compile>
     <Compile Include="Utils.cs" />
     <Compile Include="Vibration.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
@@ -1291,18 +1276,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <EmbeddedResource Include="Strings\de-DE\de-DE.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>de-DE.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Strings\fr-FR\fr-FR.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>fr-FR.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Strings\ru-RU\ru-RU.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ru-RU.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Styles\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1550,6 +1523,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AstralBattles_TemporaryKey.pfx" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+    <PRIResource Include="Strings\ru-RU\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Core\" />
